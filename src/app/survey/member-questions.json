@@ -1,0 +1,285 @@
+{
+  "language_ethnicity": {
+    "title": "Language and Ethnicity",
+    "questions": [
+      {
+        "id": "primary_language",
+        "label": "What is your primary language at home?",
+        "type": "select",
+        "options": [
+          { "value": "nepali", "label": "Nepali" },
+          { "value": "maithili", "label": "Maithili" },
+          { "value": "bhojpuri", "label": "Bhojpuri" },
+          { "value": "tamang", "label": "Tamang" },
+          { "value": "newari", "label": "Newari" },
+          { "value": "tharu", "label": "Tharu" },
+          { "value": "other", "label": "Other (please specify)" }
+        ]
+      },
+      {
+        "id": "other_languages",
+        "label": "What other languages do you speak?",
+        "type": "select",
+        "options": [
+          { "value": "hindi", "label": "Hindi" },
+          { "value": "english", "label": "English" },
+          {
+            "value": "local_dialects",
+            "label": "Local dialects (e.g., Limbu, Magar)"
+          },
+          { "value": "none", "label": "None" }
+        ]
+      },
+      {
+        "id": "ethnic_group",
+        "label": "Which ethnic group do you belong to?",
+        "type": "select",
+        "options": [
+          { "value": "brahmin_chhetri", "label": "Brahmin/Chhetri" },
+          {
+            "value": "janajati",
+            "label": "Janajati (e.g., Gurung, Tamang, Magar)"
+          },
+          { "value": "dalit", "label": "Dalit" },
+          { "value": "madhesi", "label": "Madhesi" },
+          { "value": "tharu", "label": "Tharu" },
+          { "value": "other", "label": "Other (please specify)" }
+        ]
+      }
+    ]
+  },
+  "education_income": {
+    "title": "Education and Income",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "education",
+        "label": "Education Level",
+        "type": "select",
+        "options": [
+          { "value": "no_formal_education", "label": "No formal education" },
+          { "value": "primary", "label": "Primary" },
+          { "value": "secondary", "label": "Secondary" },
+          { "value": "higher_secondary", "label": "Higher Secondary" },
+          { "value": "bachelors", "label": "Bachelor's" },
+          { "value": "masters", "label": "Master's" },
+          { "value": "phd", "label": "PhD" }
+        ]
+      },
+      {
+        "id": "income",
+        "label": "Monthly Income Range",
+        "type": "select",
+        "options": [
+          { "value": "low", "label": "Below 20,000 NPR" },
+          { "value": "medium_low", "label": "20,000 - 50,000 NPR" },
+          { "value": "medium", "label": "50,000 - 100,000 NPR" },
+          { "value": "medium_high", "label": "100,000 - 200,000 NPR" },
+          { "value": "high", "label": "Above 200,000 NPR" }
+        ]
+      }
+    ]
+  },
+  "technology": {
+    "title": "Technology Usage",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "devices",
+        "label": "What brands of smartphones, laptops, or tablets do you use?",
+        "type": "select",
+        "options": [
+          {
+            "value": "premium",
+            "label": "Apple, Samsung (flagship models), Microsoft Surface"
+          },
+          {
+            "value": "midrange",
+            "label": "Mid-range brands (OnePlus, Xiaomi, Lenovo)"
+          },
+          {
+            "value": "budget",
+            "label": "Budget brands (Realme, Tecno, Infinix)"
+          },
+          { "value": "none", "label": "None" }
+        ]
+      },
+      {
+        "id": "smart_devices",
+        "label": "Which smart devices do you use?",
+        "type": "select",
+        "options": [
+          {
+            "value": "speakers",
+            "label": "Smart speakers (e.g., Amazon Echo, Google Nest)"
+          },
+          {
+            "value": "home",
+            "label": "Smart home devices (e.g., thermostat, security cameras)"
+          },
+          { "value": "none", "label": "None" }
+        ]
+      },
+      {
+        "id": "internet_speed",
+        "label": "What internet speed do you subscribe to?",
+        "type": "select",
+        "options": [
+          { "value": "high", "label": "High speed (500 Mbps or above)" },
+          { "value": "medium", "label": "Medium speed (100–500 Mbps)" },
+          { "value": "low", "label": "Low speed (below 100 Mbps)" }
+        ]
+      },
+      {
+        "id": "fitness_trackers",
+        "label": "Do you use fitness trackers or smartwatches regularly?",
+        "type": "select",
+        "options": [
+          {
+            "value": "premium",
+            "label": "Yes, premium brands (e.g., Apple Watch, Garmin)"
+          },
+          {
+            "value": "budget",
+            "label": "Yes, budget brands (e.g., Xiaomi, Fitbit)"
+          },
+          { "value": "none", "label": "No" }
+        ]
+      }
+    ]
+  },
+  "lifestyle": {
+    "title": "Lifestyle and Preferences",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "food_delivery",
+        "label": "What kind of food delivery apps or restaurant loyalty programs do you use?",
+        "type": "select",
+        "options": [
+          {
+            "value": "premium",
+            "label": "Premium services (e.g., Uber Eats, fine-dining apps)"
+          },
+          {
+            "value": "midrange",
+            "label": "Mid-range services (e.g., Swiggy, Zomato)"
+          },
+          { "value": "none", "label": "None" }
+        ]
+      },
+      {
+        "id": "transportation",
+        "label": "What is your preferred mode of transportation?",
+        "type": "select",
+        "options": [
+          { "value": "own", "label": "Own vehicle" },
+          { "value": "public", "label": "Public transport" },
+          {
+            "value": "rideshare",
+            "label": "Ride-hailing apps (e.g., Uber, Ola)"
+          }
+        ]
+      },
+      {
+        "id": "furniture_shopping",
+        "label": "What type of furniture or decor stores do you shop from?",
+        "type": "select",
+        "options": [
+          {
+            "value": "premium",
+            "label": "Premium stores (e.g., West Elm, Pottery Barn)"
+          },
+          { "value": "standard", "label": "Standard stores (e.g., IKEA)" },
+          { "value": "budget", "label": "Budget/local stores" },
+          { "value": "none", "label": "None" }
+        ]
+      }
+    ]
+  },
+  "entertainment": {
+    "title": "Entertainment and Media",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "content_preference",
+        "label": "Do you prefer watching live TV, streaming platforms, or both?",
+        "type": "select",
+        "options": [
+          { "value": "live", "label": "Only live TV" },
+          { "value": "streaming", "label": "Only streaming platforms" },
+          { "value": "both", "label": "Both live TV and streaming" }
+        ]
+      },
+      {
+        "id": "multi_device",
+        "label": "Do you watch content on multiple devices?",
+        "type": "select",
+        "options": [
+          { "value": "yes", "label": "Yes, on multiple devices" },
+          { "value": "no", "label": "No, only one device" }
+        ]
+      },
+      {
+        "id": "music_preference",
+        "label": "What kind of music do you like?",
+        "type": "select",
+        "options": [
+          { "value": "nepali", "label": "Nepali songs (folk, modern, etc.)" },
+          { "value": "bollywood", "label": "Bollywood or Indian songs" },
+          { "value": "western", "label": "Western music (English, etc.)" },
+          { "value": "religious", "label": "Religious or devotional music" },
+          { "value": "none", "label": "I don't listen to music" }
+        ]
+      }
+    ]
+  },
+  "shopping": {
+    "title": "Shopping Habits",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "loyalty_programs",
+        "label": "What types of loyalty or rewards programs do you participate in?",
+        "type": "select",
+        "options": [
+          {
+            "value": "high_value",
+            "label": "High-value programs (e.g., Amex Membership Rewards)"
+          },
+          {
+            "value": "retail",
+            "label": "Retail programs (e.g., grocery store loyalty)"
+          },
+          { "value": "none", "label": "None" }
+        ]
+      },
+      {
+        "id": "clothes_shopping",
+        "label": "Where do you usually shop for clothes?",
+        "type": "select",
+        "options": [
+          {
+            "value": "branded",
+            "label": "Branded stores (e.g., Zara, Levi's)"
+          },
+          {
+            "value": "online",
+            "label": "Online stores (e.g., Myntra, Amazon)"
+          },
+          { "value": "local", "label": "Local markets" }
+        ]
+      },
+      {
+        "id": "installment_plans",
+        "label": "Do you use installment plans for high-value purchases?",
+        "type": "select",
+        "options": [
+          { "value": "frequently", "label": "Frequently" },
+          { "value": "rarely", "label": "Rarely" },
+          { "value": "never", "label": "Never" }
+        ]
+      }
+    ]
+  }
+}

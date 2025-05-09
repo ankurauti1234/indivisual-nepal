@@ -1,0 +1,1078 @@
+{
+    "101": [
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "In-depth Report",
+            "start_time": "00:00",
+            "end_time": "00:30",
+            "genre": "News"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Comedy Hour",
+            "start_time": "01:00",
+            "end_time": "02:20",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Global Updates",
+            "start_time": "02:50",
+            "end_time": "04:13",
+            "genre": "News"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Laugh Out Loud",
+            "start_time": "04:43",
+            "end_time": "07:14",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Comedy Hour",
+            "start_time": "07:44",
+            "end_time": "08:59",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Stand-Up Specials",
+            "start_time": "09:29",
+            "end_time": "11:43",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Stand-Up Specials",
+            "start_time": "12:13",
+            "end_time": "13:13",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Laugh Out Loud",
+            "start_time": "13:43",
+            "end_time": "15:02",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Laugh Out Loud",
+            "start_time": "15:32",
+            "end_time": "18:20",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Laugh Out Loud",
+            "start_time": "18:50",
+            "end_time": "20:52",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 101,
+            "channel_name": "NTV",
+            "program_title": "Laugh Out Loud",
+            "start_time": "21:22",
+            "end_time": "00:00",
+            "genre": "Comedy"
+        }
+    ],
+    "102": [
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "Spotlight Stories",
+            "start_time": "00:00",
+            "end_time": "02:12",
+            "genre": "Features"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "Hidden Gems",
+            "start_time": "02:42",
+            "end_time": "03:53",
+            "genre": "Features"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "Hidden Gems",
+            "start_time": "04:23",
+            "end_time": "05:31",
+            "genre": "Features"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "Global Updates",
+            "start_time": "06:01",
+            "end_time": "08:51",
+            "genre": "News"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "In-depth Report",
+            "start_time": "09:21",
+            "end_time": "11:39",
+            "genre": "News"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "Talk of the Town",
+            "start_time": "12:09",
+            "end_time": "14:00",
+            "genre": "Views"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "The Feature Report",
+            "start_time": "14:30",
+            "end_time": "17:15",
+            "genre": "Features"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "Opinion Hour",
+            "start_time": "17:45",
+            "end_time": "19:27",
+            "genre": "Views"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "Expert Views",
+            "start_time": "19:57",
+            "end_time": "22:26",
+            "genre": "Views"
+        },
+        {
+            "channel_id": 102,
+            "channel_name": "Kantipur TV",
+            "program_title": "The Feature Report",
+            "start_time": "22:56",
+            "end_time": "00:00",
+            "genre": "Features"
+        }
+    ],
+    "103": [
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Guitar Heroes",
+            "start_time": "00:00",
+            "end_time": "02:06",
+            "genre": "Music Program"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Guitar Heroes",
+            "start_time": "02:36",
+            "end_time": "03:23",
+            "genre": "Music Program"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "The Music Show",
+            "start_time": "03:53",
+            "end_time": "06:17",
+            "genre": "Music Program"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Music Mania",
+            "start_time": "06:47",
+            "end_time": "08:11",
+            "genre": "Songs"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Late Night Talk",
+            "start_time": "08:41",
+            "end_time": "11:08",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Top 40 Countdown",
+            "start_time": "11:38",
+            "end_time": "13:29",
+            "genre": "Songs"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Talk of the Week",
+            "start_time": "13:59",
+            "end_time": "14:51",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Guitar Heroes",
+            "start_time": "15:21",
+            "end_time": "17:38",
+            "genre": "Music Program"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Late Night Talk",
+            "start_time": "18:08",
+            "end_time": "19:55",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Talk of the Week",
+            "start_time": "20:25",
+            "end_time": "22:39",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 103,
+            "channel_name": "AP1 TV",
+            "program_title": "Late Night Talk",
+            "start_time": "23:09",
+            "end_time": "00:00",
+            "genre": "Talk Shows"
+        }
+    ],
+    "104": [
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Top 40 Countdown",
+            "start_time": "00:00",
+            "end_time": "01:49",
+            "genre": "Songs"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Music Mania",
+            "start_time": "02:19",
+            "end_time": "03:38",
+            "genre": "Songs"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Daily Info Show",
+            "start_time": "04:08",
+            "end_time": "06:32",
+            "genre": "Infotainment"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Top 40 Countdown",
+            "start_time": "07:02",
+            "end_time": "10:02",
+            "genre": "Songs"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Music Mania",
+            "start_time": "10:32",
+            "end_time": "12:39",
+            "genre": "Songs"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "The Music Show",
+            "start_time": "13:09",
+            "end_time": "13:57",
+            "genre": "Music Program"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Top 40 Countdown",
+            "start_time": "14:27",
+            "end_time": "15:25",
+            "genre": "Songs"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Fact and Fun",
+            "start_time": "15:55",
+            "end_time": "17:25",
+            "genre": "Infotainment"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Daily Info Show",
+            "start_time": "17:55",
+            "end_time": "19:47",
+            "genre": "Infotainment"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Daily Info Show",
+            "start_time": "20:17",
+            "end_time": "22:26",
+            "genre": "Infotainment"
+        },
+        {
+            "channel_id": 104,
+            "channel_name": "Himalaya TV",
+            "program_title": "Hit Songs Tonight",
+            "start_time": "22:56",
+            "end_time": "00:00",
+            "genre": "Songs"
+        }
+    ],
+    "105": [
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "Entertainment Tonight",
+            "start_time": "00:00",
+            "end_time": "00:54",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "In-depth Report",
+            "start_time": "01:24",
+            "end_time": "03:33",
+            "genre": "News"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "Entertainment Tonight",
+            "start_time": "04:03",
+            "end_time": "05:01",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "Learn & Grow",
+            "start_time": "05:31",
+            "end_time": "06:58",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "Weekend Special",
+            "start_time": "07:28",
+            "end_time": "09:36",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "In-depth Report",
+            "start_time": "10:06",
+            "end_time": "12:10",
+            "genre": "News"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "Breaking News Live",
+            "start_time": "12:40",
+            "end_time": "13:54",
+            "genre": "News"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "Learn & Grow",
+            "start_time": "14:24",
+            "end_time": "15:12",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "The Learning Hour",
+            "start_time": "15:42",
+            "end_time": "17:46",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "The Learning Hour",
+            "start_time": "18:16",
+            "end_time": "20:59",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 105,
+            "channel_name": "TV Today HD",
+            "program_title": "Entertainment Tonight",
+            "start_time": "21:29",
+            "end_time": "23:31",
+            "genre": "Entertainment"
+        }
+    ],
+    "106": [
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "Tech Insights",
+            "start_time": "00:00",
+            "end_time": "02:33",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "The Learning Hour",
+            "start_time": "03:03",
+            "end_time": "04:29",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "Learn & Grow",
+            "start_time": "04:59",
+            "end_time": "06:02",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "Faces of Today",
+            "start_time": "06:32",
+            "end_time": "07:22",
+            "genre": "Interviews"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "The Learning Hour",
+            "start_time": "07:52",
+            "end_time": "08:35",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "Learn & Grow",
+            "start_time": "09:05",
+            "end_time": "11:53",
+            "genre": "Educational"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "Best of the Best",
+            "start_time": "12:23",
+            "end_time": "15:06",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "In the Spotlight",
+            "start_time": "15:36",
+            "end_time": "17:49",
+            "genre": "Interviews"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "Celebrity Conversations",
+            "start_time": "18:19",
+            "end_time": "19:02",
+            "genre": "Interviews"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "Comedy Hour",
+            "start_time": "19:32",
+            "end_time": "22:26",
+            "genre": "Comedy"
+        },
+        {
+            "channel_id": 106,
+            "channel_name": "NNTV",
+            "program_title": "History Revisited",
+            "start_time": "22:56",
+            "end_time": "00:00",
+            "genre": "Documentaries"
+        }
+    ],
+    "107": [
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "In-depth Report",
+            "start_time": "00:00",
+            "end_time": "00:56",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "Global Updates",
+            "start_time": "01:26",
+            "end_time": "02:10",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "In-depth Report",
+            "start_time": "02:40",
+            "end_time": "03:41",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "In-depth Report",
+            "start_time": "04:11",
+            "end_time": "05:54",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "Breaking News Live",
+            "start_time": "06:24",
+            "end_time": "06:59",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "In-depth Report",
+            "start_time": "07:29",
+            "end_time": "10:17",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "Global Updates",
+            "start_time": "10:47",
+            "end_time": "12:48",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "In-depth Report",
+            "start_time": "13:18",
+            "end_time": "14:05",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "Global Updates",
+            "start_time": "14:35",
+            "end_time": "17:20",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "In-depth Report",
+            "start_time": "17:50",
+            "end_time": "18:22",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "Breaking News Live",
+            "start_time": "18:52",
+            "end_time": "20:28",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "Breaking News Live",
+            "start_time": "20:58",
+            "end_time": "22:05",
+            "genre": "News"
+        },
+        {
+            "channel_id": 107,
+            "channel_name": "News 24",
+            "program_title": "Global Updates",
+            "start_time": "22:35",
+            "end_time": "00:00",
+            "genre": "News"
+        }
+    ],
+    "108": [
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Late Night Talk",
+            "start_time": "00:00",
+            "end_time": "00:31",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Breaking News Live",
+            "start_time": "01:01",
+            "end_time": "01:19",
+            "genre": "News"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "In-depth Report",
+            "start_time": "01:49",
+            "end_time": "02:41",
+            "genre": "News"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Talk of the Week",
+            "start_time": "03:11",
+            "end_time": "04:04",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Celebrity Chatter",
+            "start_time": "04:34",
+            "end_time": "05:19",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Talk of the Week",
+            "start_time": "05:49",
+            "end_time": "06:13",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Cinema Classics",
+            "start_time": "06:43",
+            "end_time": "07:16",
+            "genre": "Tele-Films"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Talk of the Week",
+            "start_time": "07:46",
+            "end_time": "08:17",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Celebrity Chatter",
+            "start_time": "08:47",
+            "end_time": "09:16",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Celebrity Chatter",
+            "start_time": "09:46",
+            "end_time": "10:43",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Talk of the Week",
+            "start_time": "11:13",
+            "end_time": "11:39",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Breaking News Live",
+            "start_time": "12:09",
+            "end_time": "12:59",
+            "genre": "News"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Saturday Night Movie",
+            "start_time": "13:29",
+            "end_time": "13:57",
+            "genre": "Tele-Films"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Best of the Best",
+            "start_time": "14:27",
+            "end_time": "14:55",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Entertainment Tonight",
+            "start_time": "15:25",
+            "end_time": "16:23",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Entertainment Tonight",
+            "start_time": "16:53",
+            "end_time": "17:09",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Entertainment Tonight",
+            "start_time": "17:39",
+            "end_time": "18:01",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Late Night Talk",
+            "start_time": "18:31",
+            "end_time": "18:46",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "In-depth Report",
+            "start_time": "19:16",
+            "end_time": "19:59",
+            "genre": "News"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Talk of the Week",
+            "start_time": "20:29",
+            "end_time": "20:52",
+            "genre": "Talk Shows"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Entertainment Tonight",
+            "start_time": "21:22",
+            "end_time": "22:17",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 108,
+            "channel_name": "Image Channel",
+            "program_title": "Best of the Best",
+            "start_time": "22:47",
+            "end_time": "23:33",
+            "genre": "Entertainment"
+        }
+    ],
+    "109": [
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "Global Updates",
+            "start_time": "00:00",
+            "end_time": "00:44",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "In-depth Report",
+            "start_time": "01:14",
+            "end_time": "03:47",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "Global Updates",
+            "start_time": "04:17",
+            "end_time": "06:52",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "Breaking News Live",
+            "start_time": "07:22",
+            "end_time": "10:21",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "In-depth Report",
+            "start_time": "10:51",
+            "end_time": "12:22",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "In-depth Report",
+            "start_time": "12:52",
+            "end_time": "13:25",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "Global Updates",
+            "start_time": "13:55",
+            "end_time": "14:46",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "In-depth Report",
+            "start_time": "15:16",
+            "end_time": "16:18",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "In-depth Report",
+            "start_time": "16:48",
+            "end_time": "19:03",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "In-depth Report",
+            "start_time": "19:33",
+            "end_time": "22:00",
+            "genre": "News"
+        },
+        {
+            "channel_id": 109,
+            "channel_name": "Sagarmatha TV",
+            "program_title": "In-depth Report",
+            "start_time": "22:30",
+            "end_time": "00:00",
+            "genre": "News"
+        }
+    ],
+    "110": [
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Broadway Nights",
+            "start_time": "00:00",
+            "end_time": "00:19",
+            "genre": "Musicals"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Broadway Nights",
+            "start_time": "00:49",
+            "end_time": "01:23",
+            "genre": "Musicals"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "The Soap Saga",
+            "start_time": "01:53",
+            "end_time": "02:45",
+            "genre": "Soaps"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Musical Legends",
+            "start_time": "03:15",
+            "end_time": "03:33",
+            "genre": "Musicals"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Breaking Facts",
+            "start_time": "04:03",
+            "end_time": "04:54",
+            "genre": "Informative"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Songs of the Heart",
+            "start_time": "05:24",
+            "end_time": "05:48",
+            "genre": "Musicals"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Live Sports Roundup",
+            "start_time": "06:18",
+            "end_time": "06:57",
+            "genre": "Sports"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Hot Topics",
+            "start_time": "07:27",
+            "end_time": "08:23",
+            "genre": "Others"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "The Soap Saga",
+            "start_time": "08:53",
+            "end_time": "09:11",
+            "genre": "Soaps"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "What's New?",
+            "start_time": "09:41",
+            "end_time": "10:05",
+            "genre": "Others"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Matchday Live",
+            "start_time": "10:35",
+            "end_time": "11:05",
+            "genre": "Sports"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Best of the Best",
+            "start_time": "11:35",
+            "end_time": "12:23",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Cinema Classics",
+            "start_time": "12:53",
+            "end_time": "13:09",
+            "genre": "Tele-Films"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Weekend Special",
+            "start_time": "13:39",
+            "end_time": "14:39",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Weekend Special",
+            "start_time": "15:09",
+            "end_time": "16:06",
+            "genre": "Entertainment"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Family Feuds",
+            "start_time": "16:36",
+            "end_time": "16:54",
+            "genre": "Soaps"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Trending Now",
+            "start_time": "17:24",
+            "end_time": "18:20",
+            "genre": "Others"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Quick Knowledge",
+            "start_time": "18:50",
+            "end_time": "19:50",
+            "genre": "Informative"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "What's New?",
+            "start_time": "20:20",
+            "end_time": "21:00",
+            "genre": "Others"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Breaking Facts",
+            "start_time": "21:30",
+            "end_time": "22:14",
+            "genre": "Informative"
+        },
+        {
+            "channel_id": 110,
+            "channel_name": "NTV Plus",
+            "program_title": "Broadway Nights",
+            "start_time": "22:44",
+            "end_time": "23:32",
+            "genre": "Musicals"
+        }
+    ]
+}

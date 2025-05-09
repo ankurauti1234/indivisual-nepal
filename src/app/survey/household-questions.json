@@ -1,0 +1,231 @@
+{
+  "household": {
+    "title": "Household Information",
+    "questions": [
+      {
+        "id": "memberCount",
+        "label": "What is the size of your household?",
+        "type": "select",
+        "options": [
+          { "value": "1", "label": "1" },
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" },
+          { "value": "7", "label": "7" },
+          { "value": "8", "label": "8" }
+        ]
+      }
+    ]
+  },
+  "appliances": {
+    "title": "Appliances and Electronics",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "tv_brand",
+        "label": "What brand of TV do you own?",
+        "type": "select",
+        "options": [
+          { "value": "premium", "label": "Premium brands (Sony, Samsung, LG)" },
+          {
+            "value": "midrange",
+            "label": "Mid-range brands (TCL, Hisense, Philips)"
+          },
+          {
+            "value": "budget",
+            "label": "Budget/local brands (Micromax, Onida)"
+          },
+          { "value": "none", "label": "No TV" }
+        ]
+      },
+      {
+        "id": "refrigerator_brand",
+        "label": "What brand of refrigerator does your household use?",
+        "type": "select",
+        "options": [
+          {
+            "value": "premium",
+            "label": "Premium brands (LG, Samsung, Whirlpool)"
+          },
+          {
+            "value": "midrange",
+            "label": "Mid-range brands (Godrej, Haier, Panasonic)"
+          },
+          {
+            "value": "budget",
+            "label": "Budget/local brands (Kelvinator, Videocon)"
+          },
+          { "value": "none", "label": "No refrigerator" }
+        ]
+      },
+      {
+        "id": "washing_machine",
+        "label": "What brand of washing machine do you have?",
+        "type": "select",
+        "options": [
+          { "value": "premium", "label": "Premium brands (Bosch, IFB, LG)" },
+          {
+            "value": "midrange",
+            "label": "Mid-range brands (Samsung, Whirlpool)"
+          },
+          {
+            "value": "budget",
+            "label": "Budget/local brands (Godrej, Videocon)"
+          },
+          { "value": "none", "label": "No washing machine" }
+        ]
+      },
+      {
+        "id": "ac_type",
+        "label": "Does your household own an air conditioner?",
+        "type": "select",
+        "options": [
+          {
+            "value": "premium",
+            "label": "Yes, premium brand (Daikin, Hitachi)"
+          },
+          {
+            "value": "midrange",
+            "label": "Yes, mid-range brand (LG, Voltas, Carrier)"
+          },
+          { "value": "none", "label": "No" }
+        ]
+      },
+      {
+        "id": "water_purifier",
+        "label": "Do you own a water purifier?",
+        "type": "select",
+        "options": [
+          { "value": "ro_uv", "label": "RO/UV purifier (Kent, Pureit)" },
+          { "value": "basic", "label": "Basic filter system" },
+          { "value": "none", "label": "No water purifier" }
+        ]
+      }
+    ]
+  },
+  "connectivity": {
+    "title": "Connectivity and Utilities",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "internet_type",
+        "label": "What type of internet connection does your household use?",
+        "type": "select",
+        "options": [
+          { "value": "fiber", "label": "Fiber-optic (high speed)" },
+          { "value": "broadband", "label": "Broadband (moderate speed)" },
+          { "value": "mobile", "label": "Mobile data only" },
+          { "value": "none", "label": "No internet connection" }
+        ]
+      },
+      {
+        "id": "tv_service",
+        "label": "Does your household use cable TV or streaming services?",
+        "type": "select",
+        "options": [
+          { "value": "cable", "label": "Cable TV only" },
+          { "value": "streaming", "label": "Streaming services only" },
+          { "value": "both", "label": "Both cable TV and streaming" },
+          { "value": "none", "label": "Neither" }
+        ]
+      },
+      {
+        "id": "cooking_appliances",
+        "label": "What type of cooking appliances do you use?",
+        "type": "select",
+        "options": [
+          {
+            "value": "modern",
+            "label": "Modern appliances (microwave, induction cooktop)"
+          },
+          { "value": "gas", "label": "Gas stove" },
+          {
+            "value": "traditional",
+            "label": "Traditional (firewood, coal stove)"
+          }
+        ]
+      }
+    ]
+  },
+  "housing": {
+    "title": "Housing Information",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "flooring",
+        "label": "What is the predominant flooring material in your house?",
+        "type": "select",
+        "options": [
+          { "value": "marble_tiles", "label": "Marble/tiles" },
+          { "value": "cemented", "label": "Cemented" },
+          { "value": "mud_earth", "label": "Mud/earth" }
+        ]
+      },
+      {
+        "id": "dwelling_type",
+        "label": "What type of dwelling does your household live in?",
+        "type": "select",
+        "options": [
+          { "value": "owned", "label": "Owned house/apartment" },
+          { "value": "rented", "label": "Rented house/apartment" },
+          { "value": "informal", "label": "Informal settlement" }
+        ]
+      }
+    ]
+  },
+  "economic_status": {
+    "title": "Economic Status",
+    "skipable": true,
+    "questions": [
+      {
+        "id": "vehicle_ownership",
+        "label": "What kind of vehicle(s) does your family own?",
+        "type": "select",
+        "options": [
+          {
+            "value": "luxury",
+            "label": "Luxury cars (e.g., BMW, Tesla, Audi)"
+          },
+          {
+            "value": "midrange",
+            "label": "Mid-range cars (e.g., Toyota, Honda)"
+          },
+          { "value": "budget", "label": "Budget cars (e.g., Maruti, Hyundai)" },
+          { "value": "none", "label": "No vehicle" }
+        ]
+      },
+      {
+        "id": "entertainment_services",
+        "label": "Do you subscribe to premium entertainment services?",
+        "type": "select",
+        "options": [
+          {
+            "value": "premium",
+            "label": "Premium subscriptions (Netflix Premium, HBO, Disney+)"
+          },
+          {
+            "value": "free",
+            "label": "Free/Ad-supported services (YouTube, Free-to-Air TV)"
+          },
+          { "value": "both", "label": "Both premium and free services" },
+          { "value": "none", "label": "None" }
+        ]
+      },
+      {
+        "id": "home_renovation",
+        "label": "Do you frequently renovate or upgrade your home?",
+        "type": "select",
+        "options": [
+          { "value": "frequently", "label": "Frequently (every year or less)" },
+          {
+            "value": "occasionally",
+            "label": "Occasionally (every 2–5 years)"
+          },
+          { "value": "rarely", "label": "Rarely/Never" }
+        ]
+      }
+    ]
+  }
+}

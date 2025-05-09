@@ -1,0 +1,111 @@
+{
+  "household": {
+    "appliances": {
+      "title": "Appliances and Electronics",
+      "questions": [
+        {
+          "id": "tv_brand",
+          "label": "What brand of TV do you own?",
+          "type": "select",
+          "options": [
+            { "value": "premium", "label": "Premium brands (Sony, Samsung, LG)" },
+            { "value": "midrange", "label": "Mid-range brands (TCL, Hisense, Philips)" },
+            { "value": "budget", "label": "Budget/local brands (Micromax, Onida)" },
+            { "value": "none", "label": "No TV" }
+          ]
+        },
+        {
+          "id": "fridge_brand",
+          "label": "What brand of refrigerator does your household use?",
+          "type": "select",
+          "options": [
+            { "value": "premium", "label": "Premium brands (LG, Samsung, Whirlpool)" },
+            { "value": "midrange", "label": "Mid-range brands (Godrej, Haier, Panasonic)" },
+            { "value": "budget", "label": "Budget/local brands (Kelvinator, Videocon)" },
+            { "value": "none", "label": "No refrigerator" }
+          ]
+        }
+      ]
+    },
+    "connectivity": {
+      "title": "Connectivity and Utilities",
+      "questions": [
+        {
+          "id": "internet_type",
+          "label": "What type of internet connection does your household use?",
+          "type": "select",
+          "options": [
+            { "value": "fiber", "label": "Fiber-optic (high speed)" },
+            { "value": "broadband", "label": "Broadband (moderate speed)" },
+            { "value": "mobile", "label": "Mobile data only" },
+            { "value": "none", "label": "No internet connection" }
+          ]
+        },
+        {
+          "id": "entertainment",
+          "label": "Does your household use cable TV or streaming services?",
+          "type": "select",
+          "options": [
+            { "value": "cable", "label": "Cable TV only" },
+            { "value": "streaming", "label": "Streaming services only" },
+            { "value": "both", "label": "Both cable TV and streaming" },
+            { "value": "none", "label": "Neither" }
+          ]
+        }
+      ]
+    }
+  },
+  "members": {
+    "technology": {
+      "title": "Technology Usage",
+      "questions": [
+        {
+          "id": "devices",
+          "label": "What brands of smartphones, laptops, or tablets do you use?",
+          "type": "select",
+          "options": [
+            { "value": "premium", "label": "Apple, Samsung (flagship models), Microsoft Surface" },
+            { "value": "midrange", "label": "Mid-range brands (OnePlus, Xiaomi, Lenovo)" },
+            { "value": "budget", "label": "Budget brands (Realme, Tecno, Infinix)" },
+            { "value": "none", "label": "None" }
+          ]
+        },
+        {
+          "id": "smart_devices",
+          "label": "Which smart devices do you use?",
+          "type": "select",
+          "options": [
+            { "value": "speakers", "label": "Smart speakers (e.g., Amazon Echo, Google Nest)" },
+            { "value": "home", "label": "Smart home devices (e.g., thermostat, security cameras)" },
+            { "value": "none", "label": "None" }
+          ]
+        }
+      ]
+    },
+    "lifestyle": {
+      "title": "Lifestyle and Preferences",
+      "questions": [
+        {
+          "id": "shopping_preference",
+          "label": "Where do you usually shop for clothes?",
+          "type": "select",
+          "options": [
+            { "value": "branded", "label": "Branded stores (e.g., Zara, Levi's)" },
+            { "value": "online", "label": "Online stores (e.g., Myntra, Amazon)" },
+            { "value": "local", "label": "Local markets" }
+          ]
+        },
+        {
+          "id": "entertainment_preference",
+          "label": "Do you prefer watching live TV, streaming platforms, or both?",
+          "type": "select",
+          "options": [
+            { "value": "live", "label": "Only live TV" },
+            { "value": "streaming", "label": "Only streaming platforms" },
+            { "value": "both", "label": "Both live TV and streaming" }
+          ]
+        }
+      ]
+    }
+  }
+}
