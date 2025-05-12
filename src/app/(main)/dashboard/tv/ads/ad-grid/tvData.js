@@ -2,6 +2,7 @@ export const tvdata = {
   101: [
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 1",
@@ -11,6 +12,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "00:37",
@@ -20,6 +22,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "00:40",
@@ -29,6 +32,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "00:43",
@@ -38,6 +42,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 1 Part 1",
@@ -47,6 +52,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 2",
@@ -56,6 +62,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "01:58",
@@ -65,6 +72,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "02:02",
@@ -74,6 +82,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 2 Part 1",
@@ -83,6 +92,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 3",
@@ -92,6 +102,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "03:16",
@@ -101,6 +112,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "03:19",
@@ -110,6 +122,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "03:22",
@@ -119,6 +132,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 3 Part 1",
@@ -128,6 +142,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 4",
@@ -137,6 +152,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "04:31",
@@ -146,6 +162,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "04:35",
@@ -155,6 +172,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "04:39",
@@ -164,6 +182,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 4 Part 1",
@@ -173,6 +192,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 5",
@@ -182,6 +202,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "05:46",
@@ -191,6 +212,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "05:50",
@@ -200,6 +222,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "05:54",
@@ -209,6 +232,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 5 Part 1",
@@ -218,6 +242,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 6",
@@ -227,6 +252,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "07:03",
@@ -236,6 +262,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "07:06",
@@ -245,6 +272,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 6 Part 1",
@@ -254,6 +282,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 7",
@@ -263,6 +292,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "08:19",
@@ -272,6 +302,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "08:23",
@@ -281,6 +312,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "08:27",
@@ -290,6 +322,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 7 Part 1",
@@ -299,6 +332,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 8",
@@ -308,6 +342,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "09:38",
@@ -317,6 +352,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "09:41",
@@ -326,6 +362,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "09:44",
@@ -335,6 +372,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 8 Part 1",
@@ -344,6 +382,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 9",
@@ -353,6 +392,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "10:50",
@@ -362,6 +402,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "10:54",
@@ -371,6 +412,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 9 Part 1",
@@ -380,6 +422,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 10",
@@ -389,6 +432,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "12:01",
@@ -398,6 +442,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "12:04",
@@ -407,6 +452,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "12:07",
@@ -416,6 +462,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 10 Part 1",
@@ -425,6 +472,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 11",
@@ -434,6 +482,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "13:15",
@@ -443,6 +492,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "13:19",
@@ -452,6 +502,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "13:23",
@@ -461,6 +512,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 11 Part 1",
@@ -470,6 +522,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 12",
@@ -479,6 +532,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "14:33",
@@ -488,6 +542,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "14:37",
@@ -497,6 +552,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 12 Part 1",
@@ -506,6 +562,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 13",
@@ -515,6 +572,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "15:43",
@@ -524,6 +582,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "15:47",
@@ -533,6 +592,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "15:51",
@@ -542,6 +602,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 13 Part 1",
@@ -551,6 +612,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Daily Wrap 14",
@@ -560,6 +622,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "17:02",
@@ -569,6 +632,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "17:05",
@@ -578,6 +642,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "17:08",
@@ -587,6 +652,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Daily Wrap 14 Part 1",
@@ -596,6 +662,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 15",
@@ -605,6 +672,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "18:19",
@@ -614,6 +682,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "18:22",
@@ -623,6 +692,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 15 Part 1",
@@ -632,6 +702,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 16",
@@ -641,6 +712,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "19:32",
@@ -650,6 +722,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "19:36",
@@ -659,6 +732,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 16 Part 1",
@@ -668,6 +742,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 17",
@@ -677,6 +752,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "20:45",
@@ -686,6 +762,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "20:49",
@@ -695,6 +772,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "20:53",
@@ -704,6 +782,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 17 Part 1",
@@ -713,6 +792,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 18",
@@ -722,6 +802,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "22:06",
@@ -731,6 +812,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "22:09",
@@ -740,6 +822,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "22:12",
@@ -749,6 +832,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 18 Part 1",
@@ -758,6 +842,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 19",
@@ -767,6 +852,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "23:30",
@@ -776,6 +862,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "23:33",
@@ -785,6 +872,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "ad",
       start_time: "23:36",
@@ -794,6 +882,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Global Update 19 Part 1",
@@ -803,6 +892,7 @@ export const tvdata = {
     },
     {
       channel_id: 101,
+      date: "2025-05-12",
       channel_name: "NTV",
       type: "program",
       program_title: "Morning Brief 20",
@@ -814,6 +904,7 @@ export const tvdata = {
   102: [
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 1",
@@ -823,6 +914,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "00:38",
@@ -832,6 +924,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "00:41",
@@ -841,6 +934,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "00:44",
@@ -850,6 +944,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 1 Part 1",
@@ -859,6 +954,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 2",
@@ -868,6 +964,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "01:58",
@@ -877,6 +974,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "02:02",
@@ -886,6 +984,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "02:06",
@@ -895,6 +994,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 2 Part 1",
@@ -904,6 +1004,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 3",
@@ -913,6 +1014,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "03:21",
@@ -922,6 +1024,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "03:24",
@@ -931,6 +1034,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 3 Part 1",
@@ -940,6 +1044,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 4",
@@ -949,6 +1054,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "04:36",
@@ -958,6 +1064,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "04:40",
@@ -967,6 +1074,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 4 Part 1",
@@ -976,6 +1084,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 5",
@@ -985,6 +1094,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "05:49",
@@ -994,6 +1104,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "05:53",
@@ -1003,6 +1114,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 5 Part 1",
@@ -1012,6 +1124,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 6",
@@ -1021,6 +1134,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "07:05",
@@ -1030,6 +1144,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "07:09",
@@ -1039,6 +1154,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "07:13",
@@ -1048,6 +1164,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 6 Part 1",
@@ -1057,6 +1174,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 7",
@@ -1066,6 +1184,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "08:22",
@@ -1075,6 +1194,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "08:25",
@@ -1084,6 +1204,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 7 Part 1",
@@ -1093,6 +1214,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 8",
@@ -1102,6 +1224,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "09:34",
@@ -1111,6 +1234,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "09:38",
@@ -1120,6 +1244,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "09:42",
@@ -1129,6 +1254,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 8 Part 1",
@@ -1138,6 +1264,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 9",
@@ -1147,6 +1274,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "10:57",
@@ -1156,6 +1284,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "11:00",
@@ -1165,6 +1294,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 9 Part 1",
@@ -1174,6 +1304,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 10",
@@ -1183,6 +1314,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "12:18",
@@ -1192,6 +1324,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "12:22",
@@ -1201,6 +1334,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 10 Part 1",
@@ -1210,6 +1344,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 11",
@@ -1219,6 +1354,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "13:40",
@@ -1228,6 +1364,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "13:44",
@@ -1237,6 +1374,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "13:48",
@@ -1246,6 +1384,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 11 Part 1",
@@ -1255,6 +1394,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 12",
@@ -1264,6 +1404,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "15:06",
@@ -1273,6 +1414,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "15:09",
@@ -1282,6 +1424,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "15:12",
@@ -1291,6 +1434,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 12 Part 1",
@@ -1300,6 +1444,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 13",
@@ -1309,6 +1454,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "16:34",
@@ -1318,6 +1464,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "16:37",
@@ -1327,6 +1474,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 13 Part 1",
@@ -1336,6 +1484,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 14",
@@ -1345,6 +1494,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "17:58",
@@ -1354,6 +1504,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "18:02",
@@ -1363,6 +1514,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "18:06",
@@ -1372,6 +1524,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 14 Part 1",
@@ -1381,6 +1534,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 15",
@@ -1390,6 +1544,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "19:18",
@@ -1399,6 +1554,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "19:21",
@@ -1408,6 +1564,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Kantipur Report 15 Part 1",
@@ -1417,6 +1574,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 16",
@@ -1426,6 +1584,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "20:28",
@@ -1435,6 +1594,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "20:32",
@@ -1444,6 +1604,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 16 Part 1",
@@ -1453,6 +1614,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 17",
@@ -1462,6 +1624,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "21:47",
@@ -1471,6 +1634,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "21:51",
@@ -1480,6 +1644,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 17 Part 1",
@@ -1489,6 +1654,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 18",
@@ -1498,6 +1664,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "23:12",
@@ -1507,6 +1674,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "ad",
       start_time: "23:16",
@@ -1516,6 +1684,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Nepal Digest 18 Part 1",
@@ -1525,6 +1694,7 @@ export const tvdata = {
     },
     {
       channel_id: 102,
+      date: "2025-05-12",
       channel_name: "Kantipur TV",
       type: "program",
       program_title: "Prime Spotlight 19",
@@ -1536,6 +1706,7 @@ export const tvdata = {
   103: [
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 1",
@@ -1545,6 +1716,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "00:38",
@@ -1554,6 +1726,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "00:41",
@@ -1563,6 +1736,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 1 Part 1",
@@ -1572,6 +1746,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 2",
@@ -1581,6 +1756,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "01:55",
@@ -1590,6 +1766,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "01:58",
@@ -1599,6 +1776,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 2 Part 1",
@@ -1608,6 +1786,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 3",
@@ -1617,6 +1796,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "03:11",
@@ -1626,6 +1806,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "03:14",
@@ -1635,6 +1816,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "03:17",
@@ -1644,6 +1826,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 3 Part 1",
@@ -1653,6 +1836,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 4",
@@ -1662,6 +1846,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "04:33",
@@ -1671,6 +1856,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "04:36",
@@ -1680,6 +1866,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 4 Part 1",
@@ -1689,6 +1876,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 5",
@@ -1698,6 +1886,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "05:53",
@@ -1707,6 +1896,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "05:56",
@@ -1716,6 +1906,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 5 Part 1",
@@ -1725,6 +1916,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 6",
@@ -1734,6 +1926,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "07:13",
@@ -1743,6 +1936,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "07:17",
@@ -1752,6 +1946,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "07:21",
@@ -1761,6 +1956,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 6 Part 1",
@@ -1770,6 +1966,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 7",
@@ -1779,6 +1976,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "08:38",
@@ -1788,6 +1986,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "08:41",
@@ -1797,6 +1996,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 7 Part 1",
@@ -1806,6 +2006,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 8",
@@ -1815,6 +2016,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "09:53",
@@ -1824,6 +2026,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "09:56",
@@ -1833,6 +2036,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "09:59",
@@ -1842,6 +2046,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 8 Part 1",
@@ -1851,6 +2056,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 9",
@@ -1860,6 +2066,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "11:05",
@@ -1869,6 +2076,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "11:08",
@@ -1878,6 +2086,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "11:11",
@@ -1887,6 +2096,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 9 Part 1",
@@ -1896,6 +2106,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 10",
@@ -1905,6 +2116,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "12:18",
@@ -1914,6 +2126,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "12:21",
@@ -1923,6 +2136,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 10 Part 1",
@@ -1932,6 +2146,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 11",
@@ -1941,6 +2156,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "13:36",
@@ -1950,6 +2166,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "13:40",
@@ -1959,6 +2176,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 11 Part 1",
@@ -1968,6 +2186,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 12",
@@ -1977,6 +2196,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "15:01",
@@ -1986,6 +2206,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "15:05",
@@ -1995,6 +2216,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "15:09",
@@ -2004,6 +2226,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 12 Part 1",
@@ -2013,6 +2236,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 13",
@@ -2022,6 +2246,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "16:29",
@@ -2031,6 +2256,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "16:33",
@@ -2040,6 +2266,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "16:37",
@@ -2049,6 +2276,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 13 Part 1",
@@ -2058,6 +2286,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 14",
@@ -2067,6 +2296,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "17:54",
@@ -2076,6 +2306,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "17:57",
@@ -2085,6 +2316,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "18:00",
@@ -2094,6 +2326,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 14 Part 1",
@@ -2103,6 +2336,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 15",
@@ -2112,6 +2346,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "19:09",
@@ -2121,6 +2356,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "19:13",
@@ -2130,6 +2366,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 15 Part 1",
@@ -2139,6 +2376,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 16",
@@ -2148,6 +2386,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "20:28",
@@ -2157,6 +2396,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "20:32",
@@ -2166,6 +2406,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 16 Part 1",
@@ -2175,6 +2416,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 17",
@@ -2184,6 +2426,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "21:47",
@@ -2193,6 +2436,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "21:50",
@@ -2202,6 +2446,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Top Hits 17 Part 1",
@@ -2211,6 +2456,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 18",
@@ -2220,6 +2466,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "22:56",
@@ -2229,6 +2476,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "22:59",
@@ -2238,6 +2486,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "ad",
       start_time: "23:02",
@@ -2247,6 +2496,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Retro Beats 18 Part 1",
@@ -2256,6 +2506,7 @@ export const tvdata = {
     },
     {
       channel_id: 103,
+      date: "2025-05-12",
       channel_name: "AP1 TV",
       type: "program",
       program_title: "Melody Hour 19",
@@ -2267,6 +2518,7 @@ export const tvdata = {
   104: [
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 1",
@@ -2276,6 +2528,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "00:39",
@@ -2285,6 +2538,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "00:42",
@@ -2294,6 +2548,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 1 Part 1",
@@ -2303,6 +2558,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 2",
@@ -2312,6 +2568,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "02:02",
@@ -2321,6 +2578,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "02:05",
@@ -2330,6 +2588,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 2 Part 1",
@@ -2339,6 +2598,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 3",
@@ -2348,6 +2608,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "03:21",
@@ -2357,6 +2618,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "03:24",
@@ -2366,6 +2628,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 3 Part 1",
@@ -2375,6 +2638,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 4",
@@ -2384,6 +2648,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "04:33",
@@ -2393,6 +2658,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "04:36",
@@ -2402,6 +2668,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 4 Part 1",
@@ -2411,6 +2678,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 5",
@@ -2420,6 +2688,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "05:45",
@@ -2429,6 +2698,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "05:48",
@@ -2438,6 +2708,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "05:51",
@@ -2447,6 +2718,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 5 Part 1",
@@ -2456,6 +2728,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 6",
@@ -2465,6 +2738,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "07:04",
@@ -2474,6 +2748,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "07:08",
@@ -2483,6 +2758,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 6 Part 1",
@@ -2492,6 +2768,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 7",
@@ -2501,6 +2778,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "08:24",
@@ -2510,6 +2788,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "08:28",
@@ -2519,6 +2798,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "08:32",
@@ -2528,6 +2808,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 7 Part 1",
@@ -2537,6 +2818,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 8",
@@ -2546,6 +2828,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "09:50",
@@ -2555,6 +2838,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "09:53",
@@ -2564,6 +2848,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "09:56",
@@ -2573,6 +2858,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 8 Part 1",
@@ -2582,6 +2868,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 9",
@@ -2591,6 +2878,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "11:07",
@@ -2600,6 +2888,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "11:10",
@@ -2609,6 +2898,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 9 Part 1",
@@ -2618,6 +2908,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 10",
@@ -2627,6 +2918,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "12:22",
@@ -2636,6 +2928,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "12:25",
@@ -2645,6 +2938,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "12:28",
@@ -2654,6 +2948,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 10 Part 1",
@@ -2663,6 +2958,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 11",
@@ -2672,6 +2968,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "13:39",
@@ -2681,6 +2978,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "13:43",
@@ -2690,6 +2988,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "13:47",
@@ -2699,6 +2998,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 11 Part 1",
@@ -2708,6 +3008,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 12",
@@ -2717,6 +3018,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "14:58",
@@ -2726,6 +3028,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "15:01",
@@ -2735,6 +3038,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 12 Part 1",
@@ -2744,6 +3048,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 13",
@@ -2753,6 +3058,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "16:21",
@@ -2762,6 +3068,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "16:24",
@@ -2771,6 +3078,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 13 Part 1",
@@ -2780,6 +3088,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 14",
@@ -2789,6 +3098,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "17:41",
@@ -2798,6 +3108,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "17:45",
@@ -2807,6 +3118,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "17:49",
@@ -2816,6 +3128,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 14 Part 1",
@@ -2825,6 +3138,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 15",
@@ -2834,6 +3148,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "19:03",
@@ -2843,6 +3158,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "19:07",
@@ -2852,6 +3168,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 15 Part 1",
@@ -2861,6 +3178,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 16",
@@ -2870,6 +3188,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "20:26",
@@ -2879,6 +3198,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "20:30",
@@ -2888,6 +3208,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Lifestyle Weekly 16 Part 1",
@@ -2897,6 +3218,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 17",
@@ -2906,6 +3228,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "21:53",
@@ -2915,6 +3238,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "21:56",
@@ -2924,6 +3248,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "21:59",
@@ -2933,6 +3258,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 17 Part 1",
@@ -2942,6 +3268,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 18",
@@ -2951,6 +3278,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "23:16",
@@ -2960,6 +3288,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "ad",
       start_time: "23:19",
@@ -2969,6 +3298,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Explore Nepal 18 Part 1",
@@ -2978,6 +3308,7 @@ export const tvdata = {
     },
     {
       channel_id: 104,
+      date: "2025-05-12",
       channel_name: "Himalaya TV",
       type: "program",
       program_title: "Tech Talk 19",
@@ -2989,6 +3320,7 @@ export const tvdata = {
   105: [
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 1",
@@ -2998,6 +3330,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "00:39",
@@ -3007,6 +3340,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "00:43",
@@ -3016,6 +3350,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "00:47",
@@ -3025,6 +3360,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 1 Part 1",
@@ -3034,6 +3370,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 2",
@@ -3043,6 +3380,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "02:04",
@@ -3052,6 +3390,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "02:08",
@@ -3061,6 +3400,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 2 Part 1",
@@ -3070,6 +3410,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Star Highlights 3",
@@ -3079,6 +3420,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "03:17",
@@ -3088,6 +3430,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "03:21",
@@ -3097,6 +3440,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Star Highlights 3 Part 1",
@@ -3106,6 +3450,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 4",
@@ -3115,6 +3460,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "04:28",
@@ -3124,6 +3470,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "04:32",
@@ -3133,6 +3480,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "04:36",
@@ -3142,6 +3490,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 4 Part 1",
@@ -3151,6 +3500,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Star Highlights 5",
@@ -3160,6 +3510,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "05:52",
@@ -3169,6 +3520,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "05:55",
@@ -3178,6 +3530,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "05:58",
@@ -3187,6 +3540,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Star Highlights 5 Part 1",
@@ -3196,6 +3550,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 6",
@@ -3205,6 +3560,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "07:18",
@@ -3214,6 +3570,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "07:22",
@@ -3223,6 +3580,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "07:26",
@@ -3232,6 +3590,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 6 Part 1",
@@ -3241,6 +3600,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 7",
@@ -3250,6 +3610,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "08:44",
@@ -3259,6 +3620,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "08:48",
@@ -3268,6 +3630,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 7 Part 1",
@@ -3277,6 +3640,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 8",
@@ -3286,6 +3650,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "10:02",
@@ -3295,6 +3660,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "10:05",
@@ -3304,6 +3670,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "10:08",
@@ -3313,6 +3680,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 8 Part 1",
@@ -3322,6 +3690,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 9",
@@ -3331,6 +3700,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "11:15",
@@ -3340,6 +3710,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "11:19",
@@ -3349,6 +3720,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "11:23",
@@ -3358,6 +3730,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 9 Part 1",
@@ -3367,6 +3740,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 10",
@@ -3376,6 +3750,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "12:38",
@@ -3385,6 +3760,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "12:42",
@@ -3394,6 +3770,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 10 Part 1",
@@ -3403,6 +3780,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 11",
@@ -3412,6 +3790,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "14:01",
@@ -3421,6 +3800,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "14:04",
@@ -3430,6 +3810,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 11 Part 1",
@@ -3439,6 +3820,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 12",
@@ -3448,6 +3830,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "15:15",
@@ -3457,6 +3840,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "15:19",
@@ -3466,6 +3850,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "15:23",
@@ -3475,6 +3860,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 12 Part 1",
@@ -3484,6 +3870,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 13",
@@ -3493,6 +3880,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "16:35",
@@ -3502,6 +3890,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "16:38",
@@ -3511,6 +3900,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "16:41",
@@ -3520,6 +3910,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 13 Part 1",
@@ -3529,6 +3920,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Star Highlights 14",
@@ -3538,6 +3930,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "17:51",
@@ -3547,6 +3940,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "17:54",
@@ -3556,6 +3950,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "17:57",
@@ -3565,6 +3960,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Star Highlights 14 Part 1",
@@ -3574,6 +3970,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 15",
@@ -3583,6 +3980,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "19:03",
@@ -3592,6 +3990,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "19:07",
@@ -3601,6 +4000,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "19:11",
@@ -3610,6 +4010,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 15 Part 1",
@@ -3619,6 +4020,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 16",
@@ -3628,6 +4030,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "20:24",
@@ -3637,6 +4040,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "20:28",
@@ -3646,6 +4050,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 16 Part 1",
@@ -3655,6 +4060,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 17",
@@ -3664,6 +4070,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "21:48",
@@ -3673,6 +4080,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "21:52",
@@ -3682,6 +4090,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "21:56",
@@ -3691,6 +4100,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 17 Part 1",
@@ -3700,6 +4110,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 18",
@@ -3709,6 +4120,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "23:12",
@@ -3718,6 +4130,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "ad",
       start_time: "23:16",
@@ -3727,6 +4140,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Drama Hour 18 Part 1",
@@ -3736,6 +4150,7 @@ export const tvdata = {
     },
     {
       channel_id: 105,
+      date: "2025-05-12",
       channel_name: "TV Today HD",
       type: "program",
       program_title: "Comedy Nights 19",
@@ -3747,6 +4162,7 @@ export const tvdata = {
   106: [
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 1",
@@ -3756,6 +4172,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "00:32",
@@ -3765,6 +4182,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "00:36",
@@ -3774,6 +4192,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "00:40",
@@ -3783,6 +4202,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 1 Part 1",
@@ -3792,6 +4212,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 2",
@@ -3801,6 +4222,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "01:53",
@@ -3810,6 +4232,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "01:57",
@@ -3819,6 +4242,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 2 Part 1",
@@ -3828,6 +4252,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Science Explained 3",
@@ -3837,6 +4262,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "03:15",
@@ -3846,6 +4272,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "03:18",
@@ -3855,6 +4282,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Science Explained 3 Part 1",
@@ -3864,6 +4292,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 4",
@@ -3873,6 +4302,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "04:29",
@@ -3882,6 +4312,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "04:33",
@@ -3891,6 +4322,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 4 Part 1",
@@ -3900,6 +4332,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 5",
@@ -3909,6 +4342,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "05:46",
@@ -3918,6 +4352,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "05:49",
@@ -3927,6 +4362,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "05:52",
@@ -3936,6 +4372,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 5 Part 1",
@@ -3945,6 +4382,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 6",
@@ -3954,6 +4392,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "07:03",
@@ -3963,6 +4402,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "07:06",
@@ -3972,6 +4412,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 6 Part 1",
@@ -3981,6 +4422,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 7",
@@ -3990,6 +4432,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "08:12",
@@ -3999,6 +4442,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "08:16",
@@ -4008,6 +4452,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "08:20",
@@ -4017,6 +4462,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 7 Part 1",
@@ -4026,6 +4472,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 8",
@@ -4035,6 +4482,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "09:29",
@@ -4044,6 +4492,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "09:33",
@@ -4053,6 +4502,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 8 Part 1",
@@ -4062,6 +4512,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 9",
@@ -4071,6 +4522,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "10:48",
@@ -4080,6 +4532,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "10:51",
@@ -4089,6 +4542,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "10:54",
@@ -4098,6 +4552,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 9 Part 1",
@@ -4107,6 +4562,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Science Explained 10",
@@ -4116,6 +4572,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "12:10",
@@ -4125,6 +4582,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "12:13",
@@ -4134,6 +4592,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Science Explained 10 Part 1",
@@ -4143,6 +4602,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Science Explained 11",
@@ -4152,6 +4612,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "13:21",
@@ -4161,6 +4622,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "13:24",
@@ -4170,6 +4632,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "13:27",
@@ -4179,6 +4642,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Science Explained 11 Part 1",
@@ -4188,6 +4652,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Science Explained 12",
@@ -4197,6 +4662,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "14:41",
@@ -4206,6 +4672,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "14:44",
@@ -4215,6 +4682,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Science Explained 12 Part 1",
@@ -4224,6 +4692,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 13",
@@ -4233,6 +4702,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "16:05",
@@ -4242,6 +4712,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "16:09",
@@ -4251,6 +4722,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 13 Part 1",
@@ -4260,6 +4732,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 14",
@@ -4269,6 +4742,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "17:28",
@@ -4278,6 +4752,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "17:32",
@@ -4287,6 +4762,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 14 Part 1",
@@ -4296,6 +4772,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 15",
@@ -4305,6 +4782,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "18:49",
@@ -4314,6 +4792,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "18:52",
@@ -4323,6 +4802,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "18:55",
@@ -4332,6 +4812,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 15 Part 1",
@@ -4341,6 +4822,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 16",
@@ -4350,6 +4832,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "20:07",
@@ -4359,6 +4842,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "20:11",
@@ -4368,6 +4852,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 16 Part 1",
@@ -4377,6 +4862,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 17",
@@ -4386,6 +4872,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "21:26",
@@ -4395,6 +4882,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "21:30",
@@ -4404,6 +4892,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "Learning Hour 17 Part 1",
@@ -4413,6 +4902,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 18",
@@ -4422,6 +4912,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "22:49",
@@ -4431,6 +4922,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "ad",
       start_time: "22:52",
@@ -4440,6 +4932,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 18 Part 1",
@@ -4449,6 +4942,7 @@ export const tvdata = {
     },
     {
       channel_id: 106,
+      date: "2025-05-12",
       channel_name: "NNTV",
       type: "program",
       program_title: "History in Focus 19",
@@ -4460,6 +4954,7 @@ export const tvdata = {
   107: [
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 1",
@@ -4469,6 +4964,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "00:34",
@@ -4478,6 +4974,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "00:38",
@@ -4487,6 +4984,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "00:42",
@@ -4496,6 +4994,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 1 Part 1",
@@ -4505,6 +5004,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 2",
@@ -4514,6 +5014,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "01:54",
@@ -4523,6 +5024,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "01:57",
@@ -4532,6 +5034,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "02:00",
@@ -4541,6 +5044,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 2 Part 1",
@@ -4550,6 +5054,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Unexplored Insights 3",
@@ -4559,6 +5064,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "03:13",
@@ -4568,6 +5074,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "03:16",
@@ -4577,6 +5084,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "03:19",
@@ -4586,6 +5094,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Unexplored Insights 3 Part 1",
@@ -4595,6 +5104,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 4",
@@ -4604,6 +5114,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "04:34",
@@ -4613,6 +5124,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "04:37",
@@ -4622,6 +5134,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "04:40",
@@ -4631,6 +5144,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 4 Part 1",
@@ -4640,6 +5154,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 5",
@@ -4649,6 +5164,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "05:57",
@@ -4658,6 +5174,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "06:00",
@@ -4667,6 +5184,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "06:03",
@@ -4676,6 +5194,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 5 Part 1",
@@ -4685,6 +5204,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 6",
@@ -4694,6 +5214,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "07:23",
@@ -4703,6 +5224,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "07:26",
@@ -4712,6 +5234,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 6 Part 1",
@@ -4721,6 +5244,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 7",
@@ -4730,6 +5254,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "08:48",
@@ -4739,6 +5264,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "08:52",
@@ -4748,6 +5274,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "08:56",
@@ -4757,6 +5284,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 7 Part 1",
@@ -4766,6 +5294,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 8",
@@ -4775,6 +5304,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "10:10",
@@ -4784,6 +5314,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "10:14",
@@ -4793,6 +5324,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "10:18",
@@ -4802,6 +5334,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 8 Part 1",
@@ -4811,6 +5344,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Unexplored Insights 9",
@@ -4820,6 +5354,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "11:27",
@@ -4829,6 +5364,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "11:30",
@@ -4838,6 +5374,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "11:33",
@@ -4847,6 +5384,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Unexplored Insights 9 Part 1",
@@ -4856,6 +5394,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 10",
@@ -4865,6 +5404,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "12:46",
@@ -4874,6 +5414,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "12:49",
@@ -4883,6 +5424,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "12:52",
@@ -4892,6 +5434,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 10 Part 1",
@@ -4901,6 +5444,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 11",
@@ -4910,6 +5454,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "14:06",
@@ -4919,6 +5464,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "14:10",
@@ -4928,6 +5474,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 11 Part 1",
@@ -4937,6 +5484,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 12",
@@ -4946,6 +5494,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "15:30",
@@ -4955,6 +5504,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "15:33",
@@ -4964,6 +5514,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "15:36",
@@ -4973,6 +5524,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 12 Part 1",
@@ -4982,6 +5534,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 13",
@@ -4991,6 +5544,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "16:50",
@@ -5000,6 +5554,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "16:53",
@@ -5009,6 +5564,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "16:56",
@@ -5018,6 +5574,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 13 Part 1",
@@ -5027,6 +5584,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 14",
@@ -5036,6 +5594,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "18:01",
@@ -5045,6 +5604,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "18:05",
@@ -5054,6 +5614,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "18:09",
@@ -5063,6 +5624,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 14 Part 1",
@@ -5072,6 +5634,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 15",
@@ -5081,6 +5644,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "19:21",
@@ -5090,6 +5654,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "19:24",
@@ -5099,6 +5664,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 15 Part 1",
@@ -5108,6 +5674,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 16",
@@ -5117,6 +5684,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "20:35",
@@ -5126,6 +5694,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "20:39",
@@ -5135,6 +5704,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Late Night Special 16 Part 1",
@@ -5144,6 +5714,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 17",
@@ -5153,6 +5724,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "21:51",
@@ -5162,6 +5734,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "21:55",
@@ -5171,6 +5744,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Random Discoveries 17 Part 1",
@@ -5180,6 +5754,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Unexplored Insights 18",
@@ -5189,6 +5764,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "23:13",
@@ -5198,6 +5774,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "ad",
       start_time: "23:16",
@@ -5207,6 +5784,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Unexplored Insights 18 Part 1",
@@ -5216,6 +5794,7 @@ export const tvdata = {
     },
     {
       channel_id: 107,
+      date: "2025-05-12",
       channel_name: "News 24",
       type: "program",
       program_title: "Unexplored Insights 19",
@@ -5227,6 +5806,7 @@ export const tvdata = {
   108: [
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 1",
@@ -5236,6 +5816,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "00:36",
@@ -5245,6 +5826,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "00:39",
@@ -5254,6 +5836,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 1 Part 1",
@@ -5263,6 +5846,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 2",
@@ -5272,6 +5856,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "01:58",
@@ -5281,6 +5866,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "02:01",
@@ -5290,6 +5876,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "02:04",
@@ -5299,6 +5886,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 2 Part 1",
@@ -5308,6 +5896,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 3",
@@ -5317,6 +5906,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "03:21",
@@ -5326,6 +5916,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "03:25",
@@ -5335,6 +5926,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "03:29",
@@ -5344,6 +5936,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 3 Part 1",
@@ -5353,6 +5946,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 4",
@@ -5362,6 +5956,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "04:38",
@@ -5371,6 +5966,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "04:41",
@@ -5380,6 +5976,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 4 Part 1",
@@ -5389,6 +5986,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 5",
@@ -5398,6 +5996,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "05:47",
@@ -5407,6 +6006,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "05:51",
@@ -5416,6 +6016,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 5 Part 1",
@@ -5425,6 +6026,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 6",
@@ -5434,6 +6036,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "07:01",
@@ -5443,6 +6046,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "07:05",
@@ -5452,6 +6056,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "07:09",
@@ -5461,6 +6066,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 6 Part 1",
@@ -5470,6 +6076,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 7",
@@ -5479,6 +6086,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "08:25",
@@ -5488,6 +6096,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "08:28",
@@ -5497,6 +6106,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "08:31",
@@ -5506,6 +6116,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 7 Part 1",
@@ -5515,6 +6126,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 8",
@@ -5524,6 +6136,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "09:52",
@@ -5533,6 +6146,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "09:55",
@@ -5542,6 +6156,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 8 Part 1",
@@ -5551,6 +6166,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 9",
@@ -5560,6 +6176,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "11:08",
@@ -5569,6 +6186,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "11:12",
@@ -5578,6 +6196,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "11:16",
@@ -5587,6 +6206,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 9 Part 1",
@@ -5596,6 +6216,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 10",
@@ -5605,6 +6226,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "12:20",
@@ -5614,6 +6236,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "12:24",
@@ -5623,6 +6246,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 10 Part 1",
@@ -5632,6 +6256,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 11",
@@ -5641,6 +6266,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "13:34",
@@ -5650,6 +6276,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "13:38",
@@ -5659,6 +6286,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 11 Part 1",
@@ -5668,6 +6296,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 12",
@@ -5677,6 +6306,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "14:54",
@@ -5686,6 +6316,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "14:58",
@@ -5695,6 +6326,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "15:02",
@@ -5704,6 +6336,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 12 Part 1",
@@ -5713,6 +6346,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 13",
@@ -5722,6 +6356,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "16:16",
@@ -5731,6 +6366,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "16:19",
@@ -5740,6 +6376,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 13 Part 1",
@@ -5749,6 +6386,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 14",
@@ -5758,6 +6396,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "17:35",
@@ -5767,6 +6406,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "17:39",
@@ -5776,6 +6416,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 14 Part 1",
@@ -5785,6 +6426,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 15",
@@ -5794,6 +6436,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "18:58",
@@ -5803,6 +6446,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "19:02",
@@ -5812,6 +6456,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "19:06",
@@ -5821,6 +6466,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 15 Part 1",
@@ -5830,6 +6476,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 16",
@@ -5839,6 +6486,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "20:26",
@@ -5848,6 +6496,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "20:29",
@@ -5857,6 +6506,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "20:32",
@@ -5866,6 +6516,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Unexplored Insights 16 Part 1",
@@ -5875,6 +6526,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 17",
@@ -5884,6 +6536,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "21:49",
@@ -5893,6 +6546,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "21:53",
@@ -5902,6 +6556,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 17 Part 1",
@@ -5911,6 +6566,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 18",
@@ -5920,6 +6576,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "23:03",
@@ -5929,6 +6586,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "ad",
       start_time: "23:07",
@@ -5938,6 +6596,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Late Night Special 18 Part 1",
@@ -5947,6 +6606,7 @@ export const tvdata = {
     },
     {
       channel_id: 108,
+      date: "2025-05-12",
       channel_name: "Image Channel",
       type: "program",
       program_title: "Random Discoveries 19",
@@ -5958,6 +6618,7 @@ export const tvdata = {
   109: [
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 1",
@@ -5967,6 +6628,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "00:32",
@@ -5976,6 +6638,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "00:36",
@@ -5985,6 +6648,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 1 Part 1",
@@ -5994,6 +6658,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 2",
@@ -6003,6 +6668,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "01:52",
@@ -6012,6 +6678,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "01:55",
@@ -6021,6 +6688,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 2 Part 1",
@@ -6030,6 +6698,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 3",
@@ -6039,6 +6708,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "03:12",
@@ -6048,6 +6718,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "03:16",
@@ -6057,6 +6728,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "03:20",
@@ -6066,6 +6738,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 3 Part 1",
@@ -6075,6 +6748,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 4",
@@ -6084,6 +6758,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "04:35",
@@ -6093,6 +6768,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "04:39",
@@ -6102,6 +6778,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 4 Part 1",
@@ -6111,6 +6788,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 5",
@@ -6120,6 +6798,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "05:56",
@@ -6129,6 +6808,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "06:00",
@@ -6138,6 +6818,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 5 Part 1",
@@ -6147,6 +6828,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 6",
@@ -6156,6 +6838,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "07:16",
@@ -6165,6 +6848,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "07:19",
@@ -6174,6 +6858,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "07:22",
@@ -6183,6 +6868,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 6 Part 1",
@@ -6192,6 +6878,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 7",
@@ -6201,6 +6888,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "08:34",
@@ -6210,6 +6898,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "08:38",
@@ -6219,6 +6908,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "08:42",
@@ -6228,6 +6918,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 7 Part 1",
@@ -6237,6 +6928,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 8",
@@ -6246,6 +6938,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "09:51",
@@ -6255,6 +6948,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "09:54",
@@ -6264,6 +6958,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 8 Part 1",
@@ -6273,6 +6968,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 9",
@@ -6282,6 +6978,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "11:09",
@@ -6291,6 +6988,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "11:13",
@@ -6300,6 +6998,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 9 Part 1",
@@ -6309,6 +7008,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 10",
@@ -6318,6 +7018,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "12:30",
@@ -6327,6 +7028,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "12:34",
@@ -6336,6 +7038,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 10 Part 1",
@@ -6345,6 +7048,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 11",
@@ -6354,6 +7058,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "13:51",
@@ -6363,6 +7068,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "13:55",
@@ -6372,6 +7078,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "13:59",
@@ -6381,6 +7088,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 11 Part 1",
@@ -6390,6 +7098,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 12",
@@ -6399,6 +7108,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "15:15",
@@ -6408,6 +7118,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "15:18",
@@ -6417,6 +7128,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "15:21",
@@ -6426,6 +7138,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 12 Part 1",
@@ -6435,6 +7148,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 13",
@@ -6444,6 +7158,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "16:34",
@@ -6453,6 +7168,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "16:37",
@@ -6462,6 +7178,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "16:40",
@@ -6471,6 +7188,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 13 Part 1",
@@ -6480,6 +7198,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 14",
@@ -6489,6 +7208,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "17:59",
@@ -6498,6 +7218,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "18:02",
@@ -6507,6 +7228,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Late Night Special 14 Part 1",
@@ -6516,6 +7238,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 15",
@@ -6525,6 +7248,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "19:16",
@@ -6534,6 +7258,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "19:20",
@@ -6543,6 +7268,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "19:24",
@@ -6552,6 +7278,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 15 Part 1",
@@ -6561,6 +7288,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 16",
@@ -6570,6 +7298,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "20:38",
@@ -6579,6 +7308,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "20:42",
@@ -6588,6 +7318,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "20:46",
@@ -6597,6 +7328,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 16 Part 1",
@@ -6606,6 +7338,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 17",
@@ -6615,6 +7348,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "22:03",
@@ -6624,6 +7358,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "22:07",
@@ -6633,6 +7368,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 17 Part 1",
@@ -6642,6 +7378,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 18",
@@ -6651,6 +7388,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "23:21",
@@ -6660,6 +7398,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "23:24",
@@ -6669,6 +7408,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "ad",
       start_time: "23:27",
@@ -6678,6 +7418,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Random Discoveries 18 Part 1",
@@ -6687,6 +7428,7 @@ export const tvdata = {
     },
     {
       channel_id: 109,
+      date: "2025-05-12",
       channel_name: "Sagarmatha TV",
       type: "program",
       program_title: "Unexplored Insights 19",
@@ -6698,6 +7440,7 @@ export const tvdata = {
   110: [
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 1",
@@ -6707,6 +7450,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "00:37",
@@ -6716,6 +7460,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "00:40",
@@ -6725,6 +7470,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 1 Part 1",
@@ -6734,6 +7480,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 2",
@@ -6743,6 +7490,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "01:52",
@@ -6752,6 +7500,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "01:56",
@@ -6761,6 +7510,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "02:00",
@@ -6770,6 +7520,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 2 Part 1",
@@ -6779,6 +7530,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 3",
@@ -6788,6 +7540,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "03:16",
@@ -6797,6 +7550,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "03:20",
@@ -6806,6 +7560,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 3 Part 1",
@@ -6815,6 +7570,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 4",
@@ -6824,6 +7580,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "04:38",
@@ -6833,6 +7590,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "04:42",
@@ -6842,6 +7600,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 4 Part 1",
@@ -6851,6 +7610,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 5",
@@ -6860,6 +7620,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "05:56",
@@ -6869,6 +7630,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "06:00",
@@ -6878,6 +7640,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "06:04",
@@ -6887,6 +7650,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 5 Part 1",
@@ -6896,6 +7660,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 6",
@@ -6905,6 +7670,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "07:19",
@@ -6914,6 +7680,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "07:22",
@@ -6923,6 +7690,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 6 Part 1",
@@ -6932,6 +7700,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 7",
@@ -6941,6 +7710,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "08:32",
@@ -6950,6 +7720,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "08:35",
@@ -6959,6 +7730,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "08:38",
@@ -6968,6 +7740,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 7 Part 1",
@@ -6977,6 +7750,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 8",
@@ -6986,6 +7760,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "09:47",
@@ -6995,6 +7770,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "09:50",
@@ -7004,6 +7780,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "09:53",
@@ -7013,6 +7790,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 8 Part 1",
@@ -7022,6 +7800,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 9",
@@ -7031,6 +7810,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "11:05",
@@ -7040,6 +7820,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "11:08",
@@ -7049,6 +7830,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 9 Part 1",
@@ -7058,6 +7840,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 10",
@@ -7067,6 +7850,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "12:22",
@@ -7076,6 +7860,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "12:25",
@@ -7085,6 +7870,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 10 Part 1",
@@ -7094,6 +7880,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 11",
@@ -7103,6 +7890,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "13:44",
@@ -7112,6 +7900,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "13:48",
@@ -7121,6 +7910,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 11 Part 1",
@@ -7130,6 +7920,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 12",
@@ -7139,6 +7930,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "15:09",
@@ -7148,6 +7940,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "15:12",
@@ -7157,6 +7950,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 12 Part 1",
@@ -7166,6 +7960,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 13",
@@ -7175,6 +7970,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "16:28",
@@ -7184,6 +7980,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "16:31",
@@ -7193,6 +7990,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "16:34",
@@ -7202,6 +8000,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 13 Part 1",
@@ -7211,6 +8010,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 14",
@@ -7220,6 +8020,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "17:44",
@@ -7229,6 +8030,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "17:48",
@@ -7238,6 +8040,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 14 Part 1",
@@ -7247,6 +8050,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 15",
@@ -7256,6 +8060,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "19:03",
@@ -7265,6 +8070,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "19:06",
@@ -7274,6 +8080,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 15 Part 1",
@@ -7283,6 +8090,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 16",
@@ -7292,6 +8100,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "20:23",
@@ -7301,6 +8110,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "20:26",
@@ -7310,6 +8120,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "20:29",
@@ -7319,6 +8130,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 16 Part 1",
@@ -7328,6 +8140,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 17",
@@ -7337,6 +8150,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "21:40",
@@ -7346,6 +8160,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "21:43",
@@ -7355,6 +8170,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "21:46",
@@ -7364,6 +8180,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Late Night Special 17 Part 1",
@@ -7373,6 +8190,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 18",
@@ -7382,6 +8200,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "22:55",
@@ -7391,6 +8210,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "ad",
       start_time: "22:58",
@@ -7400,6 +8220,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Unexplored Insights 18 Part 1",
@@ -7409,6 +8230,7 @@ export const tvdata = {
     },
     {
       channel_id: 110,
+      date: "2025-05-12",
       channel_name: "NTV Plus",
       type: "program",
       program_title: "Random Discoveries 19",

@@ -19,11 +19,11 @@ const page = () => {
       <GRPSunburstChart />
       <SectorScatterPlot />
       <AdSpendDashboard />
+      <DataTable data={tableData} />
       <AdSpentBars />
       <BrandRadarChart />
       {/* <GRPvsSpendChart /> */}
       {/* <AdSpotAnalysis /> */}
-      <DataTable data={tableData} />
     </div>
   );
 }
