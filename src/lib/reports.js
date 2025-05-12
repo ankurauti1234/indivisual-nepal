@@ -105,12 +105,22 @@ export const tv_ads_reports = [
     id: 4,
     image: "/images/adex.png",
     title: "AdEx",
-    description:
-      "Analysis of GRP and Ad spent.",
+    description: "Analysis of GRP and Ad spent.",
     lastUpdated: "April 20, 2024",
     page: "tv",
     subpage: "ads",
     slug: "adex",
+  },
+
+  {
+    id: 5,
+    image: "/images/adex.png",
+    title: "Competitive Analysis",
+    description: "Analysis of Ads vs Ads",
+    lastUpdated: "April 20, 2025",
+    page: "tv",
+    subpage: "ads",
+    slug: "competitive-analysis",
   },
   // {
   //   id: 5,
