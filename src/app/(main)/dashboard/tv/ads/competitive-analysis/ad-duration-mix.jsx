@@ -39,23 +39,39 @@ const rawData = {
     { advertiser: "N Cell", "15s": 40, "30s": 60, "60s": 30 },
     { advertiser: "Asian Paints", "15s": 30, "30s": 50, "60s": 10 },
     { advertiser: "Nike", "15s": 20, "30s": 40, "60s": 15 },
-    { advertiser: "Others", "15s": 15, "30s": 30, "60s": 5 },
+    { advertiser: "Dabur Nepal", "15s": 15, "30s": 25, "60s": 8 },
+    { advertiser: "CG Electronics", "15s": 18, "30s": 30, "60s": 10 },
+    { advertiser: "Yeti Airlines", "15s": 12, "30s": 20, "60s": 7 },
+    { advertiser: "Nabil Bank", "15s": 14, "30s": 22, "60s": 8 },
+    { advertiser: "Wai Wai Noodles", "15s": 16, "30s": 28, "60s": 9 },
+    { advertiser: "Goldstar Shoes", "15s": 13, "30s": 20, "60s": 7 },
   ],
   radio: [
     { advertiser: "Shivam Cement", "15s": 60, "30s": 50, "60s": 15 },
     { advertiser: "N Cell", "15s": 45, "30s": 55, "60s": 20 },
     { advertiser: "Asian Paints", "15s": 35, "30s": 45, "60s": 10 },
     { advertiser: "Nike", "15s": 25, "30s": 35, "60s": 10 },
-    { advertiser: "Others", "15s": 10, "30s": 25, "60s": 5 },
+    { advertiser: "Dabur Nepal", "15s": 12, "30s": 20, "60s": 5 },
+    { advertiser: "CG Electronics", "15s": 10, "30s": 18, "60s": 4 },
+    { advertiser: "Yeti Airlines", "15s": 11, "30s": 19, "60s": 5 },
+    { advertiser: "Nabil Bank", "15s": 13, "30s": 22, "60s": 6 },
+    { advertiser: "Wai Wai Noodles", "15s": 15, "30s": 24, "60s": 7 },
+    { advertiser: "Goldstar Shoes", "15s": 11, "30s": 19, "60s": 5 },
   ],
   digital: [
     { advertiser: "Shivam Cement", "15s": 70, "30s": 80, "60s": 25 },
     { advertiser: "N Cell", "15s": 55, "30s": 65, "60s": 30 },
     { advertiser: "Asian Paints", "15s": 40, "30s": 50, "60s": 15 },
     { advertiser: "Nike", "15s": 30, "30s": 40, "60s": 20 },
-    { advertiser: "Others", "15s": 20, "30s": 35, "60s": 10 },
+    { advertiser: "Dabur Nepal", "15s": 20, "30s": 30, "60s": 10 },
+    { advertiser: "CG Electronics", "15s": 18, "30s": 28, "60s": 8 },
+    { advertiser: "Yeti Airlines", "15s": 22, "30s": 32, "60s": 12 },
+    { advertiser: "Nabil Bank", "15s": 19, "30s": 29, "60s": 10 },
+    { advertiser: "Wai Wai Noodles", "15s": 21, "30s": 31, "60s": 11 },
+    { advertiser: "Goldstar Shoes", "15s": 18, "30s": 27, "60s": 9 },
   ],
 };
+
 
 // Color palette for duration buckets
 const colors = {
@@ -115,27 +131,49 @@ export default function AdDurationMix() {
               <SelectItem value="digital">Digital</SelectItem>
             </SelectContent>
           </Select>
+
+          <Select value="weekly">
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Select granularity" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="daily">Daily</SelectItem>
+              <SelectItem value="weekly">Weekly</SelectItem>
+              <SelectItem value="monthly">Monthly</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       }
       chart={
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={800}>
           <BarChart
             data={calculateDistribution()}
-            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+            layout="vertical"
+            margin={{ top: 20, right: 30, bottom: 20, left: 60 }}
+            barCategoryGap={30}
+            barGap={0}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-            <XAxis
-              dataKey="advertiser"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={10}
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="#e0e0e0"
+              horizontal={true}
+              vertical={false}
             />
-            <YAxis
+            <XAxis
+              type="number"
               tickLine={false}
               axisLine={false}
               tickMargin={10}
               tickFormatter={(value) => `${value}%`}
               domain={[0, 100]}
+            />
+            <YAxis
+              dataKey="advertiser"
+              type="category"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={10}
+              width={100}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
@@ -147,22 +185,22 @@ export default function AdDurationMix() {
               dataKey="15s"
               name="15s"
               fill={colors["15s"]}
-              barSize={30}
-              radius={[4, 4, 0, 0]}
+              barSize={20}
+              radius={[0, 4, 4, 0]}
             />
             <Bar
               dataKey="30s"
               name="30s"
               fill={colors["30s"]}
-              barSize={30}
-              radius={[4, 4, 0, 0]}
+              barSize={20}
+              radius={[0, 4, 4, 0]}
             />
             <Bar
               dataKey="60s"
               name="60s"
               fill={colors["60s"]}
-              barSize={30}
-              radius={[4, 4, 0, 0]}
+              barSize={20}
+              radius={[0, 4, 4, 0]}
             />
           </BarChart>
         </ResponsiveContainer>

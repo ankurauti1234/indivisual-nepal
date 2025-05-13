@@ -47,14 +47,49 @@ const rawData = {
       Evening: 35,
       Night: 15,
     },
+    { advertiser: "Nike", Morning: 15, Afternoon: 20, Evening: 25, Night: 10 },
     {
-      advertiser: "Nike",
-      Morning: 15,
-      Afternoon: 20,
-      Evening: 25,
-      Night: 10,
+      advertiser: "Dabur Nepal",
+      Morning: 12,
+      Afternoon: 15,
+      Evening: 20,
+      Night: 8,
     },
-    { advertiser: "Others", Morning: 10, Afternoon: 15, Evening: 20, Night: 5 },
+    {
+      advertiser: "CG Electronics",
+      Morning: 14,
+      Afternoon: 18,
+      Evening: 22,
+      Night: 9,
+    },
+    {
+      advertiser: "Yeti Airlines",
+      Morning: 10,
+      Afternoon: 12,
+      Evening: 18,
+      Night: 7,
+    },
+    {
+      advertiser: "Nabil Bank",
+      Morning: 11,
+      Afternoon: 14,
+      Evening: 19,
+      Night: 8,
+    },
+    {
+      advertiser: "Wai Wai Noodles",
+      Morning: 13,
+      Afternoon: 16,
+      Evening: 21,
+      Night: 9,
+    },
+    {
+      advertiser: "Goldstar Shoes",
+      Morning: 10,
+      Afternoon: 13,
+      Evening: 17,
+      Night: 7,
+    },
   ],
   radio: [
     {
@@ -78,14 +113,49 @@ const rawData = {
       Evening: 30,
       Night: 10,
     },
+    { advertiser: "Nike", Morning: 20, Afternoon: 25, Evening: 20, Night: 5 },
     {
-      advertiser: "Nike",
-      Morning: 20,
-      Afternoon: 25,
-      Evening: 20,
+      advertiser: "Dabur Nepal",
+      Morning: 14,
+      Afternoon: 12,
+      Evening: 15,
+      Night: 4,
+    },
+    {
+      advertiser: "CG Electronics",
+      Morning: 12,
+      Afternoon: 10,
+      Evening: 13,
+      Night: 3,
+    },
+    {
+      advertiser: "Yeti Airlines",
+      Morning: 13,
+      Afternoon: 11,
+      Evening: 14,
+      Night: 4,
+    },
+    {
+      advertiser: "Nabil Bank",
+      Morning: 15,
+      Afternoon: 13,
+      Evening: 16,
       Night: 5,
     },
-    { advertiser: "Others", Morning: 15, Afternoon: 10, Evening: 15, Night: 3 },
+    {
+      advertiser: "Wai Wai Noodles",
+      Morning: 16,
+      Afternoon: 14,
+      Evening: 17,
+      Night: 6,
+    },
+    {
+      advertiser: "Goldstar Shoes",
+      Morning: 13,
+      Afternoon: 11,
+      Evening: 14,
+      Night: 4,
+    },
   ],
   digital: [
     {
@@ -109,45 +179,63 @@ const rawData = {
       Evening: 40,
       Night: 20,
     },
+    { advertiser: "Nike", Morning: 25, Afternoon: 30, Evening: 30, Night: 15 },
     {
-      advertiser: "Nike",
-      Morning: 25,
-      Afternoon: 30,
-      Evening: 30,
-      Night: 15,
-    },
-    {
-      advertiser: "Others",
+      advertiser: "Dabur Nepal",
       Morning: 20,
       Afternoon: 25,
       Evening: 25,
       Night: 10,
     },
+    {
+      advertiser: "CG Electronics",
+      Morning: 18,
+      Afternoon: 22,
+      Evening: 23,
+      Night: 9,
+    },
+    {
+      advertiser: "Yeti Airlines",
+      Morning: 22,
+      Afternoon: 27,
+      Evening: 28,
+      Night: 12,
+    },
+    {
+      advertiser: "Nabil Bank",
+      Morning: 19,
+      Afternoon: 24,
+      Evening: 26,
+      Night: 11,
+    },
+    {
+      advertiser: "Wai Wai Noodles",
+      Morning: 21,
+      Afternoon: 26,
+      Evening: 27,
+      Night: 10,
+    },
+    {
+      advertiser: "Goldstar Shoes",
+      Morning: 18,
+      Afternoon: 23,
+      Evening: 24,
+      Night: 9,
+    },
   ],
 };
 
-// Enhanced color palette with opacity options
 const colors = {
-  "Shivam Cement": {
-    stroke: "#ff6b6b",
-    fill: "#ff6b6b",
-  },
-  "N Cell": {
-    stroke: "#4ecdc4",
-    fill: "#4ecdc4",
-  },
-  "Asian Paints": {
-    stroke: "#45b7d1",
-    fill: "#45b7d1",
-  },
-  Nike: {
-    stroke: "#96ceb4",
-    fill: "#96ceb4",
-  },
-  Others: {
-    stroke: "#ddd111",
-    fill: "#ddd111",
-  },
+  "Shivam Cement": { stroke: "#ff6b6b", fill: "#ff6b6b" },
+  "N Cell": { stroke: "#4ecdc4", fill: "#4ecdc4" },
+  "Asian Paints": { stroke: "#45b7d1", fill: "#45b7d1" },
+  Nike: { stroke: "#96ceb4", fill: "#96ceb4" },
+  "Dabur Nepal": { stroke: "#FF9F1C", fill: "#FF9F1C" },
+  "CG Electronics": { stroke: "#6A4E94", fill: "#6A4E94" },
+  "Yeti Airlines": { stroke: "#00A896", fill: "#00A896" },
+  "Nabil Bank": { stroke: "#F4A261", fill: "#F4A261" },
+  "Wai Wai Noodles": { stroke: "#E63946", fill: "#E63946" },
+  "Goldstar Shoes": { stroke: "#457B9D", fill: "#457B9D" },
 };
 
 // Daypart definitions with time ranges for better context
@@ -323,6 +411,17 @@ export default function DaypartDistribution() {
               <SelectItem value="television">Television</SelectItem>
               <SelectItem value="radio">Radio</SelectItem>
               <SelectItem value="digital">Digital</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select value="weekly">
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Select granularity" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="daily">Daily</SelectItem>
+              <SelectItem value="weekly">Weekly</SelectItem>
+              <SelectItem value="monthly">Monthly</SelectItem>
             </SelectContent>
           </Select>
         </div>

@@ -48,14 +48,49 @@ const rawData = {
       Entertainment: 30,
       Sports: 20,
     },
+    { advertiser: "Nike", Drama: 20, News: 15, Entertainment: 25, Sports: 10 },
     {
-      advertiser: "Nike",
-      Drama: 20,
-      News: 15,
-      Entertainment: 25,
+      advertiser: "Dabur Nepal",
+      Drama: 15,
+      News: 10,
+      Entertainment: 15,
+      Sports: 8,
+    },
+    {
+      advertiser: "CG Electronics",
+      Drama: 18,
+      News: 12,
+      Entertainment: 18,
       Sports: 10,
     },
-    { advertiser: "Others", Drama: 10, News: 10, Entertainment: 15, Sports: 5 },
+    {
+      advertiser: "Yeti Airlines",
+      Drama: 12,
+      News: 8,
+      Entertainment: 12,
+      Sports: 6,
+    },
+    {
+      advertiser: "Nabil Bank",
+      Drama: 14,
+      News: 10,
+      Entertainment: 14,
+      Sports: 7,
+    },
+    {
+      advertiser: "Wai Wai Noodles",
+      Drama: 16,
+      News: 11,
+      Entertainment: 16,
+      Sports: 9,
+    },
+    {
+      advertiser: "Goldstar Shoes",
+      Drama: 13,
+      News: 9,
+      Entertainment: 13,
+      Sports: 6,
+    },
   ],
   radio: [
     {
@@ -79,14 +114,49 @@ const rawData = {
       Entertainment: 25,
       Sports: 15,
     },
+    { advertiser: "Nike", Drama: 15, News: 10, Entertainment: 20, Sports: 5 },
     {
-      advertiser: "Nike",
-      Drama: 15,
-      News: 10,
-      Entertainment: 20,
+      advertiser: "Dabur Nepal",
+      Drama: 10,
+      News: 7,
+      Entertainment: 10,
+      Sports: 4,
+    },
+    {
+      advertiser: "CG Electronics",
+      Drama: 8,
+      News: 6,
+      Entertainment: 8,
+      Sports: 3,
+    },
+    {
+      advertiser: "Yeti Airlines",
+      Drama: 9,
+      News: 6,
+      Entertainment: 9,
+      Sports: 4,
+    },
+    {
+      advertiser: "Nabil Bank",
+      Drama: 11,
+      News: 8,
+      Entertainment: 11,
       Sports: 5,
     },
-    { advertiser: "Others", Drama: 5, News: 5, Entertainment: 10, Sports: 3 },
+    {
+      advertiser: "Wai Wai Noodles",
+      Drama: 12,
+      News: 9,
+      Entertainment: 12,
+      Sports: 6,
+    },
+    {
+      advertiser: "Goldstar Shoes",
+      Drama: 9,
+      News: 6,
+      Entertainment: 9,
+      Sports: 4,
+    },
   ],
   digital: [
     {
@@ -110,30 +180,63 @@ const rawData = {
       Entertainment: 40,
       Sports: 20,
     },
+    { advertiser: "Nike", Drama: 25, News: 20, Entertainment: 30, Sports: 15 },
     {
-      advertiser: "Nike",
-      Drama: 25,
-      News: 20,
-      Entertainment: 30,
-      Sports: 15,
-    },
-    {
-      advertiser: "Others",
+      advertiser: "Dabur Nepal",
       Drama: 15,
       News: 15,
       Entertainment: 20,
       Sports: 10,
     },
+    {
+      advertiser: "CG Electronics",
+      Drama: 13,
+      News: 12,
+      Entertainment: 18,
+      Sports: 8,
+    },
+    {
+      advertiser: "Yeti Airlines",
+      Drama: 16,
+      News: 16,
+      Entertainment: 22,
+      Sports: 12,
+    },
+    {
+      advertiser: "Nabil Bank",
+      Drama: 14,
+      News: 14,
+      Entertainment: 19,
+      Sports: 10,
+    },
+    {
+      advertiser: "Wai Wai Noodles",
+      Drama: 15,
+      News: 15,
+      Entertainment: 21,
+      Sports: 11,
+    },
+    {
+      advertiser: "Goldstar Shoes",
+      Drama: 13,
+      News: 13,
+      Entertainment: 18,
+      Sports: 9,
+    },
   ],
 };
 
-// Color palette for advertisers with adjusted transparency
 const colors = {
   "Shivam Cement": "#ff6b6b",
   "N Cell": "#4ecdc4",
   "Asian Paints": "#45b7d1",
   Nike: "#96ceb4",
-  Others: "#ddd111",
+  "Dabur Nepal": "#FF9F1C",
+  "CG Electronics": "#6A4E94",
+  "Yeti Airlines": "#00A896",
+  "Nabil Bank": "#F4A261",
+  "Wai Wai Noodles": "#E63946",
+  "Goldstar Shoes": "#457B9D",
 };
 
 // Genre labels and their base positions for x-axis
@@ -262,6 +365,17 @@ export default function ProgramAffinityIndex() {
               <SelectItem value="television">Television</SelectItem>
               <SelectItem value="radio">Radio</SelectItem>
               <SelectItem value="digital">Digital</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select value="weekly">
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Select granularity" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="daily">Daily</SelectItem>
+              <SelectItem value="weekly">Weekly</SelectItem>
+              <SelectItem value="monthly">Monthly</SelectItem>
             </SelectContent>
           </Select>
         </div>

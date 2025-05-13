@@ -32,25 +32,40 @@ import ChartCard from "@/components/card/charts-card";
 // Data sets
 const data = {
   television: [
-    { name: "Shivam Cement", value: 38.1, color: "#ff6b6b" },
-    { name: "N Cell", value: 28.6, color: "#4ecdc4" },
-    { name: "Asian Paints", value: 19.0, color: "#45b7d1" },
-    { name: "Nike", value: 9.5, color: "#96ceb4" },
-    { name: "Others", value: 4.8, color: "#ddd111" },
+    { name: "Shivam Cement", value: 32.02, color: "#ff6b6b" },
+    { name: "N Cell", value: 24.03, color: "#4ecdc4" },
+    { name: "Asian Paints", value: 15.97, color: "#45b7d1" },
+    { name: "Nike", value: 7.98, color: "#96ceb4" },
+    { name: "Dabur Nepal", value: 3.5, color: "#FF9F1C" },
+    { name: "CG Electronics", value: 3.8, color: "#6A4E94" },
+    { name: "Yeti Airlines", value: 3.0, color: "#00A896" },
+    { name: "Nabil Bank", value: 3.2, color: "#F4A261" },
+    { name: "Wai Wai Noodles", value: 3.4, color: "#E63946" },
+    { name: "Goldstar Shoes", value: 3.1, color: "#457B9D" },
   ],
   radio: [
-    { name: "Shivam Cement", value: 31.4, color: "#ff6b6b" },
-    { name: "N Cell", value: 27.5, color: "#4ecdc4" },
-    { name: "Asian Paints", value: 19.6, color: "#45b7d1" },
-    { name: "Nike", value: 15.7, color: "#96ceb4" },
-    { name: "Others", value: 5.8, color: "#ddd111" },
+    { name: "Shivam Cement", value: 26.66, color: "#ff6b6b" },
+    { name: "N Cell", value: 23.35, color: "#4ecdc4" },
+    { name: "Asian Paints", value: 16.65, color: "#45b7d1" },
+    { name: "Nike", value: 13.34, color: "#96ceb4" },
+    { name: "Dabur Nepal", value: 3.3, color: "#FF9F1C" },
+    { name: "CG Electronics", value: 3.0, color: "#6A4E94" },
+    { name: "Yeti Airlines", value: 3.2, color: "#00A896" },
+    { name: "Nabil Bank", value: 3.6, color: "#F4A261" },
+    { name: "Wai Wai Noodles", value: 3.7, color: "#E63946" },
+    { name: "Goldstar Shoes", value: 3.2, color: "#457B9D" },
   ],
   digital: [
-    { name: "Shivam Cement", value: 35.3, color: "#ff6b6b" },
-    { name: "N Cell", value: 25.9, color: "#4ecdc4" },
-    { name: "Asian Paints", value: 18.8, color: "#45b7d1" },
-    { name: "Nike", value: 14.1, color: "#96ceb4" },
-    { name: "Others", value: 5.9, color: "#ddd111" },
+    { name: "Shivam Cement", value: 30.01, color: "#ff6b6b" },
+    { name: "N Cell", value: 22.02, color: "#4ecdc4" },
+    { name: "Asian Paints", value: 15.98, color: "#45b7d1" },
+    { name: "Nike", value: 11.98, color: "#96ceb4" },
+    { name: "Dabur Nepal", value: 3.4, color: "#FF9F1C" },
+    { name: "CG Electronics", value: 3.1, color: "#6A4E94" },
+    { name: "Yeti Airlines", value: 3.6, color: "#00A896" },
+    { name: "Nabil Bank", value: 3.5, color: "#F4A261" },
+    { name: "Wai Wai Noodles", value: 3.3, color: "#E63946" },
+    { name: "Goldstar Shoes", value: 3.1, color: "#457B9D" },
   ],
 };
 
@@ -98,6 +113,17 @@ export default function ShareOfVoice() {
               <SelectItem value="television">Television</SelectItem>
               <SelectItem value="radio">Radio</SelectItem>
               <SelectItem value="digital">Digital</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select value="weekly">
+            <SelectTrigger className="w-48">
+              <SelectValue placeholder="Select granularity" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="daily">Daily</SelectItem>
+              <SelectItem value="weekly">Weekly</SelectItem>
+              <SelectItem value="monthly">Monthly</SelectItem>
             </SelectContent>
           </Select>
         </div>

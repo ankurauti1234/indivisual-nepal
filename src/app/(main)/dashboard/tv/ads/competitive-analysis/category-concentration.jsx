@@ -342,6 +342,17 @@ export default function CategoryConcentration() {
                 <SelectItem value="digital">Digital</SelectItem>
               </SelectContent>
             </Select>
+
+            <Select value="weekly">
+              <SelectTrigger className="w-48">
+                <SelectValue placeholder="Select granularity" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="daily">Daily</SelectItem>
+                <SelectItem value="weekly">Weekly</SelectItem>
+                <SelectItem value="monthly">Monthly</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         }
         chart={
