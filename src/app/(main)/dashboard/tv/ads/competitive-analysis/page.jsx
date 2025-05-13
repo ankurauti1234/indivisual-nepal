@@ -35,33 +35,27 @@ const CompetitiveAnalysisPage = () => {
     >
       <div className="grid gap-6">
         {/* First row - Share of Voice and Ad Frequency */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="w-full">
-            <ShareOfVoice />
-          </div>
-          <div className="w-full">
-            <AdFrequencyAnalysis />
-          </div>
+        <div className="w-full">
+          <ShareOfVoice />
+        </div>
+        <div className="w-full">
+          <AdFrequencyAnalysis />
         </div>
 
         {/* Second row - Daypart Distribution and Ad Duration Mix */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="w-full">
-            <DaypartDistribution />
-          </div>
-          <div className="w-full">
-            <AdDurationMix />
-          </div>
+        <div className="w-full">
+          <DaypartDistribution />
+        </div>
+        <div className="w-full">
+          <AdDurationMix />
         </div>
 
         {/* Third row - Ad Pod Positioning and Competitive Flighting Patterns */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="w-full">
-            <AdPodPositioning />
-          </div>
-          <div className="w-full">
-            <CompetitiveFlightingPatterns />
-          </div>
+        <div className="w-full">
+          <AdPodPositioning />
+        </div>
+        <div className="w-full">
+          <CompetitiveFlightingPatterns />
         </div>
 
         {/* Full-width components */}
@@ -74,14 +68,14 @@ const CompetitiveAnalysisPage = () => {
         </div>
 
         {/* Last row - Channel Mix Analysis and Competitive Ad Rotation */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="w-full">
             <ChannelMixAnalysis />
           </div>
           <div className="w-full">
             <CompetitiveAdRotation />
           </div>
-        </div>
+        </div> */}
       </div>
     </ReportLayout>
   );
