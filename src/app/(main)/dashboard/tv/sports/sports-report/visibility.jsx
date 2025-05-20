@@ -34,10 +34,10 @@ const visibilityHeatmapData = [
 ];
 
 const durationLeaderboardData = [
-  { brand: 'Nike', duration: 240, matches: 3 },
-  { brand: 'Adidas', duration: 170, matches: 3 },
-  { brand: 'Puma', duration: 150, matches: 2 },
-  { brand: 'Reebok', duration: 80, matches: 2 },
+  { brand: 'Nike', duration: 1200, matches: 3 },
+  { brand: 'Adidas', duration: 960, matches: 3 },
+  { brand: 'Puma', duration: 860, matches: 2 },
+  { brand: 'Reebok', duration: 400, matches: 2 },
 ];
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300'];
