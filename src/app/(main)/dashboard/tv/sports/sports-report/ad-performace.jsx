@@ -303,7 +303,10 @@ export default function AdBreakPerformancePage() {
           Estimated Reach Over Time by Brand
         </h2>
         <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={estimatedReachData}>
+          <LineChart
+            data={estimatedReachData}
+            margin={{ top: 20, right: 30, left: 50, bottom: 20 }} // Added left margin
+          >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="time"
@@ -314,24 +317,27 @@ export default function AdBreakPerformancePage() {
                 value: "Time (min)",
                 position: "insideBottom",
                 offset: -5,
+                style: { fontSize: 12 },
               }}
             />
             <YAxis
               dataKey="reach"
               name="Reach"
               unit=" viewers"
-              label={{
-                value: "Reach (viewers)",
-                angle: -90,
-                position: "insideLeft",
-              }}
+              // label={{
+              //   value: "Reach (viewers)",
+              //   angle: -90,
+              //   position: "insideLeft",
+              //   offset: 10,
+              //   style: { fontSize: 12 },
+              // }}
             />
             <Tooltip content={<ReachLineTooltip />} />
             <Legend />
             {Object.keys(brandColors).map((brand) => (
               <Line
                 key={brand}
-                type="natural"
+                type="bump"
                 dataKey={(data) => (data.brand === brand ? data.reach : null)}
                 stroke={brandColors[brand]}
                 strokeWidth={activeBrand === brand ? 3 : 2}
@@ -340,6 +346,7 @@ export default function AdBreakPerformancePage() {
                 name={brand}
                 onMouseEnter={() => setActiveBrand(brand)}
                 onMouseLeave={() => setActiveBrand(null)}
+                isAnimationActive={false} // Optional: disable animation for responsiveness
               />
             ))}
           </LineChart>
