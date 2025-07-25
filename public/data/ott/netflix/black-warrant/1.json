@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ep1",
+    "program": "1",
+    "start": "00:00:00",
+    "end": "00:54:00",
+    "description": "Hundreds of cash-strapped contestants accept an invitation to compete in children's games.",
+    "image": "/images/squid-game/s1e1.jpg",
+    "type": "episode",
+    "brand": "Squid Game",
+    "sector": "Drama",
+    "category": "Thriller"
+  },
+  {
+    "id": "ep2",
+    "program": "2",
+    "start": "01:00:00",
+    "end": "01:55:00",
+    "description": "The players face a moral dilemma after the first game.",
+    "image": "/images/squid-game/s1e2.jpg",
+    "type": "episode",
+    "brand": "Squid Game",
+    "sector": "Drama",
+    "category": "Thriller"
+  }
+]

@@ -112,15 +112,16 @@ export const tv_ads_reports = [
     slug: "adex",
   },
 
-  {
+    {
     id: 5,
-    image: "/images/adex.png",
-    title: "Competitive Analysis",
-    description: "Analysis of Ads vs Ads",
-    lastUpdated: "April 20, 2025",
+    image: "/images/program-grid.png",
+    title: "Program Grids",
+    description:
+      "Visual representation of programming schedules, including time slots, show durations, and performance metrics for each program block.",
+    lastUpdated: "May 10, 2024",
     page: "tv",
     subpage: "ads",
-    slug: "competitive-analysis",
+    slug: "program-grid",
   },
   // {
   //   id: 5,

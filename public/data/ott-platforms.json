@@ -1,0 +1,1019 @@
+[
+  {
+    "id": "netflix",
+    "name": "Netflix",
+    "series": [
+      {
+        "id": "squid-game",
+        "name": "Squid Game",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Red Light, Green Light"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Hell"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "The Man with the Umbrella"
+              },
+              {
+                "id": "ep4",
+                "program": "4",
+                "name": "Stick to the Team"
+              },
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "A Fair World"
+              },
+              {
+                "id": "ep6",
+                "program": "6",
+                "name": "Gganbu"
+              },
+              {
+                "id": "ep7",
+                "program": "7",
+                "name": "VIPS"
+              },
+              {
+                "id": "ep8",
+                "program": "8",
+                "name": "Front Man"
+              },
+              {
+                "id": "ep9",
+                "program": "9",
+                "name": "One Lucky Day"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "american-murder-gabby-petito",
+        "name": "American Murder: Gabby Petito",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "The Vanishing of Gabby Petito"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cassandra",
+        "name": "Cassandra (English)",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "black-warrant",
+        "name": "Black Warrant",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prime",
+    "name": "Prime Video",
+    "series": [
+      {
+        "id": "dupahiya",
+        "name": "Dupahiya",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "Episode 5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "the-wheel-of-time",
+        "name": "The Wheel of Time",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Leavetaking"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Shadow's Waiting"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "A Place of Safety"
+              },
+              {
+                "id": "ep4",
+                "program": "4",
+                "name": "The Dragon Reborn"
+              },
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "Blood Calls Blood"
+              },
+              {
+                "id": "ep6",
+                "program": "6",
+                "name": "The Flame of Tar Valon"
+              },
+              {
+                "id": "ep7",
+                "program": "7",
+                "name": "The Dark Along the Ways"
+              },
+              {
+                "id": "ep8",
+                "program": "8",
+                "name": "The Eye of the World"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Season 2",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "A Taste of Solitude"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Strangers and Friends"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "What Might Be"
+              },
+              {
+                "id": "ep4",
+                "program": "4",
+                "name": "Daughter of the Night"
+              },
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "Damane"
+              },
+              {
+                "id": "ep6",
+                "program": "6",
+                "name": "Eyes Without Pity"
+              },
+              {
+                "id": "ep7",
+                "program": "7",
+                "name": "Daes Dae'mar"
+              },
+              {
+                "id": "ep8",
+                "program": "8",
+                "name": "What Was Meant to Be"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reacher",
+        "name": "Reacher",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Welcome to Margrave"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "First Dance"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Spoonful"
+              },
+              {
+                "id": "ep4",
+                "program": "4",
+                "name": "In a Tree"
+              },
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "No Apologies"
+              },
+              {
+                "id": "ep6",
+                "program": "6",
+                "name": "Papier"
+              },
+              {
+                "id": "ep7",
+                "program": "7",
+                "name": "Reacher Said Nothing"
+              },
+              {
+                "id": "ep8",
+                "program": "8",
+                "name": "Pie"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Season 2",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "ATM"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "What Happens in Atlantic City"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Picture Says a Thousand Words"
+              },
+              {
+                "id": "ep4",
+                "program": "4",
+                "name": "A Night at the Symphony"
+              },
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "Burial"
+              },
+              {
+                "id": "ep6",
+                "program": "6",
+                "name": "New York's Finest"
+              },
+              {
+                "id": "ep7",
+                "program": "7",
+                "name": "The Man Goes Through"
+              },
+              {
+                "id": "ep8",
+                "program": "8",
+                "name": "Fly Boy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "house-of-david",
+        "name": "House of David",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zee5",
+    "name": "Zee5",
+    "series": [
+      {
+        "id": "khoj-parchaiyon-ke-uss-paar",
+        "name": "Khoj - Parchaiyon Ke Uss Paar",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sony-live",
+    "name": "Sony LIV",
+    "series": [
+      {
+        "id": "the-waking-of-a-nation",
+        "name": "The Waking of a Nation",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "shark-tank-india",
+        "name": "Shark Tank India",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Season 2",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Season 3",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cubicles",
+        "name": "Cubicles",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "The Interview"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "The First Day"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "The Presentation"
+              },
+              {
+                "id": "ep4",
+                "program": "4",
+                "name": "The Appraisal"
+              },
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "The Resignation"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Season 2",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "New Beginnings"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "The Hike"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "The Deadline"
+              },
+              {
+                "id": "ep4",
+                "program": "4",
+                "name": "The Promotion"
+              },
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "The Farewell"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Season 3",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sun-nxt",
+    "name": "Sun NXT",
+    "series": [
+      {
+        "id": "nandini-ka-pratishodh",
+        "name": "Nandini Ka Pratishodh",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ishq-jabariya",
+        "name": "Ishq Jabariya",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "shambavi",
+        "name": "Shambavi",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoichoi",
+    "name": "Hoichoi",
+    "series": [
+      {
+        "id": "eken-babu",
+        "name": "Eken Babu",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Season 2",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Season 3",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "nikhoj",
+        "name": "Nikhoj",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Season 2",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jio-hotstar",
+    "name": "Jio Hotstar",
+    "series": [
+      {
+        "id": "the-pitt",
+        "name": "The Pitt",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mx-player",
+    "name": "MX Player",
+    "series": [
+      {
+        "id": "aashram",
+        "name": "Aashram",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Pran Pratistha"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Grih Pravesh"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Dukh: Dasha and Disha"
+              },
+              {
+                "id": "ep4",
+                "program": "4",
+                "name": "Sewa Dwar"
+              },
+              {
+                "id": "ep5",
+                "program": "5",
+                "name": "Amrit Sudha"
+              },
+              {
+                "id": "ep6",
+                "program": "6",
+                "name": "Shuddhi Karan"
+              },
+              {
+                "id": "ep7",
+                "program": "7",
+                "name": "Tandav"
+              },
+              {
+                "id": "ep8",
+                "program": "8",
+                "name": "Mukti Marg"
+              },
+              {
+                "id": "ep9",
+                "program": "9",
+                "name": "Maha Prasthan"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Season 2",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Season 3",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "school-friends",
+        "name": "School Friends",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Season 2",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chidiya-udd",
+        "name": "Chidiya Udd",
+        "seasons": [
+          {
+            "id": "1",
+            "name": "Season 1",
+            "episodes": [
+              {
+                "id": "ep1",
+                "program": "1",
+                "name": "Episode 1"
+              },
+              {
+                "id": "ep2",
+                "program": "2",
+                "name": "Episode 2"
+              },
+              {
+                "id": "ep3",
+                "program": "3",
+                "name": "Episode 3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,306 @@
+[
+  {
+    "channel": "Avenues Tv",
+    "start": "05:30",
+    "end": "05:45",
+    "program": "YOGA",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "06:00",
+    "end": "06:30",
+    "program": "PAHILOKHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "06:30",
+    "end": "07:00",
+    "program": "JEEVANBIGYAN",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "07:00",
+    "end": "07:30",
+    "program": "AVENUES @ 7",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "07:30",
+    "end": "08:00",
+    "program": "BEYKTIBISHAY RA BISHESH",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "08:00",
+    "end": "08:45",
+    "program": "KHABRBHITRA KO Tv",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "08:45",
+    "end": "09:00",
+    "program": "KRISHIUDHYAMI",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "09:00",
+    "end": "09:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "09:30",
+    "end": "10:00",
+    "program": "KUN COLLEGE PADNE",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "10:00",
+    "end": "10:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "10:30",
+    "end": "11:00",
+    "program": "SARBHABHABANTUSUKHENAPART 1",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "11:00",
+    "end": "11:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "11:30",
+    "end": "12:00",
+    "program": "SARBHABHABANTUSUKHENAPART 2",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "12:00",
+    "end": "12:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "12:30",
+    "end": "01:00",
+    "program": "KHABRBHITRA KO Tv",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "01:00",
+    "end": "01:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "01:30",
+    "end": "02:00",
+    "program": "BEYKTIBISHAY RA BISHESH",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "02:00",
+    "end": "03:00",
+    "program": "AVENUES @2",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "03:00",
+    "end": "04:00",
+    "program": "ISSU OF THE DAY",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "04:00",
+    "end": "04:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "04:30",
+    "end": "05:00",
+    "program": "DOCUMENTRY",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "05:00",
+    "end": "05:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "05:30",
+    "end": "06:00",
+    "program": "KRISHIUDHYAMI",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "06:00",
+    "end": "06:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "06:30",
+    "end": "07:00",
+    "program": "KUN COLLEGE PADNE",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "07:00",
+    "end": "08:00",
+    "program": "AVENUES @7",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "08:00",
+    "end": "08:45",
+    "program": "KHABRBHITRA KO Tv",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "09:00",
+    "end": "10:00",
+    "program": "BISESSAMBAD",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "10:00",
+    "end": "10:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "10:30",
+    "end": "11:00",
+    "program": "KRISHIUDHYAMI",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "12:00",
+    "end": "01:00",
+    "program": "KHABRBHITRA KO Tv",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "01:00",
+    "end": "01:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "01:30",
+    "end": "02:00",
+    "program": "BEYKTIBISHAY RA BISHESH",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "02:00",
+    "end": "03:00",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "03:00",
+    "end": "04:00",
+    "program": "BISESSAMBAD",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "04:00",
+    "end": "04:30",
+    "program": "AVENUES @KHABAR",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "04:30",
+    "end": "05:00",
+    "program": "SHASTRA RA SATHETYA",
+    "type": "program",
+    "date": "2025-07-20"
+  },
+  {
+    "channel": "Avenues Tv",
+    "start": "05:00",
+    "end": "05:30",
+    "program": "DHARMA program",
+    "type": "program",
+    "date": "2025-07-20"
+  }
+]

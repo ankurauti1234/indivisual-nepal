@@ -1,0 +1,266 @@
+[
+    {
+        "channel": "NTV News",
+        "start": "05:00",
+        "end": "05:30",
+        "program": "Bhajan",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "05:30",
+        "end": "06:00",
+        "program": "Doc Shiva Dhara",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "06:00",
+        "end": "06:20",
+        "program": "Patra Patrika",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "06:20",
+        "end": "07:00",
+        "program": "Kalavari Temple",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "07:00",
+        "end": "08:00",
+        "program": "News in Nepali",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "08:00",
+        "end": "08:25",
+        "program": "The News",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "08:25",
+        "end": "09:00",
+        "program": "TALK AITC",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "09:00",
+        "end": "09:30",
+        "program": "National Songs",
+        "type": "Music",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "09:30",
+        "end": "10:00",
+        "program": "Tamang Bhasha-Lhaso",
+        "type": "Language",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "10:00",
+        "end": "10:30",
+        "program": "Hamro kathmandu",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "10:30",
+        "end": "11:00",
+        "program": "Sahayatra",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "11:00",
+        "end": "12:00",
+        "program": "News in Nepali",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "12:00",
+        "end": "12:25",
+        "program": "The News",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "12:25",
+        "end": "13:00",
+        "program": "Ritar Haldar",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "13:00",
+        "end": "14:00",
+        "program": "Int'l Pratice of PSB",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "14:00",
+        "end": "14:25",
+        "program": "News in Nepali",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "14:25",
+        "end": "15:00",
+        "program": "Deshko Sangit",
+        "type": "Music",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "15:00",
+        "end": "16:00",
+        "program": "PSB Political Session",
+        "type": "Political",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "16:00",
+        "end": "16:25",
+        "program": "Pradeshik Samachar",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "16:25",
+        "end": "17:00",
+        "program": "Tharu Bhasha Samad",
+        "type": "Language",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "17:00",
+        "end": "17:30",
+        "program": "Doc Mero Gahun",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "17:30",
+        "end": "18:00",
+        "program": "Matole Magdaina",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "18:00",
+        "end": "18:25",
+        "program": "Mahila Adhikar",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "18:25",
+        "end": "18:38",
+        "program": "Hamro kathmandu",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "18:38",
+        "end": "19:00",
+        "program": "Kishan Prashna Manch",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "19:00",
+        "end": "19:25",
+        "program": "Shikshyako Chautari",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "19:25",
+        "end": "20:00",
+        "program": "Doc hariharpur Gadhi",
+        "type": "",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "20:00",
+        "end": "20:50",
+        "program": "News in Nepali",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "20:50",
+        "end": "21:30",
+        "program": "Meri Bassai",
+        "type": "Entertainment",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "21:30",
+        "end": "22:30",
+        "program": "PSB Political Session",
+        "type": "Political",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "22:30",
+        "end": "23:00",
+        "program": "The News",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "23:00",
+        "end": "23:30",
+        "program": "News in Nepali",
+        "type": "News",
+        "date": "2025-07-22"
+    },
+    {
+        "channel": "NTV News",
+        "start": "23:30",
+        "end": "00:00",
+        "program": "Matole Magdaina",
+        "type": "",
+        "date": "2025-07-22"
+    }
+]

@@ -1,0 +1,77 @@
+{
+  "id": "ep5",
+  "program": "5",
+  "name": "Episode 5",
+  "segments": [
+    {
+      "type": "episode",
+      "start": "00:00:00",
+      "end": "00:10:00",
+      "description": "First part of Dupahiya Episode 5",
+      "image": "https://i.giphy.com/26tPo9rksWnfPo4HS.webp",
+      "brand": "Dupahiya",
+      "sector": "Drama",
+      "category": "Series"
+    },
+    {
+      "type": "ad",
+      "start": "00:10:00",
+      "end": "00:10:15",
+      "description": "Nilkamal Homes advertisement",
+      "image": "/images/ads/nilkamal-homes.jpg",
+      "brand": "Nilkamal Homes",
+      "sector": "Commercial",
+      "category": "Ad"
+    },
+    {
+      "type": "episode",
+      "start": "00:10:16",
+      "end": "00:20:00",
+      "description": "Second part of Dupahiya Episode 5",
+      "image": "/images/dupahiya/s1e5-part2.jpg",
+      "brand": "Dupahiya",
+      "sector": "Drama",
+      "category": "Series"
+    },
+    {
+      "type": "ad",
+      "start": "00:20:00",
+      "end": "00:20:30",
+      "description": "Sting advertisement",
+      "image": "/images/ads/sting.jpg",
+      "brand": "Sting",
+      "sector": "Commercial",
+      "category": "Ad"
+    },
+    {
+      "type": "episode",
+      "start": "00:20:31",
+      "end": "00:29:00",
+      "description": "Third part of Dupahiya Episode 5",
+      "image": "/images/dupahiya/s1e5-part3.jpg",
+      "brand": "Dupahiya",
+      "sector": "Drama",
+      "category": "Series"
+    },
+    {
+      "type": "ad",
+      "start": "00:29:00",
+      "end": "00:29:30",
+      "description": "Acko advertisement",
+      "image": "/images/ads/acko.jpg",
+      "brand": "Acko",
+      "sector": "Commercial",
+      "category": "Ad"
+    },
+    {
+      "type": "episode",
+      "start": "00:29:30",
+      "end": "00:29:57",
+      "description": "Final part of Dupahiya Episode 5",
+      "image": "/images/dupahiya/s1e5-part4.jpg",
+      "brand": "Dupahiya",
+      "sector": "Drama",
+      "category": "Series"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "ep1",
+  "program": "1",
+  "name": "Red Light, Green Light",
+  "segments": [
+    {
+      "type": "episode",
+      "start": "00:00:00",
+      "end": "00:20:00",
+      "description": "First part of the episode before ad break",
+      "image": "/images/squid-game/s1e1-part1.jpg",
+      "brand": "Squid Game",
+      "sector": "Drama",
+      "category": "Thriller"
+    },
+    {
+      "type": "ad",
+      "start": "00:20:00",
+      "end": "00:22:00",
+      "description": "Advertisement break",
+      "image": "/images/ads/ad1.jpg",
+      "brand": "Advertiser",
+      "sector": "Commercial",
+      "category": "Ad"
+    },
+    {
+      "type": "episode",
+      "start": "00:22:00",
+      "end": "00:54:00",
+      "description": "Second part of the episode after ad break",
+      "image": "/images/squid-game/s1e1-part2.jpg",
+      "brand": "Squid Game",
+      "sector": "Drama",
+      "category": "Thriller"
+    }
+  ]
+}

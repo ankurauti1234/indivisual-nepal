@@ -106,16 +106,8 @@ const data = {
       icon: Play,
       items: [
         {
-          title: "Platforms",
-          url: "/dashboard/ott/platforms",
-        },
-        {
-          title: "Advertisers",
-          url: "/dashboard/ott/ads",
-        },
-        {
-          title: "Subscribers",
-          url: "/dashboard/ott/subscribers",
+          title: "Program Grid",
+          url: "/dashboard/ott/program-grid",
         },
       ],
     },
