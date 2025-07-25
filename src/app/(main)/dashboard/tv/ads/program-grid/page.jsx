@@ -8,7 +8,7 @@ const channels = [
 ]
 
 // S3 configuration
-const S3_BUCKET_URL = process.env.S3_BUCKET_URL || "https://radio-clips.s3.ap-south-1.amazonaws.com"
+const S3_BUCKET_URL = "https://radio-clips.s3.ap-south-1.amazonaws.com"
 
 export default async function ProgramGridPage() {
   const selectedDate = format(new Date(), "yyyy-MM-dd")
