@@ -1,18 +1,15 @@
 "use client";
 
-import { BarChartIcon } from "lucide-react";
+import { TableIcon } from "lucide-react";
 import { useState } from "react";
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
-} from "recharts";
-
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import {
   Select,
   SelectContent,
@@ -20,185 +17,186 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
+import { Button } from "@/components/ui/button";
 import ChartCard from "@/components/card/charts-card";
 
-// Sample data for channel mix analysis
-const channelMixData = {
-  // Data for top advertisers across different channels
-  advertisers: [
-    {
-      name: "Shivam Cement",
-      television: 45,
-      radio: 25,
-      digital: 30,
-    },
-    {
-      name: "N Cell",
-      television: 35,
-      radio: 20,
-      digital: 40,
-    },
-    {
-      name: "Asian Paints",
-      television: 25,
-      radio: 15,
-      digital: 50,
-    },
-    {
-      name: "Nike",
-      television: 40,
-      radio: 30,
-      digital: 20,
-    },
-    {
-      name: "Others",
-      television: 30,
-      radio: 20,
-      digital: 35,
-    },
-  ],
+// Sample data for top advertisers
+const topAdvertisersData = [
+  {
+    advertiser: "Shivam Cement",
+    sector: "Construction",
+    "Nepal Television": { airtime: 1200, plays: 45 },
+    "Kantipur TV": { airtime: 900, plays: 35 },
+    "Avenues TV": { airtime: 600, plays: 25 },
+  },
+  {
+    advertiser: "N Cell",
+    sector: "Telecommunications",
+    "Nepal Television": { airtime: 1000, plays: 40 },
+    "Kantipur TV": { airtime: 800, plays: 30 },
+    "Avenues TV": { airtime: 500, plays: 20 },
+  },
+  {
+    advertiser: "Asian Paints",
+    sector: "Manufacturing",
+    "Nepal Television": { airtime: 800, plays: 30 },
+    "Kantipur TV": { airtime: 700, plays: 25 },
+    "Avenues TV": { airtime: 400, plays: 15 },
+  },
+  {
+    advertiser: "Nike",
+    sector: "Retail",
+    "Nepal Television": { airtime: 1100, plays: 42 },
+    "Kantipur TV": { airtime: 850, plays: 32 },
+    "Avenues TV": { airtime: 550, plays: 22 },
+  },
+  {
+    advertiser: "Others",
+    sector: "Miscellaneous",
+    "Nepal Television": { airtime: 950, plays: 38 },
+    "Kantipur TV": { airtime: 750, plays: 28 },
+    "Avenues TV": { airtime: 450, plays: 18 },
+  },
+];
 
-  // Years available for comparison
-  years: ["2022", "2023", "2024"],
-};
+// Available filters
+const weeks = ["Week 1", "Week 2", "Week 3", "Week 4"];
+const sectors = ["All", "Construction", "Telecommunications", "Manufacturing", "Retail", "Miscellaneous"];
+const advertisers = ["All", ...topAdvertisersData.map((data) => data.advertiser)];
 
-// Better color palette for channels
-const channelColors = {
-  television: "#4361ee", // Royal blue
-  radio: "#3a0ca3", // Purple
-  digital: "#7209b7", // Violet
-  print: "#f72585", // Pink
-  outOfHome: "#4cc9f0", // Light blue
-};
+export default function TopAdvertisersPanel() {
+  const [selectedWeek, setSelectedWeek] = useState("Week 1");
+  const [selectedSector, setSelectedSector] = useState("All");
+  const [selectedAdvertiser, setSelectedAdvertiser] = useState("All");
+  const [dataType, setDataType] = useState("airtime"); // airtime or plays
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
 
-export default function ChannelMixAnalysis() {
-  const [selectedAdvertiser, setSelectedAdvertiser] = useState("Shivam Cement");
-  const [selectedYear, setSelectedYear] = useState("2024");
+  // Filter data based on selections
+  const filteredData = topAdvertisersData.filter((item) => {
+    const sectorMatch = selectedSector === "All" || item.sector === selectedSector;
+    const advertiserMatch = selectedAdvertiser === "All" || item.advertiser === selectedAdvertiser;
+    return sectorMatch && advertiserMatch;
+  });
 
-  // Transform data for Recharts
-  const transformDataForChart = () => {
-    // Find the selected advertiser's data
-    const advertiserData = channelMixData.advertisers.find(
-      (adv) => adv.name === selectedAdvertiser
-    );
-
-    if (!advertiserData) {
-      return [];
-    }
-
-    // Transform to Recharts format (array of objects)
-    return Object.keys(advertiserData)
-      .filter((key) => key !== "name") // Exclude the name property
-      .map((channel) => ({
-        channel: channel.charAt(0).toUpperCase() + channel.slice(1), // Capitalize channel name
-        percentage: advertiserData[channel],
-      }))
-      .filter((item) => item.percentage > 0); // Only include channels with non-zero values
-  };
-
-  // Custom tooltip for the bar chart
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-white p-2 border rounded shadow text-sm">
-          <p className="font-medium">{payload[0].payload.channel}</p>
-          <p>{`${payload[0].value}% of ad spend`}</p>
-        </div>
-      );
-    }
-    return null;
-  };
-
-  // Get color for channel
-  const getChannelColor = (channel) => {
-    const channelKey = channel.toLowerCase();
-    return channelColors[channelKey] || "#888888"; // Default color if not found
-  };
-
-  // Custom legend component
-  const CustomLegend = () => (
-    <div className="grid grid-cols-3 gap-2 mt-4 text-xs">
-      {Object.keys(channelColors).map((channel) => (
-        <div key={channel} className="flex items-center gap-1">
-          <div
-            className="w-3 h-3 rounded-full flex-shrink-0"
-            style={{ backgroundColor: channelColors[channel] }}
-          />
-          <span className="truncate capitalize">{channel}</span>
-        </div>
-      ))}
-    </div>
+  // Pagination logic
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const paginatedData = filteredData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
   );
 
-  const chartData = transformDataForChart();
+  const handlePreviousPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
 
   return (
     <ChartCard
-      icon={<BarChartIcon className="w-6 h-6" />}
-      title="Channel Mix Analysis"
-      description="Comparing Competitors' Channel Preferences"
+      icon={<TableIcon className="w-6 h-6" />}
+      title="Top Advertisers"
+      description="Advertising Metrics by Channel for Top Nepal TV Channels"
       action={
-        <div className="flex space-x-2  w-full justify-end ">
-          <Select
-            value={selectedAdvertiser}
-            onValueChange={setSelectedAdvertiser}
-          >
-            <SelectTrigger className="w-36">
-              <SelectValue placeholder="Select advertiser" />
+        <div className="flex space-x-2 w-full justify-end">
+          <Select value={selectedWeek} onValueChange={setSelectedWeek}>
+            <SelectTrigger className="w-24">
+              <SelectValue placeholder="Select week" />
             </SelectTrigger>
             <SelectContent>
-              {channelMixData.advertisers.map((advertiser) => (
-                <SelectItem key={advertiser.name} value={advertiser.name}>
-                  {advertiser.name}
+              {weeks.map((week) => (
+                <SelectItem key={week} value={week}>
+                  {week}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-          <Select value={selectedYear} onValueChange={setSelectedYear}>
-            <SelectTrigger className="w-24">
-              <SelectValue placeholder="Year" />
+          <Select value={selectedSector} onValueChange={setSelectedSector}>
+            <SelectTrigger className="w-36">
+              <SelectValue placeholder="Select sector" />
             </SelectTrigger>
             <SelectContent>
-              {channelMixData.years.map((year) => (
-                <SelectItem key={year} value={year}>
-                  {year}
+              {sectors.map((sector) => (
+                <SelectItem key={sector} value={sector}>
+                  {sector}
                 </SelectItem>
               ))}
+            </SelectContent>
+          </Select>
+          <Select value={selectedAdvertiser} onValueChange={setSelectedAdvertiser}>
+            <SelectTrigger className="w-36">
+              <SelectValue placeholder="Select advertiser" />
+            </SelectTrigger>
+            <SelectContent>
+              {advertisers.map((advertiser) => (
+                <SelectItem key={advertiser} value={advertiser}>
+                  {advertiser}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={dataType} onValueChange={setDataType}>
+            <SelectTrigger className="w-24">
+              <SelectValue placeholder="Data type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="airtime">Airtime (s)</SelectItem>
+              <SelectItem value="plays">Plays</SelectItem>
             </SelectContent>
           </Select>
         </div>
       }
       chart={
-        <div className="h-80 w-full mt-4">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={chartData}
-              margin={{ top: 10, right: 30, left: 0, bottom: 5 }}
+        <div className="mt-4">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Advertiser</TableHead>
+                <TableHead>Sector</TableHead>
+                <TableHead>Nepal Television</TableHead>
+                <TableHead>Kantipur TV</TableHead>
+                <TableHead>Avenues TV</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {paginatedData.map((item) => (
+                <TableRow key={item.advertiser}>
+                  <TableCell>{item.advertiser}</TableCell>
+                  <TableCell>{item.sector}</TableCell>
+                  <TableCell>{item["Nepal Television"][dataType]}</TableCell>
+                  <TableCell>{item["Kantipur TV"][dataType]}</TableCell>
+                  <TableCell>{item["Avenues TV"][dataType]}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <div className="flex justify-between mt-4">
+            <Button
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+              variant="outline"
             >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="channel" />
-              <YAxis tickFormatter={(value) => `${value}%`} domain={[0, 100]} />
-              <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="percentage" name="Channel Share">
-                {chartData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={getChannelColor(entry.channel)}
-                  />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
+              Previous
+            </Button>
+            <span className="text-sm text-gray-500">
+              Page {currentPage} of {totalPages}
+            </span>
+            <Button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              variant="outline"
+            >
+              Next
+            </Button>
+          </div>
         </div>
       }
       footer={
-        <div className="mt-2">
-          <CustomLegend />
-          <p className="text-sm text-gray-500 mt-2">
-            {selectedAdvertiser}'s channel distribution for {selectedYear}
-          </p>
-        </div>
+        <p className="text-sm text-gray-500 mt-2">
+          Showing {dataType} for {selectedSector} sector, {selectedAdvertiser} advertiser in {selectedWeek}
+        </p>
       }
     />
   );

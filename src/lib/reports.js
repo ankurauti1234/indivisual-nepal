@@ -123,17 +123,17 @@ export const tv_ads_reports = [
     subpage: "ads",
     slug: "program-grid",
   },
-  // {
-  //   id: 5,
-  //   image: "/images.png",
-  //   title: "Return on Ad Spend (ROAS) Insights",
-  //   description:
-  //     "Detailed financial analysis of advertising campaigns, including cost efficiency, conversion rates, and revenue generation.",
-  //   lastUpdated: "April 25, 2024",
-  //   page: "tv",
-  //   subpage: "ads",
-  //   slug: "roas-insights",
-  // },
+  {
+    id: 5,
+    image: "/images/adex.png",
+    title: "Competitive Analysis",
+    description:
+      "Detailed financial analysis of advertising campaigns, including cost efficiency, conversion rates, and revenue generation.",
+    lastUpdated: "April 25, 2024",
+    page: "tv",
+    subpage: "ads",
+    slug: "competitive-analysis",
+  },
   // {
   //   id: 6,
   //   image: "/images.png",

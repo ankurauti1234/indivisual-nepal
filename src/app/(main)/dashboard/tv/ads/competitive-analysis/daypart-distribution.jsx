@@ -1,16 +1,16 @@
 "use client";
 
-import { PieChart as PieChartIcon } from "lucide-react";
+import { BarChartIcon } from "lucide-react";
 import { useState } from "react";
 import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
+  Cell,
 } from "recharts";
 
 import {
@@ -47,49 +47,14 @@ const rawData = {
       Evening: 35,
       Night: 15,
     },
-    { advertiser: "Nike", Morning: 15, Afternoon: 20, Evening: 25, Night: 10 },
     {
-      advertiser: "Dabur Nepal",
-      Morning: 12,
-      Afternoon: 15,
-      Evening: 20,
-      Night: 8,
+      advertiser: "Nike",
+      Morning: 15,
+      Afternoon: 20,
+      Evening: 25,
+      Night: 10,
     },
-    {
-      advertiser: "CG Electronics",
-      Morning: 14,
-      Afternoon: 18,
-      Evening: 22,
-      Night: 9,
-    },
-    {
-      advertiser: "Yeti Airlines",
-      Morning: 10,
-      Afternoon: 12,
-      Evening: 18,
-      Night: 7,
-    },
-    {
-      advertiser: "Nabil Bank",
-      Morning: 11,
-      Afternoon: 14,
-      Evening: 19,
-      Night: 8,
-    },
-    {
-      advertiser: "Wai Wai Noodles",
-      Morning: 13,
-      Afternoon: 16,
-      Evening: 21,
-      Night: 9,
-    },
-    {
-      advertiser: "Goldstar Shoes",
-      Morning: 10,
-      Afternoon: 13,
-      Evening: 17,
-      Night: 7,
-    },
+    { advertiser: "Others", Morning: 10, Afternoon: 15, Evening: 20, Night: 5 },
   ],
   radio: [
     {
@@ -113,49 +78,14 @@ const rawData = {
       Evening: 30,
       Night: 10,
     },
-    { advertiser: "Nike", Morning: 20, Afternoon: 25, Evening: 20, Night: 5 },
     {
-      advertiser: "Dabur Nepal",
-      Morning: 14,
-      Afternoon: 12,
-      Evening: 15,
-      Night: 4,
-    },
-    {
-      advertiser: "CG Electronics",
-      Morning: 12,
-      Afternoon: 10,
-      Evening: 13,
-      Night: 3,
-    },
-    {
-      advertiser: "Yeti Airlines",
-      Morning: 13,
-      Afternoon: 11,
-      Evening: 14,
-      Night: 4,
-    },
-    {
-      advertiser: "Nabil Bank",
-      Morning: 15,
-      Afternoon: 13,
-      Evening: 16,
+      advertiser: "Nike",
+      Morning: 20,
+      Afternoon: 25,
+      Evening: 20,
       Night: 5,
     },
-    {
-      advertiser: "Wai Wai Noodles",
-      Morning: 16,
-      Afternoon: 14,
-      Evening: 17,
-      Night: 6,
-    },
-    {
-      advertiser: "Goldstar Shoes",
-      Morning: 13,
-      Afternoon: 11,
-      Evening: 14,
-      Night: 4,
-    },
+    { advertiser: "Others", Morning: 15, Afternoon: 10, Evening: 15, Night: 3 },
   ],
   digital: [
     {
@@ -179,66 +109,33 @@ const rawData = {
       Evening: 40,
       Night: 20,
     },
-    { advertiser: "Nike", Morning: 25, Afternoon: 30, Evening: 30, Night: 15 },
     {
-      advertiser: "Dabur Nepal",
+      advertiser: "Nike",
+      Morning: 25,
+      Afternoon: 30,
+      Evening: 30,
+      Night: 15,
+    },
+    {
+      advertiser: "Others",
       Morning: 20,
       Afternoon: 25,
       Evening: 25,
       Night: 10,
     },
-    {
-      advertiser: "CG Electronics",
-      Morning: 18,
-      Afternoon: 22,
-      Evening: 23,
-      Night: 9,
-    },
-    {
-      advertiser: "Yeti Airlines",
-      Morning: 22,
-      Afternoon: 27,
-      Evening: 28,
-      Night: 12,
-    },
-    {
-      advertiser: "Nabil Bank",
-      Morning: 19,
-      Afternoon: 24,
-      Evening: 26,
-      Night: 11,
-    },
-    {
-      advertiser: "Wai Wai Noodles",
-      Morning: 21,
-      Afternoon: 26,
-      Evening: 27,
-      Night: 10,
-    },
-    {
-      advertiser: "Goldstar Shoes",
-      Morning: 18,
-      Afternoon: 23,
-      Evening: 24,
-      Night: 9,
-    },
   ],
 };
 
+// Color palette for advertisers
 const colors = {
-  "Shivam Cement": { stroke: "#ff6b6b", fill: "#ff6b6b" },
-  "N Cell": { stroke: "#4ecdc4", fill: "#4ecdc4" },
-  "Asian Paints": { stroke: "#45b7d1", fill: "#45b7d1" },
-  Nike: { stroke: "#96ceb4", fill: "#96ceb4" },
-  "Dabur Nepal": { stroke: "#FF9F1C", fill: "#FF9F1C" },
-  "CG Electronics": { stroke: "#6A4E94", fill: "#6A4E94" },
-  "Yeti Airlines": { stroke: "#00A896", fill: "#00A896" },
-  "Nabil Bank": { stroke: "#F4A261", fill: "#F4A261" },
-  "Wai Wai Noodles": { stroke: "#E63946", fill: "#E63946" },
-  "Goldstar Shoes": { stroke: "#457B9D", fill: "#457B9D" },
+  "Shivam Cement": "#ff6b6b",
+  "N Cell": "#4ecdc4",
+  "Asian Paints": "#45b7d1",
+  Nike: "#96ceb4",
+  Others: "#ddd111",
 };
 
-// Daypart definitions with time ranges for better context
+// Daypart definitions with time ranges
 const dayparts = [
   { key: "Morning", label: "Morning (6am-12pm)" },
   { key: "Afternoon", label: "Afternoon (12pm-5pm)" },
@@ -248,145 +145,45 @@ const dayparts = [
 
 export default function DaypartDistribution() {
   const [selectedChannel, setSelectedChannel] = useState("television");
-  const [highlightedAdvertiser, setHighlightedAdvertiser] = useState(null);
+  const [selectedAdvertiser, setSelectedAdvertiser] = useState("Shivam Cement");
 
-  // Calculate industry average for benchmarking
-  const calculateIndustryAverage = () => {
-    const data = rawData[selectedChannel];
-    const daypartKeys = ["Morning", "Afternoon", "Evening", "Night"];
-
-    // Calculate total impressions by daypart across all advertisers
-    const totalsByDaypart = daypartKeys.reduce((acc, daypart) => {
-      acc[daypart] = data.reduce((sum, item) => sum + item[daypart], 0);
-      return acc;
-    }, {});
-
-    // Get total impressions overall
-    const totalImpressions = Object.values(totalsByDaypart).reduce(
-      (sum, val) => sum + val,
-      0
-    );
-
-    // Calculate average percentage for each daypart
-    return daypartKeys.reduce((acc, daypart) => {
-      acc[daypart] = (totalsByDaypart[daypart] / totalImpressions) * 100;
-      return acc;
-    }, {});
-  };
-
-  // Transform data for Recharts radar chart with improved metrics
+  // Transform data for Recharts bar chart
   const transformData = () => {
     const data = rawData[selectedChannel];
-    const industryAvg = calculateIndustryAverage();
+    const advertiserData = data.find((item) => item.advertiser === selectedAdvertiser);
 
-    // Create radar chart data with percentage of total ads per daypart
-    return dayparts.map((daypart) => {
-      const entry = {
-        daypart: daypart.key,
-        fullLabel: daypart.label,
-        industryAvg: parseFloat(industryAvg[daypart.key].toFixed(1)),
-      };
+    if (!advertiserData) {
+      return [];
+    }
 
-      data.forEach((item) => {
-        // Calculate total ads for this advertiser
-        const total = item.Morning + item.Afternoon + item.Evening + item.Night;
-
-        // Calculate what percentage of this advertiser's ads run during this daypart
-        const percentage = ((item[daypart.key] / total) * 100).toFixed(1);
-
-        // Store raw count for tooltip context
-        entry[`${item.advertiser}Raw`] = item[daypart.key];
-
-        // Store percentage for radar display
-        entry[item.advertiser] = parseFloat(percentage);
-
-        // Calculate index vs industry average (>100 means over-indexed)
-        const indexVsIndustry = (
-          (percentage / industryAvg[daypart.key]) *
-          100
-        ).toFixed(0);
-        entry[`${item.advertiser}Index`] = parseInt(indexVsIndustry);
-      });
-
-      return entry;
-    });
+    return dayparts.map((daypart) => ({
+      daypart: daypart.key,
+      fullLabel: daypart.label,
+      impressions: advertiserData[daypart.key],
+    }));
   };
 
-  // Enhanced tooltip for radar chart
+  // Custom tooltip for the bar chart
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
-      const daypartData = payload[0].payload;
-
       return (
-        <div className="bg-white p-3 border rounded shadow-lg text-sm">
-          <p className="font-medium text-base">{daypartData.fullLabel}</p>
-          <p className="text-xs text-gray-500 mb-2">
-            Industry Average: {daypartData.industryAvg}%
-          </p>
-
-          <div className="space-y-1.5">
-            {payload
-              .filter(
-                (entry) =>
-                  !entry.dataKey.includes("Raw") &&
-                  !entry.dataKey.includes("Index") &&
-                  entry.dataKey !== "industryAvg"
-              )
-              .sort((a, b) => b.value - a.value)
-              .map((entry, index) => {
-                const advertiser = entry.dataKey;
-                const rawCount = daypartData[`${advertiser}Raw`];
-                const indexValue = daypartData[`${advertiser}Index`];
-                const indexClass =
-                  indexValue > 110
-                    ? "text-green-600"
-                    : indexValue < 90
-                    ? "text-red-600"
-                    : "text-gray-600";
-
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between border-b border-gray-100 pb-1 last:border-0"
-                  >
-                    <div className="flex items-center">
-                      <div
-                        className="w-2 h-2 rounded-full mr-1.5"
-                        style={{ backgroundColor: colors[advertiser].fill }}
-                      />
-                      <span className="font-medium">{advertiser}</span>
-                    </div>
-                    <div className="flex space-x-3">
-                      <span>{entry.value}%</span>
-                      <span className="text-gray-500">({rawCount})</span>
-                      <span className={indexClass}>
-                        {indexValue > 100 ? "+" : ""}
-                        {indexValue - 100}%
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
+        <div className="bg-white p-2 border rounded shadow text-sm">
+          <p className="font-medium">{payload[0].payload.fullLabel}</p>
+          <p>{`${payload[0].value} impressions`}</p>
         </div>
       );
     }
     return null;
   };
 
-  // Custom legend with interactive highlighting
+  // Custom legend component
   const CustomLegend = () => (
-    <div className="grid grid-cols-3 gap-2 mt-2 px-2 text-xs">
+    <div className="grid grid-cols-3 gap-2 mt-4 text-xs">
       {Object.keys(colors).map((advertiser) => (
-        <div
-          key={advertiser}
-          className="flex items-center gap-1 cursor-pointer px-1 py-0.5 rounded hover:bg-gray-50"
-          onMouseEnter={() => setHighlightedAdvertiser(advertiser)}
-          onMouseLeave={() => setHighlightedAdvertiser(null)}
-        >
+        <div key={advertiser} className="flex items-center gap-1">
           <div
             className="w-3 h-3 rounded-full flex-shrink-0"
-            style={{ backgroundColor: colors[advertiser].fill }}
+            style={{ backgroundColor: colors[advertiser] }}
           />
           <span className="truncate">{advertiser}</span>
         </div>
@@ -398,13 +195,13 @@ export default function DaypartDistribution() {
 
   return (
     <ChartCard
-      icon={<PieChartIcon className="w-6 h-6" />}
+      icon={<BarChartIcon className="w-6 h-6" />}
       title="Daypart Distribution"
-      description="Advertiser Strategy Analysis 2024"
+      description="Advertiser Strategy Analysis 2025"
       action={
-        <div className="flex justify-end">
+        <div className="flex space-x-2 w-full justify-end">
           <Select value={selectedChannel} onValueChange={setSelectedChannel}>
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-24">
               <SelectValue placeholder="Select channel" />
             </SelectTrigger>
             <SelectContent>
@@ -413,91 +210,51 @@ export default function DaypartDistribution() {
               <SelectItem value="digital">Digital</SelectItem>
             </SelectContent>
           </Select>
-
-          <Select value="weekly">
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="Select granularity" />
+          <Select value={selectedAdvertiser} onValueChange={setSelectedAdvertiser}>
+            <SelectTrigger className="w-36">
+              <SelectValue placeholder="Select advertiser" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="daily">Daily</SelectItem>
-              <SelectItem value="weekly">Weekly</SelectItem>
-              <SelectItem value="monthly">Monthly</SelectItem>
+              {rawData[selectedChannel].map((item) => (
+                <SelectItem key={item.advertiser} value={item.advertiser}>
+                  {item.advertiser}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
       }
       chart={
-        <div className="w-full h-80">
+        <div className="w-full h-80 mt-4">
           <ResponsiveContainer width="100%" height="100%">
-            <RadarChart data={chartData} outerRadius={140}>
-              <PolarGrid
-                stroke="#e0e0e0"
-                strokeDasharray="3 3"
-                gridType="circle"
-              />
-              <PolarAngleAxis
-                dataKey="daypart"
-                tick={{ fontSize: 12, fill: "#666" }}
-                tickLine={false}
-                stroke="#888"
-                tickFormatter={(value) => {
-                  const daypart = dayparts.find((d) => d.key === value);
-                  return daypart ? daypart.key : value;
-                }}
-              />
-              <PolarRadiusAxis
-                angle={45}
-                domain={[0, 60]}
-                tickCount={5}
-                stroke="#888"
-                tickLine={false}
-                tick={{ fontSize: 10, fill: "#666" }}
-                axisLine={false}
-              />
+            <BarChart
+              data={chartData}
+              margin={{ top: 10, right: 30, left: 0, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="daypart" />
+              <YAxis tickFormatter={(value) => `${value}`} />
               <Tooltip content={<CustomTooltip />} />
-
-              {/* Industry average line */}
-              <Radar
-                name="Industry Avg"
-                dataKey="industryAvg"
-                stroke="#888888"
-                fill="#888888"
-                fillOpacity={0.1}
-                strokeDasharray="5 5"
-                strokeWidth={1}
-              />
-
-              {/* Advertiser lines */}
-              {Object.keys(colors).map((advertiser) => (
-                <Radar
-                  key={advertiser}
-                  name={advertiser}
-                  dataKey={advertiser}
-                  stroke={colors[advertiser].stroke}
-                  fill={colors[advertiser].fill}
-                  fillOpacity={
-                    highlightedAdvertiser === null
-                      ? 0.2
-                      : highlightedAdvertiser === advertiser
-                      ? 0.5
-                      : 0.05
-                  }
-                  strokeWidth={highlightedAdvertiser === advertiser ? 2 : 1}
-                  strokeOpacity={
-                    highlightedAdvertiser === null
-                      ? 0.8
-                      : highlightedAdvertiser === advertiser
-                      ? 1
-                      : 0.3
-                  }
-                  animationDuration={500}
-                />
-              ))}
-            </RadarChart>
+              <Bar dataKey="impressions" name="Impressions">
+                {chartData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={colors[selectedAdvertiser]}
+                  />
+                ))}
+              </Bar>
+            </BarChart>
           </ResponsiveContainer>
         </div>
       }
-      footer={<CustomLegend />}
+      footer={
+        <div className="mt-2">
+          <CustomLegend />
+          <p className="text-sm text-gray-500 mt-2">
+            {selectedAdvertiser}'s daypart distribution for {selectedChannel} in 2025
+          </p>
+        </div>
+      }
     />
   );
 }

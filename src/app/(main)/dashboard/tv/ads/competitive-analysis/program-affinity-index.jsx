@@ -24,242 +24,147 @@ import {
 
 import ChartCard from "@/components/card/charts-card";
 
-// Sample data for ad counts by genre and advertiser
+// Sample data for ad counts by daypart and advertiser with dates
 const rawData = {
-  television: [
+  "2025-01-01": [
     {
       advertiser: "Shivam Cement",
-      Drama: 50,
-      News: 30,
-      Entertainment: 20,
-      Sports: 10,
+      Morning: 50,
+      Afternoon: 30,
+      Evening: 60,
+      Night: 25,
     },
     {
       advertiser: "N Cell",
-      Drama: 40,
-      News: 35,
-      Entertainment: 25,
-      Sports: 15,
+      Morning: 40,
+      Afternoon: 35,
+      Evening: 50,
+      Night: 20,
     },
     {
       advertiser: "Asian Paints",
-      Drama: 30,
-      News: 20,
-      Entertainment: 30,
-      Sports: 20,
-    },
-    { advertiser: "Nike", Drama: 20, News: 15, Entertainment: 25, Sports: 10 },
-    {
-      advertiser: "Dabur Nepal",
-      Drama: 15,
-      News: 10,
-      Entertainment: 15,
-      Sports: 8,
+      Morning: 30,
+      Afternoon: 20,
+      Evening: 35,
+      Night: 15,
     },
     {
-      advertiser: "CG Electronics",
-      Drama: 18,
-      News: 12,
-      Entertainment: 18,
-      Sports: 10,
+      advertiser: "Nike",
+      Morning: 20,
+      Afternoon: 15,
+      Evening: 25,
+      Night: 10,
     },
-    {
-      advertiser: "Yeti Airlines",
-      Drama: 12,
-      News: 8,
-      Entertainment: 12,
-      Sports: 6,
-    },
-    {
-      advertiser: "Nabil Bank",
-      Drama: 14,
-      News: 10,
-      Entertainment: 14,
-      Sports: 7,
-    },
-    {
-      advertiser: "Wai Wai Noodles",
-      Drama: 16,
-      News: 11,
-      Entertainment: 16,
-      Sports: 9,
-    },
-    {
-      advertiser: "Goldstar Shoes",
-      Drama: 13,
-      News: 9,
-      Entertainment: 13,
-      Sports: 6,
-    },
+    { advertiser: "Others", Morning: 10, Afternoon: 10, Evening: 15, Night: 5 },
   ],
-  radio: [
+  "2025-02-01": [
     {
       advertiser: "Shivam Cement",
-      Drama: 40,
-      News: 25,
-      Entertainment: 15,
-      Sports: 10,
+      Morning: 45,
+      Afternoon: 28,
+      Evening: 55,
+      Night: 22,
     },
     {
       advertiser: "N Cell",
-      Drama: 35,
-      News: 30,
-      Entertainment: 20,
-      Sports: 10,
+      Morning: 38,
+      Afternoon: 32,
+      Evening: 48,
+      Night: 18,
     },
     {
       advertiser: "Asian Paints",
-      Drama: 25,
-      News: 15,
-      Entertainment: 25,
-      Sports: 15,
-    },
-    { advertiser: "Nike", Drama: 15, News: 10, Entertainment: 20, Sports: 5 },
-    {
-      advertiser: "Dabur Nepal",
-      Drama: 10,
-      News: 7,
-      Entertainment: 10,
-      Sports: 4,
+      Morning: 28,
+      Afternoon: 18,
+      Evening: 32,
+      Night: 12,
     },
     {
-      advertiser: "CG Electronics",
-      Drama: 8,
-      News: 6,
-      Entertainment: 8,
-      Sports: 3,
+      advertiser: "Nike",
+      Morning: 18,
+      Afternoon: 12,
+      Evening: 22,
+      Night: 8,
     },
-    {
-      advertiser: "Yeti Airlines",
-      Drama: 9,
-      News: 6,
-      Entertainment: 9,
-      Sports: 4,
-    },
-    {
-      advertiser: "Nabil Bank",
-      Drama: 11,
-      News: 8,
-      Entertainment: 11,
-      Sports: 5,
-    },
-    {
-      advertiser: "Wai Wai Noodles",
-      Drama: 12,
-      News: 9,
-      Entertainment: 12,
-      Sports: 6,
-    },
-    {
-      advertiser: "Goldstar Shoes",
-      Drama: 9,
-      News: 6,
-      Entertainment: 9,
-      Sports: 4,
-    },
+    { advertiser: "Others", Morning: 8, Afternoon: 8, Evening: 12, Night: 3 },
   ],
-  digital: [
+  "2025-03-01": [
     {
       advertiser: "Shivam Cement",
-      Drama: 60,
-      News: 40,
-      Entertainment: 30,
-      Sports: 20,
+      Morning: 55,
+      Afternoon: 35,
+      Evening: 65,
+      Night: 28,
     },
     {
       advertiser: "N Cell",
-      Drama: 50,
-      News: 45,
-      Entertainment: 35,
-      Sports: 25,
+      Morning: 45,
+      Afternoon: 40,
+      Evening: 55,
+      Night: 25,
     },
     {
       advertiser: "Asian Paints",
-      Drama: 35,
-      News: 25,
-      Entertainment: 40,
-      Sports: 20,
-    },
-    { advertiser: "Nike", Drama: 25, News: 20, Entertainment: 30, Sports: 15 },
-    {
-      advertiser: "Dabur Nepal",
-      Drama: 15,
-      News: 15,
-      Entertainment: 20,
-      Sports: 10,
+      Morning: 35,
+      Afternoon: 25,
+      Evening: 40,
+      Night: 20,
     },
     {
-      advertiser: "CG Electronics",
-      Drama: 13,
-      News: 12,
-      Entertainment: 18,
-      Sports: 8,
+      advertiser: "Nike",
+      Morning: 25,
+      Afternoon: 20,
+      Evening: 30,
+      Night: 15,
     },
     {
-      advertiser: "Yeti Airlines",
-      Drama: 16,
-      News: 16,
-      Entertainment: 22,
-      Sports: 12,
-    },
-    {
-      advertiser: "Nabil Bank",
-      Drama: 14,
-      News: 14,
-      Entertainment: 19,
-      Sports: 10,
-    },
-    {
-      advertiser: "Wai Wai Noodles",
-      Drama: 15,
-      News: 15,
-      Entertainment: 21,
-      Sports: 11,
-    },
-    {
-      advertiser: "Goldstar Shoes",
-      Drama: 13,
-      News: 13,
-      Entertainment: 18,
-      Sports: 9,
+      advertiser: "Others",
+      Morning: 15,
+      Afternoon: 15,
+      Evening: 20,
+      Night: 10,
     },
   ],
 };
 
+// Color palette for advertisers
 const colors = {
   "Shivam Cement": "#ff6b6b",
   "N Cell": "#4ecdc4",
   "Asian Paints": "#45b7d1",
   Nike: "#96ceb4",
-  "Dabur Nepal": "#FF9F1C",
-  "CG Electronics": "#6A4E94",
-  "Yeti Airlines": "#00A896",
-  "Nabil Bank": "#F4A261",
-  "Wai Wai Noodles": "#E63946",
-  "Goldstar Shoes": "#457B9D",
+  Others: "#ddd111",
 };
 
-// Genre labels and their base positions for x-axis
-const genres = ["Drama", "News", "Entertainment", "Sports"];
-const genrePositions = { Drama: 1, News: 3, Entertainment: 5, Sports: 7 };
+// Daypart labels and their base positions for x-axis
+const dayparts = [
+  { key: "Morning", label: "Morning (6am-12pm)" },
+  { key: "Afternoon", label: "Afternoon (12pm-5pm)" },
+  { key: "Evening", label: "Evening (5pm-10pm)" },
+  { key: "Night", label: "Night (10pm-6am)" },
+];
+const daypartPositions = { Morning: 1, Afternoon: 3, Evening: 5, Night: 7 };
+
+// Available dates for filter
+const availableDates = Object.keys(rawData);
 
 export default function ProgramAffinityIndex() {
-  const [selectedChannel, setSelectedChannel] = useState("television");
+  const [selectedDate, setSelectedDate] = useState(availableDates[0]);
 
-  // Add some natural jitter and improved data transformation
+  // Calculate affinity data with dayparts
   const calculateAffinity = () => {
-    const data = rawData[selectedChannel];
+    const data = rawData[selectedDate];
 
-    // Calculate total ads per genre
-    const genreTotals = genres.reduce((acc, genre) => {
-      acc[genre] = data.reduce((sum, item) => sum + item[genre], 0);
+    // Calculate total ads per daypart
+    const daypartTotals = dayparts.reduce((acc, daypart) => {
+      acc[daypart.key] = data.reduce((sum, item) => sum + item[daypart.key], 0);
       return acc;
     }, {});
 
     // Calculate total market share for normalization
     const advertiserTotals = data.reduce((acc, item) => {
-      acc[item.advertiser] = genres.reduce(
-        (sum, genre) => sum + item[genre],
+      acc[item.advertiser] = dayparts.reduce(
+        (sum, daypart) => sum + item[daypart.key],
         0
       );
       return acc;
@@ -270,7 +175,7 @@ export default function ProgramAffinityIndex() {
       0
     );
 
-    // Create data with jitter and more natural variation
+    // Create data with jitter and variation
     return Object.keys(colors)
       .map((advertiser) => {
         const advertiserData = data.find(
@@ -279,19 +184,19 @@ export default function ProgramAffinityIndex() {
 
         if (!advertiserData) return [];
 
-        return genres.map((genre) => {
+        return dayparts.map((daypart) => {
           // Calculate metrics for visualization
-          const genreTotal = genreTotals[genre];
-          const advertiserShare = advertiserData[genre];
+          const daypartTotal = daypartTotals[daypart.key];
+          const advertiserShare = advertiserData[daypart.key];
           const marketPenetration =
             advertiserTotals[advertiser] / totalMarketSize;
 
-          // Calculate affinity (percentage of this genre's ads from this advertiser)
-          const affinity = ((advertiserShare / genreTotal) * 100).toFixed(1);
+          // Calculate affinity (percentage of this daypart's ads from this advertiser)
+          const affinity = ((advertiserShare / daypartTotal) * 100).toFixed(1);
 
-          // Add jitter to position (more jitter for smaller values)
+          // Add jitter to position
           const jitterX = (Math.random() - 0.5) * 0.6;
-          const baseX = genrePositions[genre];
+          const baseX = daypartPositions[daypart.key];
 
           // Variable bubble size based on market penetration and actual count
           const bubbleSize = Math.max(
@@ -301,8 +206,9 @@ export default function ProgramAffinityIndex() {
 
           return {
             advertiser,
-            genre,
-            x: baseX + jitterX, // Add jitter to x position
+            daypart: daypart.key,
+            fullLabel: daypart.label,
+            x: baseX + jitterX,
             y: parseFloat(affinity),
             affinity: parseFloat(affinity),
             rawCount: advertiserShare,
@@ -312,16 +218,17 @@ export default function ProgramAffinityIndex() {
         });
       })
       .flat()
-      .filter((item) => item.rawCount > 0); // Remove zero-value items
+      .filter((item) => item.rawCount > 0);
   };
 
+  // Custom tooltip for the scatter chart
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
         <div className="bg-white p-3 border rounded shadow-md">
           <p className="font-medium text-base">{data.advertiser}</p>
-          <p className="text-sm font-medium text-gray-800">{`Genre: ${data.genre}`}</p>
+          <p className="text-sm font-medium text-gray-800">{`Daypart: ${data.fullLabel}`}</p>
           <div className="mt-1 space-y-1">
             <p className="text-sm">{`Affinity: ${data.affinity}%`}</p>
             <p className="text-sm">{`Ad Count: ${data.rawCount}`}</p>
@@ -333,6 +240,7 @@ export default function ProgramAffinityIndex() {
     return null;
   };
 
+  // Custom legend component
   const CustomLegend = () => (
     <div className="grid grid-cols-3 gap-2 mt-2 px-2 text-xs">
       {Object.keys(colors).map((advertiser) => (
@@ -347,35 +255,26 @@ export default function ProgramAffinityIndex() {
     </div>
   );
 
-  // Generate the data once for this render
+  // Generate the data
   const scatterData = calculateAffinity();
 
   return (
     <ChartCard
       icon={<PieChartIcon className="w-6 h-6" />}
-      title="Program Affinity Index"
-      description="Genre Preference Analysis 2024"
+      title="Daypart Affinity Index"
+      description="Daypart Preference Analysis 2025"
       action={
         <div className="flex justify-end">
-          <Select value={selectedChannel} onValueChange={setSelectedChannel}>
+          <Select value={selectedDate} onValueChange={setSelectedDate}>
             <SelectTrigger className="w-48">
-              <SelectValue placeholder="Select channel" />
+              <SelectValue placeholder="Select date" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="television">Television</SelectItem>
-              <SelectItem value="radio">Radio</SelectItem>
-              <SelectItem value="digital">Digital</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select value="weekly">
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="Select granularity" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="daily">Daily</SelectItem>
-              <SelectItem value="weekly">Weekly</SelectItem>
-              <SelectItem value="monthly">Monthly</SelectItem>
+              {availableDates.map((date) => (
+                <SelectItem key={date} value={date}>
+                  {date}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
@@ -394,15 +293,15 @@ export default function ProgramAffinityIndex() {
               domain={[0, 8]}
               ticks={[1, 3, 5, 7]}
               tickFormatter={(value) => {
-                const closestGenre = Object.entries(genrePositions).find(
+                const closestDaypart = Object.entries(daypartPositions).find(
                   ([_, pos]) => Math.abs(pos - value) < 0.5
                 );
-                return closestGenre ? closestGenre[0] : "";
+                return closestDaypart ? closestDaypart[0] : "";
               }}
               tickLine={false}
               axisLine={true}
               tickMargin={10}
-              name="Genre"
+              name="Daypart"
             />
             <YAxis
               type="number"

@@ -12,6 +12,8 @@ import CompetitiveFlightingPatterns from "./competitive-flighting-patterns";
 import CategoryConcentration from "./category-concentration";
 import ChannelMixAnalysis from "./channel-mix-analysis";
 import CompetitiveAdRotation from "./competitive-ad-rotation";
+import NewAdvertisersPanel from "./new-advertisers";
+import SectorAdDistributionBar from "./sector-ad-distribution";
 
 const CompetitiveAnalysisPage = () => {
   return (
@@ -34,48 +36,17 @@ const CompetitiveAnalysisPage = () => {
       }
     >
       <div className="grid gap-6">
-        {/* First row - Share of Voice and Ad Frequency */}
-        <div className="w-full">
-          <ShareOfVoice />
-        </div>
-        <div className="w-full">
-          <AdFrequencyAnalysis />
-        </div>
-
-        {/* Second row - Daypart Distribution and Ad Duration Mix */}
-        <div className="w-full">
-          <DaypartDistribution />
-        </div>
-        <div className="w-full">
-          <AdDurationMix />
-        </div>
-
-        {/* Third row - Ad Pod Positioning and Competitive Flighting Patterns */}
-        <div className="w-full">
-          <AdPodPositioning />
-        </div>
-        <div className="w-full">
-          <CompetitiveFlightingPatterns />
-        </div>
-
-        {/* Full-width components */}
-        <div className="w-full">
-          <ProgramAffinityIndex />
-        </div>
-
-        <div className="w-full">
-          <CategoryConcentration />
-        </div>
-
-        {/* Last row - Channel Mix Analysis and Competitive Ad Rotation */}
-        {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="w-full">
-            <ChannelMixAnalysis />
-          </div>
-          <div className="w-full">
-            <CompetitiveAdRotation />
-          </div>
-        </div> */}
+        <ShareOfVoice />
+        <DaypartDistribution />
+        <AdDurationMix />
+        <AdPodPositioning />
+        <CompetitiveFlightingPatterns />
+        <ProgramAffinityIndex />
+        <CategoryConcentration />
+        <ChannelMixAnalysis />
+        <CompetitiveAdRotation />
+        <NewAdvertisersPanel />
+        <SectorAdDistributionBar />
       </div>
     </ReportLayout>
   );

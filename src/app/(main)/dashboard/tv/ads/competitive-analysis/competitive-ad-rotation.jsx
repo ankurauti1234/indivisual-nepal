@@ -29,7 +29,7 @@ import ChartCard from "@/components/card/charts-card";
 const adRotationData = {
   // Data for various time periods
   timeframes: {
-    "Q1 2024": [
+    "Q1 2025": [
       {
         advertiser: "Shivam Cement",
         uniqueCreatives: 48,
@@ -67,7 +67,7 @@ const adRotationData = {
         refreshRate: 13.9,
       },
     ],
-    "Q2 2024": [
+    "Q2 2025": [
       {
         advertiser: "Shivam Cement",
         uniqueCreatives: 52,
@@ -105,7 +105,7 @@ const adRotationData = {
         refreshRate: 15.0,
       },
     ],
-    "Q3 2024": [
+    "Q3 2025": [
       {
         advertiser: "Shivam Cement",
         uniqueCreatives: 55,
@@ -160,7 +160,7 @@ const advertiserColors = {
 };
 
 export default function CompetitiveAdRotation() {
-  const [selectedTimeframe, setSelectedTimeframe] = useState("Q3 2024");
+  const [selectedTimeframe, setSelectedTimeframe] = useState("Q3 2025");
   const [selectedSector, setSelectedSector] = useState("All");
 
   // Custom tooltip for the scatter chart

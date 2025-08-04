@@ -10,7 +10,7 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
 
   return (
     <Dialog open={!!selectedProgram} onOpenChange={() => setSelectedProgram(null)}>
-      <DialogContent className="max-w-lg bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-zinc-200/50 dark:border-zinc-800/50 p-0">
+      <DialogContent className="max-w-lg bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-zinc-200/50 dark:border-zinc-800/50 p-0 max-h-[90vh] overflow-y-auto">
         <DialogHeader className="p-6 border-b border-zinc-200/50 dark:border-zinc-700/50">
           <DialogTitle className="flex items-center gap-3">
             <img
