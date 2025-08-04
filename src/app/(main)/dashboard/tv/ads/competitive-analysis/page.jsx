@@ -14,6 +14,12 @@ import ChannelMixAnalysis from "./channel-mix-analysis";
 import CompetitiveAdRotation from "./competitive-ad-rotation";
 import NewAdvertisersPanel from "./new-advertisers";
 import SectorAdDistributionBar from "./sector-ad-distribution";
+import CompetitiveBattlecardView from "./battle-card";
+import OptimalAdPlacementPlanner from "./ad-placement-planner";
+import AdFatigueTracker from "./ad-fatigue";
+import AdClutterAlertSystem from "./ad-clutter";
+import SponsorshipROIMeter from "./sponsorship-roi";
+import CrossChannelSyncMap from "./cross-channel-sync";
 
 const CompetitiveAnalysisPage = () => {
   return (
@@ -47,6 +53,12 @@ const CompetitiveAnalysisPage = () => {
         <CompetitiveAdRotation />
         <NewAdvertisersPanel />
         <SectorAdDistributionBar />
+        <CompetitiveBattlecardView/>
+        <OptimalAdPlacementPlanner/>
+        <AdFatigueTracker/>
+        <AdClutterAlertSystem/>
+        <CrossChannelSyncMap/>
+        <SponsorshipROIMeter/>
       </div>
     </ReportLayout>
   );
