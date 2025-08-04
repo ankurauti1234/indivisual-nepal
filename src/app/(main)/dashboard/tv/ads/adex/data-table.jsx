@@ -23,13 +23,12 @@ const ITEMS_PER_PAGE = 10;
 
 const DataTable = ({ data }) => {
   const [filters, setFilters] = useState({
-    Sector: "",
-    Category: "",
-    Advertiser: "",
-    Region: "",
-    "Ad Spend": [0, 50000],
-    GRP: [0, 1000],
-    "GRP %": [0, 10],
+    Industry: [],
+    Category: [],
+    Advertiser: [],
+    "Ad Spend": [0, 5000000],
+    GRP: [0, 100],
+    "GRP %": [0, 1],
   });
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -41,27 +40,29 @@ const DataTable = ({ data }) => {
       if (key === field) return;
       if (key === "Ad Spend" || key === "GRP" || key === "GRP %") {
         filteredData = filteredData.filter(
-          (item) => item[key] >= value[0] && item[key] <= value[1]
+          (item) => item[key === "Industry" ? "Sector" : key] >= value[0] && item[key === "Industry" ? "Sector" : key] <= value[1]
         );
-      } else if (value) {
+      } else if (value && value.length > 0) {
         filteredData = filteredData.filter(
-          (item) => item[key].toString().toLowerCase() === value.toLowerCase()
+          (item) => value.includes(item[key === "Industry" ? "Sector" : key])
         );
       }
     });
 
-    return [...new Set(filteredData.map((item) => item[field]))];
+    return [...new Set(filteredData.map((item) => item[field === "Industry" ? "Sector" : field]))];
   };
 
   // Filter data based on all active filters
   const filteredData = useMemo(() => {
     return data.filter((item) => {
       return Object.entries(filters).every(([key, value]) => {
-        if (!value) return true;
+        if (!value || (Array.isArray(value) && value.length === 0)) return true;
         if (key === "Ad Spend" || key === "GRP" || key === "GRP %") {
-          return item[key] >= value[0] && item[key] <= value[1];
+          const dataKey = key === "Industry" ? "Sector" : key;
+          return item[dataKey] >= value[0] && item[dataKey] <= value[1];
         }
-        return item[key].toString().toLowerCase() === value.toLowerCase();
+        const dataKey = key === "Industry" ? "Sector" : key;
+        return value.includes(item[dataKey]);
       });
     });
   }, [data, filters]);
@@ -77,14 +78,36 @@ const DataTable = ({ data }) => {
     setFilters((prev) => ({
       ...prev,
       [field]: value,
-      ...(field === "Sector" && {
-        Category: "",
-        Advertiser: "",
+      ...(field === "Industry" && {
+        Category: [],
+        Advertiser: [],
       }),
       ...(field === "Category" && {
-        Advertiser: "",
+        Advertiser: [],
       }),
     }));
+  };
+
+  const toggleFilterOption = (field, option) => {
+    setCurrentPage(1);
+    setFilters((prev) => {
+      const currentValues = prev[field] || [];
+      const newValues = currentValues.includes(option)
+        ? currentValues.filter(v => v !== option)
+        : [...currentValues, option];
+      
+      return {
+        ...prev,
+        [field]: newValues,
+        ...(field === "Industry" && {
+          Category: [],
+          Advertiser: [],
+        }),
+        ...(field === "Category" && {
+          Advertiser: [],
+        }),
+      };
+    });
   };
 
   const clearFilter = (field) => {
@@ -93,18 +116,18 @@ const DataTable = ({ data }) => {
       ...prev,
       [field]:
         field === "Ad Spend"
-          ? [0, 50000]
+          ? [0, 5000000]
           : field === "GRP"
-          ? [0, 1000]
+          ? [0, 100]
           : field === "GRP %"
-          ? [0, 10]
-          : "",
-      ...(field === "Sector" && {
-        Category: "",
-        Advertiser: "",
+          ? [0, 1]
+          : [],
+      ...(field === "Industry" && {
+        Category: [],
+        Advertiser: [],
       }),
       ...(field === "Category" && {
-        Advertiser: "",
+        Advertiser: [],
       }),
     }));
   };
@@ -112,13 +135,12 @@ const DataTable = ({ data }) => {
   const clearAllFilters = () => {
     setCurrentPage(1);
     setFilters({
-      Sector: "",
-      Category: "",
-      Advertiser: "",
-      Region: "",
-      "Ad Spend": [0, 50000],
-      GRP: [0, 1000],
-      "GRP %": [0, 10],
+      Industry: [],
+      Category: [],
+      Advertiser: [],
+      "Ad Spend": [0, 5000000],
+      GRP: [0, 100],
+      "GRP %": [0, 1],
     });
   };
 
@@ -131,8 +153,8 @@ const DataTable = ({ data }) => {
 
   const renderFilter = (field) => {
     if (field === "Ad Spend" || field === "GRP" || field === "GRP %") {
-      const max = field === "Ad Spend" ? 50000 : field === "GRP" ? 1000 : 10;
-      const step = field === "Ad Spend" ? 1000 : field === "GRP" ? 10 : 1;
+      const max = field === "Ad Spend" ? 5000000 : field === "GRP" ? 100 : 1;
+      const step = field === "Ad Spend" ? 100000 : field === "GRP" ? 1 : 0.01;
       return (
         <div className="space-y-4 p-4">
           <div className="flex justify-between">
@@ -162,21 +184,38 @@ const DataTable = ({ data }) => {
         <div className="p-2">
           <Input
             placeholder={`Search ${field}...`}
-            value={filters[field]}
-            onChange={(e) => handleFilterChange(field, e.target.value)}
+            value=""
+            onChange={(e) => {
+              const searchTerm = e.target.value.toLowerCase();
+              // Filter options based on search term
+            }}
             className="h-8"
           />
         </div>
         <div className="max-h-[200px] overflow-y-auto">
-          {getFilteredOptions(field).map((value) => (
-            <DropdownMenuItem
-              key={value}
-              onClick={() => handleFilterChange(field, value.toString())}
-              className="cursor-pointer"
-            >
-              {value}
-            </DropdownMenuItem>
-          ))}
+          {getFilteredOptions(field).map((value) => {
+            const isSelected = filters[field].includes(value);
+            return (
+              <DropdownMenuItem
+                key={value}
+                onClick={() => toggleFilterOption(field, value)}
+                className={`cursor-pointer flex items-center gap-2 ${
+                  isSelected ? 'bg-accent text-accent-foreground' : ''
+                }`}
+              >
+                <div className={`w-4 h-4 border rounded flex items-center justify-center ${
+                  isSelected ? 'bg-primary border-primary' : 'border-input'
+                }`}>
+                  {isSelected && (
+                    <svg className="w-3 h-3 text-primary-foreground" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                </div>
+                {value}
+              </DropdownMenuItem>
+            );
+          })}
         </div>
       </div>
     );
@@ -280,14 +319,16 @@ const DataTable = ({ data }) => {
                           {field}
                         </span>
                         <span className="text-sm truncate">
-                          {filters[field]
+                          {filters[field] && filters[field].length > 0
                             ? Array.isArray(filters[field])
-                              ? `${formatNumber(filters[field][0])}${
+                              ? filters[field].length === 1
+                                ? filters[field][0]
+                                : `${filters[field].length} selected`
+                              : `${formatNumber(filters[field][0])}${
                                   field === "GRP %" ? "%" : ""
                                 } - ${formatNumber(filters[field][1])}${
                                   field === "GRP %" ? "%" : ""
                                 }`
-                              : filters[field]
                             : "All"}
                         </span>
                       </div>
@@ -298,7 +339,9 @@ const DataTable = ({ data }) => {
                     {renderFilter(field)}
                   </DropdownMenuContent>
                 </DropdownMenu>
-                {filters[field] && (
+                {(filters[field] && 
+                  ((Array.isArray(filters[field]) && filters[field].length > 0) || 
+                   (!Array.isArray(filters[field]) && filters[field] !== ""))) && (
                   <Button
                     variant="ghost"
                     size="sm"
@@ -323,7 +366,7 @@ const DataTable = ({ data }) => {
                   key={header}
                   className="font-medium text-muted-foreground text-xs uppercase tracking-wider"
                 >
-                  {header}
+                  {header === "Industry" ? "Industry" : header}
                 </TableHead>
               ))}
             </TableRow>
@@ -336,11 +379,11 @@ const DataTable = ({ data }) => {
               >
                 {Object.keys(filters).map((field) => (
                   <TableCell key={field} className="py-4 text-sm">
-                    {typeof row[field] === "number"
-                      ? `${formatNumber(row[field])}${
+                    {typeof row[field === "Industry" ? "Sector" : field] === "number"
+                      ? `${formatNumber(row[field === "Industry" ? "Sector" : field])}${
                           field === "GRP %" ? "%" : ""
                         }`
-                      : row[field]}
+                      : row[field === "Industry" ? "Sector" : field]}
                   </TableCell>
                 ))}
               </TableRow>

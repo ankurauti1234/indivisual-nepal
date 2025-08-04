@@ -1,0 +1,347 @@
+[
+  {
+    "channel": "NTV News",
+    "start": "05:00",
+    "end": "05:30",
+    "program": "Bhajan",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "05:30",
+    "end": "06:00",
+    "program": "Doc Arjun Dhara",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "06:00",
+    "end": "06:20",
+    "program": "Patrapatrika",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "06:20",
+    "end": "07:00",
+    "program": "Jyotish Manthan",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "07:00",
+    "end": "08:00",
+    "program": "News in Nepali",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "08:00",
+    "end": "08:25",
+    "program": "The News",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "08:25",
+    "end": "09:00",
+    "program": "Digital Nepal",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "09:00",
+    "end": "09:30",
+    "program": "National Songs",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "09:30",
+    "end": "10:00",
+    "program": "Gemi La Rosh",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "10:00",
+    "end": "11:00",
+    "program": "Hamro Kathmandu",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "11:00",
+    "end": "11:30",
+    "program": "News in Nepali",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "11:30",
+    "end": "12:00",
+    "program": "Purvadar Parivesh",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "12:00",
+    "end": "12:25",
+    "program": "The News",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "12:25",
+    "end": "13:00",
+    "program": "NTV Hotline",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "13:00",
+    "end": "14:00",
+    "program": "Bandai Chha Nepal",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "14:00",
+    "end": "14:25",
+    "program": "News in Nepali",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "14:25",
+    "end": "15:00",
+    "program": "Rojgar Hamro Sarokar",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "15:00",
+    "end": "16:00",
+    "program": "Bipad Surakshit Nepal",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "16:00",
+    "end": "16:25",
+    "program": "Pradeshik Samachar",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "16:25",
+    "end": "17:00",
+    "program": "Bhojpuri Awaj",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "17:00",
+    "end": "17:30",
+    "program": "Doc Mero Gahun",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "17:30",
+    "end": "18:00",
+    "program": "Sahayatra",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "18:00",
+    "end": "18:25",
+    "program": "Deshko Sangit",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "18:25",
+    "end": "18:38",
+    "program": "Hamro Kathmandu",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "18:38",
+    "end": "19:00",
+    "program": "Navin Krishi Prabidhi",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "19:00",
+    "end": "19:25",
+    "program": "Doc Patan Durbar",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "19:25",
+    "end": "20:00",
+    "program": "Ritar Haldar",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "20:00",
+    "end": "20:50",
+    "program": "News in Nepali",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "20:50",
+    "end": "22:00",
+    "program": "Doc Hami Magar",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "22:00",
+    "end": "22:30",
+    "program": "NTV Hotline",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "22:30",
+    "end": "23:00",
+    "program": "The News",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "23:00",
+    "end": "23:30",
+    "program": "News in Nepali",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "23:30",
+    "end": "00:00",
+    "program": "Sahayatra",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "00:00",
+    "end": "00:30",
+    "program": "News in Nepali",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "00:30",
+    "end": "01:00",
+    "program": "Gemi La Rosh",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "01:00",
+    "end": "01:30",
+    "program": "The News",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "01:30",
+    "end": "02:00",
+    "program": "Ritar Haldar",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "02:00",
+    "end": "02:30",
+    "program": "News in Nepali",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "02:30",
+    "end": "03:00",
+    "program": "Hamro Kathmandu",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "03:00",
+    "end": "03:30",
+    "program": "News in Nepali",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "03:30",
+    "end": "04:00",
+    "program": "National Songs",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "04:00",
+    "end": "04:30",
+    "program": "Pradeshik Samachar",
+    "type": "Program",
+    "date": "2025-07-21"
+  },
+  {
+    "channel": "NTV News",
+    "start": "04:30",
+    "end": "05:00",
+    "program": "Bhojpuri Awaj",
+    "type": "Program",
+    "date": "2025-07-21"
+  }
+]
+

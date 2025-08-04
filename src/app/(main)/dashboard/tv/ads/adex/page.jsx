@@ -16,10 +16,10 @@ const page = () => {
   return (
     <div className='space-y-6'>
       <GRPStats />
+      <DataTable data={tableData} />
       <GRPSunburstChart />
       <SectorScatterPlot />
       <AdSpendDashboard />
-      <DataTable data={tableData} />
       <AdSpentBars />
       <BrandRadarChart />
       {/* <GRPvsSpendChart /> */}
