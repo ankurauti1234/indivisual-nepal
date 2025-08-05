@@ -159,7 +159,7 @@ const RevenueInsights = () => {
       return (
         <div className="bg-background p-4 border rounded shadow-lg">
           <p className="font-bold">{label}</p>
-          <p>{`Revenue: $${payload[0].value.toLocaleString()}`}</p>
+          <p>{`Revenue NPR: ${payload[0].value.toLocaleString()}`}</p>
         </div>
       );
     }
