@@ -10,7 +10,7 @@ const TVChannelTreemap = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
 
-const mockData = {
+  const mockData = {
   "Nepal Television": {
     color: "#FF6B6B",
     share: 20,
@@ -737,7 +737,7 @@ const mockData = {
     }
   };
 
-  const CustomizedContent = ({ x, y, width, height, name, color }) => {
+  const CustomizedContent = ({ x, y, width, height, name, color, size }) => {
     const isHovered = hoveredItem === name;
     const display = width > 50 && height > 50;
     const level = getCurrentLevel();
@@ -790,7 +790,7 @@ const mockData = {
                 fontWeight: "400",
               }}
             >
-              {((width * height) / 5000).toFixed(1)}%
+              {size?.toFixed(1)}%
             </tspan>
           </text>
         )}

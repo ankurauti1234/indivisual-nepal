@@ -172,6 +172,11 @@ const RevenueInsights = () => {
       description="Comprehensive analysis of channel performance, viewer behavior, and audience metrics"
       action={
         <div className="flex gap-4">
+
+           <Button variant="outline" disabled>
+            <Calendar className="mr-2 h-4 w-4" />
+            Week 32
+          </Button>
           <Button>Export Report</Button>
         </div>
       }
@@ -273,7 +278,7 @@ const RevenueInsights = () => {
                         <TableRow key={index}>
                           <TableCell>{advertiser.name}</TableCell>
                           <TableCell>
-                            ${advertiser.spend.toLocaleString()}
+                            NRP {(advertiser.spend*12).toLocaleString()}
                           </TableCell>
                         </TableRow>
                       ))}

@@ -10,6 +10,9 @@ import {
 import ChartCard from "@/components/card/charts-card";
 import { PieChartIcon } from "lucide-react";
 
+
+
+
 const channelColors = {
   "Kantipur TV": "#D32F2F", // Dark Red
   "Nepal Television": "#FF9800", // Dark Orange
@@ -18,56 +21,61 @@ const channelColors = {
   "News 24 Nepal": "#388E3C", // Dark Green
   "Image Channel": "#7B1FA2", // Dark Purple
   "Avenues Television": "#F57C00", // Dark Amber
-  "Mountain Television": "#0288D1", // Deep Blue
-  "Sagarmatha TV": "#D81B60", // Dark Pink
+  "Sagarmatha Television": "#C2185B", // Deep Pink (distinct from original Sagarmatha TV)
+  "ABC TV": "#689F38", // Light Green (distinct from News 24 Nepal)
+  "Prime TV": "#455A64", // Blue Gray (distinct for Prime TV)
 };
-
 
 const channelData = [
   {
     channel_name: "Kantipur TV",
-    share_percentage: 20,
+    share_percentage: 30.58,
     fill: channelColors["Kantipur TV"],
   },
   {
     channel_name: "Nepal Television",
-    share_percentage: 18,
+    share_percentage: 15,
     fill: channelColors["Nepal Television"],
   },
   {
     channel_name: "AP1 TV",
-    share_percentage: 14,
+    share_percentage: 7.63,
     fill: channelColors["AP1 TV"],
   },
   {
     channel_name: "Himalaya TV",
-    share_percentage: 12,
+    share_percentage: 20.60,
     fill: channelColors["Himalaya TV"],
   },
   {
     channel_name: "News 24 Nepal",
-    share_percentage: 10,
+    share_percentage: 6.17,
     fill: channelColors["News 24 Nepal"],
   },
   {
     channel_name: "Image Channel",
-    share_percentage: 10,
+    share_percentage: 6.83,
     fill: channelColors["Image Channel"],
   },
   {
     channel_name: "Avenues Television",
-    share_percentage: 8,
+    share_percentage: 4.40,
     fill: channelColors["Avenues Television"],
   },
   {
-    channel_name: "Mountain Television",
-    share_percentage: 5,
-    fill: channelColors["Mountain Television"],
+    channel_name: "Sagarmatha Television",
+    share_percentage: 2.61,
+    fill: channelColors["Sagarmatha Television"],
   },
   {
-    channel_name: "Sagarmatha TV",
-    share_percentage: 3,
-    fill: channelColors["Sagarmatha TV"],
+    channel_name: "ABC TV",
+    share_percentage: 0.81,
+    fill: channelColors["ABC TV"],
+  },
+  {
+    channel_name: "Prime TV",
+    share_percentage: 4.37,
+    fill: channelColors["Prime TV"],
   },
 ];
 

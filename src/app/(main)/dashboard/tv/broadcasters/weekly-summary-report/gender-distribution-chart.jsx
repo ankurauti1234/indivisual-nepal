@@ -20,14 +20,15 @@ import {
 
 const data = [
   { channel_name: "Kantipur TV", Male: 66.67, Female: 33.33 },
-  { channel_name: "Nepal Television", Male: 60, Female: 40 },
-  { channel_name: "AP1 TV", Male: 45, Female: 55 },
+  { channel_name: "Nepal Television", Male: 60.00, Female: 40.00 },
+  { channel_name: "AP1 TV", Male: 45.00, Female: 55.00 },
   { channel_name: "Himalaya TV", Male: 76.47, Female: 23.53 },
-  { channel_name: "News 24 Nepal", Male: 65, Female: 35 },
+  { channel_name: "News 24 Nepal", Male: 65.00, Female: 35.00 },
   { channel_name: "Image Channel", Male: 50.59, Female: 49.41 },
   { channel_name: "Avenues Television", Male: 31.25, Female: 68.75 },
-  { channel_name: "Mountain Television", Male: 82.43, Female: 17.57 },
-  { channel_name: "Sagarmatha TV", Male: 85.71, Female: 14.23 },
+  { channel_name: "Sagarmatha Television", Male: 55.00, Female: 45.00 },
+  { channel_name: "ABC TV", Male: 60.00, Female: 40.00 },
+  { channel_name: "Prime TV", Male: 50.00, Female: 50.00 },
 ];
 
 const chartConfig = {

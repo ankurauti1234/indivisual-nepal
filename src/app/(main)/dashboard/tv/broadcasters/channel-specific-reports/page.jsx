@@ -35,7 +35,9 @@ import {
   BarChartIcon as ChartBar,
   Download,
   Clock,
+  Calendar,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const CHART_COLORS = {
   blue: "hsl(var(--chart-1))",
@@ -122,6 +124,10 @@ const DailySummary = () => {
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <h1 className="text-4xl font-bold text-gray-900">Daily TV Summary</h1>
+           <Button variant="outline" disabled>
+            <Calendar className="mr-2 h-4 w-4" />
+            Week 32
+          </Button>
           <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
             <Download className="h-4 w-4" />
             Export Report

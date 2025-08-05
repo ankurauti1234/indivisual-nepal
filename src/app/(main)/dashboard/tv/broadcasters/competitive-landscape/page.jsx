@@ -6,6 +6,7 @@ import CostPerGRP from './cost-per-grp'
 import ReportLayout from '@/components/layout/report-layout'
 import { Button } from '@/components/ui/button'
 import NepalTVSpendChart from './channel-industry-ad-bar'
+import { Calendar } from 'lucide-react'
 
 const page = () => {
     return (
@@ -14,6 +15,10 @@ const page = () => {
         description="Comprehensive analysis of channel performance, viewer behavior, and audience metrics"
         action={
           <div className="flex gap-4">
+             <Button variant="outline" disabled>
+            <Calendar className="mr-2 h-4 w-4" />
+            Week 32
+          </Button>
             <Button>Export Report</Button>
           </div>
         }

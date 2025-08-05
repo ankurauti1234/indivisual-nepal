@@ -12,14 +12,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ChartCard from "@/components/card/charts-card";
 
 const channels = [
-  { name: "Kantipur TV", rating: 4.5, viewers: "2.8M" },
-  { name: "Nepal Television", rating: 4.2, viewers: "2.4M" },
-  { name: "AP1 TV", rating: 4.0, viewers: "2.1M" },
-  { name: "Himalaya TV", rating: 3.8, viewers: "1.9M" },
-  { name: "News 24 Nepal", rating: 3.7, viewers: "1.7M" },
-  { name: "Image Channel", rating: 3.5, viewers: "1.5M" },
-  { name: "Avenues Television", rating: 3.3, viewers: "1.3M" },
-  { name: "Mountain Television", rating: 3.2, viewers: "1.2M" },
+  { name: "Kantipur TV", rating: 4.99 },
+  { name: "Himalayan TV", rating: 3.44},
+  { name: "Nepal Television", rating: 2.53},
+  { name: "News 24 Nepal", rating: 1.51},
+  { name: "AP1 TV", rating: 1.08 },
+  { name: "Image Channel", rating: 1.07 },
+  { name: "Avenues Television", rating: 0.79 },
+  { name: "Prime TV", rating: 0.77 },
+  { name: "Sagarmatha Television", rating: 0.43 },
+  { name: "ABC TV", rating: 0.18 },
 ];
 
 const StarRating = ({ rating }) => {

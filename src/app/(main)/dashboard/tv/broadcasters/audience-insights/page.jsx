@@ -28,6 +28,7 @@ import {
   Download,
   PieChartIcon,
   BarChart2,
+  Calendar,
 } from "lucide-react";
 import ViewershipMap from "./viwership-map";
 import ChartCard from "@/components/card/charts-card";
@@ -67,11 +68,13 @@ const AudienceInsightsReport = () => {
   ];
 
   const viewershipByRegion = [
-    { region: "Bagmati", viewers: 500000 },
-    { region: "Gandaki", viewers: 300000 },
-    { region: "Lumbini", viewers: 250000 },
-    { region: "Janakpur", viewers: 200000 },
-    { region: "Karnali", viewers: 150000 },
+    { region: "Bagmati", viewers: 2936095 },
+    { region: "Gandaki", viewers: 932309 },
+    { region: "Lumbini", viewers: 1700529 },
+    { region: "Janakpur", viewers: 1785463 },
+    { region: "Karnali", viewers: 383269 },
+    { region: "Dhawalagiri", viewers: 951258 },
+    { region: "Rapti", viewers: 2163175 },
   ];
 
   const urbanVsRural = [
@@ -80,48 +83,58 @@ const AudienceInsightsReport = () => {
   ];
 
   const topGenres = [
-    { genre: "News", viewers: 400000 },
-    { genre: "Entertainment", viewers: 350000 },
-    { genre: "Sports", viewers: 300000 },
-    { genre: "Comedy", viewers: 250000 },
-    { genre: "Documentaries", viewers: 200000 },
+    { genre: "News", viewers: 460900 },
+    { genre: "Entertainment", viewers: 251500 },
+    { genre: "Sports", viewers: 216200 },
+    { genre: "Music Reality Shows", viewers: 201100 },
+    { genre: "Movies", viewers: 225800 },
+    { genre: "Songs", viewers: 324700 },
+    { genre: "Talk Shows", viewers: 185900 },
+    { genre: "Comedy", viewers: 205100 },
+    { genre: "Others", viewers: 22000 },
+
   ];
 
-  const seasonalShifts = [
-    { month: "Jan", news: 300, entertainment: 200, sports: 150 },
-    { month: "Apr", news: 250, entertainment: 300, sports: 200 },
-    { month: "Jul", news: 200, entertainment: 350, sports: 300 },
-    { month: "Oct", news: 350, entertainment: 250, sports: 150 },
-  ];
 
-  const topPrograms = [
-    { program: "Breaking News Live", viewers: 500000 },
-    { program: "Comedy Hour", viewers: 400000 },
-    { program: "Live Sports Roundup", viewers: 350000 },
-    { program: "Talk of the Town", viewers: 300000 },
-    { program: "Documentary Specials", viewers: 250000 },
-  ];
+
+
+  const  topPrograms= [
+  { "program": "Indreni: Nepal's Musical Extravaganza", "viewers": 18.5*100000 },
+  { "program": "Prime Time News Bulletin", "viewers": 16.2*100000 },
+  { "program": "Voice of Nepal: Singing Star", "viewers": 14.8*100000 },
+  { "program": "Bhunti: A Journey of Joy", "viewers": 12.5*100000 },
+  { "program": "Aanadi: Family Drama Series", "viewers": 11.3*100000 },
+
+]
 
   const newVsOldPrograms = [
-    { name: "New Programs", value: 40 },
-    { name: "Old Programs", value: 60 },
+    { name: "New Programs", value: 37.4 },
+    { name: "Old Programs", value: 72.6 },
   ];
 
-  const averageWatchTime = [
-    { program: "News", time: 30 },
-    { program: "Comedy", time: 45 },
-    { program: "Sports", time: 90 },
-    { program: "Documentaries", time: 60 },
-    { program: "Talk Shows", time: 40 },
-  ];
+const averageWatchTime = [
+  { program: "News", time: 30 },
+  { program: "Entertainment", time: 50 },
+  { program: "Sports", time: 90 },
+  { program: "Music Reality Shows", time: 60 },
+  { program: "Movies", time: 120 },
+  { program: "Songs", time: 20 },
+  { program: "Talk Shows", time: 40 },
+  { program: "Comedy", time: 45 },
+  { program: "Others", time: 35 }
+];
 
-  const dropOffRates = [
-    { program: "News", rate: 10 },
-    { program: "Comedy", rate: 15 },
-    { program: "Sports", rate: 5 },
-    { program: "Documentaries", rate: 20 },
-    { program: "Talk Shows", rate: 25 },
-  ];
+const dropOffRates = [
+  { program: "News", rate: 10 },
+  { program: "Entertainment", rate: 12 },
+  { program: "Sports", rate: 5 },
+  { program: "Music Reality Shows", rate: 8 },
+  { program: "Movies", rate: 7 },
+  { program: "Songs", rate: 18 },
+  { program: "Talk Shows", rate: 25 },
+  { program: "Comedy", rate: 15 },
+  { program: "Others", rate: 22 }
+];
 
   return (
     <ReportLayout
@@ -129,6 +142,10 @@ const AudienceInsightsReport = () => {
       description="Comprehensive analysis of channel performance, viewer behavior, and audience metrics"
       action={
         <div className="flex gap-4">
+          <Button variant="outline" disabled>
+            <Calendar className="mr-2 h-4 w-4" />
+            Week 32
+          </Button>
           <Button>Export Report</Button>
         </div>
       }
@@ -143,7 +160,7 @@ const AudienceInsightsReport = () => {
         </div>
       }
     >
-      <section >
+      <section>
         <h2 className="text-2xl font-bold mb-6">Key Findings</h2>
         <div className="grid grid-cols-1 gap-8">
           {/* Viewership Distribution */}
@@ -329,7 +346,7 @@ const AudienceInsightsReport = () => {
                       <XAxis
                         type="number"
                         tickLine={false}
-                        tickMargin={10}
+                        tickMargin={15}
                         axisLine={false}
                       />
                       <YAxis
@@ -410,12 +427,12 @@ const AudienceInsightsReport = () => {
           {/* Engagement Metrics */}
           <div className="space-y-6">
             <h3 className="text-xl font-semibold">5. Engagement Metrics</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
               {/* Average Watch Time */}
               <ChartCard
                 icon={<BarChart2 className="w-6 h-6" />}
                 title="Average Watch Time by Genre"
-                // description="View GRP of ads across 4 breaks for different TV channels."
+                description="Average watchtime in minutes for top genres in a week"
                 chart={
                   <ResponsiveContainer width="100%" height={400}>
                     <BarChart data={averageWatchTime}>
@@ -499,95 +516,6 @@ const AudienceInsightsReport = () => {
                 }
               />
             </div>
-          </div>
-
-          {/* Seasonal Trends */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold">6. Seasonal Trends</h3>
-
-            <ChartCard
-              icon={<BarChart2 className="w-6 h-6" />}
-              title="Seasonal Content Performance"
-              // description="View GRP of ads across 4 breaks for different TV channels."
-              chart={
-                <ResponsiveContainer width="100%" height={400}>
-                  <AreaChart
-                    data={seasonalShifts}
-                    margin={{
-                      left: 12,
-                      right: 12,
-                      top: 34,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                    <XAxis
-                      dataKey="month"
-                      tickLine={false}
-                      axisLine={false}
-                      tickMargin={8}
-                    />
-                    <YAxis
-                      tickLine={false}
-                      axisLine={false}
-                      tickMargin={8}
-                      tickCount={5}
-                    />
-                    <Tooltip content={<CustomTooltip />} />
-                    <Legend />
-                    <Area
-                      type="linear"
-                      dataKey="news"
-                      stroke={CHART_COLORS.blue}
-                      fill={CHART_COLORS.blue + "80"}
-                      strokeWidth={2}
-                    >
-                      <LabelList
-                        position="top"
-                        offset={12}
-                        className="fill-foreground"
-                        fontSize={12}
-                      />
-                    </Area>
-                    <Area
-                      type="linear"
-                      dataKey="entertainment"
-                      stroke={CHART_COLORS.green}
-                      fill={CHART_COLORS.green + "80"}
-                      strokeWidth={2}
-                    >
-                      <LabelList
-                        position="top"
-                        offset={12}
-                        className="fill-foreground"
-                        fontSize={12}
-                      />
-                    </Area>
-                    <Area
-                      type="linear"
-                      dataKey="sports"
-                      stroke={CHART_COLORS.orange}
-                      fill={CHART_COLORS.orange + "80"}
-                      strokeWidth={2}
-                    >
-                      <LabelList
-                        position="top"
-                        offset={12}
-                        className="fill-foreground"
-                        fontSize={12}
-                      />
-                    </Area>
-                  </AreaChart>
-                </ResponsiveContainer>
-              }
-              footer={
-                <p className="text-sm text-gray-500">
-                  Entertainment content peaks during summer months, while news
-                  viewership shows stronger performance during winter. Sports
-                  viewership demonstrates consistent growth through mid-year
-                  with a decline in Q4.
-                </p>
-              }
-            />
           </div>
         </div>
       </section>
