@@ -128,10 +128,9 @@ const DailySummary = () => {
             <Calendar className="mr-2 h-4 w-4" />
             Week 32
           </Button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-            <Download className="h-4 w-4" />
+                   <Button onClick={() => alert("No data available")}>
             Export Report
-          </button>
+          </Button>
         </div>
         <p className="mt-4 text-lg text-gray-600">
           Comprehensive analysis of today's viewership patterns, top programs,
