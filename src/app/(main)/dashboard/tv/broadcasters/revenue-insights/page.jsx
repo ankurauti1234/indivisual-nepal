@@ -239,12 +239,12 @@ const RevenueInsights = () => {
                   </LineChart>
                 </ResponsiveContainer>
               }
-              footer={
-                <p className="text-sm text-gray-500">
-                  This line graph shows an increase in revenue over the months,
-                  indicating a positive growth trend.
-                </p>
-              }
+              // footer={
+              //   <p className="text-sm text-gray-500">
+              //     This line graph shows an increase in revenue over the months,
+              //     indicating a positive growth trend.
+              //   </p>
+              // }
             />
           </div>
 
@@ -287,11 +287,11 @@ const RevenueInsights = () => {
                     </TableBody>
                   </Table>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Top Advertisers Last Year
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Top Advertisers Last Year
+                //   </p>
+                // }
               />
             </div>
           </div>
@@ -338,12 +338,12 @@ const RevenueInsights = () => {
                     </BarChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Top-performing programs, with "Prime Time News" leading the
-                    list, generating the highest revenue.
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Top-performing programs, with "Prime Time News" leading the
+                //     list, generating the highest revenue.
+                //   </p>
+                // }
               />
 
               <ChartCard
@@ -393,11 +393,11 @@ const RevenueInsights = () => {
                     </BarChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Least-performing programs, with "Weekend Documentary"
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Least-performing programs, with "Weekend Documentary"
+                //   </p>
+                // }
               />
             </div>
           </div>
@@ -443,11 +443,11 @@ const RevenueInsights = () => {
                     </BarChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Most revenue making channles during on going events
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Most revenue making channles during on going events
+                //   </p>
+                // }
               />
 
               <ChartCard
@@ -485,11 +485,11 @@ const RevenueInsights = () => {
                     </BarChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Most revenue making channles during on going events
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Most revenue making channles during on going events
+                //   </p>
+                // }
               />
             </div>
           </div>

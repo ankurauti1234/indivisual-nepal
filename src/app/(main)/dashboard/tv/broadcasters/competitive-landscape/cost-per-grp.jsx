@@ -157,11 +157,11 @@ export default function CostPerGRP() {
           </BarChart>
         </ChartContainer>
       }
-      footer={
-        <p className="text-sm text-gray-500">
-          Showing GRP% distribution for {getTimeframeLabel()} (2024)
-        </p>
-      }
+      // footer={
+      //   <p className="text-sm text-gray-500">
+      //     Showing GRP% distribution for {getTimeframeLabel()} (2024)
+      //   </p>
+      // }
     />
   );
 }

@@ -207,13 +207,13 @@ const dropOffRates = [
                     </ResponsiveContainer>
                   </div>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Prime time viewing accounts for 66.7% of total viewership,
-                    indicating strong evening engagement patterns. This suggests
-                    optimal scheduling opportunities for premium content.
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Prime time viewing accounts for 66.7% of total viewership,
+                //     indicating strong evening engagement patterns. This suggests
+                //     optimal scheduling opportunities for premium content.
+                //   </p>
+                // }
               />
 
               {/* Urban vs Rural */}
@@ -248,13 +248,13 @@ const dropOffRates = [
                     </PieChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Urban viewers represent 70% of our audience, highlighting
-                    the need for targeted content strategies for rural market
-                    penetration.
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Urban viewers represent 70% of our audience, highlighting
+                //     the need for targeted content strategies for rural market
+                //     penetration.
+                //   </p>
+                // }
               />
             </div>
           </div>
@@ -301,14 +301,14 @@ const dropOffRates = [
                   </BarChart>
                 </ResponsiveContainer>
               }
-              footer={
-                <p className="text-sm text-gray-500">
-                  News and entertainment consistently lead viewer engagement,
-                  with documentaries showing potential for growth. Sports
-                  content shows strong seasonal variations but maintains a loyal
-                  viewer base.
-                </p>
-              }
+              // footer={
+              //   <p className="text-sm text-gray-500">
+              //     News and entertainment consistently lead viewer engagement,
+              //     with documentaries showing potential for growth. Sports
+              //     content shows strong seasonal variations but maintains a loyal
+              //     viewer base.
+              //   </p>
+              // }
             />
           </div>
 
@@ -321,13 +321,13 @@ const dropOffRates = [
               title="Geographic Distribution"
               // description="View GRP of ads across 4 breaks for different TV channels."
               chart={<ViewershipMap data={viewershipByRegion} />}
-              footer={
-                <p className="text-sm text-gray-500">
-                  Bagmati and Gandaki provinces show the highest engagement
-                  levels, suggesting opportunities for region-specific content
-                  development and marketing initiatives.
-                </p>
-              }
+              // footer={
+              //   <p className="text-sm text-gray-500">
+              //     Bagmati and Gandaki provinces show the highest engagement
+              //     levels, suggesting opportunities for region-specific content
+              //     development and marketing initiatives.
+              //   </p>
+              // }
             />
           </div>
 
@@ -375,13 +375,13 @@ const dropOffRates = [
                     </BarChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Breaking News Live and Comedy Hour lead viewership,
-                    demonstrating strong audience preference for timely news
-                    coverage and entertainment content.
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Breaking News Live and Comedy Hour lead viewership,
+                //     demonstrating strong audience preference for timely news
+                //     coverage and entertainment content.
+                //   </p>
+                // }
               />
 
               {/* Program Mix */}
@@ -415,13 +415,13 @@ const dropOffRates = [
                     </PieChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    The current programming mix maintains a healthy balance
-                    between established shows and new content, ensuring audience
-                    retention while allowing for innovation.
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     The current programming mix maintains a healthy balance
+                //     between established shows and new content, ensuring audience
+                //     retention while allowing for innovation.
+                //   </p>
+                // }
               />
             </div>
           </div>
@@ -464,13 +464,13 @@ const dropOffRates = [
                     </BarChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Sports content maintains the highest average watch time at
-                    90 minutes, followed by documentaries at 60 minutes. This
-                    indicates strong viewer engagement with long-format content.
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Sports content maintains the highest average watch time at
+                //     90 minutes, followed by documentaries at 60 minutes. This
+                //     indicates strong viewer engagement with long-format content.
+                //   </p>
+                // }
               />
 
               {/* Drop-off Rates */}
@@ -508,14 +508,14 @@ const dropOffRates = [
                     </BarChart>
                   </ResponsiveContainer>
                 }
-                footer={
-                  <p className="text-sm text-gray-500">
-                    Sports programming shows the lowest drop-off rate at 5%,
-                    while talk shows experience the highest at 25%. This
-                    suggests opportunities for format optimization in talk show
-                    segments.
-                  </p>
-                }
+                // footer={
+                //   <p className="text-sm text-gray-500">
+                //     Sports programming shows the lowest drop-off rate at 5%,
+                //     while talk shows experience the highest at 25%. This
+                //     suggests opportunities for format optimization in talk show
+                //     segments.
+                //   </p>
+                // }
               />
             </div>
           </div>

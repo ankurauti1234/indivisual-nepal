@@ -109,13 +109,13 @@ export default function NepalTVSpendChart() {
           </BarChart>
         </ChartContainer>
       }
-      footer={
-        <div className="flex-col items-start gap-2 text-sm">
-          <div className="leading-none text-muted-foreground">
-            Showing percentage distribution of advertising spend across industries for the week
-          </div>
-        </div>
-      }
+      // footer={
+      //   <div className="flex-col items-start gap-2 text-sm">
+      //     <div className="leading-none text-muted-foreground">
+      //       Showing percentage distribution of advertising spend across industries for the week
+      //     </div>
+      //   </div>
+      // }
     />
   );
 }

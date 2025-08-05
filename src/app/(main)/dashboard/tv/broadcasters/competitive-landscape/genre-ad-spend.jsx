@@ -262,11 +262,11 @@ export default function GenreAdSpend() {
           </BarChart>
         </ChartContainer>
       }
-      footer={
-        <p className="text-sm text-gray-500">
-          Showing ad spend distribution for {channelData[selectedChannel].name}
-        </p>
-      }
+      // footer={
+      //   <p className="text-sm text-gray-500">
+      //     Showing ad spend distribution for {channelData[selectedChannel].name}
+      //   </p>
+      // }
     />
   );
 }
