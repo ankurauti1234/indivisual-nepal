@@ -18,12 +18,7 @@ export const channels = [
     id: "Himalayan TV",
     name: "Himalayan TV",
     logo: "/assets/himalayatv.jpg",
-  },
-  {
-    id: "Sagarmatha",
-    name: "Sagarmatha TV",
-    logo: "/assets/sagarmatha.png",
-  },
+  }
 ];
 
 
