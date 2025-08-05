@@ -45,21 +45,21 @@ const CompetitiveAnalysisPage = () => {
       <div className="grid gap-6">
         <ShareOfVoice />
         <DaypartDistribution />
-        <AdDurationMix />
+        {/* <AdDurationMix /> */}
         <AdPodPositioning />
         <CompetitiveFlightingPatterns />
-        <ProgramAffinityIndex />
+        {/* <ProgramAffinityIndex /> */}
         <CategoryConcentration />
         <TopAdvertisersPanel />
-        <CompetitiveAdRotation />
+        {/* <CompetitiveAdRotation /> */}
         <NewAdvertisersPanel />
         <SectorAdDistributionBar />
-        <CompetitiveBattlecardView/>
-        <OptimalAdPlacementPlanner/>
-        <AdFatigueTracker/>
-        <AdClutterAlertSystem/>
-        <CrossChannelSyncMap/>
-        <SponsorshipROIMeter/>
+        {/* <CompetitiveBattlecardView/> */}
+        {/* <OptimalAdPlacementPlanner/> */}
+        {/* <AdFatigueTracker/> */}
+        {/* <AdClutterAlertSystem/> */}
+        {/* <CrossChannelSyncMap/> */}
+        {/* <SponsorshipROIMeter/> */}
       </div>
     </ReportLayout>
   );
