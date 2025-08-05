@@ -10,7 +10,7 @@ import ProgramAffinityIndex from "./program-affinity-index";
 import AdPodPositioning from "./ad-pod-positioning";
 import CompetitiveFlightingPatterns from "./competitive-flighting-patterns";
 import CategoryConcentration from "./category-concentration";
-import ChannelMixAnalysis from "./channel-mix-analysis";
+// import ChannelMixAnalysis from "./channel-mix-analysis";
 import CompetitiveAdRotation from "./competitive-ad-rotation";
 import NewAdvertisersPanel from "./new-advertisers";
 import SectorAdDistributionBar from "./sector-ad-distribution";
@@ -20,6 +20,7 @@ import AdFatigueTracker from "./ad-fatigue";
 import AdClutterAlertSystem from "./ad-clutter";
 import SponsorshipROIMeter from "./sponsorship-roi";
 import CrossChannelSyncMap from "./cross-channel-sync";
+import TopAdvertisersPanel from "./channel-mix-analysis";
 
 const CompetitiveAnalysisPage = () => {
   return (
@@ -49,7 +50,7 @@ const CompetitiveAnalysisPage = () => {
         <CompetitiveFlightingPatterns />
         <ProgramAffinityIndex />
         <CategoryConcentration />
-        <ChannelMixAnalysis />
+        <TopAdvertisersPanel />
         <CompetitiveAdRotation />
         <NewAdvertisersPanel />
         <SectorAdDistributionBar />

@@ -25,106 +25,109 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Sample data for sector ad distribution by TV channel
-const sampleData = {
+// Data for sector ad distribution by TV channel
+const data = {
   weeks: [
     {
-      week: "Week 1",
+      week: "2025-Week-27",
       data: [
         {
-          sector: "Construction",
+          sector: "PERSONAL CARE",
           stations: [
-            { station: "Nepal Television", adCount: 50, airtime: 1200 },
-            { station: "Kantipur TV", adCount: 40, airtime: 1000 },
-            { station: "Avenues TV", adCount: 30, airtime: 800 },
+            { station: "Kantipur HD TV", adCount: 527, airtime: 19829.82 },
+            { station: "Image Channel", adCount: 493, airtime: 18719.34 },
+            { station: "Galaxy 4K", adCount: 445, airtime: 16645.8 },
+            { station: "NTV Nepal", adCount: 470, airtime: 17912.88 },
+            { station: "News 24", adCount: 451, airtime: 16884.54 },
           ],
         },
         {
-          sector: "Telecommunications",
+          sector: "FMCG",
           stations: [
-            { station: "Nepal Television", adCount: 45, airtime: 1100 },
-            { station: "Kantipur TV", adCount: 35, airtime: 900 },
-            { station: "Avenues TV", adCount: 25, airtime: 700 },
+            { station: "Kantipur HD TV", adCount: 495, airtime: 18430.2 },
+            { station: "Image Channel", adCount: 467, airtime: 17497.68 },
+            { station: "Galaxy 4K", adCount: 442, airtime: 17087.64 },
+            { station: "NTV Nepal", adCount: 503, airtime: 18747.78 },
+            { station: "News 24", adCount: 483, airtime: 18207.96 },
           ],
         },
         {
-          sector: "Manufacturing",
+          sector: "CONSUMER DURABLES",
           stations: [
-            { station: "Nepal Television", adCount: 30, airtime: 800 },
-            { station: "Kantipur TV", adCount: 25, airtime: 600 },
-            { station: "Avenues TV", adCount: 20, airtime: 500 },
-          ],
-        },
-      ],
-    },
-    {
-      week: "Week 2",
-      data: [
-        {
-          sector: "Construction",
-          stations: [
-            { station: "Nepal Television", adCount: 48, airtime: 1150 },
-            { station: "Kantipur TV", adCount: 38, airtime: 950 },
-            { station: "Avenues TV", adCount: 28, airtime: 750 },
+            { station: "Kantipur HD TV", adCount: 258, airtime: 9683.76 },
+            { station: "Image Channel", adCount: 276, airtime: 9853.02 },
+            { station: "Galaxy 4K", adCount: 274, airtime: 10124.94 },
+            { station: "NTV Nepal", adCount: 271, airtime: 10067.52 },
+            { station: "News 24", adCount: 309, airtime: 11691.72 },
           ],
         },
         {
-          sector: "Telecommunications",
+          sector: "FINANCE",
           stations: [
-            { station: "Nepal Television", adCount: 43, airtime: 1050 },
-            { station: "Kantipur TV", adCount: 33, airtime: 850 },
-            { station: "Avenues TV", adCount: 23, airtime: 650 },
+            { station: "Kantipur HD TV", adCount: 191, airtime: 6863.7 },
+            { station: "Image Channel", adCount: 180, airtime: 6448.68 },
+            { station: "Galaxy 4K", adCount: 174, airtime: 6701.64 },
+            { station: "NTV Nepal", adCount: 181, airtime: 7089.6 },
+            { station: "News 24", adCount: 189, airtime: 7138.86 },
           ],
         },
         {
-          sector: "Manufacturing",
+          sector: "CONSTRUCTION",
           stations: [
-            { station: "Nepal Television", adCount: 28, airtime: 750 },
-            { station: "Kantipur TV", adCount: 23, airtime: 550 },
-            { station: "Avenues TV", adCount: 18, airtime: 450 },
-          ],
-        },
-      ],
-    },
-    {
-      week: "Week 3",
-      data: [
-        {
-          sector: "Construction",
-          stations: [
-            { station: "Nepal Television", adCount: 52, airtime: 1250 },
-            { station: "Kantipur TV", adCount: 42, airtime: 1050 },
-            { station: "Avenues TV", adCount: 32, airtime: 850 },
+            { station: "Kantipur HD TV", adCount: 111, airtime: 4349.7 },
+            { station: "Image Channel", adCount: 89, airtime: 3402.96 },
+            { station: "Galaxy 4K", adCount: 105, airtime: 4140 },
+            { station: "NTV Nepal", adCount: 96, airtime: 3618.84 },
+            { station: "News 24", adCount: 93, airtime: 3522.42 },
           ],
         },
         {
-          sector: "Telecommunications",
+          sector: "INFRASTRUCTURE",
           stations: [
-            { station: "Nepal Television", adCount: 47, airtime: 1150 },
-            { station: "Kantipur TV", adCount: 37, airtime: 950 },
-            { station: "Avenues TV", adCount: 27, airtime: 750 },
+            { station: "Kantipur HD TV", adCount: 112, airtime: 4308.78 },
+            { station: "Image Channel", adCount: 87, airtime: 3302.7 },
+            { station: "Galaxy 4K", adCount: 109, airtime: 4130.28 },
+            { station: "NTV Nepal", adCount: 100, airtime: 3661.56 },
+            { station: "News 24", adCount: 101, airtime: 3604.56 },
           ],
         },
         {
-          sector: "Manufacturing",
+          sector: "HOUSEHOLD PRODUCTS",
           stations: [
-            { station: "Nepal Television", adCount: 32, airtime: 850 },
-            { station: "Kantipur TV", adCount: 27, airtime: 650 },
-            { station: "Avenues TV", adCount: 22, airtime: 550 },
+            { station: "Kantipur HD TV", adCount: 108, airtime: 4067.94 },
+            { station: "Image Channel", adCount: 89, airtime: 3389.58 },
+            { station: "Galaxy 4K", adCount: 89, airtime: 3289.92 },
+            { station: "NTV Nepal", adCount: 94, airtime: 3525.06 },
+            { station: "News 24", adCount: 94, airtime: 3749.82 },
+          ],
+        },
+        {
+          sector: "EDUCATION",
+          stations: [
+            { station: "Kantipur HD TV", adCount: 91, airtime: 3221.82 },
+            { station: "Image Channel", adCount: 98, airtime: 3748.86 },
+            { station: "Galaxy 4K", adCount: 102, airtime: 3833.88 },
+            { station: "NTV Nepal", adCount: 92, airtime: 3395.46 },
+            { station: "News 24", adCount: 92, airtime: 3500.7 },
           ],
         },
       ],
     },
   ],
   sectors: [
-    { name: "Construction", color: "#ff6b6b" },
-    { name: "Telecommunications", color: "#4ecdc4" },
-    { name: "Manufacturing", color: "#45b7d1" },
+    { name: "PERSONAL CARE", color: "#FF6B6B" },
+    { name: "FMCG", color: "#4ECDC4" },
+    { name: "CONSUMER DURABLES", color: "#45B7D1" },
+    { name: "FINANCE", color: "#96CEB4" },
+    { name: "CONSTRUCTION", color: "#FFEEAD" },
+    { name: "INFRASTRUCTURE", color: "#D4A5A5" },
+    { name: "HOUSEHOLD PRODUCTS", color: "#9B59B6" },
+    { name: "EDUCATION", color: "#3498DB" },
   ],
 };
 
 const SectorAdDistributionBar = () => {
-  const [selectedWeeks, setSelectedWeeks] = useState([sampleData.weeks[0].week]);
+  const [selectedWeeks, setSelectedWeeks] = useState([data.weeks[0].week]);
   const [selectedStations, setSelectedStations] = useState(["all"]);
   const [showAirtime, setShowAirtime] = useState(false);
   const [isCollapsibleOpen, setIsCollapsibleOpen] = useState(false);
@@ -133,7 +136,7 @@ const SectorAdDistributionBar = () => {
   const chartContainerRef = useRef(null);
 
   // Derive unique stations from the first week's data
-  const allStations = sampleData.weeks[0]?.data[0]?.stations.map((s) => s.station) || [];
+  const allStations = data.weeks[0]?.data[0]?.stations.map((s) => s.station) || [];
 
   // Handle week selection
   const handleWeekChange = (week) => {
@@ -141,7 +144,7 @@ const SectorAdDistributionBar = () => {
       const newWeeks = prev.includes(week)
         ? prev.filter((w) => w !== week)
         : [...prev, week];
-      return newWeeks.length > 0 ? newWeeks : [sampleData.weeks[0].week];
+      return newWeeks.length > 0 ? newWeeks : [data.weeks[0].week];
     });
   };
 
@@ -172,10 +175,10 @@ const SectorAdDistributionBar = () => {
     // Aggregate data across selected weeks
     const rawValues = {};
     let totalValue = 0;
-    sampleData.sectors.forEach((sector) => {
+    data.sectors.forEach((sector) => {
       let sectorValue = 0;
       selectedWeeks.forEach((week) => {
-        const weekData = sampleData.weeks.find((w) => w.week === week);
+        const weekData = data.weeks.find((w) => w.week === week);
         const stationEntry = weekData?.data
           ?.find((s) => s.sector === sector.name)
           ?.stations.find((s) => s.station === station);
@@ -187,7 +190,7 @@ const SectorAdDistributionBar = () => {
 
     // Avoid division by zero
     const total = totalValue || 1;
-    sampleData.sectors.forEach((sector) => {
+    data.sectors.forEach((sector) => {
       stationData[sector.name] = (rawValues[sector.name] / total) * 100;
     });
     stationData._rawValues = rawValues;
@@ -227,14 +230,14 @@ const SectorAdDistributionBar = () => {
   const barHeight = 60;
   const barGap = 40;
   const chartHeight = stations.length * (barHeight + barGap) - barGap;
-  const yAxisWidth = 80;
+  const yAxisWidth = 120; // Increased for longer station names
 
   return (
-    <Card className="p-0 gap-0 w-full">
+    <Card className="p-0 gap-0 w-full shadow-xl rounded-xl overflow-hidden bg-gradient-to-br from-white to-gray-50">
       <CardHeader className="p-4 flex flex-row items-center justify-between">
         <div className="flex flex-col">
-          <CardTitle>Sector Ad Distribution by TV Channel</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-2xl font-bold text-gray-800">Sector Ad Distribution by TV Channel</CardTitle>
+          <CardDescription className="text-gray-500">
             {showAirtime ? "Ad airtime (seconds)" : "Ad spots"} for{" "}
             {selectedWeeks.join(", ")}
           </CardDescription>
@@ -245,13 +248,13 @@ const SectorAdDistributionBar = () => {
             onValueChange={handleWeekChange}
             multiple
           >
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-48 bg-white border-gray-200">
               <SelectValue placeholder="Select weeks">
                 {selectedWeeks.length > 0 ? selectedWeeks.join(", ") : "Select weeks"}
               </SelectValue>
             </SelectTrigger>
             <SelectContent>
-              {sampleData.weeks.map((week) => (
+              {data.weeks.map((week) => (
                 <SelectItem key={week.week} value={week.week}>
                   <div className="flex items-center">
                     <input
@@ -271,7 +274,7 @@ const SectorAdDistributionBar = () => {
             onValueChange={handleStationChange}
             multiple
           >
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-48 bg-white border-gray-200">
               <SelectValue placeholder="Select channels">
                 {selectedStations.includes("all") ? "All Channels" : selectedStations.join(", ")}
               </SelectValue>
@@ -306,14 +309,14 @@ const SectorAdDistributionBar = () => {
           <Toggle
             pressed={showAirtime}
             onPressedChange={setShowAirtime}
-            className="w-full"
+            className="w-full bg-white border-gray-200 hover:bg-gray-100"
           >
-            {showAirtime ? "Show Ad spots" : "Show Airtime (s)"}
+            {showAirtime ? "Show Ad Spots" : "Show Airtime (s)"}
           </Toggle>
         </div>
       </CardHeader>
       <Separator />
-      <CardContent className="p-4">
+      <CardContent className="p-6">
         <div
           ref={chartContainerRef}
           className="relative w-full"
@@ -324,7 +327,7 @@ const SectorAdDistributionBar = () => {
             {stations.map((station, index) => (
               <div
                 key={station}
-                className="text-xs"
+                className="text-xs font-medium text-gray-700"
                 style={{
                   position: "absolute",
                   top: `${index * (barHeight + barGap) + barHeight / 2}px`,
@@ -347,7 +350,7 @@ const SectorAdDistributionBar = () => {
               let currentWidth = 0;
               const totalValue = stationData._totalValue;
               // Sort sectors by percentage in descending order
-              const sortedSectors = [...sampleData.sectors].sort((a, b) => {
+              const sortedSectors = [...data.sectors].sort((a, b) => {
                 const aPercentage = stationData[a.name] || 0;
                 const bPercentage = stationData[b.name] || 0;
                 return bPercentage - aPercentage;
@@ -386,6 +389,7 @@ const SectorAdDistributionBar = () => {
                               ? "0 6px 6px 0"
                               : "0",
                           transition: "width 0.3s ease, opacity 0.3s ease",
+                          filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
                         }}
                         onMouseEnter={(e) =>
                           handleMouseEnter(
@@ -407,7 +411,7 @@ const SectorAdDistributionBar = () => {
                             textShadow: "0 0 2px rgba(0,0,0,0.5)",
                           }}
                         >
-                          {rawValue} {showAirtime ? "sec" : "spot"}
+                          {rawValue.toFixed(showAirtime ? 2 : 0)} {showAirtime ? "sec" : "spots"}
                         </span>
                       </div>
                     );
@@ -429,7 +433,7 @@ const SectorAdDistributionBar = () => {
                       whiteSpace: "nowrap",
                     }}
                   >
-                    {totalValue} {showAirtime ? "sec" : "spot"}
+                    {totalValue.toFixed(showAirtime ? 2 : 0)} {showAirtime ? "sec" : "spots"}
                   </span>
                 </div>
               );
@@ -438,7 +442,7 @@ const SectorAdDistributionBar = () => {
           {/* Tooltip */}
           {tooltip && (
             <div
-              className="absolute bg-card p-3 border rounded-lg shadow-lg pointer-events-none"
+              className="absolute bg-white p-3 border border-gray-200 rounded-lg shadow-lg pointer-events-none"
               style={{
                 left: `${tooltip.x}px`,
                 top: `${tooltip.y}px`,
@@ -446,19 +450,19 @@ const SectorAdDistributionBar = () => {
                 opacity: tooltip.visible ? 1 : 0,
               }}
             >
-              <p className="font-semibold">{tooltip.station}</p>
+              <p className="font-semibold text-gray-800">{tooltip.station}</p>
               <div className="flex items-center gap-2 mt-1">
                 <div
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: tooltip.color }}
                 />
-                <span className="text-sm text-muted-foreground">{tooltip.sector}</span>
+                <span className="text-sm text-gray-600">{tooltip.sector}</span>
               </div>
               <p className="text-sm font-medium mt-1">
-                {tooltip.value} {showAirtime ? "sec" : "spot"}
+                {tooltip.value.toFixed(showAirtime ? 2 : 0)} {showAirtime ? "sec" : "spots"}
               </p>
-              <p className="text-xs text-muted-foreground">
-                {Math.round(tooltip.percentage)}% of {tooltip.total} {showAirtime ? "sec" : "spot"}
+              <p className="text-xs text-gray-600">
+                {Math.round(tooltip.percentage)}% of {tooltip.total.toFixed(showAirtime ? 2 : 0)} {showAirtime ? "sec" : "spots"}
               </p>
             </div>
           )}
@@ -473,7 +477,7 @@ const SectorAdDistributionBar = () => {
         >
           <CollapsibleTrigger asChild>
             <div className="flex items-center justify-between w-full">
-              <span className="text-sm text-muted-foreground">Legend</span>
+              <span className="text-sm text-gray-500">Legend</span>
               {isCollapsibleOpen ? (
                 <ChevronUp className="h-4 w-4" />
               ) : (
@@ -483,7 +487,7 @@ const SectorAdDistributionBar = () => {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="flex flex-wrap gap-2 mt-2">
-              {sampleData.sectors.map((sector) => (
+              {data.sectors.map((sector) => (
                 <button
                   key={sector.name}
                   onClick={() => handleSectorClick(sector.name)}

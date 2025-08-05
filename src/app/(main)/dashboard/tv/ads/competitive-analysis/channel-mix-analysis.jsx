@@ -20,48 +20,194 @@ import {
 import { Button } from "@/components/ui/button";
 import ChartCard from "@/components/card/charts-card";
 
-// Sample data for top advertisers
+// Data for top advertisers
 const topAdvertisersData = [
   {
-    advertiser: "Shivam Cement",
-    sector: "Construction",
-    "Nepal Television": { airtime: 1200, plays: 45 },
-    "Kantipur TV": { airtime: 900, plays: 35 },
-    "Avenues TV": { airtime: 600, plays: 25 },
+    advertiser: "Photex Power",
+    sector: "INFRASTRUCTURE",
+    "Galaxy 4K": { airtime: 4130, plays: 109 },
+    "Image Channel": { airtime: 3309, plays: 87 },
+    "Kantipur HD TV": { airtime: 4305, plays: 112 },
+    "NTV Nepal": { airtime: 3662, plays: 100 },
+    "News 24": { airtime: 3603, plays: 101 },
   },
   {
-    advertiser: "N Cell",
-    sector: "Telecommunications",
-    "Nepal Television": { airtime: 1000, plays: 40 },
-    "Kantipur TV": { airtime: 800, plays: 30 },
-    "Avenues TV": { airtime: 500, plays: 20 },
+    advertiser: "Asianpaints",
+    sector: "CONSTRUCTION",
+    "Galaxy 4K": { airtime: 4138, plays: 105 },
+    "Image Channel": { airtime: 3404, plays: 89 },
+    "Kantipur HD TV": { airtime: 4355, plays: 111 },
+    "NTV Nepal": { airtime: 3621, plays: 96 },
+    "News 24": { airtime: 3522, plays: 93 },
   },
   {
-    advertiser: "Asian Paints",
-    sector: "Manufacturing",
-    "Nepal Television": { airtime: 800, plays: 30 },
-    "Kantipur TV": { airtime: 700, plays: 25 },
-    "Avenues TV": { airtime: 400, plays: 15 },
+    advertiser: "Lux",
+    sector: "PERSONAL CARE",
+    "Galaxy 4K": { airtime: 3966, plays: 103 },
+    "Image Channel": { airtime: 4036, plays: 105 },
+    "Kantipur HD TV": { airtime: 3997, plays: 108 },
+    "NTV Nepal": { airtime: 3048, plays: 80 },
+    "News 24": { airtime: 3074, plays: 80 },
   },
   {
-    advertiser: "Nike",
-    sector: "Retail",
-    "Nepal Television": { airtime: 1100, plays: 42 },
-    "Kantipur TV": { airtime: 850, plays: 32 },
-    "Avenues TV": { airtime: 550, plays: 22 },
+    advertiser: "Right Path",
+    sector: "EDUCATION",
+    "Galaxy 4K": { airtime: 3832, plays: 102 },
+    "Image Channel": { airtime: 3748, plays: 98 },
+    "Kantipur HD TV": { airtime: 3220, plays: 91 },
+    "NTV Nepal": { airtime: 3391, plays: 92 },
+    "News 24": { airtime: 3501, plays: 92 },
   },
   {
-    advertiser: "Others",
-    sector: "Miscellaneous",
-    "Nepal Television": { airtime: 950, plays: 38 },
-    "Kantipur TV": { airtime: 750, plays: 28 },
-    "Avenues TV": { airtime: 450, plays: 18 },
+    advertiser: "Sprite",
+    sector: "FMCG",
+    "Galaxy 4K": { airtime: 3754, plays: 101 },
+    "Image Channel": { airtime: 3525, plays: 95 },
+    "Kantipur HD TV": { airtime: 3885, plays: 101 },
+    "NTV Nepal": { airtime: 4226, plays: 108 },
+    "News 24": { airtime: 3358, plays: 93 },
+  },
+  {
+    advertiser: "Microwave Oven",
+    sector: "CONSUMER DURABLES",
+    "Galaxy 4K": { airtime: 3669, plays: 100 },
+    "Image Channel": { airtime: 3250, plays: 91 },
+    "Kantipur HD TV": { airtime: 2916, plays: 80 },
+    "NTV Nepal": { airtime: 3592, plays: 94 },
+    "News 24": { airtime: 4352, plays: 116 },
+  },
+  {
+    advertiser: "Dove",
+    sector: "PERSONAL CARE",
+    "Galaxy 4K": { airtime: 3421, plays: 93 },
+    "Image Channel": { airtime: 3780, plays: 104 },
+    "Kantipur HD TV": { airtime: 4219, plays: 109 },
+    "NTV Nepal": { airtime: 3731, plays: 95 },
+    "News 24": { airtime: 3294, plays: 90 },
+  },
+  {
+    advertiser: "Dabur",
+    sector: "FMCG",
+    "Galaxy 4K": { airtime: 3682, plays: 92 },
+    "Image Channel": { airtime: 3923, plays: 103 },
+    "Kantipur HD TV": { airtime: 3249, plays: 87 },
+    "NTV Nepal": { airtime: 3416, plays: 95 },
+    "News 24": { airtime: 3577, plays: 91 },
+  },
+  {
+    advertiser: "Minto",
+    sector: "FMCG",
+    "Galaxy 4K": { airtime: 3546, plays: 92 },
+    "Image Channel": { airtime: 3370, plays: 91 },
+    "Kantipur HD TV": { airtime: 3912, plays: 106 },
+    "NTV Nepal": { airtime: 4072, plays: 114 },
+    "News 24": { airtime: 4003, plays: 104 },
+  },
+  {
+    advertiser: "Citizen Life",
+    sector: "FINANCE",
+    "Galaxy 4K": { airtime: 3398, plays: 91 },
+    "Image Channel": { airtime: 3163, plays: 91 },
+    "Kantipur HD TV": { airtime: 3772, plays: 103 },
+    "NTV Nepal": { airtime: 4145, plays: 104 },
+    "News 24": { airtime: 4152, plays: 108 },
+  },
+  {
+    advertiser: "OK laundry soap",
+    sector: "HOUSEHOLD PRODUCTS",
+    "Galaxy 4K": { airtime: 3291, plays: 89 },
+    "Image Channel": { airtime: 3391, plays: 89 },
+    "Kantipur HD TV": { airtime: 4071, plays: 108 },
+    "NTV Nepal": { airtime: 3520, plays: 94 },
+    "News 24": { airtime: 3749, plays: 94 },
+  },
+  {
+    advertiser: "LG",
+    sector: "CONSUMER DURABLES",
+    "Galaxy 4K": { airtime: 3326, plays: 88 },
+    "Image Channel": { airtime: 3436, plays: 95 },
+    "Kantipur HD TV": { airtime: 3045, plays: 77 },
+    "NTV Nepal": { airtime: 3339, plays: 92 },
+    "News 24": { airtime: 3612, plays: 97 },
+  },
+  {
+    advertiser: "Closeup",
+    sector: "PERSONAL CARE",
+    "Galaxy 4K": { airtime: 3146, plays: 87 },
+    "Image Channel": { airtime: 3540, plays: 86 },
+    "Kantipur HD TV": { airtime: 4137, plays: 103 },
+    "NTV Nepal": { airtime: 4135, plays: 106 },
+    "News 24": { airtime: 3668, plays: 96 },
+  },
+  {
+    advertiser: "Air Purifier",
+    sector: "CONSUMER DURABLES",
+    "Galaxy 4K": { airtime: 3139, plays: 86 },
+    "Image Channel": { airtime: 3169, plays: 90 },
+    "Kantipur HD TV": { airtime: 3729, plays: 101 },
+    "NTV Nepal": { airtime: 3129, plays: 85 },
+    "News 24": { airtime: 3720, plays: 96 },
+  },
+  {
+    advertiser: "Dermi cool",
+    sector: "PERSONAL CARE",
+    "Galaxy 4K": { airtime: 3286, plays: 86 },
+    "Image Channel": { airtime: 4020, plays: 110 },
+    "Kantipur HD TV": { airtime: 3459, plays: 99 },
+    "NTV Nepal": { airtime: 3275, plays: 89 },
+    "News 24": { airtime: 3111, plays: 83 },
+  },
+  {
+    advertiser: "E Sewa",
+    sector: "FINANCE",
+    "Galaxy 4K": { airtime: 3305, plays: 83 },
+    "Image Channel": { airtime: 3286, plays: 89 },
+    "Kantipur HD TV": { airtime: 3089, plays: 88 },
+    "NTV Nepal": { airtime: 2947, plays: 77 },
+    "News 24": { airtime: 2985, plays: 81 },
+  },
+  {
+    advertiser: "Toffichoo",
+    sector: "FMCG",
+    "Galaxy 4K": { airtime: 3186, plays: 79 },
+    "Image Channel": { airtime: 3483, plays: 94 },
+    "Kantipur HD TV": { airtime: 3656, plays: 98 },
+    "NTV Nepal": { airtime: 3490, plays: 92 },
+    "News 24": { airtime: 3505, plays: 98 },
+  },
+  {
+    advertiser: "Fanta",
+    sector: "FMCG",
+    "Galaxy 4K": { airtime: 2921, plays: 78 },
+    "Image Channel": { airtime: 3200, plays: 84 },
+    "Kantipur HD TV": { airtime: 3736, plays: 103 },
+    "NTV Nepal": { airtime: 3538, plays: 94 },
+    "News 24": { airtime: 3768, plays: 97 },
+  },
+  {
+    advertiser: "cinthol",
+    sector: "PERSONAL CARE",
+    "Galaxy 4K": { airtime: 2821, plays: 76 },
+    "Image Channel": { airtime: 3343, plays: 88 },
+    "Kantipur HD TV": { airtime: 4017, plays: 108 },
+    "NTV Nepal": { airtime: 3733, plays: 100 },
+    "News 24": { airtime: 3726, plays: 102 },
   },
 ];
 
 // Available filters
 const weeks = ["Week 1", "Week 2", "Week 3", "Week 4"];
-const sectors = ["All", "Construction", "Telecommunications", "Manufacturing", "Retail", "Miscellaneous"];
+const sectors = [
+  "All",
+  "INFRASTRUCTURE",
+  "CONSTRUCTION",
+  "PERSONAL CARE",
+  "EDUCATION",
+  "FMCG",
+  "CONSUMER DURABLES",
+  "FINANCE",
+  "HOUSEHOLD PRODUCTS",
+];
 const advertisers = ["All", ...topAdvertisersData.map((data) => data.advertiser)];
 
 export default function TopAdvertisersPanel() {
@@ -70,7 +216,7 @@ export default function TopAdvertisersPanel() {
   const [selectedAdvertiser, setSelectedAdvertiser] = useState("All");
   const [dataType, setDataType] = useState("airtime"); // airtime or plays
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 5;
 
   // Filter data based on selections
   const filteredData = topAdvertisersData.filter((item) => {
@@ -96,13 +242,13 @@ export default function TopAdvertisersPanel() {
 
   return (
     <ChartCard
-      icon={<TableIcon className="w-6 h-6" />}
+      icon={<TableIcon className="w-7 h-7 text-blue-500" />}
       title="Top Advertisers"
       description="Advertising Metrics by Channel for Top Nepal TV Channels"
       action={
         <div className="flex space-x-2 w-full justify-end">
           <Select value={selectedWeek} onValueChange={setSelectedWeek}>
-            <SelectTrigger className="w-24">
+            <SelectTrigger className="w-24 bg-white border-gray-200">
               <SelectValue placeholder="Select week" />
             </SelectTrigger>
             <SelectContent>
@@ -114,7 +260,7 @@ export default function TopAdvertisersPanel() {
             </SelectContent>
           </Select>
           <Select value={selectedSector} onValueChange={setSelectedSector}>
-            <SelectTrigger className="w-36">
+            <SelectTrigger className="w-36 bg-white border-gray-200">
               <SelectValue placeholder="Select sector" />
             </SelectTrigger>
             <SelectContent>
@@ -126,7 +272,7 @@ export default function TopAdvertisersPanel() {
             </SelectContent>
           </Select>
           <Select value={selectedAdvertiser} onValueChange={setSelectedAdvertiser}>
-            <SelectTrigger className="w-36">
+            <SelectTrigger className="w-36 bg-white border-gray-200">
               <SelectValue placeholder="Select advertiser" />
             </SelectTrigger>
             <SelectContent>
@@ -138,7 +284,7 @@ export default function TopAdvertisersPanel() {
             </SelectContent>
           </Select>
           <Select value={dataType} onValueChange={setDataType}>
-            <SelectTrigger className="w-24">
+            <SelectTrigger className="w-24 bg-white border-gray-200">
               <SelectValue placeholder="Data type" />
             </SelectTrigger>
             <SelectContent>
@@ -152,22 +298,26 @@ export default function TopAdvertisersPanel() {
         <div className="mt-4">
           <Table>
             <TableHeader>
-              <TableRow>
-                <TableHead>Advertiser</TableHead>
-                <TableHead>Sector</TableHead>
-                <TableHead>Nepal Television</TableHead>
-                <TableHead>Kantipur TV</TableHead>
-                <TableHead>Avenues TV</TableHead>
+              <TableRow className="bg-gray-50">
+                <TableHead className="font-semibold text-gray-700">Advertiser</TableHead>
+                <TableHead className="font-semibold text-gray-700">Sector</TableHead>
+                <TableHead className="font-semibold text-gray-700">Galaxy 4K</TableHead>
+                <TableHead className="font-semibold text-gray-700">Image Channel</TableHead>
+                <TableHead className="font-semibold text-gray-700">Kantipur HD TV</TableHead>
+                <TableHead className="font-semibold text-gray-700">NTV Nepal</TableHead>
+                <TableHead className="font-semibold text-gray-700">News 24</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {paginatedData.map((item) => (
-                <TableRow key={item.advertiser}>
-                  <TableCell>{item.advertiser}</TableCell>
-                  <TableCell>{item.sector}</TableCell>
-                  <TableCell>{item["Nepal Television"][dataType]}</TableCell>
-                  <TableCell>{item["Kantipur TV"][dataType]}</TableCell>
-                  <TableCell>{item["Avenues TV"][dataType]}</TableCell>
+                <TableRow key={item.advertiser} className="hover:bg-gray-100">
+                  <TableCell className="text-gray-800">{item.advertiser}</TableCell>
+                  <TableCell className="text-gray-600">{item.sector}</TableCell>
+                  <TableCell>{item["Galaxy 4K"][dataType].toFixed(2)}</TableCell>
+                  <TableCell>{item["Image Channel"][dataType].toFixed(2)}</TableCell>
+                  <TableCell>{item["Kantipur HD TV"][dataType].toFixed(2)}</TableCell>
+                  <TableCell>{item["NTV Nepal"][dataType].toFixed(2)}</TableCell>
+                  <TableCell>{item["News 24"][dataType].toFixed(2)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -177,6 +327,7 @@ export default function TopAdvertisersPanel() {
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
               variant="outline"
+              className="bg-white border-gray-200 hover:bg-gray-100"
             >
               Previous
             </Button>
@@ -187,6 +338,7 @@ export default function TopAdvertisersPanel() {
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
               variant="outline"
+              className="bg-white border-gray-200 hover:bg-gray-100"
             >
               Next
             </Button>

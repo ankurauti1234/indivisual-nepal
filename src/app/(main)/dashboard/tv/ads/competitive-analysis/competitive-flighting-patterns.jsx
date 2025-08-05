@@ -12,7 +12,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useState } from "react";
-
 import {
   Card,
   CardContent,
@@ -21,7 +20,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import {
   Select,
   SelectContent,
@@ -29,218 +27,179 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import ChartCard from "@/components/card/charts-card";
 
-// Sample data for ad counts by week/month and advertiser
+// Data for ad counts by day and advertiser
 const rawData = {
   television: {
-    weekly: [
+    daily: [
       {
-        period: "Week 1",
-        "Shivam Cement": 50,
-        "N Cell": 40,
-        "Asian Paints": 30,
-        Nike: 20,
-        Others: 10,
+        period: "7/23",
+        Sprite: 81,
+        Asianpaints: 78,
+        "Air Purifier": 78,
+        CG: 76,
+        Minto: 75,
+        Closeup: 73,
+        Lux: 72,
+        "Right Path": 71,
+        "Microwave Oven": 70,
+        "Photex Power": 69,
+        cinthol: 69,
+        TATA: 67,
+        LG: 66,
+        Toffichoo: 66,
+        Dabur: 65,
+        "Citizen Life": 64,
+        "OK laundry soap": 60,
+        "Dermi cool": 57,
+        Dove: 55,
+        "E Sewa": 55,
+        Fanta: 54,
       },
       {
-        period: "Week 2",
-        "Shivam Cement": 60,
-        "N Cell": 45,
-        "Asian Paints": 35,
-        Nike: 25,
-        Others: 15,
+        period: "7/24",
+        Sprite: 82,
+        "Microwave Oven": 81,
+        cinthol: 78,
+        Minto: 76,
+        Lux: 74,
+        TATA: 72,
+        "E Sewa": 71,
+        "Right Path": 70,
+        "OK laundry soap": 69,
+        Asianpaints: 68,
+        CG: 68,
+        Dabur: 68,
+        Toffichoo: 68,
+        "Citizen Life": 65,
+        "Dermi cool": 64,
+        Fanta: 63,
+        "Photex Power": 63,
+        Closeup: 62,
+        LG: 61,
+        Dove: 60,
+        "Air Purifier": 58,
       },
       {
-        period: "Week 3",
-        "Shivam Cement": 30,
-        "N Cell": 50,
-        "Asian Paints": 40,
-        Nike: 15,
-        Others: 5,
+        period: "7/25",
+        Lux: 84,
+        "Air Purifier": 77,
+        CG: 77,
+        "Dermi cool": 74,
+        cinthol: 74,
+        "Citizen Life": 74,
+        "Photex Power": 72,
+        Minto: 70,
+        TATA: 70,
+        "Microwave Oven": 69,
+        "OK laundry soap": 69,
+        LG: 69,
+        Toffichoo: 69,
+        "Right Path": 67,
+        Dove: 65,
+        "E Sewa": 65,
+        Asianpaints: 65,
+        Sprite: 63,
+        Fanta: 62,
+        Closeup: 62,
+        Dabur: 56,
       },
       {
-        period: "Week 4",
-        "Shivam Cement": 70,
-        "N Cell": 35,
-        "Asian Paints": 20,
-        Nike: 30,
-        Others: 20,
-      },
-    ],
-    monthly: [
-      {
-        period: "Jan",
-        "Shivam Cement": 200,
-        "N Cell": 160,
-        "Asian Paints": 120,
-        Nike: 80,
-        Others: 40,
-      },
-      {
-        period: "Feb",
-        "Shivam Cement": 240,
-        "N Cell": 180,
-        "Asian Paints": 140,
-        Nike: 100,
-        Others: 60,
+        period: "7/26",
+        "OK laundry soap": 96,
+        Dove: 96,
+        "Photex Power": 84,
+        "Citizen Life": 78,
+        Closeup: 76,
+        Asianpaints: 76,
+        cinthol: 74,
+        TATA: 72,
+        Dabur: 71,
+        "Right Path": 68,
+        Sprite: 65,
+        Lux: 65,
+        Fanta: 64,
+        Minto: 63,
+        CG: 63,
+        "Air Purifier": 62,
+        LG: 59,
+        Toffichoo: 58,
+        "Dermi cool": 57,
+        "E Sewa": 56,
+        "Microwave Oven": 53,
       },
       {
-        period: "Mar",
-        "Shivam Cement": 120,
-        "N Cell": 200,
-        "Asian Paints": 160,
-        Nike: 60,
-        Others: 20,
+        period: "7/27",
+        "Right Path": 84,
+        CG: 78,
+        LG: 75,
+        Closeup: 75,
+        "Dermi cool": 73,
+        "Photex Power": 70,
+        Fanta: 70,
+        Sprite: 69,
+        Asianpaints: 69,
+        "Citizen Life": 68,
+        TATA: 68,
+        Lux: 66,
+        "Microwave Oven": 65,
+        "Air Purifier": 64,
+        Dabur: 63,
+        Dove: 63,
+        Toffichoo: 62,
+        Minto: 60,
+        "OK laundry soap": 57,
+        cinthol: 57,
+        "E Sewa": 53,
       },
       {
-        period: "Apr",
-        "Shivam Cement": 280,
-        "N Cell": 140,
-        "Asian Paints": 80,
-        Nike: 120,
-        Others: 80,
-      },
-    ],
-  },
-  radio: {
-    weekly: [
-      {
-        period: "Week 1",
-        "Shivam Cement": 40,
-        "N Cell": 35,
-        "Asian Paints": 25,
-        Nike: 15,
-        Others: 5,
-      },
-      {
-        period: "Week 2",
-        "Shivam Cement": 50,
-        "N Cell": 40,
-        "Asian Paints": 30,
-        Nike: 20,
-        Others: 10,
+        period: "7/28",
+        Fanta: 86,
+        Minto: 84,
+        Sprite: 80,
+        Dove: 79,
+        Asianpaints: 74,
+        "Dermi cool": 72,
+        "Photex Power": 71,
+        "Citizen Life": 71,
+        CG: 70,
+        TATA: 69,
+        "Microwave Oven": 69,
+        Toffichoo: 68,
+        "OK laundry soap": 68,
+        Dabur: 67,
+        Closeup: 66,
+        LG: 65,
+        "E Sewa": 64,
+        cinthol: 59,
+        "Air Purifier": 57,
+        "Right Path": 56,
+        Lux: 55,
       },
       {
-        period: "Week 3",
-        "Shivam Cement": 25,
-        "N Cell": 45,
-        "Asian Paints": 35,
-        Nike: 10,
-        Others: 3,
-      },
-      {
-        period: "Week 4",
-        "Shivam Cement": 60,
-        "N Cell": 30,
-        "Asian Paints": 15,
-        Nike: 25,
-        Others: 15,
-      },
-    ],
-    monthly: [
-      {
-        period: "Jan",
-        "Shivam Cement": 160,
-        "N Cell": 140,
-        "Asian Paints": 100,
-        Nike: 60,
-        Others: 20,
-      },
-      {
-        period: "Feb",
-        "Shivam Cement": 200,
-        "N Cell": 160,
-        "Asian Paints": 120,
-        Nike: 80,
-        Others: 40,
-      },
-      {
-        period: "Mar",
-        "Shivam Cement": 100,
-        "N Cell": 180,
-        "Asian Paints": 140,
-        Nike: 40,
-        Others: 12,
-      },
-      {
-        period: "Apr",
-        "Shivam Cement": 240,
-        "N Cell": 120,
-        "Asian Paints": 60,
-        Nike: 100,
-        Others: 60,
-      },
-    ],
-  },
-  digital: {
-    weekly: [
-      {
-        period: "Week 1",
-        "Shivam Cement": 60,
-        "N Cell": 50,
-        "Asian Paints": 40,
-        Nike: 30,
-        Others: 20,
-      },
-      {
-        period: "Week 2",
-        "Shivam Cement": 70,
-        "N Cell": 55,
-        "Asian Paints": 45,
-        Nike: 35,
-        Others: 25,
-      },
-      {
-        period: "Week 3",
-        "Shivam Cement": 40,
-        "N Cell": 60,
-        "Asian Paints": 50,
-        Nike: 20,
-        Others: 10,
-      },
-      {
-        period: "Week 4",
-        "Shivam Cement": 80,
-        "N Cell": 45,
-        "Asian Paints": 30,
-        Nike: 40,
-        Others: 30,
-      },
-    ],
-    monthly: [
-      {
-        period: "Jan",
-        "Shivam Cement": 240,
-        "N Cell": 200,
-        "Asian Paints": 160,
-        Nike: 120,
-        Others: 80,
-      },
-      {
-        period: "Feb",
-        "Shivam Cement": 280,
-        "N Cell": 220,
-        "Asian Paints": 180,
-        Nike: 140,
-        Others: 100,
-      },
-      {
-        period: "Mar",
-        "Shivam Cement": 160,
-        "N Cell": 240,
-        "Asian Paints": 200,
-        Nike: 80,
-        Others: 40,
-      },
-      {
-        period: "Apr",
-        "Shivam Cement": 320,
-        "N Cell": 180,
-        "Asian Paints": 120,
-        Nike: 160,
-        Others: 120,
+        period: "7/29",
+        "Photex Power": 80,
+        Minto: 79,
+        Dabur: 78,
+        "Citizen Life": 77,
+        "Microwave Oven": 74,
+        Dove: 73,
+        CG: 73,
+        Toffichoo: 70,
+        "Dermi cool": 70,
+        TATA: 68,
+        Asianpaints: 64,
+        Closeup: 64,
+        cinthol: 63,
+        "Air Purifier": 62,
+        Lux: 60,
+        "Right Path": 59,
+        Sprite: 58,
+        Fanta: 57,
+        "OK laundry soap": 55,
+        "E Sewa": 54,
+        LG: 54,
       },
     ],
   },
@@ -248,27 +207,46 @@ const rawData = {
 
 // Color palette for advertisers
 const colors = {
-  "Shivam Cement": "#ff6b6b",
-  "N Cell": "#4ecdc4",
-  "Asian Paints": "#45b7d1",
-  Nike: "#96ceb4",
-  Others: "#ddd111",
+  Sprite: "#FF6B6B",
+  Asianpaints: "#4ECDC4",
+  "Air Purifier": "#45B7D1",
+  CG: "#96CEB4",
+  Minto: "#FFEEAD",
+  Closeup: "#D4A5A5",
+  Lux: "#9B59B6",
+  "Right Path": "#3498DB",
+  "Microwave Oven": "#E74C3C",
+  "Photex Power": "#2ECC71",
+  cinthol: "#F1C40F",
+  TATA: "#E67E22",
+  LG: "#1ABC9C",
+  Toffichoo: "#8E44AD",
+  Dabur: "#C0392B",
+  "Citizen Life": "#27AE60",
+  "OK laundry soap": "#F39C12",
+  "Dermi cool": "#2980B9",
+  Dove: "#D35400",
+  "E Sewa": "#16A085",
+  Fanta: "#7F8C8D",
 };
 
 export default function CompetitiveFlightingPatterns() {
   const [selectedChannel, setSelectedChannel] = useState("television");
-  const [granularity, setGranularity] = useState("weekly");
+  const [granularity, setGranularity] = useState("daily");
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-card p-2 border rounded shadow">
-          <p className="font-medium">{`Period: ${payload[0].payload.period}`}</p>
+        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg backdrop-blur-sm">
+          <p className="font-semibold text-gray-800">{`Date: ${payload[0].payload.period}/2025`}</p>
           {payload.map((entry, index) => (
             <p
               key={index}
-              className="text-sm"
-            >{`${entry.name}: ${entry.value} ads`}</p>
+              className="text-sm text-gray-600"
+              style={{ color: entry.stroke }}
+            >
+              {`${entry.name}: ${entry.value} ads`}
+            </p>
           ))}
         </div>
       );
@@ -277,14 +255,14 @@ export default function CompetitiveFlightingPatterns() {
   };
 
   const CustomLegend = () => (
-    <div className="grid grid-cols-3 gap-2 mt-2 px-2 text-xs">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-4 px-4 text-sm">
       {Object.keys(colors).map((advertiser) => (
-        <div key={advertiser} className="flex items-center gap-1">
+        <div key={advertiser} className="flex items-center gap-2">
           <div
-            className="w-2 h-2 rounded-full flex-shrink-0"
+            className="w-3 h-3 rounded-full flex-shrink-0"
             style={{ backgroundColor: colors[advertiser] }}
           />
-          <span className="truncate">{advertiser}</span>
+          <span className="truncate text-gray-700">{advertiser}</span>
         </div>
       ))}
     </div>
@@ -292,37 +270,34 @@ export default function CompetitiveFlightingPatterns() {
 
   return (
     <ChartCard
-      icon={<PieChartIcon className="w-6 h-6" />}
+      icon={<PieChartIcon className="w-7 h-7 text-blue-500" />}
       title="Competitive Flighting Patterns"
-      description="Ad Occurrence Trends 2025"
+      description="Ad Occurrence Trends (July 2025)"
       action={
         <div className="flex justify-end gap-4">
-          <Select value={selectedChannel} onValueChange={setSelectedChannel}>
-            <SelectTrigger className="w-48">
+          {/* <Select value={selectedChannel} onValueChange={setSelectedChannel}>
+            <SelectTrigger className="w-48 bg-white border-gray-200">
               <SelectValue placeholder="Select channel" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="television">Television</SelectItem>
-              <SelectItem value="radio">Radio</SelectItem>
-              <SelectItem value="digital">Digital</SelectItem>
             </SelectContent>
-          </Select>
+          </Select> */}
           <Select value={granularity} onValueChange={setGranularity}>
             <SelectTrigger className="w-48">
               <SelectValue placeholder="Select granularity" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="weekly">Weekly</SelectItem>
-              <SelectItem value="monthly">Monthly</SelectItem>
+              <SelectItem value="daily">Daily</SelectItem>
             </SelectContent>
           </Select>
         </div>
       }
       chart={
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={800}>
           <LineChart
             data={rawData[selectedChannel][granularity]}
-            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+            margin={{ top: 20, right: 30, bottom: 20, left: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
             <XAxis
@@ -330,6 +305,7 @@ export default function CompetitiveFlightingPatterns() {
               tickLine={false}
               axisLine={false}
               tickMargin={10}
+              tickFormatter={(value) => `Jul ${value}`}
             />
             <YAxis
               tickLine={false}
@@ -339,9 +315,9 @@ export default function CompetitiveFlightingPatterns() {
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
+              content={<CustomLegend />}
               verticalAlign="bottom"
-              height={36}
-              formatter={(value) => <span className="text-sm">{value}</span>}
+              align="center"
             />
             {Object.keys(colors).map((advertiser) => (
               <Line
@@ -353,6 +329,7 @@ export default function CompetitiveFlightingPatterns() {
                 dot={{ r: 4, fill: colors[advertiser] }}
                 activeDot={{ r: 6 }}
                 animationDuration={1000}
+                animationEasing="ease-in-out"
               />
             ))}
           </LineChart>

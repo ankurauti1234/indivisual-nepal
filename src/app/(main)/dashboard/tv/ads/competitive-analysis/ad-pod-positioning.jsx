@@ -12,7 +12,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useState } from "react";
-
 import {
   Card,
   CardContent,
@@ -21,7 +20,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import {
   Select,
   SelectContent,
@@ -29,39 +27,40 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import ChartCard from "@/components/card/charts-card";
 
-// Sample data for ad counts by position and advertiser
+// Data for ad pod positioning by advertiser
 const rawData = {
   television: [
-    { advertiser: "Shivam Cement", First: 40, Middle: 80, Last: 30 },
-    { advertiser: "N Cell", First: 35, Middle: 70, Last: 25 },
-    { advertiser: "Asian Paints", First: 20, Middle: 60, Last: 20 },
-    { advertiser: "Nike", First: 15, Middle: 50, Last: 15 },
-    { advertiser: "Others", First: 10, Middle: 30, Last: 10 },
-  ],
-  radio: [
-    { advertiser: "Shivam Cement", First: 45, Middle: 70, Last: 25 },
-    { advertiser: "N Cell", First: 30, Middle: 65, Last: 20 },
-    { advertiser: "Asian Paints", First: 25, Middle: 55, Last: 15 },
-    { advertiser: "Nike", First: 10, Middle: 45, Last: 10 },
-    { advertiser: "Others", First: 5, Middle: 25, Last: 5 },
-  ],
-  digital: [
-    { advertiser: "Shivam Cement", First: 50, Middle: 90, Last: 35 },
-    { advertiser: "N Cell", First: 40, Middle: 80, Last: 30 },
-    { advertiser: "Asian Paints", First: 30, Middle: 70, Last: 20 },
-    { advertiser: "Nike", First: 20, Middle: 60, Last: 15 },
-    { advertiser: "Others", First: 15, Middle: 40, Last: 10 },
+    { advertiser: "Dove", First: 4612, Middle: 8211, Last: 5622 },
+    { advertiser: "Microwave Oven", First: 4385, Middle: 7879, Last: 5515 },
+    { advertiser: "OK laundry soap", First: 5390, Middle: 6969, Last: 5620 },
+    { advertiser: "Closeup", First: 5321, Middle: 8452, Last: 4853 },
+    { advertiser: "CG", First: 5776, Middle: 8236, Last: 5350 },
+    { advertiser: "Asianpaints", First: 4895, Middle: 8378, Last: 5710 },
+    { advertiser: "Air Purifier", First: 4900, Middle: 6826, Last: 5160 },
+    { advertiser: "Fanta", First: 4582, Middle: 6617, Last: 5964 },
+    { advertiser: "Dermi cool", First: 5551, Middle: 7317, Last: 4232 },
+    { advertiser: "Photex Power", First: 5052, Middle: 7871, Last: 6086 },
+    { advertiser: "E Sewa", First: 3687, Middle: 7086, Last: 4839 },
+    { advertiser: "Lux", First: 4545, Middle: 7609, Last: 5967 },
+    { advertiser: "Right Path", First: 4676, Middle: 7076, Last: 5940 },
+    { advertiser: "Citizen Life", First: 5211, Middle: 8271, Last: 5148 },
+    { advertiser: "Dabur", First: 4084, Middle: 8160, Last: 5603 },
+    { advertiser: "Minto", First: 5393, Middle: 8801, Last: 4709 },
+    { advertiser: "LG", First: 4158, Middle: 7622, Last: 4978 },
+    { advertiser: "TATA", First: 4481, Middle: 8356, Last: 5448 },
+    { advertiser: "Sprite", First: 4745, Middle: 7702, Last: 6301 },
+    { advertiser: "Toffichoo", First: 5437, Middle: 7232, Last: 4651 },
+    { advertiser: "cinthol", First: 4816, Middle: 7390, Last: 5434 },
   ],
 };
 
 // Color palette for ad positions
 const colors = {
-  First: "#ff6b6b",
-  Middle: "#4ecdc4",
-  Last: "#45b7d1",
+  First: "#FF6B6B",
+  Middle: "#4ECDC4",
+  Last: "#45B7D1",
 };
 
 export default function AdPodPositioning() {
@@ -74,10 +73,10 @@ export default function AdPodPositioning() {
       const total = item.First + item.Middle + item.Last;
       return {
         advertiser: item.advertiser,
-        First: ((item.First / total) * 100).toFixed(1),
-        Middle: ((item.Middle / total) * 100).toFixed(1),
-        Last: ((item.Last / total) * 100).toFixed(1),
-        total: 100, // For waterfall effect reference
+        First: ((item.First / total) * 100).toFixed(2),
+        Middle: ((item.Middle / total) * 100).toFixed(2),
+        Last: ((item.Last / total) * 100).toFixed(2),
+        total: 100, // For reference
       };
     });
   };
@@ -85,13 +84,16 @@ export default function AdPodPositioning() {
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-card p-2 border rounded shadow">
-          <p className="font-medium">{payload[0].payload.advertiser}</p>
+        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg backdrop-blur-sm">
+          <p className="font-semibold text-gray-800">{payload[0].payload.advertiser}</p>
           {payload.map((entry, index) => (
             <p
               key={index}
-              className="text-sm"
-            >{`${entry.name}: ${entry.value}%`}</p>
+              className="text-sm text-gray-600"
+              style={{ color: entry.fill }}
+            >
+              {`${entry.name}: ${entry.value}% (${rawData[selectedChannel].find(item => item.advertiser === payload[0].payload.advertiser)[entry.name].toFixed(2)} sec)`}
+            </p>
           ))}
         </div>
       );
@@ -100,14 +102,14 @@ export default function AdPodPositioning() {
   };
 
   const CustomLegend = () => (
-    <div className="grid grid-cols-3 gap-2 mt-2 px-2 text-xs">
+    <div className="grid grid-cols-3 gap-3 mt-4 px-4 text-sm">
       {Object.keys(colors).map((position) => (
-        <div key={position} className="flex items-center gap-1">
+        <div key={position} className="flex items-center gap-2">
           <div
-            className="w-2 h-2 rounded-full flex-shrink-0"
+            className="w-3 h-3 rounded-full flex-shrink-0"
             style={{ backgroundColor: colors[position] }}
           />
-          <span className="truncate">{position}</span>
+          <span className="truncate text-gray-700">{position}</span>
         </div>
       ))}
     </div>
@@ -115,28 +117,26 @@ export default function AdPodPositioning() {
 
   return (
     <ChartCard
-      icon={<PieChartIcon className="w-6 h-6" />}
+      icon={<PieChartIcon className="w-7 h-7 text-blue-500" />}
       title="Ad Pod Positioning"
       description="Position Distribution 2025"
       action={
         <div className="flex justify-end">
           <Select value={selectedChannel} onValueChange={setSelectedChannel}>
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-48 bg-white border-gray-200">
               <SelectValue placeholder="Select channel" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="television">Television</SelectItem>
-              <SelectItem value="radio">Radio</SelectItem>
-              <SelectItem value="digital">Digital</SelectItem>
             </SelectContent>
           </Select>
         </div>
       }
       chart={
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={600}>
           <BarChart
             data={calculateDistribution()}
-            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+            margin={{ top: 20, right: 30, bottom: 100, left: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
             <XAxis
@@ -144,6 +144,10 @@ export default function AdPodPositioning() {
               tickLine={false}
               axisLine={false}
               tickMargin={10}
+              angle={45}
+              textAnchor="start"
+              height={80}
+              interval={0}
             />
             <YAxis
               tickLine={false}
@@ -154,9 +158,9 @@ export default function AdPodPositioning() {
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
+              content={<CustomLegend />}
               verticalAlign="bottom"
-              height={36}
-              formatter={(value) => <span className="text-sm">{value}</span>}
+              align="center"
             />
             <Bar
               dataKey="First"
