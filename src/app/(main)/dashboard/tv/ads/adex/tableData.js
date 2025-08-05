@@ -6,7 +6,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3142243.00,
     GRP: 56.47642426,
-    "GRP %": 0.6619942024
+    "GRP %": 0.6619942024,
+    "Time Slot": "Prime Time",
+    Channel: "Kantipur",
+    "Ad Duration": 30
   },
   {
     Advertiser: "Asianpaints",
@@ -15,7 +18,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3508503.00,
     GRP: 61.79071492,
-    "GRP %": 0.8277086286
+    "GRP %": 0.8277086286,
+    "Time Slot": "Morning",
+    Channel: "Himalayan",
+    "Ad Duration": 15
   },
   {
     Advertiser: "CG",
@@ -24,7 +30,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 2793700.00,
     GRP: 48.94776739,
-    "GRP %": 0.6663070564
+    "GRP %": 0.6663070564,
+    "Time Slot": "Evening",
+    Channel: "NTV",
+    "Ad Duration": 45
   },
   {
     Advertiser: "Citizen Life",
@@ -33,7 +42,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3287540.00,
     GRP: 53.12929759,
-    "GRP %": 0.6578972417
+    "GRP %": 0.6578972417,
+    "Time Slot": "Prime Time",
+    Channel: "Prime TV",
+    "Ad Duration": 60
   },
   {
     Advertiser: "Closeup",
@@ -42,7 +54,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 4235825.00,
     GRP: 58.12280346,
-    "GRP %": 0.717194401
+    "GRP %": 0.717194401,
+    "Time Slot": "Late Night",
+    Channel: "Image TV",
+    "Ad Duration": 30
   },
   {
     Advertiser: "Dabur",
@@ -51,7 +66,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3051495.00,
     GRP: 50.80242017,
-    "GRP %": 0.5760288856
+    "GRP %": 0.5760288856,
+    "Time Slot": "Morning",
+    Channel: "Kantipur",
+    "Ad Duration": 15
   },
   {
     Advertiser: "Dermi cool",
@@ -60,7 +78,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3210872.00,
     GRP: 56.51254387,
-    "GRP %": 0.679158151
+    "GRP %": 0.679158151,
+    "Time Slot": "Evening",
+    Channel: "Himalayan",
+    "Ad Duration": 30
   },
   {
     Advertiser: "Dove",
@@ -69,7 +90,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3880865.00,
     GRP: 53.91090628,
-    "GRP %": 0.658708871
+    "GRP %": 0.658708871,
+    "Time Slot": "Prime Time",
+    Channel: "NTV",
+    "Ad Duration": 45
   },
   {
     Advertiser: "E Sewa",
@@ -78,7 +102,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 2750283.00,
     GRP: 47.49220986,
-    "GRP %": 0.5551434402
+    "GRP %": 0.5551434402,
+    "Time Slot": "Evening",
+    Channel: "Prime TV",
+    "Ad Duration": 15
   },
   {
     Advertiser: "Fanta",
@@ -87,7 +114,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3874007.00,
     GRP: 56.52031835,
-    "GRP %": 0.6669654399
+    "GRP %": 0.6669654399,
+    "Time Slot": "Prime Time",
+    Channel: "Image TV",
+    "Ad Duration": 30
   },
   {
     Advertiser: "LG",
@@ -96,7 +126,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 2895092.00,
     GRP: 39.50989793,
-    "GRP %": 0.5138601586
+    "GRP %": 0.5138601586,
+    "Time Slot": "Morning",
+    Channel: "Kantipur",
+    "Ad Duration": 60
   },
   {
     Advertiser: "Lux",
@@ -105,7 +138,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3861041.00,
     GRP: 63.56564855,
-    "GRP %": 0.7291495848
+    "GRP %": 0.7291495848,
+    "Time Slot": "Evening",
+    Channel: "Himalayan",
+    "Ad Duration": 30
   },
   {
     Advertiser: "Microwave Oven",
@@ -114,7 +150,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 2598559.00,
     GRP: 41.22816677,
-    "GRP %": 0.497875352
+    "GRP %": 0.497875352,
+    "Time Slot": "Late Night",
+    Channel: "NTV",
+    "Ad Duration": 45
   },
   {
     Advertiser: "Minto",
@@ -123,7 +162,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3738546.00,
     GRP: 56.04065824,
-    "GRP %": 0.6679498517
+    "GRP %": 0.6679498517,
+    "Time Slot": "Prime Time",
+    Channel: "Prime TV",
+    "Ad Duration": 15
   },
   {
     Advertiser: "OK laundry soap",
@@ -132,7 +174,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 4120871.00,
     GRP: 60.68313145,
-    "GRP %": 0.7106118947
+    "GRP %": 0.7106118947,
+    "Time Slot": "Morning",
+    Channel: "Image TV",
+    "Ad Duration": 30
   },
   {
     Advertiser: "Photex Power",
@@ -141,7 +186,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3873614.00,
     GRP: 58.86059777,
-    "GRP %": 0.7575933938
+    "GRP %": 0.7575933938,
+    "Time Slot": "Evening",
+    Channel: "Kantipur",
+    "Ad Duration": 60
   },
   {
     Advertiser: "Right Path",
@@ -150,7 +198,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 2559520.00,
     GRP: 47.22399779,
-    "GRP %": 0.572508686
+    "GRP %": 0.572508686,
+    "Time Slot": "Late Night",
+    Channel: "Himalayan",
+    "Ad Duration": 45
   },
   {
     Advertiser: "Sprite",
@@ -159,7 +210,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3764844.00,
     GRP: 58.1612495,
-    "GRP %": 0.6800049428
+    "GRP %": 0.6800049428,
+    "Time Slot": "Prime Time",
+    Channel: "NTV",
+    "Ad Duration": 30
   },
   {
     Advertiser: "TATA",
@@ -168,7 +222,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3607745.00,
     GRP: 51.15749872,
-    "GRP %": 0.6257371792
+    "GRP %": 0.6257371792,
+    "Time Slot": "Morning",
+    Channel: "Prime TV",
+    "Ad Duration": 15
   },
   {
     Advertiser: "Toffichoo",
@@ -177,7 +234,10 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 3909477.00,
     GRP: 52.44696827,
-    "GRP %": 0.6308217659
+    "GRP %": 0.6308217659,
+    "Time Slot": "Evening",
+    Channel: "Image TV",
+    "Ad Duration": 45
   },
   {
     Advertiser: "cinthol",
@@ -186,6 +246,9 @@ export const tableData = [
     Region: "Nepal",
     "Ad Spend": 4134947.00,
     GRP: 61.79585626,
-    "GRP %": 0.7269440155
+    "GRP %": 0.7269440155,
+    "Time Slot": "Prime Time",
+    Channel: "Kantipur",
+    "Ad Duration": 60
   }
-]
+];
