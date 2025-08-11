@@ -101,7 +101,7 @@ const EPG = ({ region, availableData }) => {
       setIsLoading(true);
       setError(null);
       try {
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const baseUrl = "https://ott-api.indirex.io/api/v1";
         const stations = Object.keys(availableData).filter((station) =>
           availableData[station].dates.includes(selectedDate)
         );
