@@ -101,7 +101,7 @@ const EPG = ({ region, availableData }) => {
       setIsLoading(true);
       setError(null);
       try {
-        const baseUrl = "https://ott-api.indirex.io/api/v1";
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
         const stations = Object.keys(availableData).filter((station) =>
           availableData[station].dates.includes(selectedDate)
         );
@@ -140,7 +140,7 @@ const EPG = ({ region, availableData }) => {
               item.label_type === "ad"
                 ? item.ad?.product || "Advertisement"
                 : item.label_type === "program"
-                ? item.program?.title || "Program"
+                ? item.program?.program_name || "Program"
                 : item.label_type === "song"
                 ? item.song?.title || "Song"
                 : "Error",
