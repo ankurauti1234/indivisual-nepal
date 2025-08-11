@@ -33,14 +33,15 @@ import { useRouter, useSearchParams } from "next/navigation";
 import TimelineRuler from "./TimelineRuler";
 import EmptyState from "./EmptyState";
 import LoadingState from "./LoadingState";
-import { timeToMinutes, formatTimeForURL, parseTimeToMinutes, getUniqueRegions, getUniqueChannels, getUniqueContentTypes, getDatesWithData, findNearestDateWithData } from "./utils";
+import { timeToMinutes, formatTimeForURL, parseTimeToMinutes, getUniqueRegions, getUniqueChannels, getUniqueContentTypes, getDatesWithData, findNearestDateWithData, unixToTime } from "./utils";
 import { squircleClipPath } from "./squircle";
 import ExportDialog from "./export-dialog";
 
 const MINUTES_IN_DAY = 24 * 60;
 const FIXED_WIDTH = 9600;
+const DEVICE_IDS = ["R-1","R-3","R-4", "R-5"];
 
-const EPG = ({region, availableData}) => {
+const EPG = ({ region, availableData }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialDate =
@@ -100,25 +101,64 @@ const EPG = ({region, availableData}) => {
       setIsLoading(true);
       setError(null);
       try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
         const stations = Object.keys(availableData).filter((station) =>
           availableData[station].dates.includes(selectedDate)
         );
-        console.log("Fetching data for stations:", stations);
+        const deviceIds = DEVICE_IDS.filter((id) => stations.includes(id));
 
-        const dataPromises = stations.map(async (station) => {
-          const response = await fetch(`https://radio-playback-files.s3.ap-south-1.amazonaws.com/data/${region}/${station}/${selectedDate}.json`);
+        console.log("Fetching data for device IDs:", deviceIds);
+
+        const dataPromises = deviceIds.map(async (deviceId) => {
+          const response = await fetch(
+            `${baseUrl}/labels/program-guides/${selectedDate}/${deviceId}`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
           console.log(
-            `Response for ${station} on ${selectedDate}:`,
+            `Response for ${deviceId} on ${selectedDate}:`,
             response.status,
             response.statusText
           );
           if (!response.ok)
             throw new Error(
-              `Failed to fetch data for ${station} on ${selectedDate}: ${response.statusText}`
+              `Failed to fetch data for ${deviceId} on ${selectedDate}: ${response.statusText}`
             );
-          const data = await response.json();
-          console.log(`Data fetched for ${station}:`, data);
-          return data.map((item) => ({ ...item, channel: station }));
+          const result = await response.json();
+          if (!result.success) {
+            throw new Error(result.message || "Failed to fetch program guide");
+          }
+          return result.data.labels.map((item) => ({
+            id: item.id,
+            type: item.label_type === "ad" ? "advertisement" : item.label_type,
+            channel: item.device_id,
+            region: region,
+            title:
+              item.label_type === "ad"
+                ? item.ad?.product || "Advertisement"
+                : item.label_type === "program"
+                ? item.program?.title || "Program"
+                : item.label_type === "song"
+                ? item.song?.title || "Song"
+                : "Error",
+            start: unixToTime(item.start_time),
+            end: unixToTime(item.end_time),
+            date: result.data.date,
+            content:
+              item.label_type === "ad"
+                ? item.ad?.category
+                : item.label_type === "program"
+                ? item.program?.description
+                : item.label_type === "song"
+                ? item.song?.artist
+                : item.error?.message,
+            image_paths: item.image_paths || [], // Store all images
+            episode_id: item.program?.episode_id,
+            season_id: item.program?.season_id,
+          }));
         });
 
         const results = await Promise.all(dataPromises);
@@ -205,36 +245,26 @@ const EPG = ({region, availableData}) => {
     const width = (visibleEnd - visibleStart) * pixelsPerMinute;
     const left = (visibleStart - timeRange[0]) * pixelsPerMinute;
 
-    const isProgram = program.type.toLowerCase() === "program";
-    const isAdvertisement = program.type.toLowerCase() === "advertisement";
-
     const isVeryNarrow = width < 80;
-    const isNarrow = width < 120;
 
     const typeStyles = {
-      program:
-        "bg-gradient-to-br from-teal-200 to-teal-300 dark:from-teal-700 dark:to-teal-900 text-teal-800 dark:text-teal-100",
-      advertisement:
-        "bg-gradient-to-br from-rose-200 to-rose-300 dark:from-rose-700 dark:to-rose-900 text-rose-800 dark:text-rose-100",
+      program: "bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-100",
+      advertisement: "bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-100",
+      song: "bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-100",
+      error: "bg-gray-100 dark:bg-gray-900/50 text-gray-800 dark:text-gray-100",
     };
 
     return (
       <motion.div
         key={program.id}
-        className={`absolute h-28 overflow-hidden rounded-lg border border-zinc-200/50 dark:border-zinc-700/50 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group ${
-          isProgram
-            ? typeStyles.program
-            : isAdvertisement
-            ? typeStyles.advertisement
-            : "bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300"
-        } ${isVeryNarrow ? "p-1" : "p-2"}`}
+        className={`absolute h-28 overflow-hidden rounded-lg border border-zinc-200/20 dark:border-zinc-700/20 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group ${typeStyles[program.type.toLowerCase()]} ${isVeryNarrow ? "p-1" : "p-2"}`}
         style={{ left: `${left}px`, width: `${width}px` }}
         onClick={() => setSelectedProgram(program)}
         whileHover={{ scale: 1.02 }}
       >
         <div className="h-full flex flex-col justify-between">
           {!isVeryNarrow && (
-            <h3 className="text-sm font-semibold leading-tight line-clamp-2 group-hover:line-clamp-none">
+            <h3 className="text-sm font-medium leading-tight line-clamp-2 group-hover:line-clamp-none">
               {program.title}
             </h3>
           )}
@@ -243,7 +273,7 @@ const EPG = ({region, availableData}) => {
               <div className="w-6 h-6 flex items-center justify-center">
                 <span className="text-lg">•</span>
               </div>
-              <div className="absolute hidden group-hover:block z-50 bg-white/95 dark:bg-zinc-800/95 shadow-xl rounded-lg p-3 -left-2 top-8 w-56 border border-zinc-200/50 dark:border-zinc-700/50">
+              <div className="absolute hidden group-hover:block z-50 bg-white/95 dark:bg-zinc-900/95 shadow-lg rounded-lg p-3 -left-2 top-8 w-56 border border-zinc-200/20 dark:border-zinc-700/20">
                 <p className="text-sm text-zinc-900 dark:text-zinc-100">
                   {program.title}
                 </p>
@@ -255,7 +285,7 @@ const EPG = ({region, availableData}) => {
               isVeryNarrow ? "flex-col" : ""
             }`}
           >
-            <span className="px-2 py-0.5 rounded-full bg-white/80 dark:bg-zinc-800/80">{`${program.start} - ${program.end}`}</span>
+            <span className="px-2 py-0.5 rounded-full bg-white/80 dark:bg-zinc-900/80">{`${program.start} - ${program.end}`}</span>
           </div>
         </div>
       </motion.div>
@@ -268,99 +298,102 @@ const EPG = ({region, availableData}) => {
   const dynamicWidth = (adjustedEndTime - timeRange[0]) * pixelsPerMinute;
 
   return (
-    <div className="flex flex-col bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-200/50 dark:border-zinc-800/50 overflow-hidden">
-      <header className="p-6 bg-gradient-to-r from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-800 border-b border-zinc-200/50 dark:border-zinc-700/50">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-zinc-800 dark:text-zinc-100">
-            TV Program Guide
+    <div className="flex flex-col bg-white dark:bg-zinc-950 rounded-xl shadow-lg border border-zinc-200/10 dark:border-zinc-800/10 overflow-hidden">
+      <header className="p-4 bg-white dark:bg-zinc-950 border-b border-zinc-200/10 dark:border-zinc-800/10">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Program Guide
           </h1>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <ExportDialog
               selectedDate={selectedDate}
               epgData={epgData}
               availableData={availableData}
               regions={regions}
             />
-            <div className="flex items-center gap-2 bg-white/80 dark:bg-zinc-800/80 rounded-xl p-2 shadow-md">
+            <div className="flex items-center gap-2 bg-white/50 dark:bg-zinc-900/50 rounded-lg p-1.5 shadow-sm">
               <Button
                 onClick={handlePrevDate}
                 size="icon"
-                className="bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-700"
+                className="bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
               </Button>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
-                    className="w-[200px] justify-start text-left font-medium bg-white dark:bg-zinc-900 border-none hover:bg-zinc-100 dark:hover:bg-zinc-700"
+                    className="w-48 text-sm font-medium bg-white dark:bg-zinc-900 border border-zinc-200/20 dark:border-zinc-800/20 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg"
                   >
                     {format(calendarDate, "PPP")}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0 bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
+                <PopoverContent className="w-auto p-0 bg-white dark:bg-zinc-900 border-zinc-200/20 dark:border-zinc-800/20 rounded-lg">
                   <Calendar
                     mode="single"
                     selected={calendarDate}
                     onSelect={handleCalendarSelect}
                     initialFocus
+                    className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"
                   />
                 </PopoverContent>
               </Popover>
               <Button
                 onClick={handleNextDate}
                 size="icon"
-                className="bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-700"
+                className="bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full"
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
               </Button>
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="w-56 bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-700">
+              <Button className="w-48 text-sm font-medium bg-white dark:bg-zinc-900 border border-zinc-200/20 dark:border-zinc-800/20 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg">
                 Filter Options
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
-              <DropdownMenuLabel>Filters</DropdownMenuLabel>
-              <DropdownMenuSeparator />
+            <DropdownMenuContent className="w-48 bg-white dark:bg-zinc-900 border-zinc-200/20 dark:border-zinc-800/20 rounded-lg">
+              <DropdownMenuLabel className="text-sm text-zinc-700 dark:text-zinc-300">Filters</DropdownMenuLabel>
+              <DropdownMenuSeparator className="bg-zinc-200/20 dark:bg-zinc-800/20" />
               <DropdownMenuItem className="flex flex-col items-start p-2">
-                <label className="text-sm font-medium text-zinc-800 dark:text-zinc-200 mb-1">
+                <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                   Content Type
                 </label>
                 <Select
                   value={selectedContentType}
                   onValueChange={setSelectedContentType}
                 >
-                  <SelectTrigger className="w-full bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
+                  <SelectTrigger className="w-full bg-white dark:bg-zinc-900 border-zinc-200/20 dark:border-zinc-800/20 text-zinc-900 dark:text-zinc-100 rounded-lg">
                     <SelectValue placeholder="Filter by Content Type" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white dark:bg-zinc-900 border-zinc-200/20 dark:border-zinc-800/20">
                     <SelectItem value="all">All Content Types</SelectItem>
                     <SelectItem value="program">Program</SelectItem>
                     <SelectItem value="advertisement">Advertisement</SelectItem>
+                    <SelectItem value="song">Song</SelectItem>
+                    <SelectItem value="error">Error</SelectItem>
                   </SelectContent>
                 </Select>
               </DropdownMenuItem>
               <DropdownMenuItem className="flex flex-col items-start p-2">
-                <label className="text-sm font-medium text-zinc-800 dark:text-zinc-200 mb-1">
+                <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                   TV Channel
                 </label>
                 <Select
                   value={selectedChannel}
                   onValueChange={setSelectedChannel}
                 >
-                  <SelectTrigger className="w-full bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
+                  <SelectTrigger className="w-full bg-white dark:bg-zinc-900 border-zinc-200/20 dark:border-zinc-800/20 text-zinc-900 dark:text-zinc-100 rounded-lg">
                     <SelectValue placeholder="Filter by TV Channel" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white dark:bg-zinc-900 border-zinc-200/20 dark:border-zinc-800/20">
                     <SelectItem value="all">All TV Channels</SelectItem>
-                    {Object.keys(availableData).map((station) => (
-                      <SelectItem key={station} value={station}>
-                        {station.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                    {DEVICE_IDS.map((deviceId) => (
+                      <SelectItem key={deviceId} value={deviceId}>
+                        {deviceId}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -369,7 +402,7 @@ const EPG = ({region, availableData}) => {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <div className="mt-6">
+        <div className="mt-4">
           <CustomRangeSlider
             min={0}
             max={MINUTES_IN_DAY}
@@ -386,12 +419,12 @@ const EPG = ({region, availableData}) => {
       />
 
       <div className="flex flex-1 overflow-hidden">
-        <div className="w-56 flex-shrink-0 bg-zinc-50 dark:bg-zinc-800/50 border-r border-zinc-200/50 dark:border-zinc-700/50">
+        <div className="w-48 flex-shrink-0 bg-white dark:bg-zinc-950 border-r border-zinc-200/10 dark:border-zinc-800/10">
           <div className="h-12" />
           {channels.map((channel, index) => (
             <div
               key={index}
-              className="h-28 flex items-center px-4 border-b border-zinc-200/20 dark:border-zinc-700/20"
+              className="h-28 flex items-center px-3 border-b border-zinc-200/10 dark:border-zinc-800/10"
             >
               <img
                 src={`https://radio-playback-files.s3.ap-south-1.amazonaws.com/logos/${channel
@@ -399,17 +432,15 @@ const EPG = ({region, availableData}) => {
                   .trim()
                   .replace(/\s+/g, "-")}.png`}
                 alt={channel}
-                className="h-12 w-12 rounded-lg shadow-md mr-3"
-                style={{ clipPath: `polygon(${squircleClipPath(48, 48, 4)})` }}
+                className="h-10 w-10 rounded-md shadow-sm mr-2"
+                style={{ clipPath: `polygon(${squircleClipPath(40, 40, 4)})` }}
               />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200 uppercase">
-                  {channel.replace(/-/g, " ").replace(/\b\w/g, (c) =>
-                    c.toUpperCase()
-                  )}
+                <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                  {channel}
                 </span>
                 {regions && (
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-xs text-zinc-500 dark:text-zinc-400">
                     {regions[0]}
                   </span>
                 )}
@@ -417,20 +448,20 @@ const EPG = ({region, availableData}) => {
             </div>
           ))}
         </div>
-        <ScrollArea className="flex-1 bg-zinc-100 dark:bg-zinc-900">
+        <ScrollArea className="flex-1 bg-white dark:bg-zinc-950">
           {isLoading ? (
             <LoadingState />
           ) : error ? (
-            <div className="flex flex-col items-center justify-center h-full bg-zinc-100 dark:bg-zinc-900 text-center p-8">
-              <h2 className="text-xl font-semibold text-zinc-800 dark:text-zinc-200 mb-2">
+            <div className="flex flex-col items-center justify-center h-full bg-white dark:bg-zinc-950 text-center p-6">
+              <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
                 Error Loading Data
               </h2>
-              <p className="text-zinc-600 dark:text-zinc-400 mb-6">{error}</p>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">{error}</p>
               <Button
                 onClick={handleGoToNearestDate}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white"
+                className="bg-indigo-500 hover:bg-indigo-600 text-white text-sm rounded-lg"
               >
-                Go to Nearest Date with Data
+                Go to Nearest Date
               </Button>
             </div>
           ) : filteredData.length === 0 ? (
@@ -471,7 +502,7 @@ const EPG = ({region, availableData}) => {
           )}
           <ScrollBar
             orientation="horizontal"
-            className="bg-zinc-200/50 dark:bg-zinc-800/50"
+            className="bg-zinc-200/20 dark:bg-zinc-800/20"
           />
         </ScrollArea>
       </div>

@@ -34,14 +34,14 @@ const CustomRangeSlider = ({ min, max, step, value, onChange }) => {
   }, [value]);
 
   return (
-    <div className="w-full px-6 py-8">
-      <div className="relative h-16">
+    <div className="w-full px-4 py-6">
+      <div className="relative h-12">
         {/* Track Background */}
-        <div className="absolute h-2 w-full rounded-full bg-zinc-200 dark:bg-zinc-800 top-1/2 -translate-y-1/2 shadow-inner" />
+        <div className="absolute h-1 w-full rounded-full bg-zinc-200/50 dark:bg-zinc-800/50 top-1/2 -translate-y-1/2" />
 
         {/* Selected Range */}
         <div
-          className="absolute h-2 rounded-full bg-gradient-to-r from-indigo-400 to-teal-400 dark:from-indigo-600 dark:to-teal-600 transition-all duration-300 ease-out shadow-[0_0_8px_rgba(79,70,229,0.5)]"
+          className="absolute h-1 rounded-full bg-indigo-500 dark:bg-indigo-400 transition-all duration-300 ease-out"
           style={{
             left: `${calculatePosition(leftValue)}%`,
             width: `${calculatePosition(rightValue) - calculatePosition(leftValue)}%`,
@@ -54,19 +54,19 @@ const CustomRangeSlider = ({ min, max, step, value, onChange }) => {
         <div className="absolute w-full top-1/2 -translate-y-1/2">
           {ticks.map((tick) => (
             <div key={tick} className="absolute transform" style={{ left: `${calculatePosition(tick)}%` }}>
-              <div className="h-4 w-0.5 bg-zinc-300 dark:bg-zinc-600 mx-auto" />
-              <span className="absolute top-5 text-xs font-medium text-zinc-600 dark:text-zinc-400 -translate-x-1/2">{formatTime(tick)}</span>
+              <div className="h-3 w-0.5 bg-zinc-300/50 dark:bg-zinc-700/50 mx-auto" />
+              <span className="absolute top-4 text-xs text-zinc-500 dark:text-zinc-400 -translate-x-1/2">{formatTime(tick)}</span>
             </div>
           ))}
         </div>
 
         {/* Current Values Display */}
-        <div className="absolute w-full flex justify-between -top-10">
-          <div className="bg-white dark:bg-zinc-800 rounded-lg px-3 py-1 shadow-md border border-zinc-200 dark:border-zinc-700 transition-all duration-200 hover:shadow-lg">
-            <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">{formatTime(leftValue)}</span>
+        <div className="absolute w-full flex justify-between -top-8">
+          <div className="bg-white dark:bg-zinc-900 rounded-md px-2 py-1 shadow-sm border border-zinc-200/20 dark:border-zinc-800/20">
+            <span className="text-xs font-medium text-zinc-900 dark:text-zinc-100">{formatTime(leftValue)}</span>
           </div>
-          <div className="bg-white dark:bg-zinc-800 rounded-lg px-3 py-1 shadow-md border border-zinc-200 dark:border-zinc-700 transition-all duration-200 hover:shadow-lg">
-            <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">{formatTime(rightValue)}</span>
+          <div className="bg-white dark:bg-zinc-900 rounded-md px-2 py-1 shadow-sm border border-zinc-200/20 dark:border-zinc-800/20">
+            <span className="text-xs font-medium text-zinc-900 dark:text-zinc-100">{formatTime(rightValue)}</span>
           </div>
         </div>
 
@@ -91,39 +91,39 @@ const CustomRangeSlider = ({ min, max, step, value, onChange }) => {
           value={rightValue}
           onChange={handleRightChange}
           className="absolute w-full top-1/2 -translate-y-1/2 h-4 appearance-none bg-transparent pointer-events-none slider-custom"
-          style={{ "--thumb-color": "#ffffff", "--thumb-border": "2px solid #14b8a6" }}
+          style={{ "--thumb-color": "#ffffff", "--thumb-border": "2px solid #4f46e5" }}
         />
       </div>
 
       <style jsx>{`
         .slider-custom::-webkit-slider-thumb {
           -webkit-appearance: none;
-          height: 20px;
-          width: 20px;
+          height: 16px;
+          width: 16px;
           border-radius: 50%;
           background: var(--thumb-color);
           border: var(--thumb-border);
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
           pointer-events: auto;
           cursor: grab;
           transition: all 0.2s ease;
         }
         .slider-custom::-webkit-slider-thumb:hover {
-          transform: scale(1.2);
+          transform: scale(1.1);
         }
         .slider-custom::-moz-range-thumb {
-          height: 20px;
-          width: 20px;
+          height: 16px;
+          width: 16px;
           border-radius: 50%;
           background: var(--thumb-color);
           border: var(--thumb-border);
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
           pointer-events: auto;
           cursor: grab;
           transition: all 0.2s ease;
         }
         .slider-custom::-moz-range-thumb:hover {
-          transform: scale(1.2);
+          transform: scale(1.1);
         }
       `}</style>
     </div>

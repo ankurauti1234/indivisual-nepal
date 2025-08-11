@@ -18,14 +18,14 @@ const TimelineRuler = ({ timeRange }) => {
     `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
 
   return (
-    <div className="h-12 bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-800 border-y border-zinc-200/50 dark:border-zinc-700/50 shadow-sm">
+    <div className="h-12 bg-white dark:bg-zinc-950 border-y border-zinc-200/10 dark:border-zinc-800/10">
       {hours.map((hour) => {
         const left = (hour * 60 - timeRange[0]) * pixelsPerMinute;
         return (
           <div key={hour} className="absolute" style={{ left: `${left}px` }}>
-            <div className="absolute h-12 w-px bg-zinc-300/70 dark:bg-zinc-600/70" />
+            <div className="absolute h-12 w-px bg-zinc-200/50 dark:bg-zinc-800/50" />
             <div className="absolute -left-8 top-2 w-16 text-center">
-              <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+              <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 {formatMinute(hour, 0)}
               </span>
             </div>
@@ -47,11 +47,11 @@ const TimelineRuler = ({ timeRange }) => {
                   <div
                     className={`absolute w-px transition-all ${
                       isQuarter
-                        ? "h-8 bg-zinc-300/50 dark:bg-zinc-600/50"
+                        ? "h-6 bg-zinc-200/40 dark:bg-zinc-800/40"
                         : isFive
-                        ? "h-4 bg-zinc-200/40 dark:bg-zinc-700/40"
+                        ? "h-3 bg-zinc-200/30 dark:bg-zinc-800/30"
                         : isVeryZoomedIn
-                        ? "h-2 bg-zinc-200/30 dark:bg-zinc-700/30"
+                        ? "h-2 bg-zinc-200/20 dark:bg-zinc-800/20"
                         : ""
                     }`}
                   />

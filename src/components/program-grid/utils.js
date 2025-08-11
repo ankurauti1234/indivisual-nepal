@@ -1,12 +1,11 @@
-
 export const timeToMinutes = (time) => {
   const [hours, minutes, seconds] = time.split(":").map(Number);
-  return hours * 60 + minutes + seconds / 60;
+  return hours * 60 + minutes + (seconds || 0) / 60;
 };
 
 export const timeToSeconds = (time) => {
   const [hh, mm, ss] = time.split(":").map(Number);
-  return hh * 3600 + mm * 60 + ss;
+  return hh * 3600 + mm * 60 + (ss || 0);
 };
 
 export const secondsToTime = (seconds) => {
@@ -14,6 +13,14 @@ export const secondsToTime = (seconds) => {
   const mm = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
   const ss = String(seconds % 60).padStart(2, "0");
   return `${hh}:${mm}:${ss}`;
+};
+
+export const unixToTime = (unixTimestamp) => {
+  const date = new Date(unixTimestamp * 1000);
+  const hours = String(date.getUTCHours()).padStart(2, "0");
+  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+  const seconds = String(date.getUTCSeconds()).padStart(2, "0");
+  return `${hours}:${minutes}:${seconds}`;
 };
 
 export const getUniqueRegions = (data) => [
