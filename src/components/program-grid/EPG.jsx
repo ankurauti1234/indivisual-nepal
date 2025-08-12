@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import CustomRangeSlider from "./custom-range-slider";
@@ -33,15 +33,99 @@ import { useRouter, useSearchParams } from "next/navigation";
 import TimelineRuler from "./TimelineRuler";
 import EmptyState from "./EmptyState";
 import LoadingState from "./LoadingState";
-import { timeToMinutes, formatTimeForURL, parseTimeToMinutes, getUniqueRegions, getUniqueChannels, getUniqueContentTypes, getDatesWithData, findNearestDateWithData, unixToTime } from "./utils";
+import {
+  timeToMinutes,
+  formatTimeForURL,
+  parseTimeToMinutes,
+  getUniqueRegions,
+  getUniqueChannels,
+  getUniqueContentTypes,
+  unixToTime,
+} from "./utils";
 import { squircleClipPath } from "./squircle";
-import ExportDialog from "./export-dialog";
+// import ExportDialog from './export-dialog';
 
 const MINUTES_IN_DAY = 24 * 60;
 const FIXED_WIDTH = 9600;
-const DEVICE_IDS = ["R-1","R-3","R-4", "R-5"];
+// const DEVICE_IDS = ['R-1001', 'R-1004', 'R-1007'];
+// const CHANNEL_ALIASES = {
+//   'R-1001': 'Netflix',
+//   'R-1004': 'Jio Hotstar',
+//   'R-1007': 'Zee5'
+// };
 
-const EPG = ({ region, availableData }) => {
+// Function to combine adjacent programs with the same title and type
+const combineAdjacentPrograms = (programs) => {
+  if (!programs || programs.length === 0) return [];
+
+  // Sort programs by start time
+  const sortedPrograms = programs.sort(
+    (a, b) => timeToMinutes(a.start) - timeToMinutes(b.start)
+  );
+  const combined = [];
+
+  for (let i = 0; i < sortedPrograms.length; i++) {
+    const currentProgram = { ...sortedPrograms[i] };
+
+    // Look for adjacent programs with the same title and type
+    while (i + 1 < sortedPrograms.length) {
+      const nextProgram = sortedPrograms[i + 1];
+
+      // Check if programs are adjacent and have the same title and type
+      const currentEndMinutes = timeToMinutes(currentProgram.end);
+      const nextStartMinutes = timeToMinutes(nextProgram.start);
+      const isAdjacent = Math.abs(currentEndMinutes - nextStartMinutes) <= 1; // Allow 1 minute tolerance
+
+      const isSameTitle =
+        currentProgram.title.toLowerCase().trim() ===
+        nextProgram.title.toLowerCase().trim();
+      const isSameType = currentProgram.type === nextProgram.type;
+      const isSameChannel = currentProgram.channel === nextProgram.channel;
+
+      if (isAdjacent && isSameTitle && isSameType && isSameChannel) {
+        // Extend the current program's end time
+        currentProgram.end = nextProgram.end;
+
+        // Combine other properties if needed
+        if (nextProgram.content && !currentProgram.content) {
+          currentProgram.content = nextProgram.content;
+        }
+
+        // Combine image paths
+        if (nextProgram.image_paths && nextProgram.image_paths.length > 0) {
+          currentProgram.image_paths = [
+            ...(currentProgram.image_paths || []),
+            ...nextProgram.image_paths,
+          ];
+          // Remove duplicates
+          currentProgram.image_paths = [...new Set(currentProgram.image_paths)];
+        }
+
+        // Update episode and season IDs if they exist
+        if (nextProgram.episode_id && !currentProgram.episode_id) {
+          currentProgram.episode_id = nextProgram.episode_id;
+        }
+        if (nextProgram.season_id && !currentProgram.season_id) {
+          currentProgram.season_id = nextProgram.season_id;
+        }
+
+        // Create a combined ID to maintain uniqueness
+        currentProgram.id = `${currentProgram.id}_${nextProgram.id}`;
+        currentProgram.combined = true;
+
+        i++; // Skip the next program as it's been combined
+      } else {
+        break; // No more adjacent programs to combine
+      }
+    }
+
+    combined.push(currentProgram);
+  }
+
+  return combined;
+};
+
+const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialDate =
@@ -60,27 +144,28 @@ const EPG = ({ region, availableData }) => {
   const [epgData, setEpgData] = useState([]);
   const [error, setError] = useState(null);
   const [calendarDate, setCalendarDate] = useState(() => {
-    const date = new Date(initialDate + 'T00:00:00Z');
+    const date = new Date(initialDate + "T00:00:00Z");
     return date;
   });
 
-  const datesWithData = getDatesWithData(availableData);
-  const channels = getUniqueChannels(epgData);
+  const channels = getUniqueChannels(epgData).map((id) => ({
+    id,
+    alias: CHANNEL_ALIASES[id] || id,
+  }));
   const regions = getUniqueRegions(epgData);
   const contentTypes = getUniqueContentTypes(epgData);
 
   useEffect(() => {
     console.log("Selected Date:", selectedDate);
-    console.log("Dates with Data:", datesWithData);
     console.log("Channels:", channels);
     console.log(
       "Filtered Data:",
       epgData.filter((program) => {
         const matchesContentType =
-          selectedContentType === "all" || program.type.toLowerCase() === selectedContentType;
+          selectedContentType === "all" ||
+          program.type.toLowerCase() === selectedContentType;
         const matchesChannel =
-          selectedChannel === "all" ||
-          program.channel === selectedChannel;
+          selectedChannel === "all" || program.channel === selectedChannel;
         const matchesRegion =
           selectedRegion === "all" || program.region === selectedRegion;
         return matchesContentType && matchesChannel && matchesRegion;
@@ -88,7 +173,6 @@ const EPG = ({ region, availableData }) => {
     );
   }, [
     selectedDate,
-    datesWithData,
     channels,
     epgData,
     selectedContentType,
@@ -101,15 +185,7 @@ const EPG = ({ region, availableData }) => {
       setIsLoading(true);
       setError(null);
       try {
-        const baseUrl = "https://ott-api.indirex.io/api/v1";
-        const stations = Object.keys(availableData).filter((station) =>
-          availableData[station].dates.includes(selectedDate)
-        );
-        const deviceIds = DEVICE_IDS.filter((id) => stations.includes(id));
-
-        console.log("Fetching data for device IDs:", deviceIds);
-
-        const dataPromises = deviceIds.map(async (deviceId) => {
+        const dataPromises = DEVICE_IDS.map(async (deviceId) => {
           const response = await fetch(
             `${baseUrl}/labels/program-guides/${selectedDate}/${deviceId}`,
             {
@@ -155,7 +231,7 @@ const EPG = ({ region, availableData }) => {
                 : item.label_type === "song"
                 ? item.song?.artist
                 : item.error?.message,
-            image_paths: item.image_paths || [], // Store all images
+            image_paths: item.image_paths || [],
             episode_id: item.program?.episode_id,
             season_id: item.program?.season_id,
           }));
@@ -163,7 +239,28 @@ const EPG = ({ region, availableData }) => {
 
         const results = await Promise.all(dataPromises);
         const combinedData = results.flat();
-        setEpgData(combinedData);
+
+        // Apply combining logic to each channel's programs
+        const processedData = [];
+        const channelGroups = {};
+
+        // Group by channel
+        combinedData.forEach((program) => {
+          if (!channelGroups[program.channel]) {
+            channelGroups[program.channel] = [];
+          }
+          channelGroups[program.channel].push(program);
+        });
+
+        // Apply combining logic to each channel
+        Object.keys(channelGroups).forEach((channelId) => {
+          const combinedChannelPrograms = combineAdjacentPrograms(
+            channelGroups[channelId]
+          );
+          processedData.push(...combinedChannelPrograms);
+        });
+
+        setEpgData(processedData);
       } catch (err) {
         console.error("Fetch error:", err);
         setError(err.message);
@@ -174,7 +271,7 @@ const EPG = ({ region, availableData }) => {
     };
 
     fetchData();
-  }, [selectedDate, region, availableData]);
+  }, [selectedDate, region]);
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
@@ -190,10 +287,10 @@ const EPG = ({ region, availableData }) => {
 
   const filteredData = epgData.filter((program) => {
     const matchesContentType =
-      selectedContentType === "all" || program.type.toLowerCase() === selectedContentType;
+      selectedContentType === "all" ||
+      program.type.toLowerCase() === selectedContentType;
     const matchesChannel =
-      selectedChannel === "all" ||
-      program.channel === selectedChannel;
+      selectedChannel === "all" || program.channel === selectedChannel;
     const matchesRegion =
       selectedRegion === "all" || program.region === selectedRegion;
     return matchesContentType && matchesChannel && matchesRegion;
@@ -201,37 +298,46 @@ const EPG = ({ region, availableData }) => {
 
   const handlePrevDate = () => {
     setSelectedDate((prevDate) => {
-      const newDate = new Date(prevDate + 'T00:00:00Z');
+      const newDate = new Date(prevDate + "T00:00:00Z");
       newDate.setUTCDate(newDate.getUTCDate() - 1);
-      setCalendarDate(new Date(Date.UTC(newDate.getUTCFullYear(), newDate.getUTCMonth(), newDate.getUTCDate())));
+      setCalendarDate(
+        new Date(
+          Date.UTC(
+            newDate.getUTCFullYear(),
+            newDate.getUTCMonth(),
+            newDate.getUTCDate()
+          )
+        )
+      );
       return newDate.toISOString().split("T")[0];
     });
   };
 
   const handleNextDate = () => {
     setSelectedDate((prevDate) => {
-      const newDate = new Date(prevDate + 'T00:00:00Z');
+      const newDate = new Date(prevDate + "T00:00:00Z");
       newDate.setUTCDate(newDate.getUTCDate() + 1);
-      setCalendarDate(new Date(Date.UTC(newDate.getUTCFullYear(), newDate.getUTCMonth(), newDate.getUTCDate())));
+      setCalendarDate(
+        new Date(
+          Date.UTC(
+            newDate.getUTCFullYear(),
+            newDate.getUTCMonth(),
+            newDate.getUTCDate()
+          )
+        )
+      );
       return newDate.toISOString().split("T")[0];
     });
   };
 
   const handleCalendarSelect = (date) => {
     if (date) {
-      const utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+      const utcDate = new Date(
+        Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+      );
       const formattedDate = utcDate.toISOString().split("T")[0];
       setSelectedDate(formattedDate);
       setCalendarDate(utcDate);
-    }
-  };
-
-  const handleGoToNearestDate = () => {
-    const nearestDate = findNearestDateWithData(selectedDate, datesWithData);
-    if (nearestDate) {
-      setSelectedDate(nearestDate);
-      const utcDate = new Date(nearestDate + 'T00:00:00Z');
-      setCalendarDate(new Date(Date.UTC(utcDate.getUTCFullYear(), utcDate.getUTCMonth(), utcDate.getUTCDate())));
     }
   };
 
@@ -248,8 +354,10 @@ const EPG = ({ region, availableData }) => {
     const isVeryNarrow = width < 80;
 
     const typeStyles = {
-      program: "bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-100",
-      advertisement: "bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-100",
+      program:
+        "bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-100",
+      advertisement:
+        "bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-100",
       song: "bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-100",
       error: "bg-gray-100 dark:bg-gray-900/50 text-gray-800 dark:text-gray-100",
     };
@@ -257,16 +365,27 @@ const EPG = ({ region, availableData }) => {
     return (
       <motion.div
         key={program.id}
-        className={`absolute h-28 overflow-hidden rounded-lg border border-zinc-200/20 dark:border-zinc-700/20 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group ${typeStyles[program.type.toLowerCase()]} ${isVeryNarrow ? "p-1" : "p-2"}`}
+        className={`absolute h-28 overflow-hidden rounded-lg border border-zinc-200/20 dark:border-zinc-700/20 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group ${
+          typeStyles[program.type.toLowerCase()]
+        } ${isVeryNarrow ? "p-1" : "p-2"} ${
+          program.combined ? "ring-2 ring-blue-400/50" : ""
+        }`}
         style={{ left: `${left}px`, width: `${width}px` }}
         onClick={() => setSelectedProgram(program)}
         whileHover={{ scale: 1.02 }}
       >
         <div className="h-full flex flex-col justify-between">
           {!isVeryNarrow && (
-            <h3 className="text-sm font-medium leading-tight line-clamp-2 group-hover:line-clamp-none">
-              {program.title}
-            </h3>
+            <div className="flex flex-col">
+              <h3 className="text-sm font-medium leading-tight line-clamp-2 group-hover:line-clamp-none">
+                {program.title}
+              </h3>
+              {program.combined && (
+                <span className="text-xs text-blue-600 dark:text-blue-400 mt-1 font-medium">
+                  Combined
+                </span>
+              )}
+            </div>
           )}
           {isVeryNarrow && (
             <div className="tooltip-container">
@@ -277,6 +396,11 @@ const EPG = ({ region, availableData }) => {
                 <p className="text-sm text-zinc-900 dark:text-zinc-100">
                   {program.title}
                 </p>
+                {program.combined && (
+                  <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+                    Combined blocks
+                  </p>
+                )}
               </div>
             </div>
           )}
@@ -305,12 +429,11 @@ const EPG = ({ region, availableData }) => {
             Program Guide
           </h1>
           <div className="flex items-center gap-3">
-            <ExportDialog
+            {/* <ExportDialog
               selectedDate={selectedDate}
               epgData={epgData}
-              availableData={availableData}
               regions={regions}
-            />
+            /> */}
             <div className="flex items-center gap-2 bg-white/50 dark:bg-zinc-900/50 rounded-lg p-1.5 shadow-sm">
               <Button
                 onClick={handlePrevDate}
@@ -356,7 +479,9 @@ const EPG = ({ region, availableData }) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-48 bg-white dark:bg-zinc-900 border-zinc-200/20 dark:border-zinc-800/20 rounded-lg">
-              <DropdownMenuLabel className="text-sm text-zinc-700 dark:text-zinc-300">Filters</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-sm text-zinc-700 dark:text-zinc-300">
+                Filters
+              </DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-zinc-200/20 dark:bg-zinc-800/20" />
               <DropdownMenuItem className="flex flex-col items-start p-2">
                 <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
@@ -391,9 +516,9 @@ const EPG = ({ region, availableData }) => {
                   </SelectTrigger>
                   <SelectContent className="bg-white dark:bg-zinc-900 border-zinc-200/20 dark:border-zinc-800/20">
                     <SelectItem value="all">All TV Channels</SelectItem>
-                    {DEVICE_IDS.map((deviceId) => (
-                      <SelectItem key={deviceId} value={deviceId}>
-                        {deviceId}
+                    {channels.map((channel) => (
+                      <SelectItem key={channel.id} value={channel.id}>
+                        {channel.alias}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -427,17 +552,17 @@ const EPG = ({ region, availableData }) => {
               className="h-28 flex items-center px-3 border-b border-zinc-200/10 dark:border-zinc-800/10"
             >
               <img
-                src={`https://radio-playback-files.s3.ap-south-1.amazonaws.com/logos/${channel
+                src={`https://radio-playback-files.s3.ap-south-1.amazonaws.com/logos/${channel.alias
                   .toLowerCase()
                   .trim()
                   .replace(/\s+/g, "-")}.png`}
-                alt={channel}
+                alt={channel.alias}
                 className="h-10 w-10 rounded-md shadow-sm mr-2"
                 style={{ clipPath: `polygon(${squircleClipPath(40, 40, 4)})` }}
               />
               <div className="flex flex-col">
                 <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                  {channel}
+                  {channel.alias}
                 </span>
                 {regions && (
                   <span className="text-xs text-zinc-500 dark:text-zinc-400">
@@ -456,16 +581,12 @@ const EPG = ({ region, availableData }) => {
               <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
                 Error Loading Data
               </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">{error}</p>
-              <Button
-                onClick={handleGoToNearestDate}
-                className="bg-indigo-500 hover:bg-indigo-600 text-white text-sm rounded-lg"
-              >
-                Go to Nearest Date
-              </Button>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+                {error}
+              </p>
             </div>
           ) : filteredData.length === 0 ? (
-            <EmptyState onGoToNearestDate={handleGoToNearestDate} />
+            <EmptyState />
           ) : (
             <div
               className="relative"
@@ -477,7 +598,7 @@ const EPG = ({ region, availableData }) => {
               <TimelineRuler timeRange={timeRange} />
               {channels.map((channel, channelIndex) => {
                 const channelPrograms = filteredData
-                  .filter((p) => p.channel === channel)
+                  .filter((p) => p.channel === channel.id)
                   .filter((program) => {
                     const startMinutes = timeToMinutes(program.start);
                     const endMinutes = timeToMinutes(program.end);
@@ -488,7 +609,7 @@ const EPG = ({ region, availableData }) => {
 
                 return (
                   <div
-                    key={channel}
+                    key={channel.id}
                     className="absolute left-0 right-0 h-28 top-[48px]"
                     style={{ top: `${channelIndex * 112 + 48}px` }}
                   >
