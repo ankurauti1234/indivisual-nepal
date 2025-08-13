@@ -8,7 +8,7 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
   const [isImageLoading, setIsImageLoading] = useState(false);
 
   useEffect(() => {
-    setCurrentImageIndex(0); // Reset to first image when program changes
+    setCurrentImageIndex(0);
   }, [selectedProgram]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
         setCurrentImageIndex((prevIndex) =>
           (prevIndex + 1) % selectedProgram.image_paths.length
         );
-      }, 500); // Slower transition for better viewing
+      }, 500);
       return () => clearInterval(interval);
     }
   }, [selectedProgram]);
@@ -89,7 +89,6 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
           </div>
           {selectedProgram?.image_paths?.length > 0 && (
             <div className="relative rounded-lg bg-white dark:bg-zinc-900/50 shadow-sm border border-zinc-200/10 dark:border-zinc-800/10 overflow-hidden">
-              {/* Fixed height container to prevent jumping */}
               <div className="relative w-full h-48 bg-zinc-100 dark:bg-zinc-800">
                 <img
                   src={selectedProgram.image_paths[currentImageIndex]}
@@ -98,63 +97,11 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
                   onLoad={() => setIsImageLoading(false)}
                   onLoadStart={() => setIsImageLoading(true)}
                 />
-                
-                {/* Loading indicator */}
                 {isImageLoading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800">
                     <div className="w-6 h-6 border-2 border-zinc-300 border-t-zinc-600 rounded-full animate-spin"></div>
                   </div>
                 )}
-                
-                {/* Image counter and controls */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-3">
-                  <div className="flex items-center justify-between">
-                    {/* Progress dots */}
-                    {/* <div className="flex gap-1.5">
-                      {selectedProgram.image_paths.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrentImageIndex(index)}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            index === currentImageIndex 
-                              ? "bg-white scale-125" 
-                              : "bg-white/50 hover:bg-white/70"
-                          }`}
-                        />
-                      ))}
-                    </div> */}
-                    
-                    {/* Counter */}
-                    {/* <div className="bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
-                      {`${currentImageIndex + 1}/${selectedProgram.image_paths.length}`}
-                    </div> */}
-                  </div>
-                  
-                </div>
-                
-                {/* Navigation arrows */}
-                {/* {selectedProgram.image_paths.length > 1 && (
-                  <>
-                    <button
-                      onClick={() => setCurrentImageIndex(
-                        currentImageIndex === 0 
-                          ? selectedProgram.image_paths.length - 1 
-                          : currentImageIndex - 1
-                      )}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm opacity-0 group-hover:opacity-100"
-                    >
-                      ←
-                    </button>
-                    <button
-                      onClick={() => setCurrentImageIndex(
-                        (currentImageIndex + 1) % selectedProgram.image_paths.length
-                      )}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm opacity-0 group-hover:opacity-100"
-                    >
-                      →
-                    </button>
-                  </>
-                )} */}
               </div>
             </div>
           )}

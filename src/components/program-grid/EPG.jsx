@@ -29,7 +29,6 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { useRouter, useSearchParams } from "next/navigation";
-
 import TimelineRuler from "./TimelineRuler";
 import EmptyState from "./EmptyState";
 import LoadingState from "./LoadingState";
@@ -43,22 +42,13 @@ import {
   unixToTime,
 } from "./utils";
 import { squircleClipPath } from "./squircle";
-// import ExportDialog from './export-dialog';
 
 const MINUTES_IN_DAY = 24 * 60;
 const FIXED_WIDTH = 9600;
-// const DEVICE_IDS = ['R-1001', 'R-1004', 'R-1007'];
-// const CHANNEL_ALIASES = {
-//   'R-1001': 'Netflix',
-//   'R-1004': 'Jio Hotstar',
-//   'R-1007': 'Zee5'
-// };
 
-// Function to combine adjacent programs with the same title and type
 const combineAdjacentPrograms = (programs) => {
   if (!programs || programs.length === 0) return [];
 
-  // Sort programs by start time
   const sortedPrograms = programs.sort(
     (a, b) => timeToMinutes(a.start) - timeToMinutes(b.start)
   );
@@ -67,15 +57,11 @@ const combineAdjacentPrograms = (programs) => {
   for (let i = 0; i < sortedPrograms.length; i++) {
     const currentProgram = { ...sortedPrograms[i] };
 
-    // Look for adjacent programs with the same title and type
     while (i + 1 < sortedPrograms.length) {
       const nextProgram = sortedPrograms[i + 1];
-
-      // Check if programs are adjacent and have the same title and type
       const currentEndMinutes = timeToMinutes(currentProgram.end);
       const nextStartMinutes = timeToMinutes(nextProgram.start);
-      const isAdjacent = Math.abs(currentEndMinutes - nextStartMinutes) <= 1; // Allow 1 minute tolerance
-
+      const isAdjacent = Math.abs(currentEndMinutes - nextStartMinutes) <= 1;
       const isSameTitle =
         currentProgram.title.toLowerCase().trim() ===
         nextProgram.title.toLowerCase().trim();
@@ -83,53 +69,39 @@ const combineAdjacentPrograms = (programs) => {
       const isSameChannel = currentProgram.channel === nextProgram.channel;
 
       if (isAdjacent && isSameTitle && isSameType && isSameChannel) {
-        // Extend the current program's end time
         currentProgram.end = nextProgram.end;
-
-        // Combine other properties if needed
         if (nextProgram.content && !currentProgram.content) {
           currentProgram.content = nextProgram.content;
         }
-
-        // Combine image paths
         if (nextProgram.image_paths && nextProgram.image_paths.length > 0) {
           currentProgram.image_paths = [
             ...(currentProgram.image_paths || []),
             ...nextProgram.image_paths,
           ];
-          // Remove duplicates
           currentProgram.image_paths = [...new Set(currentProgram.image_paths)];
         }
-
-        // Update episode and season IDs if they exist
         if (nextProgram.episode_id && !currentProgram.episode_id) {
           currentProgram.episode_id = nextProgram.episode_id;
         }
         if (nextProgram.season_id && !currentProgram.season_id) {
           currentProgram.season_id = nextProgram.season_id;
         }
-
-        // Create a combined ID to maintain uniqueness
         currentProgram.id = `${currentProgram.id}_${nextProgram.id}`;
         currentProgram.combined = true;
-
-        i++; // Skip the next program as it's been combined
+        i++;
       } else {
-        break; // No more adjacent programs to combine
+        break;
       }
     }
-
     combined.push(currentProgram);
   }
-
   return combined;
 };
 
 const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const initialDate =
-    searchParams.get("date") || new Date().toISOString().split("T")[0];
+  const initialDate = searchParams.get("date") || format(new Date(), "yyyy-MM-dd");
   const initialStart = parseTimeToMinutes(searchParams.get("start")) || 0;
   const initialEnd =
     parseTimeToMinutes(searchParams.get("end")) || MINUTES_IN_DAY;
@@ -143,10 +115,7 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [epgData, setEpgData] = useState([]);
   const [error, setError] = useState(null);
-  const [calendarDate, setCalendarDate] = useState(() => {
-    const date = new Date(initialDate + "T00:00:00Z");
-    return date;
-  });
+  const [calendarDate, setCalendarDate] = useState(() => new Date(initialDate));
 
   const channels = getUniqueChannels(epgData).map((id) => ({
     id,
@@ -239,12 +208,9 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
 
         const results = await Promise.all(dataPromises);
         const combinedData = results.flat();
-
-        // Apply combining logic to each channel's programs
         const processedData = [];
         const channelGroups = {};
 
-        // Group by channel
         combinedData.forEach((program) => {
           if (!channelGroups[program.channel]) {
             channelGroups[program.channel] = [];
@@ -252,7 +218,6 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
           channelGroups[program.channel].push(program);
         });
 
-        // Apply combining logic to each channel
         Object.keys(channelGroups).forEach((channelId) => {
           const combinedChannelPrograms = combineAdjacentPrograms(
             channelGroups[channelId]
@@ -298,46 +263,26 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
 
   const handlePrevDate = () => {
     setSelectedDate((prevDate) => {
-      const newDate = new Date(prevDate + "T00:00:00Z");
-      newDate.setUTCDate(newDate.getUTCDate() - 1);
-      setCalendarDate(
-        new Date(
-          Date.UTC(
-            newDate.getUTCFullYear(),
-            newDate.getUTCMonth(),
-            newDate.getUTCDate()
-          )
-        )
-      );
-      return newDate.toISOString().split("T")[0];
+      const newDate = new Date(prevDate);
+      newDate.setDate(newDate.getDate() - 1);
+      setCalendarDate(new Date(newDate));
+      return format(newDate, "yyyy-MM-dd");
     });
   };
 
   const handleNextDate = () => {
     setSelectedDate((prevDate) => {
-      const newDate = new Date(prevDate + "T00:00:00Z");
-      newDate.setUTCDate(newDate.getUTCDate() + 1);
-      setCalendarDate(
-        new Date(
-          Date.UTC(
-            newDate.getUTCFullYear(),
-            newDate.getUTCMonth(),
-            newDate.getUTCDate()
-          )
-        )
-      );
-      return newDate.toISOString().split("T")[0];
+      const newDate = new Date(prevDate);
+      newDate.setDate(newDate.getDate() + 1);
+      setCalendarDate(new Date(newDate));
+      return format(newDate, "yyyy-MM-dd");
     });
   };
 
   const handleCalendarSelect = (date) => {
     if (date) {
-      const utcDate = new Date(
-        Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-      );
-      const formattedDate = utcDate.toISOString().split("T")[0];
-      setSelectedDate(formattedDate);
-      setCalendarDate(utcDate);
+      setSelectedDate(format(date, "yyyy-MM-dd"));
+      setCalendarDate(new Date(date));
     }
   };
 
@@ -429,11 +374,6 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
             Program Guide
           </h1>
           <div className="flex items-center gap-3">
-            {/* <ExportDialog
-              selectedDate={selectedDate}
-              epgData={epgData}
-              regions={regions}
-            /> */}
             <div className="flex items-center gap-2 bg-white/50 dark:bg-zinc-900/50 rounded-lg p-1.5 shadow-sm">
               <Button
                 onClick={handlePrevDate}

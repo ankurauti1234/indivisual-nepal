@@ -102,12 +102,16 @@ const data = {
     },
     {
       title: "OTT",
-      url: "/dashboard/ott",
+      url: "#",
       icon: Play,
       items: [
         {
           title: "Program Grid",
           url: "/dashboard/ott/program-grid",
+        },
+                {
+          title: "AD Performance",
+          url: "/dashboard/ott/ad-performance",
         },
       ],
     },
