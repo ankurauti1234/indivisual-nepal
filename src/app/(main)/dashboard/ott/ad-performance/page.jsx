@@ -164,7 +164,7 @@ const generateRealisticAdPlacements = (selectedShows, selectedPlatform) => {
 }
 
 export default function OTTAdScheduler() {
-  const [selectedWeek, setSelectedWeek] = useState("2024-01-01")
+  const [selectedWeek, setSelectedWeek] = useState("2025-06-30")
   const [selectedPlatform, setSelectedPlatform] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
   const [selectedShows, setSelectedShows] = useState([])
@@ -191,7 +191,7 @@ export default function OTTAdScheduler() {
   }, [availableShows])
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen">
       {/* Professional Header */}
       <div className="border-b shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-6">
@@ -199,10 +199,10 @@ export default function OTTAdScheduler() {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <BarChart3 className="h-6 w-6 " />
+                  <BarChart3 className="h-6 w-6" />
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold ">OTT Ad Scheduling Dashboard</h1>
+                  <h1 className="text-2xl font-bold">OTT Ad Scheduling Dashboard</h1>
                   <p className="text-sm text-gray-600">
                     Comprehensive ad placement analytics across streaming platforms
                   </p>
@@ -210,10 +210,22 @@ export default function OTTAdScheduler() {
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm" className=" bg-transparent">
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-transparent"
+                onClick={() => {
+                  const url = "https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/grp-report.csv";
+                  const link = document.createElement("a");
+                  link.href = url;
+                  link.download = "grp-report.csv";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+              >
                 Export Report
               </Button>
-             
             </div>
           </div>
         </div>
@@ -224,7 +236,7 @@ export default function OTTAdScheduler() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold  flex items-center">
+              <CardTitle className="text-sm font-semibold flex items-center">
                 <Calendar className="h-4 w-4 mr-2 text-blue-600" />
                 Campaign Week
               </CardTitle>
@@ -235,10 +247,13 @@ export default function OTTAdScheduler() {
                   <SelectValue placeholder="Select campaign week" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="2024-01-01">January 1-7, 2024</SelectItem>
-                  <SelectItem value="2024-01-08">January 8-14, 2024</SelectItem>
-                  <SelectItem value="2024-01-15">January 15-21, 2024</SelectItem>
-                  <SelectItem value="2024-01-22">January 22-28, 2024</SelectItem>
+                  <SelectItem value="2025-06-30">Week 27: June 30 - July 6, 2025</SelectItem>
+                  <SelectItem value="2025-07-07">Week 28: July 7 - July 13, 2025</SelectItem>
+                  <SelectItem value="2025-07-14">Week 29: July 14 - July 20, 2025</SelectItem>
+                  <SelectItem value="2025-07-21">Week 30: July 21 - July 27, 2025</SelectItem>
+                  <SelectItem value="2025-07-28">Week 31: July 28 - August 3, 2025</SelectItem>
+                  <SelectItem value="2025-08-04">Week 32: August 4 - August 10, 2025</SelectItem>
+                  <SelectItem value="2025-08-11">Week 33: August 11 - August 17, 2025</SelectItem>
                 </SelectContent>
               </Select>
             </CardContent>
@@ -246,7 +261,7 @@ export default function OTTAdScheduler() {
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold ">Streaming Platform</CardTitle>
+              <CardTitle className="text-sm font-semibold">Streaming Platform</CardTitle>
             </CardHeader>
             <CardContent>
               <Select
@@ -281,7 +296,7 @@ export default function OTTAdScheduler() {
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold ">Content Genre</CardTitle>
+              <CardTitle className="text-sm font-semibold">Content Genre</CardTitle>
             </CardHeader>
             <CardContent>
               <Select value={selectedGenre} onValueChange={setSelectedGenre} disabled={!selectedPlatform}>
@@ -301,12 +316,12 @@ export default function OTTAdScheduler() {
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold ">Active Shows</CardTitle>
+              <CardTitle className="text-sm font-semibold">Active Shows</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex items-center space-x-2">
                 <Play className="h-5 w-5 text-blue-600" />
-                <span className="text-2xl font-bold ">{selectedShows.length}</span>
+                <span className="text-2xl font-bold">{selectedShows.length}</span>
                 <span className="text-sm text-muted-foreground">selected</span>
               </div>
               {selectedShows.length > 0 && <p className="text-xs text-muted-foreground mt-1">All shows auto-selected</p>}
@@ -335,7 +350,7 @@ export default function OTTAdScheduler() {
         {availableShows.length > 0 && currentPlatform?.hasAds && (
           <Card className="border-gray-200 shadow-sm mb-8">
             <CardHeader>
-              <CardTitle className="text-lg font-semibold  flex items-center justify-between">
+              <CardTitle className="text-lg font-semibold flex items-center justify-between">
                 <div className="flex items-center">
                   <Play className="h-5 w-5 mr-2 text-blue-600" />
                   Top {selectedGenre} Shows on {currentPlatform?.name}
@@ -352,19 +367,19 @@ export default function OTTAdScheduler() {
                     key={show}
                     className={`group p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
                       selectedShows.includes(show)
-                        ? "border-blue-500  shadow-md"
-                        : " hover: hover:shadow-sm"
+                        ? "border-blue-500 shadow-md"
+                        : "hover:shadow-sm"
                     }`}
                     onClick={() => handleShowSelection(show)}
                   >
-                    <div className="aspect-[3/4]  rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    <div className="aspect-[3/4] rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                       <img
                         src={`/abstract-geometric-shapes.png?height=160&width=120&query=${encodeURIComponent(show + " show poster")}`}
                         alt={`${show} poster`}
                         className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="text-sm font-semibold  text-center leading-tight">{show}</h3>
+                    <h3 className="text-sm font-semibold text-center leading-tight">{show}</h3>
                     {selectedShows.includes(show) && (
                       <Badge className="w-full mt-2 bg-blue-600 hover:bg-blue-700 justify-center">✓ Active</Badge>
                     )}
@@ -379,14 +394,14 @@ export default function OTTAdScheduler() {
         {adPlacements.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg font-semibold  flex items-center justify-between">
+              <CardTitle className="text-lg font-semibold flex items-center justify-between">
                 <div className="flex items-center">
                   <Clock className="h-5 w-5 mr-2 text-blue-600" />
                   Weekly Ad Placement Schedule
                 </div>
                 <div className="flex items-center space-x-4 text-sm text-gray-600">
                   <span>
-                    Total Ads: <strong className="">{adPlacements.length}</strong>
+                    Total Ads: <strong>{adPlacements.length}</strong>
                   </span>
                   <span>
                     Platform: <strong style={{ color: currentPlatform?.color }}>{currentPlatform?.name}</strong>
@@ -398,10 +413,10 @@ export default function OTTAdScheduler() {
               <div className="overflow-x-auto">
                 <div className="min-w-[900px]">
                   {/* Enhanced Timeline Header */}
-                  <div className="grid grid-cols-8 gap-3 mb-6 pb-3 border-b ">
-                    <div className="text-sm font-semibold  p-3">Show Title</div>
+                  <div className="grid grid-cols-8 gap-3 mb-6 pb-3 border-b">
+                    <div className="text-sm font-semibold p-3">Show Title</div>
                     {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
-                      <div key={day} className="text-sm font-semibold  text-center p-3">
+                      <div key={day} className="text-sm font-semibold text-center p-3">
                         <div>{day.slice(0, 3)}</div>
                         <div className="text-xs text-muted-foreground mt-1">Prime Time</div>
                       </div>
@@ -419,8 +434,8 @@ export default function OTTAdScheduler() {
 
                     return (
                       <div key={show} className="grid grid-cols-8 gap-3 mb-4 items-start">
-                        <div className="p-4 bg-card border  rounded-lg shadow-sm">
-                          <div className="text-sm font-semibold  mb-1">{show}</div>
+                        <div className="p-4 bg-card border rounded-lg shadow-sm">
+                          <div className="text-sm font-semibold mb-1">{show}</div>
                           <div className="text-xs text-muted-foreground">{showPlacements.length} ad slots</div>
                           <div className="text-xs text-muted-foreground mt-1">
                             {Math.round(showPlacements.reduce((sum, p) => sum + p.duration, 0) / 60)} min total
@@ -478,7 +493,7 @@ export default function OTTAdScheduler() {
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <h4 className="text-sm font-semibold  mb-2">Ad Placement Legend</h4>
+                    <h4 className="text-sm font-semibold mb-2">Ad Placement Legend</h4>
                     <div className="flex items-center space-x-2 mb-1">
                       <div
                         className="w-4 h-4 rounded"
@@ -489,7 +504,7 @@ export default function OTTAdScheduler() {
                     <div className="text-xs text-muted-foreground">Hover for detailed ad information</div>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold  mb-2">Platform Insights</h4>
+                    <h4 className="text-sm font-semibold mb-2">Platform Insights</h4>
                     <div className="text-sm text-gray-600">
                       <div>
                         Ad Density:{" "}
@@ -504,7 +519,7 @@ export default function OTTAdScheduler() {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold  mb-2">Campaign Summary</h4>
+                    <h4 className="text-sm font-semibold mb-2">Campaign Summary</h4>
                     <div className="text-sm text-gray-600">
                       <div>
                         Shows: <span className="font-medium">{selectedShows.length}</span>
