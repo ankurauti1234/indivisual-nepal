@@ -5,126 +5,25 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Calendar, Clock, Play, AlertCircle, BarChart3 } from "lucide-react"
+import ottData from "./ott-data.json"
 
-// Realistic platform data with ad capabilities
-const platforms = [
-  { id: "netflix", name: "Netflix", logo: "/netflix-inspired-logo.png", color: "#E50914", hasAds: false },
-  {
-    id: "prime",
-    name: "Prime Video",
-    logo: "/amazon-prime-video-logo.png",
-    color: "#00A8E1",
-    hasAds: true,
-    adDensity: "low",
-  },
-  {
-    id: "zee5",
-    name: "ZEE5",
-    logo: "/generic-entertainment-logo.png",
-    color: "#6C5CE7",
-    hasAds: true,
-    adDensity: "high",
-  },
-  {
-    id: "hotstar",
-    name: "Disney+ Hotstar",
-    logo: "/disney-hotstar-logo.png",
-    color: "#1F4788",
-    hasAds: true,
-    adDensity: "medium",
-  },
-  {
-    id: "mxplayer",
-    name: "MX Player",
-    logo: "/placeholder-nuaby.png",
-    color: "#FF6B35",
-    hasAds: true,
-    adDensity: "very-high",
-  },
-]
-
-const genres = {
-  netflix: ["Drama", "Comedy", "Thriller", "Documentary", "Sci-Fi"],
-  prime: ["Action", "Drama", "Comedy", "Horror", "Romance"],
-  zee5: ["Drama", "Comedy", "Reality", "Music", "Regional"],
-  hotstar: ["Sports", "Drama", "Comedy", "Kids", "Movies"],
-  mxplayer: ["Comedy", "Drama", "Web Series", "Movies", "Music"],
+// Utility to generate random time in HH:MM format
+const generateRandomTime = () => {
+  const hours = Math.floor(Math.random() * 24).toString().padStart(2, "0")
+  const minutes = Math.floor(Math.random() * 60).toString().padStart(2, "0")
+  return `${hours}:${minutes}`
 }
-
-const shows = {
-  netflix: {
-    Drama: ["Stranger Things", "The Crown", "Ozark", "House of Cards", "Wednesday"],
-    Comedy: ["Emily in Paris", "Never Have I Ever", "Space Force", "The Good Place", "Schitt's Creek"],
-    Thriller: ["You", "Mindhunter", "Dark", "Money Heist", "Squid Game"],
-  },
-  prime: {
-    Action: ["The Boys", "Jack Ryan", "Reacher", "The Terminal List", "Citadel"],
-    Drama: [
-      "The Marvelous Mrs. Maisel",
-      "The Family Man",
-      "Made in Heaven",
-      "Four More Shots Please",
-      "Mumbai Diaries 26/11",
-    ],
-    Comedy: ["The Office", "Mirzapur", "Panchayat", "Gullak", "Hostel Daze"],
-  },
-  zee5: {
-    Drama: ["Scam 1992", "The Final Call", "Kaafir", "State of Siege: 26/11", "Abhay"],
-    Comedy: ["Bicchoo Ka Khel", "Sunflower", "Rangbaaz", "Poison", "The Casino"],
-    Reality: ["Lock Upp", "Indian Pro Music League", "Sa Re Ga Ma Pa", "Dance India Dance", "Indian Idol"],
-  },
-  hotstar: {
-    Sports: ["IPL 2024", "Pro Kabaddi League", "ISL", "BWF Championships", "Formula 1"],
-    Drama: ["Arya", "Special Ops", "Criminal Justice", "Hostages", "Out of Love"],
-    Comedy: ["Sarabhai vs Sarabhai", "Khichdi", "Office Office", "Taarak Mehta", "The Kapil Sharma Show"],
-  },
-  mxplayer: {
-    Comedy: ["TVF Pitchers", "Kota Factory", "Gullak", "Aspirants", "Permanent Roommates"],
-    Drama: ["Scam 1992", "Rocket Boys", "Mumbai Diaries", "Arya", "Tabbar"],
-    "Web Series": ["The Family Man", "Mirzapur", "Sacred Games", "Delhi Crime", "Scam 1992"],
-  },
-}
-
-// Real Indian brand ad names with repetition patterns
-const realAdNames = [
-  "Coca-Cola - Taste The Feeling",
-  "Pepsi - For The Love of It",
-  "Maggi - 2 Minute Noodles",
-  "Cadbury Dairy Milk",
-  "Airtel - Har Ek Friend Zaroori",
-  "Jio - Digital India",
-  "Amazon - Aur Dikhao",
-  "Flipkart - Big Billion Days",
-  "Swiggy - What A Delivery",
-  "Zomato - Better Food For More People",
-  "Paytm - Karo Aur Kamao",
-  "PhonePe - No Tension Only Transaction",
-  "Dream11 - Ye Hai Nayi Soch",
-  "MPL - Mobile Premier League",
-  "Byju's - Fall in Love with Learning",
-  "Unacademy - Let's Crack It",
-  "Tata Tea - Jaago Re",
-  "Surf Excel - Daag Acche Hain",
-  "Ariel - Safedi Ka Jadoo",
-  "Clinic Plus - Strong & Long Hair",
-]
 
 // Generate realistic ad placements based on platform characteristics
-const generateRealisticAdPlacements = (selectedShows, selectedPlatform) => {
+const generateRealisticAdPlacements = (selectedShows, selectedPlatform, realAdNames, platforms) => {
   const platform = platforms.find((p) => p.id === selectedPlatform)
   if (!platform?.hasAds) return []
 
   const placements = []
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-  const primeTimeSlots = [
-    { start: "19:00", end: "19:30" },
-    { start: "20:00", end: "20:30" },
-    { start: "21:00", end: "21:30" },
-    { start: "22:00", end: "22:30" },
-  ]
-
-  // Ad density based on platform
   const adCounts = {
     low: { min: 1, max: 2 },
     medium: { min: 2, max: 4 },
@@ -139,17 +38,16 @@ const generateRealisticAdPlacements = (selectedShows, selectedPlatform) => {
       const numAds = Math.floor(Math.random() * (densityConfig.max - densityConfig.min + 1)) + densityConfig.min
 
       for (let i = 0; i < numAds; i++) {
-        const timeSlot = primeTimeSlots[Math.floor(Math.random() * primeTimeSlots.length)]
-        // Create repetitive ad pattern - same ads appear multiple times
-        const adName = realAdNames[Math.floor(Math.random() * Math.min(8, realAdNames.length))] // Limit to first 8 for repetition
+        const startTime = generateRandomTime()
+        const adName = realAdNames[Math.floor(Math.random() * Math.min(8, realAdNames.length))]
 
         placements.push({
           id: `${show}-${day}-${i}`,
           show,
           day,
           dayIndex,
-          startTime: timeSlot.start,
-          endTime: timeSlot.end,
+          startTime,
+          endTime: startTime,
           duration: [15, 30, 45][Math.floor(Math.random() * 3)],
           platform: selectedPlatform,
           adType: ["Pre-roll", "Mid-roll", "Post-roll"][Math.floor(Math.random() * 3)],
@@ -160,30 +58,36 @@ const generateRealisticAdPlacements = (selectedShows, selectedPlatform) => {
     })
   })
 
-  return placements.sort((a, b) => a.dayIndex - b.dayIndex)
+  return placements.sort((a, b) => a.dayIndex - b.dayIndex || a.startTime.localeCompare(b.startTime))
 }
 
 export default function OTTAdScheduler() {
-  const [selectedWeek, setSelectedWeek] = useState("2025-06-30")
+  const [selectedWeek, setSelectedWeek] = useState(ottData.weeks[0]?.value || "")
   const [selectedPlatform, setSelectedPlatform] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
   const [selectedShows, setSelectedShows] = useState([])
+  const [isAllAdsDialogOpen, setIsAllAdsDialogOpen] = useState(false)
 
-  const availableGenres = selectedPlatform ? genres[selectedPlatform] || [] : []
-  const availableShows = selectedPlatform && selectedGenre ? shows[selectedPlatform]?.[selectedGenre] || [] : []
-
-  const currentPlatform = platforms.find((p) => p.id === selectedPlatform)
+  const availableGenres = selectedPlatform ? ottData.genres[selectedPlatform] || [] : []
+  const availableShows = selectedPlatform && selectedGenre && ottData.weekSchedules[selectedWeek]
+    ? ottData.weekSchedules[selectedWeek].shows[selectedPlatform]?.[selectedGenre] || []
+    : []
+  const currentPlatform = ottData.platforms.find((p) => p.id === selectedPlatform)
 
   const adPlacements = useMemo(() => {
-    if (selectedShows.length === 0) return []
-    return generateRealisticAdPlacements(selectedShows, selectedPlatform)
-  }, [selectedShows, selectedPlatform])
+    if (!ottData.weekSchedules[selectedWeek] || selectedShows.length === 0) return []
+    return generateRealisticAdPlacements(
+      selectedShows,
+      selectedPlatform,
+      ottData.weekSchedules[selectedWeek].realAdNames,
+      ottData.platforms
+    )
+  }, [selectedShows, selectedPlatform, selectedWeek])
 
   const handleShowSelection = (show) => {
     setSelectedShows((prev) => (prev.includes(show) ? prev.filter((s) => s !== show) : [...prev, show]))
   }
 
-  // Auto-select all shows when genre changes
   useMemo(() => {
     if (availableShows.length > 0) {
       setSelectedShows(availableShows)
@@ -215,10 +119,10 @@ export default function OTTAdScheduler() {
                 size="sm"
                 className="bg-transparent"
                 onClick={() => {
-                  const url = "https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/grp-report.csv";
+                  const url = "https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/HOR-report.csv";
                   const link = document.createElement("a");
                   link.href = url;
-                  link.download = "grp-report.csv";
+                  link.download = "HOR-report.csv";
                   document.body.appendChild(link);
                   link.click();
                   document.body.removeChild(link);
@@ -247,13 +151,11 @@ export default function OTTAdScheduler() {
                   <SelectValue placeholder="Select campaign week" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="2025-06-30">Week 27: June 30 - July 6, 2025</SelectItem>
-                  <SelectItem value="2025-07-07">Week 28: July 7 - July 13, 2025</SelectItem>
-                  <SelectItem value="2025-07-14">Week 29: July 14 - July 20, 2025</SelectItem>
-                  <SelectItem value="2025-07-21">Week 30: July 21 - July 27, 2025</SelectItem>
-                  <SelectItem value="2025-07-28">Week 31: July 28 - August 3, 2025</SelectItem>
-                  <SelectItem value="2025-08-04">Week 32: August 4 - August 10, 2025</SelectItem>
-                  <SelectItem value="2025-08-11">Week 33: August 11 - August 17, 2025</SelectItem>
+                  {ottData.weeks.map((week) => (
+                    <SelectItem key={week.value} value={week.value}>
+                      {week.label}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </CardContent>
@@ -276,7 +178,7 @@ export default function OTTAdScheduler() {
                   <SelectValue placeholder="Choose platform" />
                 </SelectTrigger>
                 <SelectContent>
-                  {platforms.map((platform) => (
+                  {ottData.platforms.map((platform) => (
                     <SelectItem key={platform.id} value={platform.id}>
                       <div className="flex items-center space-x-3">
                         <div className="w-3 h-3 rounded-full" style={{ backgroundColor: platform.color }} />
@@ -396,7 +298,44 @@ export default function OTTAdScheduler() {
             <CardHeader>
               <CardTitle className="text-lg font-semibold flex items-center justify-between">
                 <div className="flex items-center">
-                  <Clock className="h-5 w-5 mr-2 text-blue-600" />
+                  <Dialog open={isAllAdsDialogOpen} onOpenChange={setIsAllAdsDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Clock className="h-5 w-5 mr-2 text-blue-600 cursor-pointer hover:text-blue-800" />
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl">
+                      <DialogHeader>
+                        <DialogTitle>All Ad Placements for {currentPlatform?.name}</DialogTitle>
+                      </DialogHeader>
+                      <div className="mt-4">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Show</TableHead>
+                              <TableHead>Day</TableHead>
+                              <TableHead>Time</TableHead>
+                              <TableHead>Ad Name</TableHead>
+                              <TableHead>Ad Type</TableHead>
+                              <TableHead>Duration</TableHead>
+                              <TableHead>Repetition</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {adPlacements.map((placement) => (
+                              <TableRow key={placement.id}>
+                                <TableCell>{placement.show}</TableCell>
+                                <TableCell>{placement.day}</TableCell>
+                                <TableCell>{placement.startTime}</TableCell>
+                                <TableCell>{placement.adName}</TableCell>
+                                <TableCell>{placement.adType}</TableCell>
+                                <TableCell>{placement.duration}s</TableCell>
+                                <TableCell>{placement.repetitionCount}x</TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                   Weekly Ad Placement Schedule
                 </div>
                 <div className="flex items-center space-x-4 text-sm text-gray-600">
@@ -418,7 +357,7 @@ export default function OTTAdScheduler() {
                     {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
                       <div key={day} className="text-sm font-semibold text-center p-3">
                         <div>{day.slice(0, 3)}</div>
-                        <div className="text-xs text-muted-foreground mt-1">Prime Time</div>
+                        <div className="text-xs text-muted-foreground mt-1">All Day</div>
                       </div>
                     ))}
                   </div>
@@ -454,31 +393,66 @@ export default function OTTAdScheduler() {
                                   No ads
                                 </div>
                               ) : (
-                                <div className="space-y-1">
-                                  {dayPlacements.slice(0, 3).map((placement, index) => (
-                                    <div
-                                      key={placement.id}
-                                      className="p-2 rounded-md text-xs text-white cursor-pointer hover:opacity-90 transition-all duration-200 shadow-sm"
-                                      style={{
-                                        backgroundColor: currentPlatform?.color || "#3B82F6",
-                                      }}
-                                      title={`${placement.adName}\n${placement.adType} - ${placement.startTime}-${placement.endTime}\nDuration: ${placement.duration}s\nRepeated: ${placement.repetitionCount}x this week`}
-                                    >
-                                      <div className="font-semibold">{placement.startTime}</div>
-                                      <div className="text-xs opacity-90 truncate">
-                                        {placement.adName?.split(" - ")[0]}
-                                      </div>
-                                      <div className="text-xs opacity-75">
-                                        {placement.duration}s • {placement.adType}
-                                      </div>
+                                <Dialog>
+                                  <DialogTrigger asChild>
+                                    <div className="space-y-1 cursor-pointer">
+                                      {dayPlacements.slice(0, 3).map((placement, index) => (
+                                        <div
+                                          key={placement.id}
+                                          className="p-2 rounded-md text-xs text-white hover:opacity-90 transition-all duration-200 shadow-sm"
+                                          style={{
+                                            backgroundColor: currentPlatform?.color || "#3B82F6",
+                                          }}
+                                          title={`${placement.adName}\n${placement.adType} - ${placement.startTime}\nDuration: ${placement.duration}s\nRepeated: ${placement.repetitionCount}x this week`}
+                                        >
+                                          <div className="font-semibold">{placement.startTime}</div>
+                                          <div className="text-xs opacity-90 truncate">
+                                            {placement.adName?.split(" - ")[0]}
+                                          </div>
+                                          <div className="text-xs opacity-75">
+                                            {placement.duration}s • {placement.adType}
+                                          </div>
+                                        </div>
+                                      ))}
+                                      {dayPlacements.length > 3 && (
+                                        <div className="text-xs text-muted-foreground text-center py-1">
+                                          +{dayPlacements.length - 3} more
+                                        </div>
+                                      )}
                                     </div>
-                                  ))}
-                                  {dayPlacements.length > 3 && (
-                                    <div className="text-xs text-muted-foreground text-center py-1">
-                                      +{dayPlacements.length - 3} more
+                                  </DialogTrigger>
+                                  <DialogContent className="max-w-4xl">
+                                    <DialogHeader>
+                                      <DialogTitle>
+                                        Ad Placements for {show} on {dayPlacements[0]?.day}
+                                      </DialogTitle>
+                                    </DialogHeader>
+                                    <div className="mt-4">
+                                      <Table>
+                                        <TableHeader>
+                                          <TableRow>
+                                            <TableHead>Time</TableHead>
+                                            <TableHead>Ad Name</TableHead>
+                                            <TableHead>Ad Type</TableHead>
+                                            <TableHead>Duration</TableHead>
+                                            <TableHead>Repetition</TableHead>
+                                          </TableRow>
+                                        </TableHeader>
+                                        <TableBody>
+                                          {dayPlacements.map((placement) => (
+                                            <TableRow key={placement.id}>
+                                              <TableCell>{placement.startTime}</TableCell>
+                                              <TableCell>{placement.adName}</TableCell>
+                                              <TableCell>{placement.adType}</TableCell>
+                                              <TableCell>{placement.duration}s</TableCell>
+                                              <TableCell>{placement.repetitionCount}x</TableCell>
+                                            </TableRow>
+                                          ))}
+                                        </TableBody>
+                                      </Table>
                                     </div>
-                                  )}
-                                </div>
+                                  </DialogContent>
+                                </Dialog>
                               )}
                             </div>
                           )
@@ -501,7 +475,7 @@ export default function OTTAdScheduler() {
                       />
                       <span className="text-sm text-gray-600">Active Ad Slot</span>
                     </div>
-                    <div className="text-xs text-muted-foreground">Hover for detailed ad information</div>
+                    <div className="text-xs text-muted-foreground">Click slot for day-specific ad details</div>
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold mb-2">Platform Insights</h4>

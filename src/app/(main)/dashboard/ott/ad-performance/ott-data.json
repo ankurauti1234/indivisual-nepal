@@ -1,0 +1,414 @@
+{
+  "platforms": [
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "logo": "/netflix-inspired-logo.png",
+      "color": "#E50914",
+      "hasAds": false
+    },
+    {
+      "id": "prime",
+      "name": "Prime Video",
+      "logo": "/amazon-prime-video-logo.png",
+      "color": "#00A8E1",
+      "hasAds": true,
+      "adDensity": "low"
+    },
+    {
+      "id": "zee5",
+      "name": "ZEE5",
+      "logo": "/generic-entertainment-logo.png",
+      "color": "#6C5CE7",
+      "hasAds": true,
+      "adDensity": "high"
+    },
+    {
+      "id": "hotstar",
+      "name": "Disney+ Hotstar",
+      "logo": "/disney-hotstar-logo.png",
+      "color": "#1F4788",
+      "hasAds": true,
+      "adDensity": "medium"
+    },
+    {
+      "id": "mxplayer",
+      "name": "MX Player",
+      "logo": "/placeholder-nuaby.png",
+      "color": "#FF6B35",
+      "hasAds": true,
+      "adDensity": "very-high"
+    }
+  ],
+  "genres": {
+    "netflix": ["Drama", "Comedy", "Thriller", "Documentary", "Sci-Fi"],
+    "prime": ["Action", "Drama", "Comedy", "Horror", "Romance"],
+    "zee5": ["Drama", "Comedy", "Reality", "Music", "Regional"],
+    "hotstar": ["Sports", "Drama", "Comedy", "Kids", "Movies"],
+    "mxplayer": ["Comedy", "Drama", "Web Series", "Movies", "Music"]
+  },
+  "weeks": [
+    { "value": "2025-06-30", "label": "Week 27: June 30 - July 6, 2025" },
+    { "value": "2025-07-07", "label": "Week 28: July 7 - July 13, 2025" },
+    { "value": "2025-07-14", "label": "Week 29: July 14 - July 20, 2025" },
+    { "value": "2025-07-21", "label": "Week 30: July 21 - July 27, 2025" },
+    { "value": "2025-07-28", "label": "Week 31: July 28 - August 3, 2025" },
+    { "value": "2025-08-04", "label": "Week 32: August 4 - August 10, 2025" },
+    { "value": "2025-08-11", "label": "Week 33: August 11 - August 17, 2025" },
+    { "value": "2025-08-18", "label": "Week 34: August 18 - August 24, 2025" },
+    { "value": "2025-08-25", "label": "Week 35: August 25 - August 31, 2025" }
+  ],
+  "weekSchedules": {
+    "2025-06-30": {
+      "shows": {
+        "netflix": {
+          "Drama": ["Stranger Things", "The Crown", "Wednesday"],
+          "Comedy": ["Emily in Paris", "The Good Place"],
+          "Thriller": ["You", "Squid Game"]
+        },
+        "prime": {
+          "Action": ["The Boys", "Jack Ryan"],
+          "Drama": ["The Family Man", "Made in Heaven"],
+          "Comedy": ["Panchayat", "Gullak"]
+        },
+        "zee5": {
+          "Drama": ["Scam 1992", "Kaafir"],
+          "Comedy": ["Sunflower", "Bicchoo Ka Khel"],
+          "Reality": ["Lock Upp", "Sa Re Ga Ma Pa"]
+        },
+        "hotstar": {
+          "Sports": ["IPL 2024", "Pro Kabaddi League"],
+          "Drama": ["Arya", "Criminal Justice"],
+          "Comedy": ["Sarabhai vs Sarabhai", "Taarak Mehta"]
+        },
+        "mxplayer": {
+          "Comedy": ["TVF Pitchers", "Kota Factory"],
+          "Drama": ["Scam 1992", "Rocket Boys"],
+          "Web Series": ["The Family Man", "Mirzapur"]
+        }
+      },
+      "realAdNames": [
+        "Coca-Cola - Taste The Feeling",
+        "Maggi - 2 Minute Noodles",
+        "Airtel - Har Ek Friend Zaroori",
+        "Jio - Digital India",
+        "Amazon - Aur Dikhao",
+        "Swiggy - What A Delivery",
+        "Tata Tea - Jaago Re",
+        "Surf Excel - Daag Acche Hain"
+      ]
+    },
+    "2025-07-07": {
+      "shows": {
+        "netflix": {
+          "Drama": ["Ozark", "House of Cards"],
+          "Comedy": ["Never Have I Ever", "Schitt's Creek"],
+          "Thriller": ["Mindhunter", "Dark"]
+        },
+        "prime": {
+          "Action": ["Reacher", "The Terminal List"],
+          "Drama": ["The Marvelous Mrs. Maisel", "Mumbai Diaries 26/11"],
+          "Comedy": ["The Office", "Hostel Daze"]
+        },
+        "zee5": {
+          "Drama": ["The Final Call", "Abhay"],
+          "Comedy": ["Rangbaaz", "Poison"],
+          "Reality": ["Indian Pro Music League", "Dance India Dance"]
+        },
+        "hotstar": {
+          "Sports": ["ISL", "BWF Championships"],
+          "Drama": ["Special Ops", "Hostages"],
+          "Comedy": ["Khichdi", "The Kapil Sharma Show"]
+        },
+        "mxplayer": {
+          "Comedy": ["Gullak", "Aspirants"],
+          "Drama": ["Mumbai Diaries", "Arya"],
+          "Web Series": ["Sacred Games", "Delhi Crime"]
+        }
+      },
+      "realAdNames": [
+        "Pepsi - For The Love of It",
+        "Cadbury Dairy Milk",
+        "Flipkart - Big Billion Days",
+        "Zomato - Better Food For More People",
+        "Paytm - Karo Aur Kamao",
+        "PhonePe - No Tension Only Transaction",
+        "Dream11 - Ye Hai Nayi Soch",
+        "Byju's - Fall in Love with Learning"
+      ]
+    },
+    "2025-07-14": {
+      "shows": {
+        "netflix": {
+          "Drama": ["Stranger Things", "Wednesday"],
+          "Comedy": ["Emily in Paris", "Space Force"],
+          "Thriller": ["You", "Money Heist"]
+        },
+        "prime": {
+          "Action": ["The Boys", "Citadel"],
+          "Drama": ["Four More Shots Please", "The Family Man"],
+          "Comedy": ["Panchayat", "Mirzapur"]
+        },
+        "zee5": {
+          "Drama": ["Scam 1992", "State of Siege: 26/11"],
+          "Comedy": ["Sunflower", "The Casino"],
+          "Reality": ["Indian Idol", "Sa Re Ga Ma Pa"]
+        },
+        "hotstar": {
+          "Sports": ["Formula 1", "IPL 2024"],
+          "Drama": ["Out of Love", "Arya"],
+          "Comedy": ["Office Office", "Taarak Mehta"]
+        },
+        "mxplayer": {
+          "Comedy": ["Permanent Roommates", "Kota Factory"],
+          "Drama": ["Tabbar", "Scam 1992"],
+          "Web Series": ["Mirzapur", "Scam 1992"]
+        }
+      },
+      "realAdNames": [
+        "Coca-Cola - Taste The Feeling",
+        "Amazon - Aur Dikhao",
+        "Swiggy - What A Delivery",
+        "Unacademy - Let's Crack It",
+        "Tata Tea - Jaago Re",
+        "Ariel - Safedi Ka Jadoo",
+        "Clinic Plus - Strong & Long Hair",
+        "MPL - Mobile Premier League"
+      ]
+    },
+    "2025-07-21": {
+      "shows": {
+        "netflix": {
+          "Drama": ["The Crown", "Ozark"],
+          "Comedy": ["The Good Place", "Schitt's Creek"],
+          "Thriller": ["Squid Game", "Dark"]
+        },
+        "prime": {
+          "Action": ["Jack Ryan", "Reacher"],
+          "Drama": ["Made in Heaven", "Mumbai Diaries 26/11"],
+          "Comedy": ["Gullak", "Hostel Daze"]
+        },
+        "zee5": {
+          "Drama": ["Kaafir", "Abhay"],
+          "Comedy": ["Bicchoo Ka Khel", "Poison"],
+          "Reality": ["Lock Upp", "Dance India Dance"]
+        },
+        "hotstar": {
+          "Sports": ["Pro Kabaddi League", "ISL"],
+          "Drama": ["Criminal Justice", "Hostages"],
+          "Comedy": ["Sarabhai vs Sarabhai", "Khichdi"]
+        },
+        "mxplayer": {
+          "Comedy": ["TVF Pitchers", "Aspirants"],
+          "Drama": ["Rocket Boys", "Arya"],
+          "Web Series": ["The Family Man", "Delhi Crime"]
+        }
+      },
+      "realAdNames": [
+        "Maggi - 2 Minute Noodles",
+        "Jio - Digital India",
+        "Flipkart - Big Billion Days",
+        "Zomato - Better Food For More People",
+        "Paytm - Karo Aur Kamao",
+        "Byju's - Fall in Love with Learning",
+        "Surf Excel - Daag Acche Hain",
+        "Clinic Plus - Strong & Long Hair"
+      ]
+    },
+    "2025-07-28": {
+      "shows": {
+        "netflix": {
+          "Drama": ["House of Cards", "Wednesday"],
+          "Comedy": ["Never Have I Ever", "Space Force"],
+          "Thriller": ["Mindhunter", "You"]
+        },
+        "prime": {
+          "Action": ["The Terminal List", "Citadel"],
+          "Drama": ["The Marvelous Mrs. Maisel", "Four More Shots Please"],
+          "Comedy": ["The Office", "Panchayat"]
+        },
+        "zee5": {
+          "Drama": ["The Final Call", "State of Siege: 26/11"],
+          "Comedy": ["Rangbaaz", "The Casino"],
+          "Reality": ["Indian Pro Music League", "Indian Idol"]
+        },
+        "hotstar": {
+          "Sports": ["BWF Championships", "Formula 1"],
+          "Drama": ["Special Ops", "Out of Love"],
+          "Comedy": ["The Kapil Sharma Show", "Office Office"]
+        },
+        "mxplayer": {
+          "Comedy": ["Gullak", "Permanent Roommates"],
+          "Drama": ["Mumbai Diaries", "Tabbar"],
+          "Web Series": ["Sacred Games", "Mirzapur"]
+        }
+      },
+      "realAdNames": [
+        "Pepsi - For The Love of It",
+        "Cadbury Dairy Milk",
+        "Airtel - Har Ek Friend Zaroori",
+        "Amazon - Aur Dikhao",
+        "Swiggy - What A Delivery",
+        "PhonePe - No Tension Only Transaction",
+        "Dream11 - Ye Hai Nayi Soch",
+        "Unacademy - Let's Crack It"
+      ]
+    },
+    "2025-08-04": {
+      "shows": {
+        "netflix": {
+          "Drama": ["Stranger Things", "The Crown"],
+          "Comedy": ["Emily in Paris", "The Good Place"],
+          "Thriller": ["Money Heist", "Squid Game"]
+        },
+        "prime": {
+          "Action": ["The Boys", "Jack Ryan"],
+          "Drama": ["The Family Man", "Made in Heaven"],
+          "Comedy": ["Mirzapur", "Gullak"]
+        },
+        "zee5": {
+          "Drama": ["Scam 1992", "Kaafir"],
+          "Comedy": ["Sunflower", "Bicchoo Ka Khel"],
+          "Reality": ["Lock Upp", "Sa Re Ga Ma Pa"]
+        },
+        "hotstar": {
+          "Sports": ["IPL 2024", "Pro Kabaddi League"],
+          "Drama": ["Arya", "Criminal Justice"],
+          "Comedy": ["Sarabhai vs Sarabhai", "Taarak Mehta"]
+        },
+        "mxplayer": {
+          "Comedy": ["TVF Pitchers", "Kota Factory"],
+          "Drama": ["Scam 1992", "Rocket Boys"],
+          "Web Series": ["The Family Man", "Scam 1992"]
+        }
+      },
+      "realAdNames": [
+        "Coca-Cola - Taste The Feeling",
+        "Maggi - 2 Minute Noodles",
+        "Jio - Digital India",
+        "Flipkart - Big Billion Days",
+        "Zomato - Better Food For More People",
+        "Tata Tea - Jaago Re",
+        "Ariel - Safedi Ka Jadoo",
+        "MPL - Mobile Premier League"
+      ]
+    },
+    "2025-08-11": {
+      "shows": {
+        "netflix": {
+          "Drama": ["Ozark", "Wednesday"],
+          "Comedy": ["Never Have I Ever", "Schitt's Creek"],
+          "Thriller": ["Dark", "You"]
+        },
+        "prime": {
+          "Action": ["Reacher", "Citadel"],
+          "Drama": ["Mumbai Diaries 26/11", "Four More Shots Please"],
+          "Comedy": ["Hostel Daze", "Panchayat"]
+        },
+        "zee5": {
+          "Drama": ["Abhay", "The Final Call"],
+          "Comedy": ["Poison", "Rangbaaz"],
+          "Reality": ["Dance India Dance", "Indian Idol"]
+        },
+        "hotstar": {
+          "Sports": ["ISL", "BWF Championships"],
+          "Drama": ["Hostages", "Out of Love"],
+          "Comedy": ["Khichdi", "The Kapil Sharma Show"]
+        },
+        "mxplayer": {
+          "Comedy": ["Aspirants", "Permanent Roommates"],
+          "Drama": ["Arya", "Tabbar"],
+          "Web Series": ["Delhi Crime", "Mirzapur"]
+        }
+      },
+      "realAdNames": [
+        "Pepsi - For The Love of It",
+        "Cadbury Dairy Milk",
+        "Airtel - Har Ek Friend Zaroori",
+        "Paytm - Karo Aur Kamao",
+        "PhonePe - No Tension Only Transaction",
+        "Byju's - Fall in Love with Learning",
+        "Surf Excel - Daag Acche Hain",
+        "Clinic Plus - Strong & Long Hair"
+      ]
+    },
+    "2025-08-18": {
+      "shows": {
+        "netflix": {
+          "Drama": ["House of Cards", "Stranger Things"],
+          "Comedy": ["Space Force", "Emily in Paris"],
+          "Thriller": ["Mindhunter", "Squid Game"]
+        },
+        "prime": {
+          "Action": ["The Terminal List", "The Boys"],
+          "Drama": ["The Marvelous Mrs. Maisel", "The Family Man"],
+          "Comedy": ["The Office", "Mirzapur"]
+        },
+        "zee5": {
+          "Drama": ["State of Siege: 26/11", "Scam 1992"],
+          "Comedy": ["The Casino", "Sunflower"],
+          "Reality": ["Lock Upp", "Indian Pro Music League"]
+        },
+        "hotstar": {
+          "Sports": ["Formula 1", "IPL 2024"],
+          "Drama": ["Special Ops", "Arya"],
+          "Comedy": ["Office Office", "Sarabhai vs Sarabhai"]
+        },
+        "mxplayer": {
+          "Comedy": ["Gullak", "TVF Pitchers"],
+          "Drama": ["Mumbai Diaries", "Scam 1992"],
+          "Web Series": ["Sacred Games", "The Family Man"]
+        }
+      },
+      "realAdNames": [
+        "Coca-Cola - Taste The Feeling",
+        "Amazon - Aur Dikhao",
+        "Swiggy - What A Delivery",
+        "Dream11 - Ye Hai Nayi Soch",
+        "Unacademy - Let's Crack It",
+        "Tata Tea - Jaago Re",
+        "Ariel - Safedi Ka Jadoo",
+        "MPL - Mobile Premier League"
+      ]
+    },
+    "2025-08-25": {
+      "shows": {
+        "netflix": {
+          "Drama": ["The Crown", "Ozark"],
+          "Comedy": ["The Good Place", "Never Have I Ever"],
+          "Thriller": ["Money Heist", "Dark"]
+        },
+        "prime": {
+          "Action": ["Jack Ryan", "Citadel"],
+          "Drama": ["Made in Heaven", "Mumbai Diaries 26/11"],
+          "Comedy": ["Panchayat", "Hostel Daze"]
+        },
+        "zee5": {
+          "Drama": ["Kaafir", "Abhay"],
+          "Comedy": ["Bicchoo Ka Khel", "Poison"],
+          "Reality": ["Sa Re Ga Ma Pa", "Dance India Dance"]
+        },
+        "hotstar": {
+          "Sports": ["Pro Kabaddi League", "ISL"],
+          "Drama": ["Criminal Justice", "Hostages"],
+          "Comedy": ["Taarak Mehta", "The Kapil Sharma Show"]
+        },
+        "mxplayer": {
+          "Comedy": ["Kota Factory", "Aspirants"],
+          "Drama": ["Rocket Boys", "Arya"],
+          "Web Series": ["Delhi Crime", "Scam 1992"]
+        }
+      },
+      "realAdNames": [
+        "Maggi - 2 Minute Noodles",
+        "Jio - Digital India",
+        "Flipkart - Big Billion Days",
+        "Zomato - Better Food For More People",
+        "Paytm - Karo Aur Kamao",
+        "PhonePe - No Tension Only Transaction",
+        "Byju's - Fall in Love with Learning",
+        "Surf Excel - Daag Acche Hain"
+      ]
+    }
+  }
+}
