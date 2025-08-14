@@ -17,29 +17,51 @@ const generateRandomTime = () => {
   return `${hours}:${minutes}`
 }
 
+// Calculate ad density based on number of ads per show per day
+const calculateAdDensity = (numAdsPerShowPerDay) => {
+  if (numAdsPerShowPerDay === 0) return "false"
+  if (numAdsPerShowPerDay <= 3) return "low"
+  if (numAdsPerShowPerDay <= 6) return "medium"
+  if (numAdsPerShowPerDay <= 9) return "high"
+  return "very-high"
+}
+
 // Generate realistic ad placements based on platform characteristics
-const generateRealisticAdPlacements = (selectedShows, selectedPlatform, realAdNames, platforms) => {
+const generateRealisticAdPlacements = (selectedShows, selectedPlatform, week, platforms) => {
   const platform = platforms.find((p) => p.id === selectedPlatform)
-  if (!platform?.hasAds) return []
+  if (!platform?.hasAds) return { placements: [], adDensity: "false" }
+
+  const platformAds = ottData.weekSchedules[week]?.platformAds?.[selectedPlatform] || []
+  if (platformAds.length === 0) return { placements: [], adDensity: "false" }
 
   const placements = []
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-  const adCounts = {
-    low: { min: 1, max: 2 },
-    medium: { min: 2, max: 4 },
-    high: { min: 4, max: 6 },
-    "very-high": { min: 6, max: 10 },
-  }
 
-  const densityConfig = adCounts[platform.adDensity] || adCounts.medium
+  // Determine number of ads per show per day based on platform ad array length
+  const totalAds = platformAds.length
+  const numShows = selectedShows.length
+  const numDays = days.length
+  // Base number of ads per show per day, scaled by platform
+  const baseAdsPerShowPerDay = {
+    prime: 4, // Medium density: ~4 ads/day/show
+    zee5: 6, // Medium-high density: ~6 ads/day/show
+    hotstar: 8, // High density: ~8 ads/day/show
+    mxplayer: 12 // Very-high density: ~12 ads/day/show
+  }[selectedPlatform] || 4
+  // Adjust based on available ads, cap at 15 for "very-high"
+  const maxAdsPerShowPerDay = Math.min(Math.ceil(totalAds / (numShows * numDays)) + baseAdsPerShowPerDay, 15)
+  
+  // Calculate ad density
+  const adDensity = calculateAdDensity(maxAdsPerShowPerDay)
 
   selectedShows.forEach((show) => {
     days.forEach((day, dayIndex) => {
-      const numAds = Math.floor(Math.random() * (densityConfig.max - densityConfig.min + 1)) + densityConfig.min
+      // Randomly assign 50-100% of maxAdsPerShowPerDay to create variation
+      const numAds = Math.floor(Math.random() * (maxAdsPerShowPerDay / 2)) + Math.ceil(maxAdsPerShowPerDay / 2)
 
       for (let i = 0; i < numAds; i++) {
         const startTime = generateRandomTime()
-        const adName = realAdNames[Math.floor(Math.random() * Math.min(8, realAdNames.length))]
+        const adName = platformAds[Math.floor(Math.random() * platformAds.length)]
 
         placements.push({
           id: `${show}-${day}-${i}`,
@@ -58,7 +80,10 @@ const generateRealisticAdPlacements = (selectedShows, selectedPlatform, realAdNa
     })
   })
 
-  return placements.sort((a, b) => a.dayIndex - b.dayIndex || a.startTime.localeCompare(b.startTime))
+  return { 
+    placements: placements.sort((a, b) => a.dayIndex - b.dayIndex || a.startTime.localeCompare(b.startTime)), 
+    adDensity 
+  }
 }
 
 export default function OTTAdScheduler() {
@@ -74,12 +99,12 @@ export default function OTTAdScheduler() {
     : []
   const currentPlatform = ottData.platforms.find((p) => p.id === selectedPlatform)
 
-  const adPlacements = useMemo(() => {
-    if (!ottData.weekSchedules[selectedWeek] || selectedShows.length === 0) return []
+  const { placements: adPlacements, adDensity } = useMemo(() => {
+    if (!ottData.weekSchedules[selectedWeek] || selectedShows.length === 0) return { placements: [], adDensity: "false" }
     return generateRealisticAdPlacements(
       selectedShows,
       selectedPlatform,
-      ottData.weekSchedules[selectedWeek].realAdNames,
+      selectedWeek,
       ottData.platforms
     )
   }, [selectedShows, selectedPlatform, selectedWeek])
@@ -231,7 +256,7 @@ export default function OTTAdScheduler() {
           </Card>
         </div>
 
-        {/* Platform Status Alert */}
+        {/* Platform Status Alert for Ad-Free Platforms */}
         {currentPlatform && !currentPlatform.hasAds && (
           <Card className="border-orange-500/50 mb-8">
             <CardContent className="pt-6">
@@ -249,7 +274,7 @@ export default function OTTAdScheduler() {
         )}
 
         {/* Shows Grid */}
-        {availableShows.length > 0 && currentPlatform?.hasAds && (
+        {availableShows.length > 0 && (
           <Card className="border-gray-200 shadow-sm mb-8">
             <CardHeader>
               <CardTitle className="text-lg font-semibold flex items-center justify-between">
@@ -257,9 +282,11 @@ export default function OTTAdScheduler() {
                   <Play className="h-5 w-5 mr-2 text-blue-600" />
                   Top {selectedGenre} Shows on {currentPlatform?.name}
                 </div>
-                <Badge variant="outline" className="text-xs">
-                  {currentPlatform.adDensity?.replace("-", " ")} ad density
-                </Badge>
+                {adDensity !== "false" && (
+                  <Badge variant="outline" className="text-xs">
+                    {adDensity.replace("-", " ")} ad density
+                  </Badge>
+                )}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -293,7 +320,7 @@ export default function OTTAdScheduler() {
         )}
 
         {/* Enhanced Gantt Chart */}
-        {adPlacements.length > 0 && (
+        {adPlacements.length > 0 && currentPlatform?.hasAds && (
           <Card>
             <CardHeader>
               <CardTitle className="text-lg font-semibold flex items-center justify-between">
@@ -306,7 +333,7 @@ export default function OTTAdScheduler() {
                       <DialogHeader>
                         <DialogTitle>All Ad Placements for {currentPlatform?.name}</DialogTitle>
                       </DialogHeader>
-                      <div className="mt-4">
+                      <div className="mt-4 h-[75vh] overflow-auto">
                         <Table>
                           <TableHeader>
                             <TableRow>
@@ -482,12 +509,12 @@ export default function OTTAdScheduler() {
                     <div className="text-sm text-gray-600">
                       <div>
                         Ad Density:{" "}
-                        <span className="font-medium capitalize">{currentPlatform?.adDensity?.replace("-", " ")}</span>
+                        <span className="font-medium capitalize">{adDensity.replace("-", " ")}</span>
                       </div>
                       <div>
                         Total Duration:{" "}
                         <span className="font-medium">
-                          {Math.round(adPlacements.reduce((sum, p) => sum + p.duration, 0) / 60)} minutes
+                          {Math.round(adPlacements.reduce((sum, p) => sum + p.duration, 0) / 60) || 0} minutes
                         </span>
                       </div>
                     </div>
