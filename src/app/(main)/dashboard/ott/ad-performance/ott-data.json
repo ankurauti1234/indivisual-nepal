@@ -1,13 +1,6 @@
 {
   "platforms": [
     {
-      "id": "netflix",
-      "name": "Netflix",
-      "logo": "/netflix-inspired-logo.png",
-      "color": "#E50914",
-      "hasAds": false
-    },
-    {
       "id": "prime",
       "name": "Prime Video",
       "logo": "/amazon-prime-video-logo.png",
@@ -22,228 +15,227 @@
       "hasAds": true
     },
     {
-      "id": "hotstar",
-      "name": "Disney+ Hotstar",
-      "logo": "/disney-hotstar-logo.png",
-      "color": "#1F4788",
-      "hasAds": true
-    },
-    {
-      "id": "mxplayer",
-      "name": "MX Player",
-      "logo": "/placeholder-nuaby.png",
-      "color": "#FF6B35",
+      "id": "netflix",
+      "name": "Netflix",
+      "logo": "/generic-entertainment-logo.png",
+      "color": "#FF0000",
       "hasAds": true
     }
   ],
-  "genres": {
-    "netflix": ["Drama", "Comedy", "Thriller", "Documentary", "Sci-Fi"],
-    "prime": ["Action", "Drama", "Comedy", "Horror", "Romance"],
-    "zee5": ["Drama", "Comedy", "Reality", "Music", "Regional"],
-    "hotstar": ["Sports", "Drama", "Comedy", "Kids", "Movies"],
-    "mxplayer": ["Comedy", "Drama", "Web Series", "Movies", "Music"]
-  },
   "weeks": [
-    { "value": "2025-06-30", "label": "Week 27: June 30 - July 6, 2025" },
-    { "value": "2025-07-07", "label": "Week 28: July 7 - July 13, 2025" }
+    {
+      "value": "2025-08-04",
+      "label": "Week 32: August 4 - August 10, 2025"
+    },
+    {
+      "value": "2025-08-11",
+      "label": "Week 33: August 11 - August 17, 2025"
+    }
   ],
   "weekSchedules": {
-    "2025-06-30": {
+    "2025-08-04": {
       "shows": {
-        "netflix": {
-          "Drama": ["The Crown", "Stranger Things", "Ozark", "Bridgerton", "Narcos", "The Queen’s Gambit", "Better Call Saul", "Breaking Bad", "Mindhunter", "Shadow and Bone"],
-          "Comedy": ["Sex Education", "The Good Place", "Schitt's Creek", "Never Have I Ever", "Emily in Paris", "Brooklyn Nine-Nine", "The Office US", "BoJack Horseman", "After Life", "Master of None"],
-          "Thriller": ["Squid Game", "You", "Dark", "Money Heist", "The Haunting of Hill House", "Black Mirror", "Ozark", "Your Honor", "Behind Her Eyes", "Clickbait"],
-          "Documentary": ["Our Planet", "The Last Dance", "Tiger King", "Formula 1: Drive to Survive", "Making a Murderer", "Wild Wild Country", "The Social Dilemma", "Night Stalker", "13th", "American Factory"],
-          "Sci-Fi": ["Stranger Things", "The Witcher", "Dark", "The Mandalorian", "Black Mirror", "Westworld", "The Expanse", "Altered Carbon", "Sense8", "Love, Death & Robots"]
-        },
-        "prime": {
-          "Action": ["The Boys", "Jack Ryan", "Reacher", "The Terminal List", "Citadel", "Hanna", "Bosch", "The Wheel of Time", "The Tomorrow War", "Hunters"],
-          "Drama": ["The Family Man", "Mirzapur", "Made in Heaven", "Mumbai Diaries 26/11", "The Marvelous Mrs. Maisel", "Paatal Lok", "Breathe", "Inside Edge", "Tandav", "Four More Shots Please"],
-          "Comedy": ["Panchayat", "Gullak", "Hostel Daze", "Comicstaan", "Pushpavalli", "One Mic Stand", "Chacha Vidhayak Hain Humare", "Wagle Ki Duniya", "The Office India", "Mind the Malhotras"],
-          "Horror": ["Them", "Lore", "Truth Seekers", "Evil Eye", "The Witches", "The Grudge", "The Vast of Night", "Suspiria", "Fear Street", "No One Gets Out Alive"],
-          "Romance": ["Modern Love", "Four More Shots Please", "Made in Heaven", "Little Things", "Love Storiyaan", "Jubilee", "Breathe: Into the Shadows", "Bandish Bandits", "Yeh Jawaani Hai Deewani", "Dil Dhadakne Do"]
-        },
-        "zee5": {
-          "Drama": ["Scam 1992", "Kaafir", "The Final Call", "Abhay", "State of Siege: 26/11", "Rangbaaz", "Mithya", "Code M", "Chargesheet", "Poison"],
-          "Comedy": ["Sunflower", "Bicchoo Ka Khel", "Jamai 2.0", "Humorously Yours", "Virgin Bhasskar", "Black Widows", "Engineering Girls", "Mr. & Mrs.", "Kaamini", "The Casino"],
-          "Reality": ["Lock Upp", "Sa Re Ga Ma Pa", "Indian Idol", "Dance India Dance", "MTV Roadies", "Splitsvilla", "Bigg Boss Marathi", "The Voice India", "India's Got Talent", "Shark Tank India"],
-          "Music": ["Sa Re Ga Ma Pa", "Indian Pro Music League", "MTV Unplugged", "Coke Studio India", "The Voice India", "Sound of Cinema", "Melody Masters", "Music Masti", "Rock On", "Suron Ke Rang"],
-          "Regional": ["Kumkum Bhagya", "Kundali Bhagya", "Pavitra Rishta", "Jamai Raja", "Tujhse Hai Raabta", "Qubool Hai", "Jodha Akbar", "Naagin", "Brahmarakshas", "Guddan Tumse Na Ho Payega"]
-        },
-        "hotstar": {
-          "Sports": ["IPL 2025", "Pro Kabaddi League", "ISL", "Formula 1", "Wimbledon", "Premier League", "T20 World Cup", "Cricket World Cup", "Olympics Highlights", "BWF Championships"],
-          "Drama": ["Aarya", "Criminal Justice", "Special Ops", "Hostages", "Out of Love", "City of Dreams", "The Legend of Hanuman", "Grahan", "Human", "Lohardaga"],
-          "Comedy": ["Sarabhai vs Sarabhai", "Taarak Mehta Ka Ooltah Chashmah", "The Kapil Sharma Show", "Khichdi", "Office Office", "Bhabiji Ghar Par Hain", "Happu Ki Ultan Pultan", "Sumit Sambhal Lega", "Dekh Bhai Dekh", "Malgudi Days"],
-          "Kids": ["Mickey Mouse Clubhouse", "Doraemon", "Phineas and Ferb", "The Lion King Series", "Aladdin", "Little Krishna", "Chhota Bheem", "Motu Patlu", "Roll No. 21", "Shinchan"],
-          "Movies": ["Dil Bechara", "Sooryavanshi", "M.S. Dhoni: The Untold Story", "Bajrangi Bhaijaan", "Baaghi 3", "Chhapaak", "Tanhaji", "Angrezi Medium", "Panga", "Laxmii"]
-        },
-        "mxplayer": {
-          "Comedy": ["TVF Pitchers", "Kota Factory", "Gullak", "Aspirants", "Permanent Roommates", "Humorously Yours", "Tripling", "Imperfect", "Panchayat", "Baked"],
-          "Drama": ["Scam 1992", "Rocket Boys", "Mumbai Diaries", "Arya", "Tabbar", "Raktanchal", "Ek Thi Begum", "Chakravyuh", "Bhaukaal", "Madhuri Talkies"],
-          "Web Series": ["The Family Man", "Mirzapur", "Sacred Games", "Delhi Crime", "Asur", "Aashram", "High", "Queen", "Samantar", "Ragini MMS 2"],
-          "Movies": ["Andhadhun", "Badhaai Ho", "Stree", "Drishyam", "Masaan", "Uri: The Surgical Strike", "Sonu Ke Titu Ki Sweety", "Ludo", "Article 15", "Tumbbad"],
-          "Music": ["MTV Unplugged", "Coke Studio India", "Sound Trippin", "Rock On", "Suron Ke Rang", "Music Masti", "Melody Masters", "T-Series MixTape", "Jammin", "Bollywood Beats"]
-        }
-      },
-      "platformAds": {
-        "netflix": [],
         "prime": [
-          "Amazon - Great Indian Festival",
-          "Tata Sky - Entertainment Ka Baap",
-          "Lakmé - Be Unstoppable",
-          "Samsung - Galaxy Z Fold",
-          "Durex - Love Without Limits",
-          "Cadbury Dairy Milk - Kuch Meetha Ho Jaaye",
-          "Oppo - Capture the Night",
-          "Vivo - Camera & Music",
-          "Byju's - Learn Better",
-          "Myntra - Big Fashion Festival"
+          "Panchayat Season 4",
+          "The Traitors",
+          "The Summer I Turned Pretty Season 3",
+          "Heads of State",
+          "Ballard",
+          "Dope Girls",
+          "Mirzapur",
+          "The Family Man",
+          "Rangeen",
+          "Countdown"
         ],
         "zee5": [
-          "Reliance Jio - 5G Revolution",
-          "Swiggy - Foodie Freedom",
-          "Zomato - Tasty Deals",
-          "Ariel - Share the Load",
-          "HDFC Bank - Life Ka Plan",
-          "Parachute - Healthy Hair",
-          "Amul - Taste of India",
-          "Titan - Timeless Elegance",
-          "Asian Paints - Har Ghar Kuch Kehta Hai",
-          "Durex - Love Without Limits",
-          "Cadbury 5 Star - Do Nothing",
-          "L'Oréal - Because You're Worth It"
+          "Jeet Ki Zid",
+          "Abhay",
+          "State of Siege: 26/11",
+          "Bicchoo Ka Khel",
+          "The Broken News",
+          "Kaafir",
+          "Pyaar Testing",
+          "Khoj – Parchaiyo Ke Uss Paar",
+          "Jamai 2.0",
+          "Qubool Hai 2.0"
         ],
-        "hotstar": [
-          "Disney+ Hotstar - Stream The Best",
-          "Tata Tea - Jaago Re 2.0",
-          "Pepsi - Har Ghoont Mein Swag",
-          "Coca-Cola - Refresh & Recharge",
-          "Airtel - 5G Plus",
-          "Flipkart - Super Saver Days",
-          "Maruti Suzuki - Drive the Future",
-          "Boat - Rock the Boat",
-          "Sunsilk - Shine On",
-          "Dream11 - Team Up India",
-          "Ponds - Glow Naturally",
-          "Amazon - Prime Days"
-        ],
-        "mxplayer": [
-          "Vivo - Camera & Music",
-          "Oppo - Capture the Night",
-          "Swiggy - Foodie Freedom",
-          "Zomato - Tasty Deals",
-          "Reliance Jio - 5G Revolution",
-          "Myntra - Big Fashion Festival",
-          "Ariel - Share the Load",
-          "Cadbury Dairy Milk - Kuch Meetha Ho Jaaye",
-          "HDFC Bank - Life Ka Plan",
-          "Parachute - Healthy Hair",
-          "Amul - Taste of India",
-          "Titan - Timeless Elegance",
-          "Asian Paints - Har Ghar Kuch Kehta Hai",
-          "Boat - Rock the Boat",
-          "L'Oréal - Because You're Worth It"
+        "netflix": [
+          "Wednesday: Season 2",
+          "Mandala Murders: Season 1",
+          "The Great Indian Kapil Show: Season 3",
+          "Wednesday: Season 1",
+          "Unspeakable Sins: Season 1",
+          "WWE SummerSlam: 2025 - SummerSlam 2025 Sunday",
+          "Beyond the Bar: Limited Series",
+          "UNTAMED: Season 1",
+          "Squid Game: Season 3",
+          "Raw: 2025 - August 4, 2025"
         ]
+      },
+      "movies": {
+        "prime": [
+          "Housefull 5",
+          "3BHK",
+          "Thammudu",
+          "My Oxford Year",
+          "Raid 2",
+          "Aap Jaisa Koi",
+          "Oh Bhama Ayyo Rama",
+          "Kuberaa",
+          "Show Time",
+          "Maargan"
+        ],
+        "zee5": [
+          "Vedaa",
+          "Logout",
+          "Vanvaas",
+          "Farrey",
+          "Ghoomer",
+          "Main Atal Hoon",
+          "The Kerala Story",
+          "Sam Bahadur",
+          "Gadar 2",
+          "Despatch"
+        ],
+        "netflix": [
+          "Thammudu",
+          "My Oxford Year",
+          "Raid 2",
+          "Aap Jaisa Koi",
+          "Until Dawn",
+          "KPop Demon Hunters",
+          "Happy Gilmore 2",
+          "Thug Life",
+          "Jaat",
+          "Money Heist"
+        ]
+      },
+      "platformAds": {
+        "prime": [
+          "Apple AI",
+          "HP intel",
+          "kellogg's chocos",
+          "Nescafe Gold",
+          "Mama Earth",
+          "Coach"
+        ],
+        "zee5": [
+          "policy bazzar",
+          "Cadbury",
+          "Dabur Chaywanprash",
+          "Dabur honey",
+          "Hajmola",
+          "Mahindra Scorpio",
+          "Taco bell",
+          "Tata Harrier",
+          "Whatsapp",
+          "Lite Horliks",
+          "Loreal",
+          "Macho Hint"
+        ],
+        "netflix": []
       }
     },
-    "2025-07-07": {
+    "2025-08-11": {
       "shows": {
-        "netflix": {
-          "Drama": ["Ozark", "The Crown", "Bridgerton", "Narcos", "The Queen’s Gambit", "Better Call Saul", "Breaking Bad", "Mindhunter", "Shadow and Bone", "All of Us Are Dead"],
-          "Comedy": ["Never Have I Ever", "Sex Education", "The Good Place", "Schitt's Creek", "Emily in Paris", "Brooklyn Nine-Nine", "The Office US", "BoJack Horseman", "After Life", "Derry Girls"],
-          "Thriller": ["Squid Game", "You", "Dark", "Money Heist", "The Haunting of Bly Manor", "Black Mirror", "Ozark", "Your Honor", "Clickbait", "The Undoing"],
-          "Documentary": ["Formula 1: Drive to Survive", "Our Planet", "The Last Dance", "Tiger King", "Making a Murderer", "Wild Wild Country", "The Social Dilemma", "Night Stalker", "American Factory", "My Octopus Teacher"],
-          "Sci-Fi": ["The Witcher", "Dark", "The Mandalorian", "Stranger Things", "Black Mirror", "Westworld", "The Expanse", "Altered Carbon", "Sense8", "Arcane"]
-        },
-        "prime": {
-          "Action": ["Reacher", "Jack Ryan", "The Boys", "The Terminal List", "Citadel", "Hanna", "Bosch", "The Wheel of Time", "The Tomorrow War", "Hunters"],
-          "Drama": ["The Marvelous Mrs. Maisel", "Mumbai Diaries 26/11", "The Family Man", "Mirzapur", "Made in Heaven", "Paatal Lok", "Breathe", "Inside Edge", "Tandav", "Four More Shots Please"],
-          "Comedy": ["Panchayat", "Gullak", "Hostel Daze", "Comicstaan", "Pushpavalli", "One Mic Stand", "Chacha Vidhayak Hain Humare", "Wagle Ki Duniya", "The Office India", "Mind the Malhotras"],
-          "Horror": ["Lore", "Them", "Truth Seekers", "Evil Eye", "The Witches", "The Grudge", "The Vast of Night", "Suspiria", "Fear Street", "No One Gets Out Alive"],
-          "Romance": ["Four More Shots Please", "Modern Love", "Made in Heaven", "Little Things", "Love Storiyaan", "Jubilee", "Breathe: Into the Shadows", "Bandish Bandits", "Yeh Jawaani Hai Deewani", "Dil Dhadakne Do"]
-        },
-        "zee5": {
-          "Drama": ["Scam 1992", "Kaafir", "The Final Call", "Abhay", "State of Siege: 26/11", "Rangbaaz", "Mithya", "Code M", "Chargesheet", "Poison"],
-          "Comedy": ["Sunflower", "Bicchoo Ka Khel", "Jamai 2.0", "Humorously Yours", "Virgin Bhasskar", "Black Widows", "Engineering Girls", "Mr. & Mrs.", "Kaamini", "The Casino"],
-          "Reality": ["Lock Upp", "Sa Re Ga Ma Pa", "Indian Idol", "Dance India Dance", "MTV Roadies", "Splitsvilla", "Bigg Boss Marathi", "The Voice India", "India's Got Talent", "Shark Tank India"],
-          "Music": ["Sa Re Ga Ma Pa", "Indian Pro Music League", "MTV Unplugged", "Coke Studio India", "The Voice India", "Sound of Cinema", "Melody Masters", "Music Masti", "Rock On", "Suron Ke Rang"],
-          "Regional": ["Kumkum Bhagya", "Kundali Bhagya", "Pavitra Rishta", "Jamai Raja", "Tujhse Hai Raabta", "Qubool Hai", "Jodha Akbar", "Naagin", "Brahmarakshas", "Guddan Tumse Na Ho Payega"]
-        },
-        "hotstar": {
-          "Sports": ["IPL 2025", "Pro Kabaddi League", "ISL", "Formula 1", "Wimbledon", "Premier League", "T20 World Cup", "Cricket World Cup", "Olympics Highlights", "BWF Championships"],
-          "Drama": ["Aarya", "Criminal Justice", "Special Ops", "Hostages", "Out of Love", "City of Dreams", "The Legend of Hanuman", "Grahan", "Human", "Lohardaga"],
-          "Comedy": ["Sarabhai vs Sarabhai", "Taarak Mehta Ka Ooltah Chashmah", "The Kapil Sharma Show", "Khichdi", "Office Office", "Bhabiji Ghar Par Hain", "Happu Ki Ultan Pultan", "Sumit Sambhal Lega", "Dekh Bhai Dekh", "Malgudi Days"],
-          "Kids": ["Mickey Mouse Clubhouse", "Doraemon", "Phineas and Ferb", "The Lion King Series", "Aladdin", "Little Krishna", "Chhota Bheem", "Motu Patlu", "Roll No. 21", "Shinchan"],
-          "Movies": ["Dil Bechara", "Sooryavanshi", "M.S. Dhoni: The Untold Story", "Bajrangi Bhaijaan", "Baaghi 3", "Chhapaak", "Tanhaji", "Angrezi Medium", "Panga", "Laxmii"]
-        },
-        "mxplayer": {
-          "Comedy": ["TVF Pitchers", "Kota Factory", "Gullak", "Aspirants", "Permanent Roommates", "Humorously Yours", "Tripling", "Imperfect", "Panchayat", "Baked"],
-          "Drama": ["Scam 1992", "Rocket Boys", "Mumbai Diaries", "Arya", "Tabbar", "Raktanchal", "Ek Thi Begum", "Chakravyuh", "Bhaukaal", "Madhuri Talkies"],
-          "Web Series": ["The Family Man", "Mirzapur", "Sacred Games", "Delhi Crime", "Asur", "Aashram", "High", "Queen", "Samantar", "Ragini MMS 2"],
-          "Movies": ["Andhadhun", "Badhaai Ho", "Stree", "Drishyam", "Masaan", "Uri: The Surgical Strike", "Sonu Ke Titu Ki Sweety", "Ludo", "Article 15", "Tumbbad"],
-          "Music": ["MTV Unplugged", "Coke Studio India", "Sound Trippin", "Rock On", "Suron Ke Rang", "Music Masti", "Melody Masters", "T-Series MixTape", "Jammin", "Bollywood Beats"]
-        }
-      },
-      "platformAds": {
-        "netflix": [],
         "prime": [
-          "Pepsi - Har Ghoont Mein Swag",
-          "Coca-Cola - Refresh & Recharge",
-          "Airtel - 5G Plus",
-          "Flipkart - Super Saver Days",
-          "Maruti Suzuki - Drive the Future",
-          "Boat - Rock the Boat",
-          "Sunsilk - Shine On",
-          "Dream11 - Team Up India",
-          "Ponds - Glow Naturally",
-          "Amazon - Prime Days"
+          "Arabia Kadali",
+          "The Summer I Turned Pretty",
+          "Panchayat",
+          "Rangeen",
+          "Countdown",
+          "Head Over Heels",
+          "Mirzapur ",
+          "Farzi ",
+          "The Family Man",
+          "Dupahiya"
         ],
         "zee5": [
-          "Cadbury Dairy Milk - Kuch Meetha Ho Jaaye",
-          "HDFC Bank - Life Ka Plan",
-          "Parachute - Healthy Hair",
-          "Amul - Taste of India",
-          "Titan - Timeless Elegance",
-          "Asian Paints - Har Ghar Kuch Kehta Hai",
-          "Boat - Rock the Boat",
-          "L'Oréal - Because You're Worth It",
-          "Reliance Jio - 5G Revolution",
-          "Swiggy - Foodie Freedom",
-          "Zomato - Tasty Deals",
-          "Ariel - Share the Load"
+          "Mothevari Love Story",
+          "Sattamum Needhiyum",
+          "Bakaiti",
+          "Andhar Maya",
+          "Murshid",
+          "Chhal Kapat - The Deception",
+          "Be Melodramatic",
+          "Auto Shankar",
+          "Bibhishon",
+          "Ayyana Mane"
         ],
-        "hotstar": [
-          "Disney+ Hotstar - Stream The Best",
-          "Tata Sky - Entertainment Ka Baap",
-          "Lakmé - Be Unstoppable",
-          "Samsung - Galaxy Z Fold",
-          "Durex - Love Without Limits",
-          "Cadbury Dairy Milk - Kuch Meetha Ho Jaaye",
-          "Oppo - Capture the Night",
-          "Vivo - Camera & Music",
-          "Byju's - Learn Better",
-          "Myntra - Big Fashion Festival",
-          "Airtel - 5G Plus",
-          "Flipkart - Super Saver Days"
-        ],
-        "mxplayer": [
-          "Amazon - Prime Days",
-          "Ponds - Glow Naturally",
-          "Dream11 - Team Up India",
-          "Sunsilk - Shine On",
-          "Maruti Suzuki - Drive the Future",
-          "Flipkart - Super Saver Days",
-          "Airtel - 5G Plus",
-          "Coca-Cola - Refresh & Recharge",
-          "Pepsi - Har Ghoont Mein Swag",
-          "Disney+ Hotstar - Stream The Best",
-          "Tata Sky - Entertainment Ka Baap",
-          "Lakmé - Be Unstoppable",
-          "Samsung - Galaxy Z Fold",
-          "Durex - Love Without Limits",
-          "Byju's - Learn Better"
+        "netflix": [
+          "Wednesday: Season 2",
+          "Mandala Murders: Season 1",
+          "The Great Indian Kapil Show: Season 3",
+          "Wednesday: Season 1",
+          "Unspeakable Sins: Season 1",
+          "WWE SummerSlam: 2025 - SummerSlam 2025 Sunday",
+          "Beyond the Bar: Limited Series",
+          "UNTAMED: Season 1",
+          "Squid Game: Season 3",
+          "Raw: 2025 - August 4, 2025"
         ]
+      },
+      "movies": {
+        "prime": [
+          "Housefull 5",
+          "3BHK",
+          "Housefull 5",
+          "Kuberaa",
+          "The Pickup ",
+          "Badmashulu",
+          "Oh Bhama Ayyo Rama",
+          "Show Time ",
+          "Check",
+          "War"
+        ],
+        "zee5": [
+          "Gadar 2",
+          "Haddi",
+          "Sirf Ek Bandaa Kaafi Hai",
+          "DD Returns",
+          "Kisi Ka Bhai Kisi Ki Jaan",
+          "Hostel Hudugaru Bekagiddare",
+          "Tarla",
+          "Mrs Undercover",
+          "Kathar Basha Endra Muthuramalingam"
+        ],
+        "netflix": [
+          "My Oxford Year",
+          "Thammudu",
+          "Kung Fu Hustle",
+          "Oho Enthan Baby",
+          "Raid 2",
+          "Aap Jaisa Koi",
+          "KPop Demon Hunters",
+          "Jaat",
+          "Until Dawn",
+          "Dolittle"
+        ]
+      },
+      "platformAds": {
+        "prime": [
+          "Apple AI",
+          "HP intel",
+          "kellogg's chocos",
+          "Nescafe Gold",
+          "Mama Earth",
+          "Coach"
+        ],
+        "zee5": [
+          "policy bazzar",
+          "Cadbury",
+          "Dabur Chaywanprash",
+          "Dabur honey",
+          "Hajmola",
+          "Mahindra Scorpio",
+          "Taco bell",
+          "Tata Harrier",
+          "Whatsapp",
+          "Lite Horliks",
+          "Loreal",
+          "Macho Hint"
+        ],
+        "netflix": []
       }
     }
   }

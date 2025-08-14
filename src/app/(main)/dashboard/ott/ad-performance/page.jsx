@@ -27,7 +27,7 @@ const calculateAdDensity = (numAdsPerShowPerDay) => {
 }
 
 // Generate realistic ad placements based on platform characteristics
-const generateRealisticAdPlacements = (selectedShows, selectedPlatform, week, platforms) => {
+const generateRealisticAdPlacements = (selectedItems, selectedPlatform, week, platforms) => {
   const platform = platforms.find((p) => p.id === selectedPlatform)
   if (!platform?.hasAds) return { placements: [], adDensity: "false" }
 
@@ -37,35 +37,35 @@ const generateRealisticAdPlacements = (selectedShows, selectedPlatform, week, pl
   const placements = []
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-  // Determine number of ads per show per day based on platform ad array length
+  // Determine number of ads per item per day based on platform ad array length
   const totalAds = platformAds.length
-  const numShows = selectedShows.length
+  const numItems = selectedItems.length
   const numDays = days.length
-  // Base number of ads per show per day, scaled by platform
-  const baseAdsPerShowPerDay = {
-    prime: 4, // Medium density: ~4 ads/day/show
-    zee5: 6, // Medium-high density: ~6 ads/day/show
-    hotstar: 8, // High density: ~8 ads/day/show
-    mxplayer: 12 // Very-high density: ~12 ads/day/show
+  // Base number of ads per item per day, scaled by platform
+  const baseAdsPerItemPerDay = {
+    prime: 4, // Medium density: ~4 ads/day/item
+    zee5: 6, // Medium-high density: ~6 ads/day/item
+    hotstar: 8, // High density: ~8 ads/day/item
+    mxplayer: 12 // Very-high density: ~12 ads/day/item
   }[selectedPlatform] || 4
   // Adjust based on available ads, cap at 15 for "very-high"
-  const maxAdsPerShowPerDay = Math.min(Math.ceil(totalAds / (numShows * numDays)) + baseAdsPerShowPerDay, 15)
+  const maxAdsPerItemPerDay = Math.min(Math.ceil(totalAds / (numItems * numDays)) + baseAdsPerItemPerDay, 15)
   
   // Calculate ad density
-  const adDensity = calculateAdDensity(maxAdsPerShowPerDay)
+  const adDensity = calculateAdDensity(maxAdsPerItemPerDay)
 
-  selectedShows.forEach((show) => {
+  selectedItems.forEach((item) => {
     days.forEach((day, dayIndex) => {
-      // Randomly assign 50-100% of maxAdsPerShowPerDay to create variation
-      const numAds = Math.floor(Math.random() * (maxAdsPerShowPerDay / 2)) + Math.ceil(maxAdsPerShowPerDay / 2)
+      // Randomly assign 50-100% of maxAdsPerItemPerDay to create variation
+      const numAds = Math.floor(Math.random() * (maxAdsPerItemPerDay / 2)) + Math.ceil(maxAdsPerItemPerDay / 2)
 
       for (let i = 0; i < numAds; i++) {
         const startTime = generateRandomTime()
         const adName = platformAds[Math.floor(Math.random() * platformAds.length)]
 
         placements.push({
-          id: `${show}-${day}-${i}`,
-          show,
+          id: `${item}-${day}-${i}`,
+          item,
           day,
           dayIndex,
           startTime,
@@ -89,35 +89,34 @@ const generateRealisticAdPlacements = (selectedShows, selectedPlatform, week, pl
 export default function OTTAdScheduler() {
   const [selectedWeek, setSelectedWeek] = useState(ottData.weeks[0]?.value || "")
   const [selectedPlatform, setSelectedPlatform] = useState("")
-  const [selectedGenre, setSelectedGenre] = useState("")
-  const [selectedShows, setSelectedShows] = useState([])
+  const [selectedContentType, setSelectedContentType] = useState("shows")
+  const [selectedItems, setSelectedItems] = useState([])
   const [isAllAdsDialogOpen, setIsAllAdsDialogOpen] = useState(false)
 
-  const availableGenres = selectedPlatform ? ottData.genres[selectedPlatform] || [] : []
-  const availableShows = selectedPlatform && selectedGenre && ottData.weekSchedules[selectedWeek]
-    ? ottData.weekSchedules[selectedWeek].shows[selectedPlatform]?.[selectedGenre] || []
+  const availableItems = selectedPlatform && ottData.weekSchedules[selectedWeek]
+    ? ottData.weekSchedules[selectedWeek][selectedContentType][selectedPlatform] || []
     : []
   const currentPlatform = ottData.platforms.find((p) => p.id === selectedPlatform)
 
   const { placements: adPlacements, adDensity } = useMemo(() => {
-    if (!ottData.weekSchedules[selectedWeek] || selectedShows.length === 0) return { placements: [], adDensity: "false" }
+    if (!ottData.weekSchedules[selectedWeek] || selectedItems.length === 0) return { placements: [], adDensity: "false" }
     return generateRealisticAdPlacements(
-      selectedShows,
+      selectedItems,
       selectedPlatform,
       selectedWeek,
       ottData.platforms
     )
-  }, [selectedShows, selectedPlatform, selectedWeek])
+  }, [selectedItems, selectedPlatform, selectedWeek])
 
-  const handleShowSelection = (show) => {
-    setSelectedShows((prev) => (prev.includes(show) ? prev.filter((s) => s !== show) : [...prev, show]))
+  const handleItemSelection = (item) => {
+    setSelectedItems((prev) => (prev.includes(item) ? prev.filter((s) => s !== item) : [...prev, item]))
   }
 
   useMemo(() => {
-    if (availableShows.length > 0) {
-      setSelectedShows(availableShows)
+    if (availableItems.length > 0) {
+      setSelectedItems(availableItems)
     }
-  }, [availableShows])
+  }, [availableItems])
 
   return (
     <div className="min-h-screen">
@@ -161,8 +160,8 @@ export default function OTTAdScheduler() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Enhanced Filters Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        {/* Filters Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-semibold flex items-center">
@@ -172,7 +171,7 @@ export default function OTTAdScheduler() {
             </CardHeader>
             <CardContent>
               <Select value={selectedWeek} onValueChange={setSelectedWeek}>
-                <SelectTrigger className="">
+                <SelectTrigger>
                   <SelectValue placeholder="Select campaign week" />
                 </SelectTrigger>
                 <SelectContent>
@@ -195,11 +194,10 @@ export default function OTTAdScheduler() {
                 value={selectedPlatform}
                 onValueChange={(value) => {
                   setSelectedPlatform(value)
-                  setSelectedGenre("")
-                  setSelectedShows([])
+                  setSelectedItems([])
                 }}
               >
-                <SelectTrigger className="">
+                <SelectTrigger>
                   <SelectValue placeholder="Choose platform" />
                 </SelectTrigger>
                 <SelectContent>
@@ -223,35 +221,25 @@ export default function OTTAdScheduler() {
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold">Content Genre</CardTitle>
+              <CardTitle className="text-sm font-semibold">Content Type</CardTitle>
             </CardHeader>
             <CardContent>
-              <Select value={selectedGenre} onValueChange={setSelectedGenre} disabled={!selectedPlatform}>
-                <SelectTrigger className="">
-                  <SelectValue placeholder="Select genre" />
+              <Select
+                value={selectedContentType}
+                onValueChange={(value) => {
+                  setSelectedContentType(value)
+                  setSelectedItems([])
+                }}
+                disabled={!selectedPlatform}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select content type" />
                 </SelectTrigger>
                 <SelectContent>
-                  {availableGenres.map((genre) => (
-                    <SelectItem key={genre} value={genre}>
-                      {genre}
-                    </SelectItem>
-                  ))}
+                  <SelectItem value="shows">Shows</SelectItem>
+                  <SelectItem value="movies">Movies</SelectItem>
                 </SelectContent>
               </Select>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold">Active Shows</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center space-x-2">
-                <Play className="h-5 w-5 text-blue-600" />
-                <span className="text-2xl font-bold">{selectedShows.length}</span>
-                <span className="text-sm text-muted-foreground">selected</span>
-              </div>
-              {selectedShows.length > 0 && <p className="text-xs text-muted-foreground mt-1">All shows auto-selected</p>}
             </CardContent>
           </Card>
         </div>
@@ -273,14 +261,14 @@ export default function OTTAdScheduler() {
           </Card>
         )}
 
-        {/* Shows Grid */}
-        {availableShows.length > 0 && (
+        {/* Items Grid */}
+        {availableItems.length > 0 && (
           <Card className="border-gray-200 shadow-sm mb-8">
             <CardHeader>
               <CardTitle className="text-lg font-semibold flex items-center justify-between">
                 <div className="flex items-center">
                   <Play className="h-5 w-5 mr-2 text-blue-600" />
-                  Top {selectedGenre} Shows on {currentPlatform?.name}
+                  Top {selectedContentType === "shows" ? "Shows" : "Movies"} on {currentPlatform?.name}
                 </div>
                 {adDensity !== "false" && (
                   <Badge variant="outline" className="text-xs">
@@ -291,25 +279,25 @@ export default function OTTAdScheduler() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {availableShows.map((show) => (
+                {availableItems.map((item) => (
                   <div
-                    key={show}
+                    key={item}
                     className={`group p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
-                      selectedShows.includes(show)
+                      selectedItems.includes(item)
                         ? "border-blue-500 shadow-md"
                         : "hover:shadow-sm"
                     }`}
-                    onClick={() => handleShowSelection(show)}
+                    onClick={() => handleItemSelection(item)}
                   >
                     <div className="aspect-[3/4] rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                       <img
-                        src={`/abstract-geometric-shapes.png?height=160&width=120&query=${encodeURIComponent(show + " show poster")}`}
-                        alt={`${show} poster`}
+                        src="/placeholder.svg"
+                        alt={`${item} poster`}
                         className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="text-sm font-semibold text-center leading-tight">{show}</h3>
-                    {selectedShows.includes(show) && (
+                    <h3 className="text-sm font-semibold text-center leading-tight">{item}</h3>
+                    {selectedItems.includes(item) && (
                       <Badge className="w-full mt-2 bg-blue-600 hover:bg-blue-700 justify-center">✓ Active</Badge>
                     )}
                   </div>
@@ -337,7 +325,7 @@ export default function OTTAdScheduler() {
                         <Table>
                           <TableHeader>
                             <TableRow>
-                              <TableHead>Show</TableHead>
+                              <TableHead>{selectedContentType === "shows" ? "Show" : "Movie"}</TableHead>
                               <TableHead>Day</TableHead>
                               <TableHead>Time</TableHead>
                               <TableHead>Ad Name</TableHead>
@@ -349,7 +337,7 @@ export default function OTTAdScheduler() {
                           <TableBody>
                             {adPlacements.map((placement) => (
                               <TableRow key={placement.id}>
-                                <TableCell>{placement.show}</TableCell>
+                                <TableCell>{placement.item}</TableCell>
                                 <TableCell>{placement.day}</TableCell>
                                 <TableCell>{placement.startTime}</TableCell>
                                 <TableCell>{placement.adName}</TableCell>
@@ -380,7 +368,7 @@ export default function OTTAdScheduler() {
                 <div className="min-w-[900px]">
                   {/* Enhanced Timeline Header */}
                   <div className="grid grid-cols-8 gap-3 mb-6 pb-3 border-b">
-                    <div className="text-sm font-semibold p-3">Show Title</div>
+                    <div className="text-sm font-semibold p-3">{selectedContentType === "shows" ? "Show" : "Movie"} Title</div>
                     {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
                       <div key={day} className="text-sm font-semibold text-center p-3">
                         <div>{day.slice(0, 3)}</div>
@@ -390,103 +378,105 @@ export default function OTTAdScheduler() {
                   </div>
 
                   {/* Enhanced Gantt Chart Rows */}
-                  {selectedShows.map((show) => {
-                    const showPlacements = adPlacements.filter((p) => p.show === show)
-                    const placementsByDay = showPlacements.reduce((acc, placement) => {
-                      if (!acc[placement.dayIndex]) acc[placement.dayIndex] = []
-                      acc[placement.dayIndex].push(placement)
-                      return acc
-                    }, {})
+                  <div className="h-[80vh] overflow-auto">
+                    {selectedItems.map((item) => {
+                      const itemPlacements = adPlacements.filter((p) => p.item === item)
+                      const placementsByDay = itemPlacements.reduce((acc, placement) => {
+                        if (!acc[placement.dayIndex]) acc[placement.dayIndex] = []
+                        acc[placement.dayIndex].push(placement)
+                        return acc
+                      }, {})
 
-                    return (
-                      <div key={show} className="grid grid-cols-8 gap-3 mb-4 items-start">
-                        <div className="p-4 bg-card border rounded-lg shadow-sm">
-                          <div className="text-sm font-semibold mb-1">{show}</div>
-                          <div className="text-xs text-muted-foreground">{showPlacements.length} ad slots</div>
-                          <div className="text-xs text-muted-foreground mt-1">
-                            {Math.round(showPlacements.reduce((sum, p) => sum + p.duration, 0) / 60)} min total
-                          </div>
-                        </div>
-
-                        {[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => {
-                          const dayPlacements = placementsByDay[dayIndex] || []
-                          return (
-                            <div
-                              key={dayIndex}
-                              className="min-h-[80px] bg-popover border rounded-lg p-2 relative"
-                            >
-                              {dayPlacements.length === 0 ? (
-                                <div className="flex items-center justify-center h-full text-xs text-gray-400">
-                                  No ads
-                                </div>
-                              ) : (
-                                <Dialog>
-                                  <DialogTrigger asChild>
-                                    <div className="space-y-1 cursor-pointer">
-                                      {dayPlacements.slice(0, 3).map((placement, index) => (
-                                        <div
-                                          key={placement.id}
-                                          className="p-2 rounded-md text-xs text-white hover:opacity-90 transition-all duration-200 shadow-sm"
-                                          style={{
-                                            backgroundColor: currentPlatform?.color || "#3B82F6",
-                                          }}
-                                          title={`${placement.adName}\n${placement.adType} - ${placement.startTime}\nDuration: ${placement.duration}s\nRepeated: ${placement.repetitionCount}x this week`}
-                                        >
-                                          <div className="font-semibold">{placement.startTime}</div>
-                                          <div className="text-xs opacity-90 truncate">
-                                            {placement.adName?.split(" - ")[0]}
-                                          </div>
-                                          <div className="text-xs opacity-75">
-                                            {placement.duration}s • {placement.adType}
-                                          </div>
-                                        </div>
-                                      ))}
-                                      {dayPlacements.length > 3 && (
-                                        <div className="text-xs text-muted-foreground text-center py-1">
-                                          +{dayPlacements.length - 3} more
-                                        </div>
-                                      )}
-                                    </div>
-                                  </DialogTrigger>
-                                  <DialogContent className="max-w-4xl">
-                                    <DialogHeader>
-                                      <DialogTitle>
-                                        Ad Placements for {show} on {dayPlacements[0]?.day}
-                                      </DialogTitle>
-                                    </DialogHeader>
-                                    <div className="mt-4">
-                                      <Table>
-                                        <TableHeader>
-                                          <TableRow>
-                                            <TableHead>Time</TableHead>
-                                            <TableHead>Ad Name</TableHead>
-                                            <TableHead>Ad Type</TableHead>
-                                            <TableHead>Duration</TableHead>
-                                            <TableHead>Repetition</TableHead>
-                                          </TableRow>
-                                        </TableHeader>
-                                        <TableBody>
-                                          {dayPlacements.map((placement) => (
-                                            <TableRow key={placement.id}>
-                                              <TableCell>{placement.startTime}</TableCell>
-                                              <TableCell>{placement.adName}</TableCell>
-                                              <TableCell>{placement.adType}</TableCell>
-                                              <TableCell>{placement.duration}s</TableCell>
-                                              <TableCell>{placement.repetitionCount}x</TableCell>
-                                            </TableRow>
-                                          ))}
-                                        </TableBody>
-                                      </Table>
-                                    </div>
-                                  </DialogContent>
-                                </Dialog>
-                              )}
+                      return (
+                        <div key={item} className="grid grid-cols-8 gap-3 mb-4 items-start">
+                          <div className="p-4 bg-card border rounded-lg shadow-sm">
+                            <div className="text-sm font-semibold mb-1">{item}</div>
+                            <div className="text-xs text-muted-foreground">{itemPlacements.length} ad slots</div>
+                            <div className="text-xs text-muted-foreground mt-1">
+                              {Math.round(itemPlacements.reduce((sum, p) => sum + p.duration, 0) / 60)} min total
                             </div>
-                          )
-                        })}
-                      </div>
-                    )
-                  })}
+                          </div>
+
+                          {[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => {
+                            const dayPlacements = placementsByDay[dayIndex] || []
+                            return (
+                              <div
+                                key={dayIndex}
+                                className="min-h-[80px] bg-popover border rounded-lg p-2 relative"
+                              >
+                                {dayPlacements.length === 0 ? (
+                                  <div className="flex items-center justify-center h-full text-xs text-gray-400">
+                                    No ads
+                                  </div>
+                                ) : (
+                                  <Dialog>
+                                    <DialogTrigger asChild>
+                                      <div className="space-y-1 cursor-pointer">
+                                        {dayPlacements.slice(0, 3).map((placement, index) => (
+                                          <div
+                                            key={placement.id}
+                                            className="p-2 rounded-md text-xs text-white hover:opacity-90 transition-all duration-200 shadow-sm"
+                                            style={{
+                                              backgroundColor: currentPlatform?.color || "#3B82F6",
+                                            }}
+                                            title={`${placement.adName}\n${placement.adType} - ${placement.startTime}\nDuration: ${placement.duration}s\nRepeated: ${placement.repetitionCount}x this week`}
+                                          >
+                                            <div className="font-semibold">{placement.startTime}</div>
+                                            <div className="text-xs opacity-90 truncate">
+                                              {placement.adName?.split(" - ")[0]}
+                                            </div>
+                                            <div className="text-xs opacity-75">
+                                              {placement.duration}s • {placement.adType}
+                                            </div>
+                                          </div>
+                                        ))}
+                                        {dayPlacements.length > 3 && (
+                                          <div className="text-xs text-muted-foreground text-center py-1">
+                                            +{dayPlacements.length - 3} more
+                                          </div>
+                                        )}
+                                      </div>
+                                    </DialogTrigger>
+                                    <DialogContent className="max-w-4xl">
+                                      <DialogHeader>
+                                        <DialogTitle>
+                                          Ad Placements for {item} on {dayPlacements[0]?.day}
+                                        </DialogTitle>
+                                      </DialogHeader>
+                                      <div className="mt-4">
+                                        <Table>
+                                          <TableHeader>
+                                            <TableRow>
+                                              <TableHead>Time</TableHead>
+                                              <TableHead>Ad Name</TableHead>
+                                              <TableHead>Ad Type</TableHead>
+                                              <TableHead>Duration</TableHead>
+                                              <TableHead>Repetition</TableHead>
+                                            </TableRow>
+                                          </TableHeader>
+                                          <TableBody>
+                                            {dayPlacements.map((placement) => (
+                                              <TableRow key={placement.id}>
+                                                <TableCell>{placement.startTime}</TableCell>
+                                                <TableCell>{placement.adName}</TableCell>
+                                                <TableCell>{placement.adType}</TableCell>
+                                                <TableCell>{placement.duration}s</TableCell>
+                                                <TableCell>{placement.repetitionCount}x</TableCell>
+                                              </TableRow>
+                                            ))}
+                                          </TableBody>
+                                        </Table>
+                                      </div>
+                                    </DialogContent>
+                                  </Dialog>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
 
@@ -523,7 +513,7 @@ export default function OTTAdScheduler() {
                     <h4 className="text-sm font-semibold mb-2">Campaign Summary</h4>
                     <div className="text-sm text-gray-600">
                       <div>
-                        Shows: <span className="font-medium">{selectedShows.length}</span>
+                        {selectedContentType === "shows" ? "Shows" : "Movies"}: <span className="font-medium">{selectedItems.length}</span>
                       </div>
                       <div>
                         Total Slots: <span className="font-medium">{adPlacements.length}</span>
