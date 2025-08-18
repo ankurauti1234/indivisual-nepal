@@ -19,7 +19,7 @@
       "name": "Netflix",
       "logo": "/generic-entertainment-logo.png",
       "color": "#FF0000",
-      "hasAds": true
+      "hasAds": false
     }
   ],
   "weeks": [
@@ -69,7 +69,7 @@
           "Beyond the Bar: Limited Series",
           "UNTAMED: Season 1",
           "Squid Game: Season 3",
-          "Raw: 2025 - August 4, 2025"
+          "Raw: 2025 - August 4, 2025"
         ]
       },
       "movies": {
@@ -112,26 +112,26 @@
       },
       "platformAds": {
         "prime": [
-          "Apple AI",
-          "HP intel",
-          "kellogg's chocos",
-          "Nescafe Gold",
-          "Mama Earth",
-          "Coach"
+          { "name": "Apple AI", "duration": 15 },
+          { "name": "HP intel", "duration": 21 },
+          { "name": "kellogg's chocos", "duration": 27 },
+          { "name": "Nescafe Gold", "duration": 33 },
+          { "name": "Mama Earth", "duration": 41 },
+          { "name": "Coach", "duration": 15 }
         ],
         "zee5": [
-          "policy bazzar",
-          "Cadbury",
-          "Dabur Chaywanprash",
-          "Dabur honey",
-          "Hajmola",
-          "Mahindra Scorpio",
-          "Taco bell",
-          "Tata Harrier",
-          "Whatsapp",
-          "Lite Horliks",
-          "Loreal",
-          "Macho Hint"
+          { "name": "policy bazzar", "duration": 15 },
+          { "name": "Cadbury", "duration": 21 },
+          { "name": "Dabur Chaywanprash", "duration": 27 },
+          { "name": "Dabur honey", "duration": 33 },
+          { "name": "Hajmola", "duration": 41 },
+          { "name": "Mahindra Scorpio", "duration": 15 },
+          { "name": "Taco bell", "duration": 21 },
+          { "name": "Tata Harrier", "duration": 27 },
+          { "name": "Whatsapp", "duration": 33 },
+          { "name": "Lite Horliks", "duration": 41 },
+          { "name": "Loreal", "duration": 15 },
+          { "name": "Macho Hint", "duration": 21 }
         ],
         "netflix": []
       }
@@ -145,8 +145,8 @@
           "Rangeen",
           "Countdown",
           "Head Over Heels",
-          "Mirzapur ",
-          "Farzi ",
+          "Mirzapur",
+          "Farzi",
           "The Family Man",
           "Dupahiya"
         ],
@@ -172,7 +172,7 @@
           "Beyond the Bar: Limited Series",
           "UNTAMED: Season 1",
           "Squid Game: Season 3",
-          "Raw: 2025 - August 4, 2025"
+          "Raw: 2025 - August 4, 2025"
         ]
       },
       "movies": {
@@ -181,10 +181,10 @@
           "3BHK",
           "Housefull 5",
           "Kuberaa",
-          "The Pickup ",
+          "The Pickup",
           "Badmashulu",
           "Oh Bhama Ayyo Rama",
-          "Show Time ",
+          "Show Time",
           "Check",
           "War"
         ],
@@ -214,26 +214,26 @@
       },
       "platformAds": {
         "prime": [
-          "Apple AI",
-          "HP intel",
-          "kellogg's chocos",
-          "Nescafe Gold",
-          "Mama Earth",
-          "Coach"
+          { "name": "Apple AI", "duration": 15 },
+          { "name": "HP intel", "duration": 21 },
+          { "name": "kellogg's chocos", "duration": 27 },
+          { "name": "Nescafe Gold", "duration": 33 },
+          { "name": "Mama Earth", "duration": 41 },
+          { "name": "Coach", "duration": 15 }
         ],
         "zee5": [
-          "policy bazzar",
-          "Cadbury",
-          "Dabur Chaywanprash",
-          "Dabur honey",
-          "Hajmola",
-          "Mahindra Scorpio",
-          "Taco bell",
-          "Tata Harrier",
-          "Whatsapp",
-          "Lite Horliks",
-          "Loreal",
-          "Macho Hint"
+          { "name": "policy bazzar", "duration": 15 },
+          { "name": "Cadbury", "duration": 21 },
+          { "name": "Dabur Chaywanprash", "duration": 27 },
+          { "name": "Dabur honey", "duration": 33 },
+          { "name": "Hajmola", "duration": 41 },
+          { "name": "Mahindra Scorpio", "duration": 15 },
+          { "name": "Taco bell", "duration": 21 },
+          { "name": "Tata Harrier", "duration": 27 },
+          { "name": "Whatsapp", "duration": 33 },
+          { "name": "Lite Horliks", "duration": 41 },
+          { "name": "Loreal", "duration": 15 },
+          { "name": "Macho Hint", "duration": 21 }
         ],
         "netflix": []
       }
