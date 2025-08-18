@@ -106,6 +106,108 @@ const generateAdPlacements = (selectedItems, selectedPlatform, week, contentType
   }
 }
 
+// Helper function to get the correct image path
+const getPosterImagePath = (platformId, contentType, item) => {
+  const contentFolder = contentType === "movies" ? "Movies" : "Shows"
+  // Normalize item name to match file names (remove or adjust extra details)
+  let normalizedItem = item
+    .replace(/: Season \d+/i, "") // Remove ": Season X"
+    .replace(/\(.*?\)/g, "") // Remove years in parentheses, e.g., "(2020)"
+    .replace(/ - .*$/, "") // Remove extra details after " - "
+    .replace(/SummerSlam: 2025 - SummerSlam 2025 Sunday/i, "Summer Slam 2025") // Special case for SummerSlam
+    .replace(/Raw: 2025 - August 4, 2025/i, "RAW") // Special case for RAW
+    .trim()
+
+  // Map normalized item names to file names (based on provided directory)
+  const imageMap = {
+    netflix: {
+      Movies: {
+        "Aap Jaisa Koi": "Aap Jaisa Koi (2025).jpg",
+        "Happy Gilmore 2": "Happy Gilmore 2 (2025).png",
+        Jaat: "Jaat (2025).png",
+        "KPop Demon Hunters": "KPop Demon Hunters (2025).png",
+        "Money Heist": "Money Heist.jpeg",
+        "My Oxford Year": "My Oxford Year (2025).jpg",
+        "Raid 2": "Raid 2 (2025).jpg",
+        Thammudu: "Thammudu (2005).jpeg",
+        "Thug Life": "Thug Life (2025).png",
+        "Until Dawn": "Until Dawn (2025).jpg",
+      },
+      Shows: {
+        "Beyond the Bar": "Beyond the bar.jpeg",
+        "Mandala Murders": "Mandala Murders.jpeg",
+        RAW: "RAW.jpeg",
+        "Squid Game": "Squid Game 3.jpeg",
+        "WWE SummerSlam": "Summer Slam 2025.jpeg",
+        "The Great Indian Kapil Show": "The Great Indian Kapil Show (2024).jpg",
+        "Unspeakable Sins": "Unspeakable Sins.jpeg",
+        UNTAMED: "Untamed.jpeg",
+        Wednesday: "Wednesday (2022) - Season 1.png", // Default to Season 1; adjust below for Season 2
+      },
+    },
+    prime: {
+      Movies: {
+        "3BHK": "3BHK.jpg",
+        "Aap Jaisa Koi": "Aap Jaisa Koi (2025).jpg",
+        "Housefull 5": "Housefull 5 (2025).jpg",
+        Kuberaa: "Kuberaa (2025).jpg",
+        Maargan: "Maargan.jpeg",
+        "My Oxford Year": "My Oxford Year (2025).jpg",
+        "Oh Bhama Ayyo Rama": "Oh Bhama Ayyo Rama.jpeg",
+        "Raid 2": "Raid 2 (2025).jpg",
+        "Show Time": "Show Time.jpeg",
+        Thammudu: "Thammudu (2005).jpeg",
+      },
+      Shows: {
+        Ballard: "Ballard (2025).jpg",
+        Countdown: "Countdown (2025).jpg",
+        "Dope Girls": "Dope Girls (2025).png",
+        "Heads of State": "Heads of State (2025).jpg",
+        Mirzapur: "Mirzapur (2018).png",
+        Panchayat: "Panchayat (2020) - Season 4.jpg",
+        Rangeen: "Rangeen (2025).jpg",
+        "The Family Man": "The Family Man (2019).jpg",
+        "The Summer I Turned Pretty": "The Summer I Turned Pretty (2022).jpg",
+        "The Traitors": "The Traitors.jpeg",
+      },
+    },
+    zee5: {
+      Movies: {
+        Despatch: "Despatch (2024).jpg",
+        Farrey: "Farrey.jpeg",
+        "Gadar 2": "Gadar 2 (2023).png",
+        Ghoomer: "Ghoomer (2023).jpg",
+        Logout: "Logout.jpeg",
+        "Main Atal Hoon": "Main Atal Hoon (2024).jpg",
+        "Sam Bahadur": "Sam Bahadur (2023).jpg",
+        "The Kerala Story": "The Kerala Story.jpeg",
+        Vanvaas: "Vanvaas (2024).jpg",
+        Vedaa: "Vedaa (2024).jpg",
+      },
+      Shows: {
+        Abhay: "Abhay.jpeg",
+        "Bicchoo Ka Khel": "Bicchoo ka khel.jpeg",
+        "Jamai 2.0": "Jamai 2.0.jpeg",
+        "Jeet Ki Zid": "Jeet Ki Zid.jpeg",
+        Kaafir: "Kaafir (2019) - Season 1.jpg",
+        Khoj: "Khoj.jpeg",
+        "Pyaar Testing": "Pyaar Testing.jpeg",
+        "Qubool Hai 2.0": "Qubool Hai 2.0.jpeg",
+        "State of Siege": "State of siege.jpeg",
+        "The Broken News": "The Broken News (2022).jpg",
+      },
+    },
+  }
+
+  // Special handling for shows with multiple seasons
+  if (platformId === "netflix" && contentType === "shows" && item.includes("Wednesday: Season 2")) {
+    return "/posters/netflix/Shows/Wednesday (2022) - Season 2.png"
+  }
+
+  const fileName = imageMap[platformId]?.[contentFolder]?.[normalizedItem]
+  return fileName ? `/posters/${platformId}/${contentFolder}/${fileName}` : "/placeholder.svg"
+}
+
 export default function OTTAdScheduler() {
   const [selectedWeek, setSelectedWeek] = useState(ottData.weeks[0]?.value || "")
   const [selectedPlatform, setSelectedPlatform] = useState("")
@@ -312,7 +414,7 @@ export default function OTTAdScheduler() {
                   >
                     <div className="aspect-[3/4] rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                       <img
-                        src="/placeholder.svg"
+                        src={getPosterImagePath(selectedPlatform, selectedContentType, item)}
                         alt={`${item} poster`}
                         className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />

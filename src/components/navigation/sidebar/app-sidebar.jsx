@@ -109,6 +109,10 @@ const data = {
           title: "Program Grid",
           url: "/dashboard/ott/program-grid",
         },
+               {
+          title: "Upload As-Run File",
+          url: "/dashboard/ott/as-run",
+        },
                 {
           title: "AD Performance",
           url: "/dashboard/ott/ad-performance",
