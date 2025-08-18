@@ -1,6 +1,7 @@
 "use client";
 import React, { Suspense } from "react";
 import EPG from "@/components/program-grid/EPG";
+import { Button } from "@/components/ui/button";
 
 function ProgramGridContent() {
   const DEVICE_IDS = ["R-1001", "R-1004", "R-1006", "R-1007"];
@@ -14,6 +15,22 @@ function ProgramGridContent() {
 
   return (
     <div className="space-y-6 p-4">
+            <Button
+              variant="outline"
+              className=" transition-colors"
+              onClick={() => {
+                const url = "https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/HOR-linear-report.csv";
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "HOR-report.csv";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+            >
+              Export Report
+            </Button>
+
       <EPG
         region="india"
         DEVICE_IDS={DEVICE_IDS}
