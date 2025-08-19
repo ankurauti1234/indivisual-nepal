@@ -52,6 +52,10 @@ const data = {
           title: "Advertisers",
           url: "/dashboard/tv/ads",
         },
+                       {
+          title: "Upload As-Run File",
+          url: "/dashboard/tv/as-run",
+        },
         {
           title: "Brands",
           url: "/dashboard/tv/brands",

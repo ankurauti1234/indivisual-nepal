@@ -74,8 +74,8 @@ function ProgramGridContent() {
   ];
 
   const reportCategoryOptions = [
-    { value: "HOR", label: "HOR" },
-    { value: "SPL", label: "SPL" },
+    { value: "HOR", label: "Raw Program" },
+    { value: "SPL", label: "Raw AD Spots" },
   ];
 
   const handleDownload = () => {
