@@ -38,36 +38,6 @@ function CustomRadioGroup({ value, onValueChange, options }) {
   );
 }
 
-function CustomMultiSelect({ selectedValues, onValueChange, options }) {
-  const handleChange = (value) => {
-    if (selectedValues.includes(value)) {
-      onValueChange(selectedValues.filter((v) => v !== value));
-    } else {
-      onValueChange([...selectedValues, value]);
-    }
-  };
-
-  return (
-    <div className="space-y-2">
-      <div className="border rounded-md p-2 max-h-40 overflow-y-auto">
-        {options.map((option) => (
-          <div key={option.value} className="flex items-center space-x-2 py-1">
-            <input
-              type="checkbox"
-              id={option.value}
-              value={option.value}
-              checked={selectedValues.includes(option.value)}
-              onChange={() => handleChange(option.value)}
-              className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-            />
-            <Label htmlFor={option.value}>{option.label}</Label>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function ProgramGridContent() {
   const DEVICE_IDS = ["R-1001", "R-1004", "R-1006", "R-1007"];
   const CHANNEL_ALIASES = {
@@ -79,8 +49,9 @@ function ProgramGridContent() {
   const baseUrl = process.env.NEXT_PUBLIC_API_LINEAR_URL;
 
   const [reportType, setReportType] = useState("daily");
-  const [selectedDates, setSelectedDates] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
   const [selectedWeek, setSelectedWeek] = useState("");
+  const [reportCategory, setReportCategory] = useState("HOR");
 
   const radioOptions = [
     { value: "daily", label: "Daily" },
@@ -102,26 +73,36 @@ function ProgramGridContent() {
     // Add more week options if needed
   ];
 
+  const reportCategoryOptions = [
+    { value: "HOR", label: "HOR" },
+    { value: "SPL", label: "SPL" },
+  ];
+
   const handleDownload = () => {
-    if (reportType === "daily" && selectedDates.length > 0) {
-      selectedDates.forEach((date) => {
-        const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/daily/${date}.csv`;
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `HOR-report-${date}.csv`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
-    } else if (reportType === "weekly" && selectedWeek) {
-      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/${selectedWeek}/raw-linear-report.csv`;
+    if (reportType === "daily" && selectedDate) {
+      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/linear/${reportCategory}/${selectedDate}.csv`;
       const link = document.createElement("a");
       link.href = url;
-      link.download = `HOR-report-${selectedWeek}.csv`;
+      link.download = `${reportCategory}-report-${selectedDate}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (reportType === "weekly" && selectedWeek) {
+      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/linear/${reportCategory}/${selectedWeek}.csv`;
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${reportCategory}-report-${selectedWeek}.csv`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
+  };
+
+  // Reset selections when report type changes
+  const handleReportTypeChange = (value) => {
+    setReportType(value);
+    setSelectedDate("");
+    setSelectedWeek("");
   };
 
   return (
@@ -139,49 +120,87 @@ function ProgramGridContent() {
           <div className="space-y-4">
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
               Export viewing reports for selected dates or weeks. Choose "Daily"
-              to download reports for specific dates or "Weekly" for a
-              consolidated weekly report. Select multiple dates for daily
-              reports if needed.
+              to download a report for a specific date or "Weekly" for a
+              consolidated weekly report.
             </p>
-            <CustomRadioGroup
-              value={reportType}
-              onValueChange={setReportType}
-              options={radioOptions}
-            />
-
-            {reportType === "daily" ? (
-              <CustomMultiSelect
-                selectedValues={selectedDates}
-                onValueChange={setSelectedDates}
-                options={dateOptions}
-              />
-            ) : (
+            
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">Report Category</Label>
               <Select
-                onValueChange={setSelectedWeek}
-                defaultValue={selectedWeek}
+                onValueChange={setReportCategory}
+                defaultValue={reportCategory}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select a week" />
+                  <SelectValue placeholder="Select report category" />
                 </SelectTrigger>
                 <SelectContent>
-                  {weekOptions.map((option) => (
+                  {reportCategoryOptions.map((option) => (
                     <SelectItem key={option.value} value={option.value}>
                       {option.label}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">Report Type</Label>
+              <CustomRadioGroup
+                value={reportType}
+                onValueChange={handleReportTypeChange}
+                options={radioOptions}
+              />
+            </div>
+
+            {reportType === "daily" ? (
+              <div className="space-y-2">
+                <Label className="text-sm font-medium">Select Date</Label>
+                <Select
+                  onValueChange={setSelectedDate}
+                  value={selectedDate}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a date" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {dateOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                <Label className="text-sm font-medium">Select Week</Label>
+                <Select
+                  onValueChange={setSelectedWeek}
+                  value={selectedWeek}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a week" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {weekOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             )}
 
             <Button
               onClick={handleDownload}
               disabled={
-                (reportType === "daily" && selectedDates.length === 0) ||
+                (reportType === "daily" && !selectedDate) ||
                 (reportType === "weekly" && !selectedWeek)
               }
               className="w-full"
             >
-              Download
+              Download Report
             </Button>
           </div>
         </DialogContent>
