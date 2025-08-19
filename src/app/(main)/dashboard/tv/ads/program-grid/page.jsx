@@ -207,7 +207,7 @@ function ProgramGridContent() {
       </Dialog>
 
       <EPG
-        region="india"
+        region="nepal"
         DEVICE_IDS={DEVICE_IDS}
         CHANNEL_ALIASES={CHANNEL_ALIASES}
         baseUrl={baseUrl}

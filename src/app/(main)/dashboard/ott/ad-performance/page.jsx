@@ -1,86 +1,127 @@
-"use client"
+"use client";
 
-import { useState, useMemo } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Calendar, Clock, Play, AlertCircle, BarChart3 } from "lucide-react"
-import ottData from "./ott-data.json"
+import { useState, useMemo } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Label } from "@/components/ui/label";
+import { Calendar, Clock, Play, AlertCircle, BarChart3 } from "lucide-react";
+import ottData from "./ott-data.json";
 
 // Utility to generate random time within working hours (10:00 AM to 6:00 AM next day)
 const generateRandomTime = (contentDurationMinutes) => {
-  const startHour = 10 // 10:00 AM
-  const endHour = 30 // 6:00 AM next day (24 + 6)
-  const maxStartMinutes = Math.min(contentDurationMinutes, (endHour - startHour) * 60)
-  const randomMinutes = Math.floor(Math.random() * maxStartMinutes)
-  const hours = Math.floor((startHour * 60 + randomMinutes) / 60) % 24
-  const minutes = randomMinutes % 60
-  return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:00`
-}
+  const startHour = 10; // 10:00 AM
+  const endHour = 30; // 6:00 AM next day (24 + 6)
+  const maxStartMinutes = Math.min(
+    contentDurationMinutes,
+    (endHour - startHour) * 60
+  );
+  const randomMinutes = Math.floor(Math.random() * maxStartMinutes);
+  const hours = Math.floor((startHour * 60 + randomMinutes) / 60) % 24;
+  const minutes = randomMinutes % 60;
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}:00`;
+};
 
 // Utility to add seconds to a time string (HH:MM:SS)
 const addSecondsToTime = (timeStr, seconds) => {
-  const [hours, minutes, secs] = timeStr.split(":").map(Number)
-  let totalSeconds = hours * 3600 + minutes * 60 + secs + seconds
-  const newHours = Math.floor(totalSeconds / 3600).toString().padStart(2, "0")
-  totalSeconds %= 3600
-  const newMinutes = Math.floor(totalSeconds / 60).toString().padStart(2, "0")
-  const newSeconds = (totalSeconds % 60).toString().padStart(2, "0")
-  return `${newHours}:${newMinutes}:${newSeconds}`
-}
+  const [hours, minutes, secs] = timeStr.split(":").map(Number);
+  let totalSeconds = hours * 3600 + minutes * 60 + secs + seconds;
+  const newHours = Math.floor(totalSeconds / 3600).toString().padStart(2, "0");
+  totalSeconds %= 3600;
+  const newMinutes = Math.floor(totalSeconds / 60).toString().padStart(2, "0");
+  const newSeconds = (totalSeconds % 60).toString().padStart(2, "0");
+  return `${newHours}:${newMinutes}:${newSeconds}`;
+};
 
 // Calculate ad density based on number of ads per item per day
 const calculateAdDensity = (numAdsPerItemPerDay, contentType) => {
-  const maxAds = contentType === "movies" ? 4 : 5
-  if (numAdsPerItemPerDay === 0) return "false"
-  if (numAdsPerItemPerDay <= Math.ceil(maxAds * 0.33)) return "low"
-  if (numAdsPerItemPerDay <= Math.ceil(maxAds * 0.66)) return "medium"
-  return "high"
-}
+  const maxAds = contentType === "movies" ? 4 : 5;
+  if (numAdsPerItemPerDay === 0) return "false";
+  if (numAdsPerItemPerDay <= Math.ceil(maxAds * 0.33)) return "low";
+  if (numAdsPerItemPerDay <= Math.ceil(maxAds * 0.66)) return "medium";
+  return "high";
+};
 
 // Generate deterministic ad placements with random times
-const generateAdPlacements = (selectedItems, selectedPlatform, week, contentType, platforms) => {
-  const platform = platforms.find((p) => p.id === selectedPlatform)
-  if (!platform?.hasAds) return { placements: [], adDensity: "false" }
+const generateAdPlacements = (
+  selectedItems,
+  selectedPlatform,
+  week,
+  contentType,
+  platforms
+) => {
+  const platform = platforms.find((p) => p.id === selectedPlatform);
+  if (!platform?.hasAds) return { placements: [], adDensity: "false" };
 
-  const platformAds = ottData.weekSchedules[week]?.platformAds?.[selectedPlatform] || []
-  if (platformAds.length === 0) return { placements: [], adDensity: "false" }
+  const platformAds = ottData.weekSchedules[week]?.platformAds?.[selectedPlatform] || [];
+  if (platformAds.length === 0) return { placements: [], adDensity: "false" };
 
-  const placements = []
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-  const adDurations = [15, 21, 27, 33, 41] // Uneven durations up to 45 seconds
-  const maxAdsPerDay = contentType === "movies" ? 4 : 5
-  const minAdsPerDay = 1
+  const placements = [];
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  const adDurations = [15, 21, 27, 33, 41]; // Uneven durations up to 45 seconds
+  const maxAdsPerDay = contentType === "movies" ? 4 : 5;
+  const minAdsPerDay = 1;
 
   selectedItems.forEach((item, itemIndex) => {
     // Define content duration
-    const contentDurationMinutes = contentType === "movies"
-      ? 150 + Math.floor(itemIndex % 4) * 25 // 150, 175, 200, or 225 minutes
-      : 180 + Math.floor(itemIndex % 4) * 45 // 180, 225, 270, or 315 minutes (up to 6 hours)
+    const contentDurationMinutes =
+      contentType === "movies"
+        ? 150 + Math.floor(itemIndex % 4) * 25 // 150, 175, 200, or 225 minutes
+        : 180 + Math.floor(itemIndex % 4) * 45; // 180, 225, 270, or 315 minutes
 
     days.forEach((day, dayIndex) => {
       // Determine number of ads for this item on this day
       const numAds = Math.min(
-        minAdsPerDay + Math.floor((itemIndex + dayIndex) % (maxAdsPerDay - minAdsPerDay + 1)),
+        minAdsPerDay +
+          Math.floor((itemIndex + dayIndex) % (maxAdsPerDay - minAdsPerDay + 1)),
         platformAds.length
-      )
+      );
 
       // Generate unique random start times within content duration
-      const usedTimes = new Set()
+      const usedTimes = new Set();
       for (let i = 0; i < numAds; i++) {
-        let startTime
+        let startTime;
         do {
-          startTime = generateRandomTime(contentDurationMinutes)
-        } while (usedTimes.has(startTime))
-        usedTimes.add(startTime)
+          startTime = generateRandomTime(contentDurationMinutes);
+        } while (usedTimes.has(startTime));
+        usedTimes.add(startTime);
 
-        const adIndex = (itemIndex + dayIndex + i) % platformAds.length
-        const ad = platformAds[adIndex]
-        const adDuration = ad.duration || adDurations[(itemIndex + i) % adDurations.length]
-        const endTime = addSecondsToTime(startTime, adDuration)
+        const adIndex = (itemIndex + dayIndex + i) % platformAds.length;
+        const ad = platformAds[adIndex];
+        const adDuration = ad.duration || adDurations[(itemIndex + i) % adDurations.length];
+        const endTime = addSecondsToTime(startTime, adDuration);
 
         placements.push({
           id: `${item.name}-${day}-${i}`,
@@ -92,57 +133,145 @@ const generateAdPlacements = (selectedItems, selectedPlatform, week, contentType
           duration: adDuration,
           platform: selectedPlatform,
           adName: ad.name,
-        })
+        });
       }
-    })
-  })
+    });
+  });
 
-  return { 
-    placements: placements.sort((a, b) => a.dayIndex - b.dayIndex || a.startTime.localeCompare(b.startTime)), 
+  return {
+    placements: placements.sort(
+      (a, b) =>
+        a.dayIndex - b.dayIndex || a.startTime.localeCompare(b.startTime)
+    ),
     adDensity: calculateAdDensity(
-      Math.max(...selectedItems.map((_, i) => 
-        Math.min(minAdsPerDay + Math.floor((i + 0) % (maxAdsPerDay - minAdsPerDay + 1)), platformAds.length)
-      )), contentType)
-  }
+      Math.max(
+        ...selectedItems.map((_, i) =>
+          Math.min(
+            minAdsPerDay +
+              Math.floor((i + 0) % (maxAdsPerDay - minAdsPerDay + 1)),
+            platformAds.length
+          )
+        )
+      ),
+      contentType
+    ),
+  };
+};
+
+function CustomRadioGroup({ value, onValueChange, options }) {
+  return (
+    <div className="flex space-x-4">
+      {options.map((option) => (
+        <div key={option.value} className="flex items-center space-x-2">
+          <input
+            type="radio"
+            id={option.value}
+            value={option.value}
+            checked={value === option.value}
+            onChange={() => onValueChange(option.value)}
+            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+          />
+          <Label htmlFor={option.value}>{option.label}</Label>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default function OTTAdScheduler() {
-  const [selectedWeek, setSelectedWeek] = useState(ottData.weeks[0]?.value || "")
-  const [selectedPlatform, setSelectedPlatform] = useState("")
-  const [selectedContentType, setSelectedContentType] = useState("shows")
-  const [selectedItems, setSelectedItems] = useState([])
-  const [isAllAdsDialogOpen, setIsAllAdsDialogOpen] = useState(false)
+  const [selectedWeek, setSelectedWeek] = useState(ottData.weeks[0]?.value || "");
+  const [selectedPlatform, setSelectedPlatform] = useState("");
+  const [selectedContentType, setSelectedContentType] = useState("shows");
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [isAllAdsDialogOpen, setIsAllAdsDialogOpen] = useState(false);
+  const [reportType, setReportType] = useState("daily");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedExportWeek, setSelectedExportWeek] = useState("");
+  const [reportCategory, setReportCategory] = useState("HOR");
 
-  const availableItems = selectedPlatform && ottData.weekSchedules[selectedWeek]
-    ? ottData.weekSchedules[selectedWeek][selectedContentType][selectedPlatform] || []
-    : []
-  const currentPlatform = ottData.platforms.find((p) => p.id === selectedPlatform)
+  const availableItems =
+    selectedPlatform && ottData.weekSchedules[selectedWeek]
+      ? ottData.weekSchedules[selectedWeek][selectedContentType][selectedPlatform] || []
+      : [];
+  const currentPlatform = ottData.platforms.find((p) => p.id === selectedPlatform);
 
   const { placements: adPlacements, adDensity } = useMemo(() => {
-    if (!ottData.weekSchedules[selectedWeek] || selectedItems.length === 0) return { placements: [], adDensity: "false" }
+    if (!ottData.weekSchedules[selectedWeek] || selectedItems.length === 0)
+      return { placements: [], adDensity: "false" };
     return generateAdPlacements(
       selectedItems,
       selectedPlatform,
       selectedWeek,
       selectedContentType,
       ottData.platforms
-    )
-  }, [selectedItems, selectedPlatform, selectedWeek, selectedContentType])
+    );
+  }, [selectedItems, selectedPlatform, selectedWeek, selectedContentType]);
 
   const handleItemSelection = (item) => {
     setSelectedItems((prev) => {
-      const isSelected = prev.some((i) => i.name === item.name)
+      const isSelected = prev.some((i) => i.name === item.name);
       return isSelected
         ? prev.filter((i) => i.name !== item.name)
-        : [...prev, item]
-    })
-  }
+        : [...prev, item];
+    });
+  };
 
   useMemo(() => {
     if (availableItems.length > 0) {
-      setSelectedItems(availableItems)
+      setSelectedItems(availableItems);
     }
-  }, [availableItems])
+  }, [availableItems]);
+
+  const radioOptions = [
+    { value: "daily", label: "Daily" },
+    { value: "weekly", label: "Weekly" },
+  ];
+
+  const dateOptions = [
+    { value: "11-08-2025", label: "11 Aug 2025" },
+    { value: "12-08-2025", label: "12 Aug 2025" },
+    { value: "13-08-2025", label: "13 Aug 2025" },
+    { value: "14-08-2025", label: "14 Aug 2025" },
+    { value: "15-08-2025", label: "15 Aug 2025" },
+    { value: "16-08-2025", label: "16 Aug 2025" },
+    { value: "17-08-2025", label: "17 Aug 2025" },
+  ];
+
+  const weekOptions = ottData.weeks.map((week) => ({
+    value: week.value,
+    label: week.label,
+  }));
+
+  const reportCategoryOptions = [
+    { value: "HOR", label: "HOR" },
+    { value: "SPL", label: "SPL" },
+  ];
+
+  const handleDownload = () => {
+    if (reportType === "daily" && selectedDate) {
+      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${reportCategory}/${selectedDate}.csv`;
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${reportCategory}-report-${selectedDate}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (reportType === "weekly" && selectedExportWeek) {
+      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${reportCategory}/${selectedExportWeek}.csv`;
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${reportCategory}-report-${selectedExportWeek}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const handleReportTypeChange = (value) => {
+    setReportType(value);
+    setSelectedDate("");
+    setSelectedExportWeek("");
+  };
 
   return (
     <div className="min-h-screen">
@@ -164,22 +293,104 @@ export default function OTTAdScheduler() {
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Button
-                variant="outline"
-                size="sm"
-                className="bg-transparent"
-                onClick={() => {
-                  const url = "https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/HOR-report.csv";
-                  const link = document.createElement("a");
-                  link.href = url;
-                  link.download = "HOR-report.csv";
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
-              >
-                Export Report
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="transition-colors">
+                    Export Report
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>Export Report</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                      Export ad placement reports for selected dates or weeks. Choose
+                      "Daily" to download a report for a specific date or "Weekly" for
+                      a consolidated weekly report.
+                    </p>
+
+                    <div className="space-y-2">
+                      <Label className="text-sm font-medium">Report Category</Label>
+                      <Select
+                        onValueChange={setReportCategory}
+                        defaultValue={reportCategory}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select report category" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {reportCategoryOptions.map((option) => (
+                            <SelectItem key={option.value} value={option.value}>
+                              {option.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label className="text-sm font-medium">Report Type</Label>
+                      <CustomRadioGroup
+                        value={reportType}
+                        onValueChange={handleReportTypeChange}
+                        options={radioOptions}
+                      />
+                    </div>
+
+                    {reportType === "daily" ? (
+                      <div className="space-y-2">
+                        <Label className="text-sm font-medium">Select Date</Label>
+                        <Select
+                          onValueChange={setSelectedDate}
+                          value={selectedDate}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a date" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {dateOptions.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        <Label className="text-sm font-medium">Select Week</Label>
+                        <Select
+                          onValueChange={setSelectedExportWeek}
+                          value={selectedExportWeek}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a week" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {weekOptions.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    )}
+
+                    <Button
+                      onClick={handleDownload}
+                      disabled={
+                        (reportType === "daily" && !selectedDate) ||
+                        (reportType === "weekly" && !selectedExportWeek)
+                      }
+                      className="w-full"
+                    >
+                      Download Report
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
@@ -219,8 +430,8 @@ export default function OTTAdScheduler() {
               <Select
                 value={selectedPlatform}
                 onValueChange={(value) => {
-                  setSelectedPlatform(value)
-                  setSelectedItems([])
+                  setSelectedPlatform(value);
+                  setSelectedItems([]);
                 }}
               >
                 <SelectTrigger>
@@ -230,7 +441,10 @@ export default function OTTAdScheduler() {
                   {ottData.platforms.map((platform) => (
                     <SelectItem key={platform.id} value={platform.id}>
                       <div className="flex items-center space-x-3">
-                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: platform.color }} />
+                        <div
+                          className="w-3 h-3 rounded-full"
+                          style={{ backgroundColor: platform.color }}
+                        />
                         <span>{platform.name}</span>
                         {!platform.hasAds && (
                           <Badge variant="secondary" className="text-xs">
@@ -253,8 +467,8 @@ export default function OTTAdScheduler() {
               <Select
                 value={selectedContentType}
                 onValueChange={(value) => {
-                  setSelectedContentType(value)
-                  setSelectedItems([])
+                  setSelectedContentType(value);
+                  setSelectedItems([]);
                 }}
                 disabled={!selectedPlatform}
               >
@@ -277,9 +491,12 @@ export default function OTTAdScheduler() {
               <div className="flex items-center space-x-3">
                 <AlertCircle className="h-5 w-5 text-orange-600" />
                 <div>
-                  <h3 className="font-semibold text-orange-900">No Ad Inventory Available</h3>
+                  <h3 className="font-semibold text-orange-900">
+                    No Ad Inventory Available
+                  </h3>
                   <p className="text-sm text-orange-700">
-                    {currentPlatform.name} operates on a subscription-only model without advertising placements.
+                    {currentPlatform.name} operates on a subscription-only model
+                    without advertising placements.
                   </p>
                 </div>
               </div>
@@ -294,7 +511,8 @@ export default function OTTAdScheduler() {
               <CardTitle className="text-lg font-semibold flex items-center justify-between">
                 <div className="flex items-center">
                   <Play className="h-5 w-5 mr-2 text-blue-600" />
-                  Top {selectedContentType === "shows" ? "Shows" : "Movies"} on {currentPlatform?.name}
+                  Top {selectedContentType === "shows" ? "Shows" : "Movies"} on{" "}
+                  {currentPlatform?.name}
                 </div>
                 {adDensity !== "false" && (
                   <Badge variant="outline" className="text-xs">
@@ -322,9 +540,13 @@ export default function OTTAdScheduler() {
                         className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="text-sm font-semibold text-center leading-tight">{item.name}</h3>
+                    <h3 className="text-sm font-semibold text-center leading-tight">
+                      {item.name}
+                    </h3>
                     {selectedItems.some((i) => i.name === item.name) && (
-                      <Badge className="w-full mt-2 bg-blue-600 hover:bg-blue-700 justify-center">✓ Active</Badge>
+                      <Badge className="w-full mt-2 bg-blue-600 hover:bg-blue-700 justify-center">
+                        ✓ Active
+                      </Badge>
                     )}
                   </div>
                 ))}
@@ -339,19 +561,26 @@ export default function OTTAdScheduler() {
             <CardHeader>
               <CardTitle className="text-lg font-semibold flex items-center justify-between">
                 <div className="flex items-center">
-                  <Dialog open={isAllAdsDialogOpen} onOpenChange={setIsAllAdsDialogOpen}>
+                  <Dialog
+                    open={isAllAdsDialogOpen}
+                    onOpenChange={setIsAllAdsDialogOpen}
+                  >
                     <DialogTrigger asChild>
                       <Clock className="h-5 w-5 mr-2 text-blue-600 cursor-pointer hover:text-blue-800" />
                     </DialogTrigger>
                     <DialogContent className="max-w-4xl">
                       <DialogHeader>
-                        <DialogTitle>All Ad Placements for {currentPlatform?.name}</DialogTitle>
+                        <DialogTitle>
+                          All Ad Placements for {currentPlatform?.name}
+                        </DialogTitle>
                       </DialogHeader>
                       <div className="mt-4 h-[75vh] overflow-auto">
                         <Table>
                           <TableHeader>
                             <TableRow>
-                              <TableHead>{selectedContentType === "shows" ? "Show" : "Movie"}</TableHead>
+                              <TableHead>
+                                {selectedContentType === "shows" ? "Show" : "Movie"}
+                              </TableHead>
                               <TableHead>Day</TableHead>
                               <TableHead>Start Time</TableHead>
                               <TableHead>End Time</TableHead>
@@ -382,7 +611,10 @@ export default function OTTAdScheduler() {
                     Total Ads: <strong>{adPlacements.length}</strong>
                   </span>
                   <span>
-                    Platform: <strong style={{ color: currentPlatform?.color }}>{currentPlatform?.name}</strong>
+                    Platform:{" "}
+                    <strong style={{ color: currentPlatform?.color }}>
+                      {currentPlatform?.name}
+                    </strong>
                   </span>
                 </div>
               </CardTitle>
@@ -392,11 +624,26 @@ export default function OTTAdScheduler() {
                 <div className="min-w-[900px]">
                   {/* Enhanced Timeline Header */}
                   <div className="grid grid-cols-8 gap-3 mb-6 pb-3 border-b">
-                    <div className="text-sm font-semibold p-3">{selectedContentType === "shows" ? "Show" : "Movie"} Title</div>
-                    {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
-                      <div key={day} className="text-sm font-semibold text-center p-3">
+                    <div className="text-sm font-semibold p-3">
+                      {selectedContentType === "shows" ? "Show" : "Movie"} Title
+                    </div>
+                    {[
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                      "Sunday",
+                    ].map((day) => (
+                      <div
+                        key={day}
+                        className="text-sm font-semibold text-center p-3"
+                      >
                         <div>{day.slice(0, 3)}</div>
-                        <div className="text-xs text-muted-foreground mt-1">All Day</div>
+                        <div className="text-xs text-muted-foreground mt-1">
+                          All Day
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -404,25 +651,43 @@ export default function OTTAdScheduler() {
                   {/* Enhanced Gantt Chart Rows */}
                   <div className="h-[80vh] overflow-auto">
                     {selectedItems.map((item) => {
-                      const itemPlacements = adPlacements.filter((p) => p.item === item.name)
-                      const placementsByDay = itemPlacements.reduce((acc, placement) => {
-                        if (!acc[placement.dayIndex]) acc[placement.dayIndex] = []
-                        acc[placement.dayIndex].push(placement)
-                        return acc
-                      }, {})
+                      const itemPlacements = adPlacements.filter(
+                        (p) => p.item === item.name
+                      );
+                      const placementsByDay = itemPlacements.reduce(
+                        (acc, placement) => {
+                          if (!acc[placement.dayIndex]) acc[placement.dayIndex] = [];
+                          acc[placement.dayIndex].push(placement);
+                          return acc;
+                        },
+                        {}
+                      );
 
                       return (
-                        <div key={item.name} className="grid grid-cols-8 gap-3 mb-4 items-start">
+                        <div
+                          key={item.name}
+                          className="grid grid-cols-8 gap-3 mb-4 items-start"
+                        >
                           <div className="p-4 bg-card border rounded-lg shadow-sm">
-                            <div className="text-sm font-semibold mb-1">{item.name}</div>
-                            <div className="text-xs text-muted-foreground">{itemPlacements.length} ad slots</div>
+                            <div className="text-sm font-semibold mb-1">
+                              {item.name}
+                            </div>
+                            <div className="text-xs text-muted-foreground">
+                              {itemPlacements.length} ad slots
+                            </div>
                             <div className="text-xs text-muted-foreground mt-1">
-                              {Math.round(itemPlacements.reduce((sum, p) => sum + p.duration, 0) / 60)} min total
+                              {Math.round(
+                                itemPlacements.reduce(
+                                  (sum, p) => sum + p.duration,
+                                  0
+                                ) / 60
+                              )}{" "}
+                              min total
                             </div>
                           </div>
 
                           {[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => {
-                            const dayPlacements = placementsByDay[dayIndex] || []
+                            const dayPlacements = placementsByDay[dayIndex] || [];
                             return (
                               <div
                                 key={dayIndex}
@@ -441,11 +706,14 @@ export default function OTTAdScheduler() {
                                             key={placement.id}
                                             className="p-2 rounded-md text-xs text-white hover:opacity-90 transition-all duration-200 shadow-sm"
                                             style={{
-                                              backgroundColor: currentPlatform?.color || "#3B82F6",
+                                              backgroundColor:
+                                                currentPlatform?.color || "#3B82F6",
                                             }}
                                             title={`${placement.adName}\n${placement.startTime} to ${placement.endTime}\nDuration: ${placement.duration}s`}
                                           >
-                                            <div className="font-semibold">{placement.startTime}</div>
+                                            <div className="font-semibold">
+                                              {placement.startTime}
+                                            </div>
                                             <div className="text-xs opacity-90 truncate">
                                               {placement.adName?.split(" - ")[0]}
                                             </div>
@@ -464,7 +732,8 @@ export default function OTTAdScheduler() {
                                     <DialogContent className="max-w-4xl">
                                       <DialogHeader>
                                         <DialogTitle>
-                                          Ad Placements for {item.name} on {dayPlacements[0]?.day}
+                                          Ad Placements for {item.name} on{" "}
+                                          {dayPlacements[0]?.day}
                                         </DialogTitle>
                                       </DialogHeader>
                                       <div className="mt-4">
@@ -480,10 +749,18 @@ export default function OTTAdScheduler() {
                                           <TableBody>
                                             {dayPlacements.map((placement) => (
                                               <TableRow key={placement.id}>
-                                                <TableCell>{placement.startTime}</TableCell>
-                                                <TableCell>{placement.endTime}</TableCell>
-                                                <TableCell>{placement.adName}</TableCell>
-                                                <TableCell>{placement.duration}s</TableCell>
+                                                <TableCell>
+                                                  {placement.startTime}
+                                                </TableCell>
+                                                <TableCell>
+                                                  {placement.endTime}
+                                                </TableCell>
+                                                <TableCell>
+                                                  {placement.adName}
+                                                </TableCell>
+                                                <TableCell>
+                                                  {placement.duration}s
+                                                </TableCell>
                                               </TableRow>
                                             ))}
                                           </TableBody>
@@ -493,10 +770,10 @@ export default function OTTAdScheduler() {
                                   </Dialog>
                                 )}
                               </div>
-                            )
+                            );
                           })}
                         </div>
-                      )
+                      );
                     })}
                   </div>
                 </div>
@@ -506,7 +783,9 @@ export default function OTTAdScheduler() {
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <h4 className="text-sm font-semibold mb-2">Ad Placement Legend</h4>
+                    <h4 className="text-sm font-semibold mb-2">
+                      Ad Placement Legend
+                    </h4>
                     <div className="flex items-center space-x-2 mb-1">
                       <div
                         className="w-4 h-4 rounded"
@@ -514,19 +793,27 @@ export default function OTTAdScheduler() {
                       />
                       <span className="text-sm text-gray-600">Active Ad Slot</span>
                     </div>
-                    <div className="text-xs text-muted-foreground">Click slot for day-specific ad details</div>
+                    <div className="text-xs text-muted-foreground">
+                      Click slot for day-specific ad details
+                    </div>
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold mb-2">Platform Insights</h4>
                     <div className="text-sm text-gray-600">
                       <div>
                         Ad Density:{" "}
-                        <span className="font-medium capitalize">{adDensity.replace("-", " ")}</span>
+                        <span className="font-medium capitalize">
+                          {adDensity.replace("-", " ")}
+                        </span>
                       </div>
                       <div>
                         Total Duration:{" "}
                         <span className="font-medium">
-                          {Math.round(adPlacements.reduce((sum, p) => sum + p.duration, 0) / 60) || 0} minutes
+                          {Math.round(
+                            adPlacements.reduce((sum, p) => sum + p.duration, 0) /
+                              60
+                          ) || 0}{" "}
+                          minutes
                         </span>
                       </div>
                     </div>
@@ -535,10 +822,12 @@ export default function OTTAdScheduler() {
                     <h4 className="text-sm font-semibold mb-2">Campaign Summary</h4>
                     <div className="text-sm text-gray-600">
                       <div>
-                        {selectedContentType === "shows" ? "Shows" : "Movies"}: <span className="font-medium">{selectedItems.length}</span>
+                        {selectedContentType === "shows" ? "Shows" : "Movies"}:{" "}
+                        <span className="font-medium">{selectedItems.length}</span>
                       </div>
                       <div>
-                        Total Slots: <span className="font-medium">{adPlacements.length}</span>
+                        Total Slots:{" "}
+                        <span className="font-medium">{adPlacements.length}</span>
                       </div>
                     </div>
                   </div>
@@ -549,5 +838,5 @@ export default function OTTAdScheduler() {
         )}
       </div>
     </div>
-  )
-} 
+  );
+}
