@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
+import { squircleClipPath } from "./squircle";
 
-const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
+const ProgramDialog = ({ selectedProgram, setSelectedProgram, CHANNEL_ALIASES }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(false);
 
@@ -26,8 +27,12 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
     program: "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-100",
     advertisement: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-100",
     song: "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-100",
-    error: "bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-100",
+    standby: "bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-100",
   };
+
+  // Get the channel alias from CHANNEL_ALIASES or fallback to channel ID
+  const channelAlias =
+    CHANNEL_ALIASES[selectedProgram?.channel] || selectedProgram?.channel;
 
   return (
     <Dialog open={!!selectedProgram} onOpenChange={() => setSelectedProgram(null)}>
@@ -35,16 +40,17 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
         <DialogHeader className="p-4 border-b border-zinc-200/10 dark:border-zinc-800/10">
           <DialogTitle className="flex items-center gap-3">
             <img
-              src={`https://radio-playback-files.s3.ap-south-1.amazonaws.com/logos/${selectedProgram?.channel
-                .toLowerCase()
-                .trim()
-                .replace(/\s+/g, "-")}.png`}
-              alt={selectedProgram?.channel}
+              src={`https://radio-playback-files.s3.ap-south-1.amazonaws.com/logos/${channelAlias
+                ?.toLowerCase()
+                ?.trim()
+                ?.replace(/\s+/g, "-")}.png`}
+              alt={channelAlias}
               className="h-10 w-10 rounded-md shadow-sm"
+              style={{ clipPath: `polygon(${squircleClipPath(40, 40, 4)})` }}
             />
             <div>
               <h1 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">{selectedProgram?.title}</h1>
-              <span className="text-xs text-zinc-500 dark:text-zinc-400">{selectedProgram?.channel}</span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-400">{channelAlias}</span>
             </div>
           </DialogTitle>
         </DialogHeader>
@@ -53,7 +59,7 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
             <div className="grid grid-cols-2 gap-3 text-sm">
               <div>
                 <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Channel</span>
-                <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.channel}</p>
+                <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{channelAlias}</p>
               </div>
               <div>
                 <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Date</span>
@@ -65,13 +71,61 @@ const ProgramDialog = ({ selectedProgram, setSelectedProgram }) => {
               </div>
               <div>
                 <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Type</span>
-                <p className="mt-1 font-medium capitalize text-zinc-900 dark:text-zinc-100">{selectedProgram?.type}</p>
+                <p className="mt-1 font-medium capitalize text-zinc-900 dark:text-zinc-100">{selectedProgram?.type === "error" ? "standby" : selectedProgram?.type}</p>
               </div>
               {selectedProgram?.content && (
                 <div className="col-span-2">
                   <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Content</span>
                   <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">{selectedProgram.content}</p>
                 </div>
+              )}
+              {selectedProgram?.type === "program" && (
+                <>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Genre</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.genre || "N/A"}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Episode Number</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.episode_number || "N/A"}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Season Number</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.season_number || "N/A"}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Language</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.language || "N/A"}</p>
+                  </div>
+                </>
+              )}
+              {selectedProgram?.type === "advertisement" && (
+                <>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Ad Type</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.ad_type || "N/A"}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Brand</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.brand || "N/A"}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Product</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.product || "N/A"}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Category</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.category || "N/A"}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Sector</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.sector || "N/A"}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium uppercase text-zinc-600 dark:text-zinc-400">Format</span>
+                    <p className="mt-1 font-medium text-zinc-900 dark:text-zinc-100">{selectedProgram?.format || "N/A"}</p>
+                  </div>
+                </>
               )}
               {selectedProgram?.episode_id && (
                 <div>

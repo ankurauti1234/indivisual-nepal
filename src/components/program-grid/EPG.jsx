@@ -86,6 +86,18 @@ const combineAdjacentPrograms = (programs) => {
         if (nextProgram.season_id && !currentProgram.season_id) {
           currentProgram.season_id = nextProgram.season_id;
         }
+        if (nextProgram.genre && !currentProgram.genre) {
+          currentProgram.genre = nextProgram.genre;
+        }
+        if (nextProgram.episode_number && !currentProgram.episode_number) {
+          currentProgram.episode_number = nextProgram.episode_number;
+        }
+        if (nextProgram.season_number && !currentProgram.season_number) {
+          currentProgram.season_number = nextProgram.season_number;
+        }
+        if (nextProgram.language && !currentProgram.language) {
+          currentProgram.language = nextProgram.language;
+        }
         currentProgram.id = `${currentProgram.id}_${nextProgram.id}`;
         currentProgram.combined = true;
         i++;
@@ -101,7 +113,8 @@ const combineAdjacentPrograms = (programs) => {
 const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const initialDate = searchParams.get("date") || format(new Date(), "yyyy-MM-dd");
+  const initialDate =
+    searchParams.get("date") || format(new Date(), "yyyy-MM-dd");
   const initialStart = parseTimeToMinutes(searchParams.get("start")) || 0;
   const initialEnd =
     parseTimeToMinutes(searchParams.get("end")) || MINUTES_IN_DAY;
@@ -178,7 +191,12 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
           }
           return result.data.labels.map((item) => ({
             id: item.id,
-            type: item.label_type === "ad" ? "advertisement" : item.label_type,
+            type:
+              item.label_type === "error"
+                ? "standby"
+                : item.label_type === "ad"
+                ? "advertisement"
+                : item.label_type,
             channel: item.device_id,
             region: region,
             title:
@@ -188,6 +206,8 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
                 ? item.program?.program_name || "Program"
                 : item.label_type === "song"
                 ? item.song?.title || "Song"
+                : item.label_type === "error"
+                ? "Standby"
                 : "Error",
             start: unixToTime(item.start_time),
             end: unixToTime(item.end_time),
@@ -199,10 +219,21 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
                 ? item.program?.description
                 : item.label_type === "song"
                 ? item.song?.artist
-                : item.error?.message,
+                : item.error?.message || "Standby",
             image_paths: item.image_paths || [],
             episode_id: item.program?.episode_id,
             season_id: item.program?.season_id,
+            genre: item.program?.genre,
+            episode_number: item.program?.episode_number,
+            season_number: item.program?.season_number,
+            language: item.program?.language,
+            // Add advertisement-specific fields
+            ad_type: item.ad?.type,
+            brand: item.ad?.brand,
+            product: item.ad?.product,
+            category: item.ad?.category,
+            sector: item.ad?.sector,
+            format: item.ad?.format,
           }));
         });
 
@@ -265,7 +296,7 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
     setSelectedDate((prevDate) => {
       const newDate = new Date(prevDate);
       newDate.setDate(newDate.getDate() - 1);
-      setCalendarDate(new Date(newDate));
+      setCalendarDate(newDate);
       return format(newDate, "yyyy-MM-dd");
     });
   };
@@ -274,7 +305,7 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
     setSelectedDate((prevDate) => {
       const newDate = new Date(prevDate);
       newDate.setDate(newDate.getDate() + 1);
-      setCalendarDate(new Date(newDate));
+      setCalendarDate(newDate);
       return format(newDate, "yyyy-MM-dd");
     });
   };
@@ -304,7 +335,8 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
       advertisement:
         "bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-100",
       song: "bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-100",
-      error: "bg-gray-100 dark:bg-gray-900/50 text-gray-800 dark:text-gray-100",
+      standby:
+        "bg-gray-100 dark:bg-gray-900/50 text-gray-800 dark:text-gray-100",
     };
 
     return (
@@ -439,7 +471,7 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
                     <SelectItem value="program">Program</SelectItem>
                     <SelectItem value="advertisement">Advertisement</SelectItem>
                     <SelectItem value="song">Song</SelectItem>
-                    <SelectItem value="error">Error</SelectItem>
+                    <SelectItem value="standby">Standby</SelectItem>
                   </SelectContent>
                 </Select>
               </DropdownMenuItem>
@@ -481,6 +513,7 @@ const EPG = ({ region, DEVICE_IDS, CHANNEL_ALIASES, baseUrl }) => {
       <ProgramDialog
         selectedProgram={selectedProgram}
         setSelectedProgram={setSelectedProgram}
+        CHANNEL_ALIASES={CHANNEL_ALIASES}
       />
 
       <div className="flex flex-1 overflow-hidden">
