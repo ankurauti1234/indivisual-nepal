@@ -29,9 +29,17 @@ import {
 import { Label } from "@/components/ui/label";
 import { Calendar, Clock, Play, AlertCircle, BarChart3 } from "lucide-react";
 import ottData from "./ott-data.json";
-import zee5Ads from "./zee5.json";
-import primeAds from "./prime.json";
-import netflixAds from "./netflix.json";
+import primeData from "./prime.json";
+import zee5Data from "./zee5.json";
+import netflixData from "./netflix.json";
+import primeMoviesData from "./prime-movies.json";
+import zee5MoviesData from "./zee5-movies.json";
+
+// Utility to parse duration string to seconds
+function parseDuration(dur) {
+  const [h, m, s] = dur.split(":").map(Number);
+  return h * 3600 + m * 60 + s;
+}
 
 // Calculate ad density based on number of ads per item per day
 const calculateAdDensity = (numAdsPerItemPerDay, contentType) => {
@@ -68,14 +76,10 @@ export default function OTTAdScheduler() {
   const [selectedContentType, setSelectedContentType] = useState("shows");
   const [selectedItems, setSelectedItems] = useState([]);
   const [isAllAdsDialogOpen, setIsAllAdsDialogOpen] = useState(false);
+  const [reportType, setReportType] = useState("daily");
+  const [selectedDate, setSelectedDate] = useState("");
   const [selectedExportWeek, setSelectedExportWeek] = useState("");
-  const [exportPlatform, setExportPlatform] = useState("");
-
-  const adData = {
-    zee5: zee5Ads,
-    prime: primeAds,
-    netflix: netflixAds,
-  };
+  const [reportCategory, setReportCategory] = useState("HOR");
 
   const availableItems =
     selectedPlatform && ottData.weekSchedules[selectedWeek]
@@ -83,43 +87,94 @@ export default function OTTAdScheduler() {
       : [];
   const currentPlatform = ottData.platforms.find((p) => p.id === selectedPlatform);
 
+  // Map platform and content type to the appropriate JSON data
+  const platformData = {
+    prime: {
+      shows: primeData,
+      movies: primeMoviesData,
+    },
+    zee5: {
+      shows: zee5Data,
+      movies: zee5MoviesData,
+    },
+    netflix: {
+      shows: netflixData,
+      movies: netflixData, // Netflix has no ads for either shows or movies
+    },
+  };
+
   const { placements: adPlacements, adDensity } = useMemo(() => {
-    if (!ottData.weekSchedules[selectedWeek] || selectedItems.length === 0 || !selectedPlatform) {
+    if (!ottData.weekSchedules[selectedWeek] || selectedItems.length === 0) {
       return { placements: [], adDensity: "false" };
     }
 
-    const platformAds = adData[selectedPlatform] || [];
-    const platformItems = ottData.weekSchedules[selectedWeek][selectedContentType][selectedPlatform] || [];
-    const itemTitles = platformItems.map(item => item.name);
+    const data = platformData[selectedPlatform]?.[selectedContentType] || [];
+    if (!currentPlatform?.hasAds || data.length === 0) {
+      return { placements: [], adDensity: "false" };
+    }
 
-    const placements = platformAds
-      .filter(ad => ad.Format === "Ad" && ad.Section === (selectedContentType === "shows" ? "S" : "M"))
-      .map(ad => ({
-        id: ad.unique_id,
-        item: itemTitles[Math.floor(Math.random() * itemTitles.length)], // Randomly assign ad to an item
-        day: ad.Day,
-        dayIndex: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].indexOf(ad.Day),
-        startTime: ad.Begin,
-        endTime: ad.End,
-        duration: parseInt(ad.Duration.split(":")[2], 10), // Extract seconds from Duration (HH:MM:SS)
-        platform: selectedPlatform,
-        adName: ad.Title,
-      }))
-      .filter(p => selectedItems.some(i => i.name === p.item));
+    const days = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
 
-    placements.sort((a, b) => a.dayIndex - b.dayIndex || a.startTime.localeCompare(b.startTime));
-
-    let maxAds = 0;
-    const counts = {};
-    placements.forEach(p => {
-      const key = `${p.item}-${p.dayIndex}`;
-      counts[key] = (counts[key] || 0) + 1;
-      if (counts[key] > maxAds) maxAds = counts[key];
+    // Group ads by day
+    const dayAds = {};
+    data.forEach((ad) => {
+      const day = ad.Day;
+      if (!dayAds[day]) dayAds[day] = [];
+      dayAds[day].push(ad);
     });
 
-    const density = calculateAdDensity(maxAds, selectedContentType);
-    return { placements, adDensity: density };
-  }, [selectedWeek, selectedContentType, selectedPlatform, selectedItems]);
+    const placements = [];
+    Object.keys(dayAds).forEach((day) => {
+      const ads = dayAds[day];
+      const dayIndex = days.indexOf(day);
+      if (dayIndex === -1) return;
+
+      ads.forEach((ad, index) => {
+        const itemIndex = index % selectedItems.length;
+        const item = selectedItems[itemIndex].name;
+        const duration = parseDuration(ad.Duration);
+
+        placements.push({
+          id: ad.unique_id,
+          item,
+          day,
+          dayIndex,
+          startTime: ad.Begin,
+          endTime: ad.End,
+          duration,
+          platform: selectedPlatform,
+          adName: ad.Title,
+        });
+      });
+    });
+
+    // Sort placements
+    placements.sort(
+      (a, b) =>
+        a.dayIndex - b.dayIndex || a.startTime.localeCompare(b.startTime)
+    );
+
+    // Calculate max ads per item per day
+    const counts = {};
+    placements.forEach((p) => {
+      const key = `${p.item}-${p.dayIndex}`;
+      counts[key] = (counts[key] || 0) + 1;
+    });
+    const maxAds = Math.max(...Object.values(counts), 0);
+
+    return {
+      placements,
+      adDensity: calculateAdDensity(maxAds, selectedContentType),
+    };
+  }, [selectedItems, selectedPlatform, selectedWeek, selectedContentType, currentPlatform]);
 
   const handleItemSelection = (item) => {
     setSelectedItems((prev) => {
@@ -136,26 +191,55 @@ export default function OTTAdScheduler() {
     }
   }, [availableItems]);
 
+  const radioOptions = [
+    { value: "daily", label: "Daily" },
+    { value: "weekly", label: "Weekly" },
+  ];
+
+  const dateOptions = [
+    { value: "11-08-2025", label: "11 Aug 2025" },
+    { value: "12-08-2025", label: "12 Aug 2025" },
+    { value: "13-08-2025", label: "13 Aug 2025" },
+    { value: "14-08-2025", label: "14 Aug 2025" },
+    { value: "15-08-2025", label: "15 Aug 2025" },
+    { value: "16-08-2025", label: "16 Aug 2025" },
+    { value: "17-08-2025", label: "17 Aug 2025" },
+  ];
+
   const weekOptions = ottData.weeks.map((week) => ({
     value: week.value,
     label: week.label,
   }));
 
-  const platformOptions = ottData.platforms.map((platform) => ({
-    value: platform.id,
-    label: platform.name,
-  }));
+  const reportCategoryOptions = [
+    { value: "HOR", label: "Raw Program" },
+    { value: "SPL", label: "Raw AD Spots" },
+  ];
 
   const handleDownload = () => {
-    if (selectedExportWeek && exportPlatform) {
-      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${exportPlatform}.csv`;
+    if (reportType === "daily" && selectedDate) {
+      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${reportCategory}/${selectedDate}.csv`;
       const link = document.createElement("a");
       link.href = url;
-      link.download = `${exportPlatform}-report-${selectedExportWeek}.csv`;
+      link.download = `${reportCategory}-report-${selectedDate}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (reportType === "weekly" && selectedExportWeek) {
+      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${reportCategory}/${selectedExportWeek}.csv`;
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${reportCategory}-report-${selectedExportWeek}.csv`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
+  };
+
+  const handleReportTypeChange = (value) => {
+    setReportType(value);
+    setSelectedDate("");
+    setSelectedExportWeek("");
   };
 
   return (
@@ -186,24 +270,26 @@ export default function OTTAdScheduler() {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Export Weekly Report</DialogTitle>
+                    <DialogTitle>Export Report</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4">
                     <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                      Export ad placement reports for a selected week and platform. Choose a week and platform to download a consolidated weekly report.
+                      Export ad placement reports for selected dates or weeks. Choose
+                      "Daily" to download a report for a specific date or "Weekly" for
+                      a consolidated weekly report.
                     </p>
 
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium">Select Platform</Label>
+                      <Label className="text-sm font-medium">Report Category</Label>
                       <Select
-                        onValueChange={setExportPlatform}
-                        value={exportPlatform}
+                        onValueChange={setReportCategory}
+                        defaultValue={reportCategory}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a platform" />
+                          <SelectValue placeholder="Select report category" />
                         </SelectTrigger>
                         <SelectContent>
-                          {platformOptions.map((option) => (
+                          {reportCategoryOptions.map((option) => (
                             <SelectItem key={option.value} value={option.value}>
                               {option.label}
                             </SelectItem>
@@ -213,27 +299,60 @@ export default function OTTAdScheduler() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium">Select Week</Label>
-                      <Select
-                        onValueChange={setSelectedExportWeek}
-                        value={selectedExportWeek}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a week" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {weekOptions.map((option) => (
-                            <SelectItem key={option.value} value={option.value}>
-                              {option.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <Label className="text-sm font-medium">Report Type</Label>
+                      <CustomRadioGroup
+                        value={reportType}
+                        onValueChange={handleReportTypeChange}
+                        options={radioOptions}
+                      />
                     </div>
+
+                    {reportType === "daily" ? (
+                      <div className="space-y-2">
+                        <Label className="text-sm font-medium">Select Date</Label>
+                        <Select
+                          onValueChange={setSelectedDate}
+                          value={selectedDate}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a date" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {dateOptions.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        <Label className="text-sm font-medium">Select Week</Label>
+                        <Select
+                          onValueChange={setSelectedExportWeek}
+                          value={selectedExportWeek}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a week" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {weekOptions.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    )}
 
                     <Button
                       onClick={handleDownload}
-                      disabled={!selectedExportWeek || !exportPlatform}
+                      disabled={
+                        (reportType === "daily" && !selectedDate) ||
+                        (reportType === "weekly" && !selectedExportWeek)
+                      }
                       className="w-full"
                     >
                       Download Report
