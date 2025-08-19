@@ -76,10 +76,8 @@ export default function OTTAdScheduler() {
   const [selectedContentType, setSelectedContentType] = useState("shows");
   const [selectedItems, setSelectedItems] = useState([]);
   const [isAllAdsDialogOpen, setIsAllAdsDialogOpen] = useState(false);
-  const [reportType, setReportType] = useState("daily");
-  const [selectedDate, setSelectedDate] = useState("");
   const [selectedExportWeek, setSelectedExportWeek] = useState("");
-  const [reportCategory, setReportCategory] = useState("HOR");
+  const [exportPlatform, setExportPlatform] = useState("");
 
   const availableItems =
     selectedPlatform && ottData.weekSchedules[selectedWeek]
@@ -191,55 +189,26 @@ export default function OTTAdScheduler() {
     }
   }, [availableItems]);
 
-  const radioOptions = [
-    { value: "daily", label: "Daily" },
-    { value: "weekly", label: "Weekly" },
-  ];
-
-  const dateOptions = [
-    { value: "11-08-2025", label: "11 Aug 2025" },
-    { value: "12-08-2025", label: "12 Aug 2025" },
-    { value: "13-08-2025", label: "13 Aug 2025" },
-    { value: "14-08-2025", label: "14 Aug 2025" },
-    { value: "15-08-2025", label: "15 Aug 2025" },
-    { value: "16-08-2025", label: "16 Aug 2025" },
-    { value: "17-08-2025", label: "17 Aug 2025" },
-  ];
-
   const weekOptions = ottData.weeks.map((week) => ({
     value: week.value,
     label: week.label,
   }));
 
-  const reportCategoryOptions = [
-    { value: "HOR", label: "Raw Program" },
-    { value: "SPL", label: "Raw AD Spots" },
-  ];
+  const platformOptions = ottData.platforms.map((platform) => ({
+    value: platform.id,
+    label: platform.name,
+  }));
 
   const handleDownload = () => {
-    if (reportType === "daily" && selectedDate) {
-      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${reportCategory}/${selectedDate}.csv`;
+    if (selectedExportWeek && exportPlatform) {
+      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${exportPlatform}.csv`;
       const link = document.createElement("a");
       link.href = url;
-      link.download = `${reportCategory}-report-${selectedDate}.csv`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } else if (reportType === "weekly" && selectedExportWeek) {
-      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${reportCategory}/${selectedExportWeek}.csv`;
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `${reportCategory}-report-${selectedExportWeek}.csv`;
+      link.download = `${exportPlatform}-report-${selectedExportWeek}.csv`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
-  };
-
-  const handleReportTypeChange = (value) => {
-    setReportType(value);
-    setSelectedDate("");
-    setSelectedExportWeek("");
   };
 
   return (
@@ -270,26 +239,24 @@ export default function OTTAdScheduler() {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Export Report</DialogTitle>
+                    <DialogTitle>Export Weekly Report</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4">
                     <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                      Export ad placement reports for selected dates or weeks. Choose
-                      "Daily" to download a report for a specific date or "Weekly" for
-                      a consolidated weekly report.
+                      Export ad placement reports for a selected week and platform. Choose a week and platform to download a consolidated weekly report.
                     </p>
 
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium">Report Category</Label>
+                      <Label className="text-sm font-medium">Select Platform</Label>
                       <Select
-                        onValueChange={setReportCategory}
-                        defaultValue={reportCategory}
+                        onValueChange={setExportPlatform}
+                        value={exportPlatform}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Select report category" />
+                          <SelectValue placeholder="Select a platform" />
                         </SelectTrigger>
                         <SelectContent>
-                          {reportCategoryOptions.map((option) => (
+                          {platformOptions.map((option) => (
                             <SelectItem key={option.value} value={option.value}>
                               {option.label}
                             </SelectItem>
@@ -299,60 +266,27 @@ export default function OTTAdScheduler() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium">Report Type</Label>
-                      <CustomRadioGroup
-                        value={reportType}
-                        onValueChange={handleReportTypeChange}
-                        options={radioOptions}
-                      />
+                      <Label className="text-sm font-medium">Select Week</Label>
+                      <Select
+                        onValueChange={setSelectedExportWeek}
+                        value={selectedExportWeek}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a week" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {weekOptions.map((option) => (
+                            <SelectItem key={option.value} value={option.value}>
+                              {option.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
-
-                    {reportType === "daily" ? (
-                      <div className="space-y-2">
-                        <Label className="text-sm font-medium">Select Date</Label>
-                        <Select
-                          onValueChange={setSelectedDate}
-                          value={selectedDate}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a date" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {dateOptions.map((option) => (
-                              <SelectItem key={option.value} value={option.value}>
-                                {option.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    ) : (
-                      <div className="space-y-2">
-                        <Label className="text-sm font-medium">Select Week</Label>
-                        <Select
-                          onValueChange={setSelectedExportWeek}
-                          value={selectedExportWeek}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a week" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {weekOptions.map((option) => (
-                              <SelectItem key={option.value} value={option.value}>
-                                {option.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    )}
 
                     <Button
                       onClick={handleDownload}
-                      disabled={
-                        (reportType === "daily" && !selectedDate) ||
-                        (reportType === "weekly" && !selectedExportWeek)
-                      }
+                      disabled={!selectedExportWeek || !exportPlatform}
                       className="w-full"
                     >
                       Download Report
