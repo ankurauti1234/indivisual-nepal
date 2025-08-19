@@ -24,217 +24,267 @@
   ],
   "weeks": [
     {
-      "value": "2025-08-04",
-      "label": "Week 32: August 4 - August 10, 2025"
-    },
-    {
       "value": "2025-08-11",
       "label": "Week 33: August 11 - August 17, 2025"
     }
   ],
   "weekSchedules": {
-    "2025-08-04": {
-      "shows": {
-        "prime": [
-          { "name": "Panchayat Season 4", "image": "/posters/prime/Shows/Panchayat (2020) - Season 4.jpg" },
-          { "name": "The Traitors", "image": "/posters/prime/Shows/The Traitors.jpeg" },
-          { "name": "The Summer I Turned Pretty Season 3", "image": "/posters/prime/Shows/The Summer I Turned Pretty (2022).jpg" },
-          { "name": "Heads of State", "image": "/posters/prime/Shows/Heads of State (2025).jpg" },
-          { "name": "Ballard", "image": "/posters/prime/Shows/Ballard (2025).jpg" },
-          { "name": "Dope Girls", "image": "/posters/prime/Shows/Dope Girls (2025).png" },
-          { "name": "Mirzapur", "image": "/posters/prime/Shows/Mirzapur (2018).png" },
-          { "name": "The Family Man", "image": "/posters/prime/Shows/The Family Man (2019).jpg" },
-          { "name": "Rangeen", "image": "/posters/prime/Shows/Rangeen (2025).jpg" },
-          { "name": "Countdown", "image": "/posters/prime/Shows/Countdown (2025).jpg" }
-        ],
-        "zee5": [
-          { "name": "Jeet Ki Zid", "image": "/posters/zee5/Shows/Jeet Ki Zid.jpeg" },
-          { "name": "Abhay", "image": "/posters/zee5/Shows/Abhay.jpeg" },
-          { "name": "State of Siege: 26/11", "image": "/posters/zee5/Shows/State of siege.jpeg" },
-          { "name": "Bicchoo Ka Khel", "image": "/posters/zee5/Shows/Bicchoo ka khel.jpeg" },
-          { "name": "The Broken News", "image": "/posters/zee5/Shows/The Broken News (2022).jpg" },
-          { "name": "Kaafir", "image": "/posters/zee5/Shows/Kaafir (2019) - Season 1.jpg" },
-          { "name": "Pyaar Testing", "image": "/posters/zee5/Shows/Pyaar Testing.jpeg" },
-          { "name": "Khoj – Parchaiyo Ke Uss Paar", "image": "/posters/zee5/Shows/Khoj.jpeg" },
-          { "name": "Jamai 2.0", "image": "/posters/zee5/Shows/Jamai 2.0.jpeg" },
-          { "name": "Qubool Hai 2.0", "image": "/posters/zee5/Shows/Qubool Hai 2.0.jpeg" }
-        ],
-        "netflix": [
-          { "name": "Wednesday: Season 2", "image": "/posters/netflix/Shows/Wednesday (2022) - Season 2.png" },
-          { "name": "Mandala Murders: Season 1", "image": "/posters/netflix/Shows/Mandala Murders.jpeg" },
-          { "name": "The Great Indian Kapil Show: Season 3", "image": "/posters/netflix/Shows/The Great Indian Kapil Show (2024).jpg" },
-          { "name": "Wednesday: Season 1", "image": "/posters/netflix/Shows/Wednesday (2022) - Season 1.png" },
-          { "name": "Unspeakable Sins: Season 1", "image": "/posters/netflix/Shows/Unspeakable Sins.jpeg" },
-          { "name": "WWE SummerSlam: 2025 - SummerSlam 2025 Sunday", "image": "/posters/netflix/Shows/Summer Slam 2025.jpeg" },
-          { "name": "Beyond the Bar: Limited Series", "image": "/posters/netflix/Shows/Beyond the bar.jpeg" },
-          { "name": "UNTAMED: Season 1", "image": "/posters/netflix/Shows/Untamed.jpeg" },
-          { "name": "Squid Game: Season 3", "image": "/posters/netflix/Shows/Squid Game 3.jpeg" },
-          { "name": "Raw: 2025 - August 4, 2025", "image": "/posters/netflix/Shows/RAW.jpeg" }
-        ]
-      },
-      "movies": {
-        "prime": [
-          { "name": "Housefull 5", "image": "/posters/prime/Movies/Housefull 5 (2025).jpg" },
-          { "name": "3BHK", "image": "/posters/prime/Movies/3BHK.jpg" },
-          { "name": "Thammudu", "image": "/posters/prime/Movies/Thammudu (2005).jpeg" },
-          { "name": "My Oxford Year", "image": "/posters/prime/Movies/My Oxford Year (2025).jpg" },
-          { "name": "Raid 2", "image": "/posters/prime/Movies/Raid 2 (2025).jpg" },
-          { "name": "Aap Jaisa Koi", "image": "/posters/prime/Movies/Aap Jaisa Koi (2025).jpg" },
-          { "name": "Oh Bhama Ayyo Rama", "image": "/posters/prime/Movies/Oh Bhama Ayyo Rama.jpeg" },
-          { "name": "Kuberaa", "image": "/posters/prime/Movies/Kuberaa (2025).jpg" },
-          { "name": "Show Time", "image": "/posters/prime/Movies/Show Time.jpeg" },
-          { "name": "Maargan", "image": "/posters/prime/Movies/Maargan.jpeg" }
-        ],
-        "zee5": [
-          { "name": "Vedaa", "image": "/posters/zee5/Movies/Vedaa (2024).jpg" },
-          { "name": "Logout", "image": "/posters/zee5/Movies/Logout.jpeg" },
-          { "name": "Vanvaas", "image": "/posters/zee5/Movies/Vanvaas (2024).jpg" },
-          { "name": "Farrey", "image": "/posters/zee5/Movies/Farrey.jpeg" },
-          { "name": "Ghoomer", "image": "/posters/zee5/Movies/Ghoomer (2023).jpg" },
-          { "name": "Main Atal Hoon", "image": "/posters/zee5/Movies/Main Atal Hoon (2024).jpg" },
-          { "name": "The Kerala Story", "image": "/posters/zee5/Movies/The Kerala Story.jpeg" },
-          { "name": "Sam Bahadur", "image": "/posters/zee5/Movies/Sam Bahadur (2023).jpg" },
-          { "name": "Gadar 2", "image": "/posters/zee5/Movies/Gadar 2 (2023).png" },
-          { "name": "Despatch", "image": "/posters/zee5/Movies/Despatch (2024).jpg" }
-        ],
-        "netflix": [
-          { "name": "Thammudu", "image": "/posters/netflix/Movies/Thammudu (2005).jpeg" },
-          { "name": "My Oxford Year", "image": "/posters/netflix/Movies/My Oxford Year (2025).jpg" },
-          { "name": "Raid 2", "image": "/posters/netflix/Movies/Raid 2 (2025).jpg" },
-          { "name": "Aap Jaisa Koi", "image": "/posters/netflix/Movies/Aap Jaisa Koi (2025).jpg" },
-          { "name": "Until Dawn", "image": "/posters/netflix/Movies/Until Dawn (2025).jpg" },
-          { "name": "KPop Demon Hunters", "image": "/posters/netflix/Movies/KPop Demon Hunters (2025).png" },
-          { "name": "Happy Gilmore 2", "image": "/posters/netflix/Movies/Happy Gilmore 2 (2025).png" },
-          { "name": "Thug Life", "image": "/posters/netflix/Movies/Thug Life (2025).png" },
-          { "name": "Jaat", "image": "/posters/netflix/Movies/Jaat (2025).png" },
-          { "name": "Money Heist", "image": "/posters/netflix/Movies/Money Heist.jpeg" }
-        ]
-      },
-      "platformAds": {
-        "prime": [
-          { "name": "Apple AI", "duration": 15 },
-          { "name": "HP intel", "duration": 21 },
-          { "name": "kellogg's chocos", "duration": 27 },
-          { "name": "Nescafe Gold", "duration": 33 },
-          { "name": "Mama Earth", "duration": 41 },
-          { "name": "Coach", "duration": 15 }
-        ],
-        "zee5": [
-          { "name": "policy bazzar", "duration": 15 },
-          { "name": "Cadbury", "duration": 21 },
-          { "name": "Dabur Chaywanprash", "duration": 27 },
-          { "name": "Dabur honey", "duration": 33 },
-          { "name": "Hajmola", "duration": 41 },
-          { "name": "Mahindra Scorpio", "duration": 15 },
-          { "name": "Taco bell", "duration": 21 },
-          { "name": "Tata Harrier", "duration": 27 },
-          { "name": "Whatsapp", "duration": 33 },
-          { "name": "Lite Horliks", "duration": 41 },
-          { "name": "Loreal", "duration": 15 },
-          { "name": "Macho Hint", "duration": 21 }
-        ],
-        "netflix": []
-      }
-    },
     "2025-08-11": {
       "shows": {
         "prime": [
-          { "name": "Arabia Kadali", "image": "/placeholder.svg" },
-          { "name": "The Summer I Turned Pretty", "image": "/posters/prime/Shows/The Summer I Turned Pretty (2022).jpg" },
-          { "name": "Panchayat", "image": "/posters/prime/Shows/Panchayat (2020) - Season 4.jpg" },
-          { "name": "Rangeen", "image": "/posters/prime/Shows/Rangeen (2025).jpg" },
-          { "name": "Countdown", "image": "/posters/prime/Shows/Countdown (2025).jpg" },
-          { "name": "Head Over Heels", "image": "/placeholder.svg" },
-          { "name": "Mirzapur", "image": "/posters/prime/Shows/Mirzapur (2018).png" },
-          { "name": "Farzi", "image": "/placeholder.svg" },
-          { "name": "The Family Man", "image": "/posters/prime/Shows/The Family Man (2019).jpg" },
-          { "name": "Dupahiya", "image": "/placeholder.svg" }
+          {
+            "name": "Panchayat Season 4",
+            "image": "/posters/prime/Shows/Panchayat (2020) - Season 4.jpg"
+          },
+          {
+            "name": "The Traitors",
+            "image": "/posters/prime/Shows/The Traitors.jpeg"
+          },
+          {
+            "name": "The Summer I Turned Pretty Season 3",
+            "image": "/posters/prime/Shows/The Summer I Turned Pretty (2022).jpg"
+          },
+          {
+            "name": "Heads of State",
+            "image": "/posters/prime/Shows/Heads of State (2025).jpg"
+          },
+          {
+            "name": "Ballard",
+            "image": "/posters/prime/Shows/Ballard (2025).jpg"
+          },
+          {
+            "name": "Dope Girls",
+            "image": "/posters/prime/Shows/Dope Girls (2025).png"
+          },
+          {
+            "name": "Mirzapur",
+            "image": "/posters/prime/Shows/Mirzapur (2018).png"
+          },
+          {
+            "name": "The Family Man",
+            "image": "/posters/prime/Shows/The Family Man (2019).jpg"
+          },
+          {
+            "name": "Rangeen",
+            "image": "/posters/prime/Shows/Rangeen (2025).jpg"
+          },
+          {
+            "name": "Countdown",
+            "image": "/posters/prime/Shows/Countdown (2025).jpg"
+          }
         ],
         "zee5": [
-          { "name": "Mothevari Love Story", "image": "/placeholder.svg" },
-          { "name": "Sattamum Needhiyum", "image": "/placeholder.svg" },
-          { "name": "Bakaiti", "image": "/placeholder.svg" },
-          { "name": "Andhar Maya", "image": "/placeholder.svg" },
-          { "name": "Murshid", "image": "/placeholder.svg" },
-          { "name": "Chhal Kapat - The Deception", "image": "/placeholder.svg" },
-          { "name": "Be Melodramatic", "image": "/placeholder.svg" },
-          { "name": "Auto Shankar", "image": "/placeholder.svg" },
-          { "name": "Bibhishon", "image": "/placeholder.svg" },
-          { "name": "Ayyana Mane", "image": "/placeholder.svg" }
+          {
+            "name": "Jeet Ki Zid",
+            "image": "/posters/zee5/Shows/Jeet Ki Zid.jpeg"
+          },
+          {
+            "name": "Abhay",
+            "image": "/posters/zee5/Shows/Abhay.jpeg"
+          },
+          {
+            "name": "State of Siege: 26/11",
+            "image": "/posters/zee5/Shows/State of siege.jpeg"
+          },
+          {
+            "name": "Bicchoo Ka Khel",
+            "image": "/posters/zee5/Shows/Bicchoo ka khel.jpeg"
+          },
+          {
+            "name": "The Broken News",
+            "image": "/posters/zee5/Shows/The Broken News (2022).jpg"
+          },
+          {
+            "name": "Kaafir",
+            "image": "/posters/zee5/Shows/Kaafir (2019) - Season 1.jpg"
+          },
+          {
+            "name": "Pyaar Testing",
+            "image": "/posters/zee5/Shows/Pyaar Testing.jpeg"
+          },
+          {
+            "name": "Khoj – Parchaiyo Ke Uss Paar",
+            "image": "/posters/zee5/Shows/Khoj.jpeg"
+          },
+          {
+            "name": "Jamai 2.0",
+            "image": "/posters/zee5/Shows/Jamai 2.0.jpeg"
+          },
+          {
+            "name": "Qubool Hai 2.0",
+            "image": "/posters/zee5/Shows/Qubool Hai 2.0.jpeg"
+          }
         ],
         "netflix": [
-          { "name": "Wednesday: Season 2", "image": "/posters/netflix/Shows/Wednesday (2022) - Season 2.png" },
-          { "name": "Mandala Murders: Season 1", "image": "/posters/netflix/Shows/Mandala Murders.jpeg" },
-          { "name": "The Great Indian Kapil Show: Season 3", "image": "/posters/netflix/Shows/The Great Indian Kapil Show (2024).jpg" },
-          { "name": "Wednesday: Season 1", "image": "/posters/netflix/Shows/Wednesday (2022) - Season 1.png" },
-          { "name": "Unspeakable Sins: Season 1", "image": "/posters/netflix/Shows/Unspeakable Sins.jpeg" },
-          { "name": "WWE SummerSlam: 2025 - SummerSlam 2025 Sunday", "image": "/posters/netflix/Shows/Summer Slam 2025.jpeg" },
-          { "name": "Beyond the Bar: Limited Series", "image": "/posters/netflix/Shows/Beyond the bar.jpeg" },
-          { "name": "UNTAMED: Season 1", "image": "/posters/netflix/Shows/Untamed.jpeg" },
-          { "name": "Squid Game: Season 3", "image": "/posters/netflix/Shows/Squid Game 3.jpeg" },
-          { "name": "Raw: 2025 - August 4, 2025", "image": "/posters/netflix/Shows/RAW.jpeg" }
+          {
+            "name": "Wednesday: Season 2",
+            "image": "/posters/netflix/Shows/Wednesday (2022) - Season 2.png"
+          },
+          {
+            "name": "Mandala Murders: Season 1",
+            "image": "/posters/netflix/Shows/Mandala Murders.jpeg"
+          },
+          {
+            "name": "The Great Indian Kapil Show: Season 3",
+            "image": "/posters/netflix/Shows/The Great Indian Kapil Show (2024).jpg"
+          },
+          {
+            "name": "Wednesday: Season 1",
+            "image": "/posters/netflix/Shows/Wednesday (2022) - Season 1.png"
+          },
+          {
+            "name": "Unspeakable Sins: Season 1",
+            "image": "/posters/netflix/Shows/Unspeakable Sins.jpeg"
+          },
+          {
+            "name": "WWE SummerSlam: 2025 - SummerSlam 2025 Sunday",
+            "image": "/posters/netflix/Shows/Summer Slam 2025.jpeg"
+          },
+          {
+            "name": "Beyond the Bar: Limited Series",
+            "image": "/posters/netflix/Shows/Beyond the bar.jpeg"
+          },
+          {
+            "name": "UNTAMED: Season 1",
+            "image": "/posters/netflix/Shows/Untamed.jpeg"
+          },
+          {
+            "name": "Squid Game: Season 3",
+            "image": "/posters/netflix/Shows/Squid Game 3.jpeg"
+          },
+          {
+            "name": "Raw: 2025 - August 4, 2025",
+            "image": "/posters/netflix/Shows/RAW.jpeg"
+          }
         ]
       },
       "movies": {
         "prime": [
-          { "name": "Housefull 5", "image": "/posters/prime/Movies/Housefull 5 (2025).jpg" },
-          { "name": "3BHK", "image": "/posters/prime/Movies/3BHK.jpg" },
-          { "name": "Kuberaa", "image": "/posters/prime/Movies/Kuberaa (2025).jpg" },
-          { "name": "The Pickup", "image": "/placeholder.svg" },
-          { "name": "Badmashulu", "image": "/placeholder.svg" },
-          { "name": "Oh Bhama Ayyo Rama", "image": "/posters/prime/Movies/Oh Bhama Ayyo Rama.jpeg" },
-          { "name": "Show Time", "image": "/posters/prime/Movies/Show Time.jpeg" },
-          { "name": "Check", "image": "/placeholder.svg" },
-          { "name": "War", "image": "/placeholder.svg" }
+          {
+            "name": "Housefull 5",
+            "image": "/posters/prime/Movies/Housefull 5 (2025).jpg"
+          },
+          {
+            "name": "3BHK",
+            "image": "/posters/prime/Movies/3BHK.jpg"
+          },
+          {
+            "name": "Thammudu",
+            "image": "/posters/prime/Movies/Thammudu (2005).jpeg"
+          },
+          {
+            "name": "My Oxford Year",
+            "image": "/posters/prime/Movies/My Oxford Year (2025).jpg"
+          },
+          {
+            "name": "Raid 2",
+            "image": "/posters/prime/Movies/Raid 2 (2025).jpg"
+          },
+          {
+            "name": "Aap Jaisa Koi",
+            "image": "/posters/prime/Movies/Aap Jaisa Koi (2025).jpg"
+          },
+          {
+            "name": "Oh Bhama Ayyo Rama",
+            "image": "/posters/prime/Movies/Oh Bhama Ayyo Rama.jpeg"
+          },
+          {
+            "name": "Kuberaa",
+            "image": "/posters/prime/Movies/Kuberaa (2025).jpg"
+          },
+          {
+            "name": "Show Time",
+            "image": "/posters/prime/Movies/Show Time.jpeg"
+          },
+          {
+            "name": "Maargan",
+            "image": "/posters/prime/Movies/Maargan.jpeg"
+          }
         ],
         "zee5": [
-          { "name": "Gadar 2", "image": "/posters/zee5/Movies/Gadar 2 (2023).png" },
-          { "name": "Haddi", "image": "/placeholder.svg" },
-          { "name": "Sirf Ek Bandaa Kaafi Hai", "image": "/placeholder.svg" },
-          { "name": "DD Returns", "image": "/placeholder.svg" },
-          { "name": "Kisi Ka Bhai Kisi Ki Jaan", "image": "/placeholder.svg" },
-          { "name": "Hostel Hudugaru Bekagiddare", "image": "/placeholder.svg" },
-          { "name": "Tarla", "image": "/placeholder.svg" },
-          { "name": "Mrs Undercover", "image": "/placeholder.svg" },
-          { "name": "Kathar Basha Endra Muthuramalingam", "image": "/placeholder.svg" }
+          {
+            "name": "Vedaa",
+            "image": "/posters/zee5/Movies/Vedaa (2024).jpg"
+          },
+          {
+            "name": "Logout",
+            "image": "/posters/zee5/Movies/Logout.jpeg"
+          },
+          {
+            "name": "Vanvaas",
+            "image": "/posters/zee5/Movies/Vanvaas (2024).jpg"
+          },
+          {
+            "name": "Farrey",
+            "image": "/posters/zee5/Movies/Farrey.jpeg"
+          },
+          {
+            "name": "Ghoomer",
+            "image": "/posters/zee5/Movies/Ghoomer (2023).jpg"
+          },
+          {
+            "name": "Main Atal Hoon",
+            "image": "/posters/zee5/Movies/Main Atal Hoon (2024).jpg"
+          },
+          {
+            "name": "The Kerala Story",
+            "image": "/posters/zee5/Movies/The Kerala Story.jpeg"
+          },
+          {
+            "name": "Sam Bahadur",
+            "image": "/posters/zee5/Movies/Sam Bahadur (2023).jpg"
+          },
+          {
+            "name": "Gadar 2",
+            "image": "/posters/zee5/Movies/Gadar 2 (2023).png"
+          },
+          {
+            "name": "Despatch",
+            "image": "/posters/zee5/Movies/Despatch (2024).jpg"
+          }
         ],
         "netflix": [
-          { "name": "My Oxford Year", "image": "/posters/netflix/Movies/My Oxford Year (2025).jpg" },
-          { "name": "Thammudu", "image": "/posters/netflix/Movies/Thammudu (2005).jpeg" },
-          { "name": "Kung Fu Hustle", "image": "/placeholder.svg" },
-          { "name": "Oho Enthan Baby", "image": "/placeholder.svg" },
-          { "name": "Raid 2", "image": "/posters/netflix/Movies/Raid 2 (2025).jpg" },
-          { "name": "Aap Jaisa Koi", "image": "/posters/netflix/Movies/Aap Jaisa Koi (2025).jpg" },
-          { "name": "KPop Demon Hunters", "image": "/posters/netflix/Movies/KPop Demon Hunters (2025).png" },
-          { "name": "Jaat", "image": "/posters/netflix/Movies/Jaat (2025).png" },
-          { "name": "Until Dawn", "image": "/posters/netflix/Movies/Until Dawn (2025).jpg" },
-          { "name": "Dolittle", "image": "/placeholder.svg" }
+          {
+            "name": "Thammudu",
+            "image": "/posters/netflix/Movies/Thammudu (2005).jpeg"
+          },
+          {
+            "name": "My Oxford Year",
+            "image": "/posters/netflix/Movies/My Oxford Year (2025).jpg"
+          },
+          {
+            "name": "Raid 2",
+            "image": "/posters/netflix/Movies/Raid 2 (2025).jpg"
+          },
+          {
+            "name": "Aap Jaisa Koi",
+            "image": "/posters/netflix/Movies/Aap Jaisa Koi (2025).jpg"
+          },
+          {
+            "name": "Until Dawn",
+            "image": "/posters/netflix/Movies/Until Dawn (2025).jpg"
+          },
+          {
+            "name": "KPop Demon Hunters",
+            "image": "/posters/netflix/Movies/KPop Demon Hunters (2025).png"
+          },
+          {
+            "name": "Happy Gilmore 2",
+            "image": "/posters/netflix/Movies/Happy Gilmore 2 (2025).png"
+          },
+          {
+            "name": "Thug Life",
+            "image": "/posters/netflix/Movies/Thug Life (2025).png"
+          },
+          {
+            "name": "Jaat",
+            "image": "/posters/netflix/Movies/Jaat (2025).png"
+          },
+          {
+            "name": "Money Heist",
+            "image": "/posters/netflix/Movies/Money Heist.jpeg"
+          }
         ]
-      },
-      "platformAds": {
-        "prime": [
-          { "name": "Apple AI", "duration": 15 },
-          { "name": "HP intel", "duration": 21 },
-          { "name": "kellogg's chocos", "duration": 27 },
-          { "name": "Nescafe Gold", "duration": 33 },
-          { "name": "Mama Earth", "duration": 41 },
-          { "name": "Coach", "duration": 15 }
-        ],
-        "zee5": [
-          { "name": "policy bazzar", "duration": 15 },
-          { "name": "Cadbury", "duration": 21 },
-          { "name": "Dabur Chaywanprash", "duration": 27 },
-          { "name": "Dabur honey", "duration": 33 },
-          { "name": "Hajmola", "duration": 41 },
-          { "name": "Mahindra Scorpio", "duration": 15 },
-          { "name": "Taco bell", "duration": 21 },
-          { "name": "Tata Harrier", "duration": 27 },
-          { "name": "Whatsapp", "duration": 33 },
-          { "name": "Lite Horliks", "duration": 41 },
-          { "name": "Loreal", "duration": 15 },
-          { "name": "Macho Hint", "duration": 21 }
-        ],
-        "netflix": []
       }
     }
   }
