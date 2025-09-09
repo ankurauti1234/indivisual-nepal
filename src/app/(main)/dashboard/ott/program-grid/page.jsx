@@ -5,10 +5,10 @@ import EPG from "@/components/program-grid/EPG";
 function ProgramGridContent() {
   const DEVICE_IDS = ["R-1", "R-3", "R-4", "R-5"];
   const CHANNEL_ALIASES = {
-    "R-1": "Netflix",
-    "R-3": "Jio Hotstar",
+    "R-5": "Netflix",
+    "R-1": "Jio Hotstar",
     "R-4": "Zee5",
-    "R-5": "Amazon Prime",
+    "R-3": "Amazon Prime",
   };
   const baseUrl = process.env.NEXT_PUBLIC_API_OTT_URL
 
