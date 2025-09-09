@@ -39,14 +39,14 @@ function CustomRadioGroup({ value, onValueChange, options }) {
 }
 
 function ProgramGridContent() {
-  const DEVICE_IDS = ["R-1001", "R-1004", "R-1006", "R-1007"];
+  const DEVICE_IDS = ["R-1011", "R-1004", "R-1006", "R-1007"];
   const CHANNEL_ALIASES = {
     "R-1011": "Himalaya TV",
     "R-1004": "Nepal TV",
     "R-1006": "Avenues TV",
     "R-1007": "Kantipur TV",
   };
-  const baseUrl = process.env.NEXT_PUBLIC_API_LINEAR_URL;
+  const baseUrl = "http://localhost:4000/api/v1";
 
   const [reportType, setReportType] = useState("daily");
   const [selectedDate, setSelectedDate] = useState("");
