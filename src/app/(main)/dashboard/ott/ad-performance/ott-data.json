@@ -24,12 +24,12 @@
   ],
   "weeks": [
     {
-      "value": "2025-08-11",
-      "label": "Week 33: August 11 - August 17, 2025"
+      "value": "2025-09-01",
+      "label": "Week 36: Sept 01 - Sept 07, 2025"
     }
   ],
   "weekSchedules": {
-    "2025-08-11": {
+    "2025-09-01": {
       "shows": {
         "prime": [
           {
@@ -153,7 +153,7 @@
             "image": "/posters/netflix/Shows/Squid Game 3.jpeg"
           },
           {
-            "name": "Raw: 2025 - August 4, 2025",
+            "name": "Raw: 2025 - Sept 4, 2025",
             "image": "/posters/netflix/Shows/RAW.jpeg"
           }
         ]

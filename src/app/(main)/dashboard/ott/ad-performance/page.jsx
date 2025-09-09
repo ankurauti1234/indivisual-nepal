@@ -71,7 +71,9 @@ function CustomRadioGroup({ value, onValueChange, options }) {
 }
 
 export default function OTTAdScheduler() {
-  const [selectedWeek, setSelectedWeek] = useState(ottData.weeks[0]?.value || "");
+  const [selectedWeek, setSelectedWeek] = useState(
+    ottData.weeks[0]?.value || ""
+  );
   const [selectedPlatform, setSelectedPlatform] = useState("");
   const [selectedContentType, setSelectedContentType] = useState("shows");
   const [selectedItems, setSelectedItems] = useState([]);
@@ -81,9 +83,13 @@ export default function OTTAdScheduler() {
 
   const availableItems =
     selectedPlatform && ottData.weekSchedules[selectedWeek]
-      ? ottData.weekSchedules[selectedWeek][selectedContentType][selectedPlatform] || []
+      ? ottData.weekSchedules[selectedWeek][selectedContentType][
+          selectedPlatform
+        ] || []
       : [];
-  const currentPlatform = ottData.platforms.find((p) => p.id === selectedPlatform);
+  const currentPlatform = ottData.platforms.find(
+    (p) => p.id === selectedPlatform
+  );
 
   // Map platform and content type to the appropriate JSON data
   const platformData = {
@@ -97,7 +103,7 @@ export default function OTTAdScheduler() {
     },
     netflix: {
       shows: netflixData,
-      movies: netflixData, // Netflix has no ads for either shows or movies
+      movies: netflixData,
     },
   };
 
@@ -121,7 +127,6 @@ export default function OTTAdScheduler() {
       "Sunday",
     ];
 
-    // Group ads by day
     const dayAds = {};
     data.forEach((ad) => {
       const day = ad.Day;
@@ -154,13 +159,11 @@ export default function OTTAdScheduler() {
       });
     });
 
-    // Sort placements
     placements.sort(
       (a, b) =>
         a.dayIndex - b.dayIndex || a.startTime.localeCompare(b.startTime)
     );
 
-    // Calculate max ads per item per day
     const counts = {};
     placements.forEach((p) => {
       const key = `${p.item}-${p.dayIndex}`;
@@ -172,7 +175,13 @@ export default function OTTAdScheduler() {
       placements,
       adDensity: calculateAdDensity(maxAds, selectedContentType),
     };
-  }, [selectedItems, selectedPlatform, selectedWeek, selectedContentType, currentPlatform]);
+  }, [
+    selectedItems,
+    selectedPlatform,
+    selectedWeek,
+    selectedContentType,
+    currentPlatform,
+  ]);
 
   const handleItemSelection = (item) => {
     setSelectedItems((prev) => {
@@ -212,19 +221,21 @@ export default function OTTAdScheduler() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Professional Header */}
-      <div className="border-b shadow-sm">
+      <div className="border-b shadow-sm bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <BarChart3 className="h-6 w-6" />
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-md">
+                  <BarChart3 className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold">OTT Ad Scheduling Dashboard</h1>
-                  <p className="text-sm text-gray-600">
+                  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    OTT Ad Scheduling Dashboard
+                  </h1>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
                     Comprehensive ad placement analytics across streaming platforms
                   </p>
                 </div>
@@ -233,26 +244,32 @@ export default function OTTAdScheduler() {
             <div className="flex items-center space-x-3">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="transition-colors">
+                  <Button
+                    variant="outline"
+                    className="transition-colors hover:bg-blue-50 dark:hover:bg-gray-700"
+                  >
                     Export Report
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] bg-white dark:bg-gray-800">
                   <DialogHeader>
-                    <DialogTitle>Export Weekly Report</DialogTitle>
+                    <DialogTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+                      Export Weekly Report
+                    </DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4">
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                      Export ad placement reports for a selected week and platform. Choose a week and platform to download a consolidated weekly report.
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      Export ad placement reports for a selected week and platform.
                     </p>
-
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium">Select Platform</Label>
+                      <Label className="text-sm font-medium text-gray-900 dark:text-white">
+                        Select Platform
+                      </Label>
                       <Select
                         onValueChange={setExportPlatform}
                         value={exportPlatform}
                       >
-                        <SelectTrigger>
+                        <SelectTrigger className="bg-white dark:bg-gray-700">
                           <SelectValue placeholder="Select a platform" />
                         </SelectTrigger>
                         <SelectContent>
@@ -264,14 +281,15 @@ export default function OTTAdScheduler() {
                         </SelectContent>
                       </Select>
                     </div>
-
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium">Select Week</Label>
+                      <Label className="text-sm font-medium text-gray-900 dark:text-white">
+                        Select Week
+                      </Label>
                       <Select
                         onValueChange={setSelectedExportWeek}
                         value={selectedExportWeek}
                       >
-                        <SelectTrigger>
+                        <SelectTrigger className="bg-white dark:bg-gray-700">
                           <SelectValue placeholder="Select a week" />
                         </SelectTrigger>
                         <SelectContent>
@@ -283,11 +301,10 @@ export default function OTTAdScheduler() {
                         </SelectContent>
                       </Select>
                     </div>
-
                     <Button
                       onClick={handleDownload}
                       disabled={!selectedExportWeek || !exportPlatform}
-                      className="w-full"
+                      className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
                     >
                       Download Report
                     </Button>
@@ -302,16 +319,16 @@ export default function OTTAdScheduler() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Filters Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card>
+          <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold flex items-center">
+              <CardTitle className="text-sm font-semibold flex items-center text-gray-900 dark:text-white">
                 <Calendar className="h-4 w-4 mr-2 text-blue-600" />
                 Campaign Week
               </CardTitle>
             </CardHeader>
             <CardContent>
               <Select value={selectedWeek} onValueChange={setSelectedWeek}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-white dark:bg-gray-700">
                   <SelectValue placeholder="Select campaign week" />
                 </SelectTrigger>
                 <SelectContent>
@@ -325,9 +342,11 @@ export default function OTTAdScheduler() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold">Streaming Platform</CardTitle>
+              <CardTitle className="text-sm font-semibold text-gray-900 dark:text-white">
+                Streaming Platform
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <Select
@@ -337,7 +356,7 @@ export default function OTTAdScheduler() {
                   setSelectedItems([]);
                 }}
               >
-                <SelectTrigger>
+                <SelectTrigger className="bg-white dark:bg-gray-700">
                   <SelectValue placeholder="Choose platform" />
                 </SelectTrigger>
                 <SelectContent>
@@ -362,9 +381,11 @@ export default function OTTAdScheduler() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold">Content Type</CardTitle>
+              <CardTitle className="text-sm font-semibold text-gray-900 dark:text-white">
+                Content Type
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <Select
@@ -375,7 +396,7 @@ export default function OTTAdScheduler() {
                 }}
                 disabled={!selectedPlatform}
               >
-                <SelectTrigger>
+                <SelectTrigger className="bg-white dark:bg-gray-700">
                   <SelectValue placeholder="Select content type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -389,15 +410,15 @@ export default function OTTAdScheduler() {
 
         {/* Platform Status Alert for Ad-Free Platforms */}
         {currentPlatform && !currentPlatform.hasAds && (
-          <Card className="border-orange-500/50 mb-8">
+          <Card className="border-orange-500/50 mb-8 bg-white dark:bg-gray-800 shadow-lg">
             <CardContent className="pt-6">
               <div className="flex items-center space-x-3">
                 <AlertCircle className="h-5 w-5 text-orange-600" />
                 <div>
-                  <h3 className="font-semibold text-orange-900">
+                  <h3 className="font-semibold text-orange-900 dark:text-orange-400">
                     No Ad Inventory Available
                   </h3>
-                  <p className="text-sm text-orange-700">
+                  <p className="text-sm text-orange-700 dark:text-orange-300">
                     {currentPlatform.name} operates on a subscription-only model
                     without advertising placements.
                   </p>
@@ -409,30 +430,31 @@ export default function OTTAdScheduler() {
 
         {/* Items Grid */}
         {availableItems.length > 0 && (
-          <Card className="border-gray-200 shadow-sm mb-8">
+          <Card className="border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-gray-800 mb-8">
             <CardHeader>
-              <CardTitle className="text-lg font-semibold flex items-center justify-between">
+              <CardTitle className="text-lg font-semibold flex items-center justify-between text-gray-900 dark:text-white">
                 <div className="flex items-center">
                   <Play className="h-5 w-5 mr-2 text-blue-600" />
-                  Top {selectedContentType === "shows" ? "Shows" : "Movies"} on{" "}
-                  {currentPlatform?.name}
+                  Top {selectedContentType === "shows"
+                    ? "Shows"
+                    : "Movies"} on {currentPlatform?.name}
                 </div>
                 {adDensity !== "false" && (
-                  <Badge variant="outline" className="text-xs">
-                    {adDensity.replace("-", " ")} ad density
+                  <Badge variant="outline" className="text-xs capitalize">
+                    {adDensity.replace("-", " ")} Ad Density
                   </Badge>
                 )}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
                 {availableItems.map((item) => (
                   <div
                     key={item.name}
                     className={`group p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
                       selectedItems.some((i) => i.name === item.name)
                         ? "border-blue-500 shadow-md"
-                        : "hover:shadow-sm"
+                        : "border-gray-200 dark:border-gray-600 hover:shadow-lg"
                     }`}
                     onClick={() => handleItemSelection(item)}
                   >
@@ -443,7 +465,7 @@ export default function OTTAdScheduler() {
                         className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="text-sm font-semibold text-center leading-tight">
+                    <h3 className="text-sm font-semibold text-center leading-tight text-gray-900 dark:text-white">
                       {item.name}
                     </h3>
                     {selectedItems.some((i) => i.name === item.name) && (
@@ -460,46 +482,48 @@ export default function OTTAdScheduler() {
 
         {/* Enhanced Gantt Chart */}
         {adPlacements.length > 0 && currentPlatform?.hasAds && (
-          <Card>
+          <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-lg font-semibold flex items-center justify-between">
+              <CardTitle className="text-lg font-semibold flex items-center justify-between text-gray-900 dark:text-white">
                 <div className="flex items-center">
                   <Dialog
                     open={isAllAdsDialogOpen}
                     onOpenChange={setIsAllAdsDialogOpen}
                   >
                     <DialogTrigger asChild>
-                      <Clock className="h-5 w-5 mr-2 text-blue-600 cursor-pointer hover:text-blue-800" />
+                      <Clock className="h-5 w-5 mr-2 text-blue-600 cursor-pointer hover:text-blue-800 transition-colors" />
                     </DialogTrigger>
-                    <DialogContent className="max-w-4xl">
+                    <DialogContent className="max-w-4xl bg-white dark:bg-gray-800">
                       <DialogHeader>
-                        <DialogTitle>
+                        <DialogTitle className="text-lg font-semibold text-gray-900 dark:text-white">
                           All Ad Placements for {currentPlatform?.name}
                         </DialogTitle>
                       </DialogHeader>
-                      <div className="mt-4 h-[75vh] overflow-auto">
+                      <div className="mt-4 max-h-[60vh] overflow-y-auto pr-4">
                         <Table>
                           <TableHeader>
                             <TableRow>
-                              <TableHead>
-                                {selectedContentType === "shows" ? "Show" : "Movie"}
+                              <TableHead className="text-gray-900 dark:text-white">
+                                {selectedContentType === "shows"
+                                  ? "Show"
+                                  : "Movie"}
                               </TableHead>
-                              <TableHead>Day</TableHead>
-                              <TableHead>Start Time</TableHead>
-                              <TableHead>End Time</TableHead>
-                              <TableHead>Ad Name</TableHead>
-                              <TableHead>Duration</TableHead>
+                              <TableHead className="text-gray-900 dark:text-white">Day</TableHead>
+                              <TableHead className="text-gray-900 dark:text-white">Start Time</TableHead>
+                              <TableHead className="text-gray-900 dark:text-white">End Time</TableHead>
+                              <TableHead className="text-gray-900 dark:text-white">Ad Name</TableHead>
+                              <TableHead className="text-gray-900 dark:text-white">Duration</TableHead>
                             </TableRow>
                           </TableHeader>
                           <TableBody>
                             {adPlacements.map((placement) => (
                               <TableRow key={placement.id}>
-                                <TableCell>{placement.item}</TableCell>
-                                <TableCell>{placement.day}</TableCell>
-                                <TableCell>{placement.startTime}</TableCell>
-                                <TableCell>{placement.endTime}</TableCell>
-                                <TableCell>{placement.adName}</TableCell>
-                                <TableCell>{placement.duration}s</TableCell>
+                                <TableCell className="text-gray-900 dark:text-white">{placement.item}</TableCell>
+                                <TableCell className="text-gray-900 dark:text-white">{placement.day}</TableCell>
+                                <TableCell className="text-gray-900 dark:text-white">{placement.startTime}</TableCell>
+                                <TableCell className="text-gray-900 dark:text-white">{placement.endTime}</TableCell>
+                                <TableCell className="text-gray-900 dark:text-white">{placement.adName}</TableCell>
+                                <TableCell className="text-gray-900 dark:text-white">{placement.duration}s</TableCell>
                               </TableRow>
                             ))}
                           </TableBody>
@@ -509,7 +533,7 @@ export default function OTTAdScheduler() {
                   </Dialog>
                   Weekly Ad Placement Schedule
                 </div>
-                <div className="flex items-center space-x-4 text-sm text-gray-600">
+                <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-300">
                   <span>
                     Total Ads: <strong>{adPlacements.length}</strong>
                   </span>
@@ -526,8 +550,8 @@ export default function OTTAdScheduler() {
               <div className="overflow-x-auto">
                 <div className="min-w-[900px]">
                   {/* Enhanced Timeline Header */}
-                  <div className="grid grid-cols-8 gap-3 mb-6 pb-3 border-b">
-                    <div className="text-sm font-semibold p-3">
+                  <div className="grid grid-cols-8 gap-3 mb-6 pb-3 border-b border-gray-200 dark:border-gray-600">
+                    <div className="text-sm font-semibold p-3 text-gray-900 dark:text-white">
                       {selectedContentType === "shows" ? "Show" : "Movie"} Title
                     </div>
                     {[
@@ -541,10 +565,10 @@ export default function OTTAdScheduler() {
                     ].map((day) => (
                       <div
                         key={day}
-                        className="text-sm font-semibold text-center p-3"
+                        className="text-sm font-semibold text-center p-3 text-gray-900 dark:text-white"
                       >
                         <div>{day.slice(0, 3)}</div>
-                        <div className="text-xs text-muted-foreground mt-1">
+                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                           All Day
                         </div>
                       </div>
@@ -552,14 +576,15 @@ export default function OTTAdScheduler() {
                   </div>
 
                   {/* Enhanced Gantt Chart Rows */}
-                  <div className="h-[80vh] overflow-auto">
+                  <div className="max-h-[80vh] overflow-auto">
                     {selectedItems.map((item) => {
                       const itemPlacements = adPlacements.filter(
                         (p) => p.item === item.name
                       );
                       const placementsByDay = itemPlacements.reduce(
                         (acc, placement) => {
-                          if (!acc[placement.dayIndex]) acc[placement.dayIndex] = [];
+                          if (!acc[placement.dayIndex])
+                            acc[placement.dayIndex] = [];
                           acc[placement.dayIndex].push(placement);
                           return acc;
                         },
@@ -571,14 +596,14 @@ export default function OTTAdScheduler() {
                           key={item.name}
                           className="grid grid-cols-8 gap-3 mb-4 items-start"
                         >
-                          <div className="p-4 bg-card border rounded-lg shadow-sm">
-                            <div className="text-sm font-semibold mb-1">
+                          <div className="p-4 bg-white dark:bg-gray-700 border rounded-lg shadow-sm">
+                            <div className="text-sm font-semibold mb-1 text-gray-900 dark:text-white">
                               {item.name}
                             </div>
-                            <div className="text-xs text-muted-foreground">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
                               {itemPlacements.length} ad slots
                             </div>
-                            <div className="text-xs text-muted-foreground mt-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                               {Math.round(
                                 itemPlacements.reduce(
                                   (sum, p) => sum + p.duration,
@@ -590,80 +615,80 @@ export default function OTTAdScheduler() {
                           </div>
 
                           {[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => {
-                            const dayPlacements = placementsByDay[dayIndex] || [];
+                            const dayPlacements =
+                              placementsByDay[dayIndex] || [];
                             return (
                               <div
                                 key={dayIndex}
-                                className="min-h-[80px] bg-popover border rounded-lg p-2 relative"
+                                className="min-h-[80px] bg-gray-50 dark:bg-gray-700 border rounded-lg p-2 relative"
                               >
                                 {dayPlacements.length === 0 ? (
-                                  <div className="flex items-center justify-center h-full text-xs text-gray-400">
+                                  <div className="flex items-center justify-center h-full text-xs text-gray-400 dark:text-gray-500">
                                     No ads
                                   </div>
                                 ) : (
                                   <Dialog>
                                     <DialogTrigger asChild>
                                       <div className="space-y-1 cursor-pointer">
-                                        {dayPlacements.slice(0, 3).map((placement, index) => (
-                                          <div
-                                            key={placement.id}
-                                            className="p-2 rounded-md text-xs text-white hover:opacity-90 transition-all duration-200 shadow-sm"
-                                            style={{
-                                              backgroundColor:
-                                                currentPlatform?.color || "#3B82F6",
-                                            }}
-                                            title={`${placement.adName}\n${placement.startTime} to ${placement.endTime}\nDuration: ${placement.duration}s`}
-                                          >
-                                            <div className="font-semibold">
-                                              {placement.startTime}
+                                        {dayPlacements
+                                          .slice(0, 3)
+                                          .map((placement, index) => (
+                                            <div
+                                              key={placement.id}
+                                              className="p-2 rounded-md text-xs text-white hover:opacity-90 transition-all duration-200 shadow-sm"
+                                              style={{
+                                                backgroundColor:
+                                                  currentPlatform?.color ||
+                                                  "#3B82F6",
+                                              }}
+                                              title={`${placement.adName}\n${placement.startTime} to ${placement.endTime}\nDuration: ${placement.duration}s`}
+                                            >
+                                              <div className="font-semibold">
+                                                {placement.startTime}
+                                              </div>
+                                              <div className="text-xs opacity-90 truncate">
+                                                {
+                                                  placement.adName?.split(
+                                                    " - "
+                                                  )[0]
+                                                }
+                                              </div>
+                                              <div className="text-xs opacity-75">
+                                                {placement.duration}s
+                                              </div>
                                             </div>
-                                            <div className="text-xs opacity-90 truncate">
-                                              {placement.adName?.split(" - ")[0]}
-                                            </div>
-                                            <div className="text-xs opacity-75">
-                                              {placement.duration}s
-                                            </div>
-                                          </div>
-                                        ))}
+                                          ))}
                                         {dayPlacements.length > 3 && (
-                                          <div className="text-xs text-muted-foreground text-center py-1">
+                                          <div className="text-xs text-gray-500 dark:text-gray-400 text-center py-1">
                                             +{dayPlacements.length - 3} more
                                           </div>
                                         )}
                                       </div>
                                     </DialogTrigger>
-                                    <DialogContent className="max-w-4xl">
+                                    <DialogContent className="max-w-4xl bg-white dark:bg-gray-800">
                                       <DialogHeader>
-                                        <DialogTitle>
+                                        <DialogTitle className="text-lg font-semibold text-gray-900 dark:text-white">
                                           Ad Placements for {item.name} on{" "}
                                           {dayPlacements[0]?.day}
                                         </DialogTitle>
                                       </DialogHeader>
-                                      <div className="mt-4">
+                                      <div className="mt-4 max-h-[60vh] overflow-y-auto pr-4">
                                         <Table>
                                           <TableHeader>
                                             <TableRow>
-                                              <TableHead>Start Time</TableHead>
-                                              <TableHead>End Time</TableHead>
-                                              <TableHead>Ad Name</TableHead>
-                                              <TableHead>Duration</TableHead>
+                                              <TableHead className="text-gray-900 dark:text-white">Start Time</TableHead>
+                                              <TableHead className="text-gray-900 dark:text-white">End Time</TableHead>
+                                              <TableHead className="text-gray-900 dark:text-white">Ad Name</TableHead>
+                                              <TableHead className="text-gray-900 dark:text-white">Duration</TableHead>
                                             </TableRow>
                                           </TableHeader>
                                           <TableBody>
                                             {dayPlacements.map((placement) => (
                                               <TableRow key={placement.id}>
-                                                <TableCell>
-                                                  {placement.startTime}
-                                                </TableCell>
-                                                <TableCell>
-                                                  {placement.endTime}
-                                                </TableCell>
-                                                <TableCell>
-                                                  {placement.adName}
-                                                </TableCell>
-                                                <TableCell>
-                                                  {placement.duration}s
-                                                </TableCell>
+                                                <TableCell className="text-gray-900 dark:text-white">{placement.startTime}</TableCell>
+                                                <TableCell className="text-gray-900 dark:text-white">{placement.endTime}</TableCell>
+                                                <TableCell className="text-gray-900 dark:text-white">{placement.adName}</TableCell>
+                                                <TableCell className="text-gray-900 dark:text-white">{placement.duration}s</TableCell>
                                               </TableRow>
                                             ))}
                                           </TableBody>
@@ -683,26 +708,32 @@ export default function OTTAdScheduler() {
               </div>
 
               {/* Enhanced Legend */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
+              <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <h4 className="text-sm font-semibold mb-2">
+                    <h4 className="text-sm font-semibold mb-2 text-gray-900 dark:text-white">
                       Ad Placement Legend
                     </h4>
                     <div className="flex items-center space-x-2 mb-1">
                       <div
                         className="w-4 h-4 rounded"
-                        style={{ backgroundColor: currentPlatform?.color || "#3B82F6" }}
+                        style={{
+                          backgroundColor: currentPlatform?.color || "#3B82F6",
+                        }}
                       />
-                      <span className="text-sm text-gray-600">Active Ad Slot</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-300">
+                        Active Ad Slot
+                      </span>
                     </div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-xs text-gray-500 dark:text-gray-400">
                       Click slot for day-specific ad details
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold mb-2">Platform Insights</h4>
-                    <div className="text-sm text-gray-600">
+                    <h4 className="text-sm font-semibold mb-2 text-gray-900 dark:text-white">
+                      Platform Insights
+                    </h4>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">
                       <div>
                         Ad Density:{" "}
                         <span className="font-medium capitalize">
@@ -713,8 +744,10 @@ export default function OTTAdScheduler() {
                         Total Duration:{" "}
                         <span className="font-medium">
                           {Math.round(
-                            adPlacements.reduce((sum, p) => sum + p.duration, 0) /
-                              60
+                            adPlacements.reduce(
+                              (sum, p) => sum + p.duration,
+                              0
+                            ) / 60
                           ) || 0}{" "}
                           minutes
                         </span>
@@ -722,15 +755,21 @@ export default function OTTAdScheduler() {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold mb-2">Campaign Summary</h4>
-                    <div className="text-sm text-gray-600">
+                    <h4 className="text-sm font-semibold mb-2 text-gray-900 dark:text-white">
+                      Campaign Summary
+                    </h4>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">
                       <div>
                         {selectedContentType === "shows" ? "Shows" : "Movies"}:{" "}
-                        <span className="font-medium">{selectedItems.length}</span>
+                        <span className="font-medium">
+                          {selectedItems.length}
+                        </span>
                       </div>
                       <div>
                         Total Slots:{" "}
-                        <span className="font-medium">{adPlacements.length}</span>
+                        <span className="font-medium">
+                          {adPlacements.length}
+                        </span>
                       </div>
                     </div>
                   </div>
