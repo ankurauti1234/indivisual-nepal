@@ -210,7 +210,7 @@ export default function OTTAdScheduler() {
 
   const handleDownload = () => {
     if (selectedExportWeek && exportPlatform) {
-      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott/${exportPlatform}.csv`;
+      const url = `https://radio-playback-files.s3.ap-south-1.amazonaws.com/reports/ott-report/${exportPlatform}.csv`;
       const link = document.createElement("a");
       link.href = url;
       link.download = `${exportPlatform}-report-${selectedExportWeek}.csv`;
