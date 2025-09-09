@@ -46,7 +46,7 @@ function ProgramGridContent() {
     "R-1006": "Avenues TV",
     "R-1007": "Kantipur TV",
   };
-  const baseUrl = "http://localhost:4000/api/v1";
+  const baseUrl = process.env.NEXT_PUBLIC_API_LINEAR_URL
 
   const [reportType, setReportType] = useState("daily");
   const [selectedDate, setSelectedDate] = useState("");
