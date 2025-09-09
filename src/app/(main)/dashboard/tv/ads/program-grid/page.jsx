@@ -41,7 +41,7 @@ function CustomRadioGroup({ value, onValueChange, options }) {
 function ProgramGridContent() {
   const DEVICE_IDS = ["R-1001", "R-1004", "R-1006", "R-1007"];
   const CHANNEL_ALIASES = {
-    "R-1001": "Himalaya TV",
+    "R-1011": "Himalaya TV",
     "R-1004": "Nepal TV",
     "R-1006": "Avenues TV",
     "R-1007": "Kantipur TV",
