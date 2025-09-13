@@ -5,8 +5,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 const dummyUsers = [
-  // { email: "admin@inditronics.com", password: "Admin@123", role: "admin" },
-  // { email: "guest@inditronics.com", password: "Guest@123", role: "guest" },
+  { email: "admin@inditronics.com", password: "Admin@123", role: "admin" },
+  { email: "guest@inditronics.com", password: "Guest@123", role: "guest" },
   { email: "ankur.auti@inditronics.com", password: "Ankur@123", role: "user" },
 ];
 
