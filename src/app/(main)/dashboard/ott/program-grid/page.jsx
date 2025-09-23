@@ -3,13 +3,15 @@ import React, { Suspense } from "react";
 import EPG from "@/components/program-grid/EPG";
 
 function ProgramGridContent() {
-  const DEVICE_IDS = ["R-2", "R-3", "R-4", "R-5", "R-6"];
+  const DEVICE_IDS = ["R-2", "R-3", "R-4", "R-5", "R-6","R-7","R-10"];
   const CHANNEL_ALIASES = {
     "R-2": "Youtube",
     "R-3": "Amazon Prime",
     "R-4": "Zee5",
     "R-5": "Netflix",
     "R-6": "Aaj Tak",
+    "R-7": "Dangal",
+    "R-10": "Jio Hotstar",
   };
   const baseUrl = process.env.NEXT_PUBLIC_API_OTT_URL
 
