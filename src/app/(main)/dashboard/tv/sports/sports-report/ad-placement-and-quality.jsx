@@ -46,7 +46,6 @@ const DEFAULT_PALETTE = [
 ];
 
 const COLORS = {
-  pie: ["#6366f1", "#10b981", "#f59e0b"],
   donut: ["#4f46e5", "#059669"],
   bar: "#6366f1",
 };
@@ -60,7 +59,7 @@ const HEAT_BUCKET_COLORS = [
 ];
 
 /* =============================================================================
-   COLOR UTILITIES (from brand-overview)
+   COLOR UTILITIES
 ============================================================================= */
 function strHash(s) {
   let h = 2166136261 >>> 0;
@@ -291,6 +290,7 @@ function AdExposureByOverCard({ metric, data, colorMap }) {
                 labelFormatter={(label) => `Overs ${label}`}
                 contentStyle={{ fontSize: 12 }}
               />
+
               {aggregate.brandsToShow.map((brand) => (
                 <Line
                   key={brand}
@@ -307,6 +307,7 @@ function AdExposureByOverCard({ metric, data, colorMap }) {
             </LineChart>
           </ResponsiveContainer>
         </div>
+
         <div className="mt-2">
           <div className="grid grid-cols-8 gap-0 h-2">
             {OVER_BUCKETS.map((_, i) => (
@@ -354,6 +355,7 @@ function RegionVisibilityHeatmap({ metric, data }) {
         Region Visibility Heatmap —{" "}
         {metric === "duration" ? "Airtime" : "Count"}
       </h3>
+
       <div className="overflow-x-auto" style={{ paddingBottom: 4 }}>
         <div
           className="grid"
@@ -373,6 +375,7 @@ function RegionVisibilityHeatmap({ metric, data }) {
             </div>
           ))}
         </div>
+
         {regions.map((region, ri) => (
           <div
             key={`row-${region}`}
@@ -386,10 +389,12 @@ function RegionVisibilityHeatmap({ metric, data }) {
             <div className="text-[11px] text-gray-400 flex items-center">
               {region}
             </div>
+
             {brands.map((brand, ci) => {
               const v = matrix[ri][ci] ?? 0;
               const bg = valueToColor(v);
               const isZero = v === 0;
+
               return (
                 <div
                   key={`cell-${region}-${brand}`}
@@ -417,6 +422,7 @@ function RegionVisibilityHeatmap({ metric, data }) {
           </div>
         ))}
       </div>
+
       <div className="flex items-center gap-2 mt-4 text-[11px]">
         <span className="text-gray-500">Low</span>
         {HEAT_BUCKET_COLORS.map((c, i) => (
@@ -445,6 +451,7 @@ function ExposureByLocation({ metric, data }) {
           {metric === "duration" ? "Airtime" : "Count"}
         </h3>
       </div>
+
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -493,23 +500,25 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // modal state for panels
-  const [openPanel, setOpenPanel] = useState(null); // values: 'visibility', 'placement', 'heatmap', 'exposure'
+  const [openPanel, setOpenPanel] = useState(null);
 
   useEffect(() => {
     let mounted = true;
+
     async function fetchData() {
       if (!selectedMatch) {
         setApiData([]);
         setLoading(false);
         return;
       }
+
       try {
         setLoading(true);
         const params = new URLSearchParams({
           match: selectedMatch,
           component: "ad-placement-quality",
         });
+
         const res = await fetch(`/api/matches-files?${params.toString()}`);
         const data = await res.json();
         if (mounted) setApiData(data.files || []);
@@ -520,6 +529,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
         if (mounted) setLoading(false);
       }
     }
+
     fetchData();
     return () => (mounted = false);
   }, [selectedMatch]);
@@ -529,7 +539,6 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
       ?.content || [];
 
   const adLocationData = getFile("placement_by_placement");
-  const visibilityQualityData = getFile("visibility_quality");
   const regionVisibilitySource = getFile("region_brand");
   const adExposureByOverRaw = getFile("over_raw");
 
@@ -556,7 +565,6 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
     );
   }
 
-  /* Small generic panel with open button */
   const Panel = ({ title, children, id }) => (
     <div className="bg-card rounded-xl p-4 h-full flex flex-col">
       <div className="flex items-center justify-between mb-2">
@@ -576,7 +584,6 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
     </div>
   );
 
-  /* Simple modal */
   const Modal = ({ title, children, onClose }) => (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
@@ -586,7 +593,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
             {title}
           </h3>
           <button
-            className="px-3 py-1.5 rounded-md bg-destructive text-whitehover:bg-destructive/80 text-sm"
+            className="px-3 py-1.5 rounded-md bg-destructive text-white hover:bg-destructive/80 text-sm"
             onClick={onClose}
           >
             Close
@@ -613,36 +620,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
         </select>
       </div>
 
-      {/* Top area: Visibility Quality — now full width */}
-      <div className="grid grid-cols-1 gap-6">
-        <div className="h-64">
-          <Panel title="Ad Visibility Quality" id="visibility">
-            <div className="h-full flex items-center justify-center">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={visibilityQualityData}
-                    dataKey={metric}
-                    nameKey="Visibility_Quality"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    label={false}
-                  >
-                    {visibilityQualityData.map((_, i) => (
-                      <Cell key={i} fill={COLORS.pie[i % COLORS.pie.length]} />
-                    ))}
-                  </Pie>
-                  <Legend verticalAlign="bottom" height={24} />
-                  <Tooltip content={<CustomTooltip />} />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-          </Panel>
-        </div>
-      </div>
-
-      {/* Middle grid: Bar (placement) + Heatmap */}
+      {/* Middle grid: Bar + Heatmap */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="h-80">
           <Panel title="Visibility by Placement Type" id="placement">
@@ -700,7 +678,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
         </div>
       </div>
 
-      {/* Bottom: Exposure by interval (full width) */}
+      {/* Bottom: Exposure by interval */}
       <div>
         <div className="h-96">
           <Panel title="Ad Exposure by Over Interval" id="exposure">
@@ -715,32 +693,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
         </div>
       </div>
 
-      {/* Modals for expanded view */}
-      {openPanel === "visibility" && (
-        <Modal title="Ad Visibility Quality" onClose={() => setOpenPanel(null)}>
-          <div style={{ height: 520 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={visibilityQualityData}
-                  dataKey={metric}
-                  nameKey="Visibility_Quality"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={160}
-                  label
-                >
-                  {visibilityQualityData.map((_, i) => (
-                    <Cell key={i} fill={COLORS.pie[i % COLORS.pie.length]} />
-                  ))}
-                </Pie>
-                <Legend verticalAlign="bottom" height={24} />
-                <Tooltip content={<CustomTooltip />} />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-        </Modal>
-      )}
+      {/* EXPANDED MODALS */}
 
       {openPanel === "placement" && (
         <Modal
@@ -794,12 +747,10 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
           title="Region Visibility Heatmap"
           onClose={() => setOpenPanel(null)}
         >
-          <div>
-            <RegionVisibilityHeatmap
-              metric={metric}
-              data={regionVisibilitySource}
-            />
-          </div>
+          <RegionVisibilityHeatmap
+            metric={metric}
+            data={regionVisibilitySource}
+          />
         </Modal>
       )}
 
