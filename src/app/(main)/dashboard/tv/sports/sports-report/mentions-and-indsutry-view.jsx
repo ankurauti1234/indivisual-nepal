@@ -3,6 +3,15 @@
 import { Treemap, ResponsiveContainer, Tooltip } from "recharts";
 import { useMemo, useState, useEffect } from "react";
 
+// shadcn/ui Select (used for the commentator filter)
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 /* -------------------------- Brand Icons -------------------------- */
 const BrandIcon = ({ brand }) => {
   const icons = {
@@ -36,7 +45,6 @@ const BrandIcon = ({ brand }) => {
       alt={brand}
       className="w-6 h-6 inline-block mr-2 object-contain"
       onError={(e) => {
-        // if image fails to load, replace with fallback element
         e.currentTarget.style.display = "none";
         const parent = e.currentTarget.parentNode;
         if (parent) {
@@ -111,7 +119,7 @@ const CustomizedContent = (props) => {
             textAnchor="middle"
             fill="#fff"
             fontSize={width > 120 ? 15 : 12}
-            fontWeight={600} // made less bold than 'bold'
+            fontWeight={600}
             className="pointer-events-none"
           >
             {name}
@@ -177,6 +185,9 @@ export default function MentionsAndIndustryView({ selectedMatch }) {
   // modal state
   const [openModal, setOpenModal] = useState(null); // 'commentary' | 'treemap' | null
 
+  // commentator filter state
+  const [commentatorFilter, setCommentatorFilter] = useState("All");
+
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
@@ -228,18 +239,35 @@ export default function MentionsAndIndustryView({ selectedMatch }) {
   const commentaryMentionsData = getFile("commentary");
   const exposureByCategoryData = getFile("treemap");
 
-  /* --------------------- Table sorting --------------------- */
+  /* --------------------- Commentator options (for the dropdown) --------------------- */
+  const commentatorOptions = useMemo(() => {
+    if (!commentaryMentionsData || commentaryMentionsData.length === 0)
+      return ["All"];
+    const names = Array.from(
+      new Set(commentaryMentionsData.map((r) => r.name))
+    ).filter(Boolean);
+    return ["All", ...names.sort((a, b) => a.localeCompare(b))];
+  }, [commentaryMentionsData]);
+
+  /* --------------------- Table sorting & filtering --------------------- */
   const tableRows = useMemo(() => {
     if (!commentaryMentionsData || commentaryMentionsData.length === 0)
       return [];
-    const rows = [...commentaryMentionsData];
+    // apply commentator filter first
+    const filtered =
+      commentatorFilter === "All"
+        ? [...commentaryMentionsData]
+        : commentaryMentionsData.filter(
+            (r) => String(r.name) === String(commentatorFilter)
+          );
+
     // ensure sort.key is available on rows; default to metric if not
     const sortKey = sort.key || metric;
-    rows.sort((a, b) =>
+    filtered.sort((a, b) =>
       sort.dir === "asc" ? a[sortKey] - b[sortKey] : b[sortKey] - a[sortKey]
     );
-    return rows;
-  }, [commentaryMentionsData, sort, metric]);
+    return filtered;
+  }, [commentaryMentionsData, sort, metric, commentatorFilter]);
 
   /* --------------------- Flatten data for current level --------------------- */
   const currentTreemapData = useMemo(() => {
@@ -362,7 +390,7 @@ export default function MentionsAndIndustryView({ selectedMatch }) {
           Metric
         </label>
         <select
-          className="px-3 py-2 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm focus:ring-2 focus:ring-blue-500"
+          className="px-3 py-2 rounded border border-gray-300 dark:border-gray-700 bg-card text-sm focus:ring-2 focus:ring-blue-500"
           value={metric}
           onChange={(e) => setMetric(e.target.value)}
         >
@@ -388,12 +416,34 @@ export default function MentionsAndIndustryView({ selectedMatch }) {
             </div>
 
             <div className="flex items-center gap-2">
-              <button
+              {/* Commentator filter (shadcn Select) */}
+              <div className="bg-card rounded-lg p-2">
+                <label className="text-xs text-gray-500 block mb-1">
+                  Commentator
+                </label>
+                <Select
+                  value={commentatorFilter}
+                  onValueChange={setCommentatorFilter}
+                >
+                  <SelectTrigger className="w-full sm:w-[220px]">
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {commentatorOptions.map((opt) => (
+                      <SelectItem key={opt} value={opt}>
+                        {opt}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* <button
                 onClick={() => setOpenModal("commentary")}
                 className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md"
               >
                 Open
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -464,12 +514,17 @@ export default function MentionsAndIndustryView({ selectedMatch }) {
                 <tbody className="bg-card divide-y divide-gray-200 dark:divide-gray-700">
                   {tableRows.map((row) => (
                     <tr
-                      key={row.brand}
+                      key={`${row.brand}-${row.name ?? ""}`}
                       className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                     >
                       <td className="px-4 py-3 whitespace-nowrap text-sm flex items-center text-gray-900 dark:text-gray-100">
                         <BrandIcon brand={row.brand} />
-                        {row.brand}
+                        <div>
+                          <div>{row.brand}</div>
+                          <div className="text-[11px] text-gray-500">
+                            {row.name}
+                          </div>
+                        </div>
                       </td>
 
                       {metric === "duration" ? (
@@ -524,12 +579,12 @@ export default function MentionsAndIndustryView({ selectedMatch }) {
                 </button>
               )}
 
-              <button
+              {/* <button
                 onClick={() => setOpenModal("treemap")}
                 className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md"
               >
                 Open
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -600,6 +655,31 @@ export default function MentionsAndIndustryView({ selectedMatch }) {
           metric === "duration" ? "Duration (s)" : "Count"
         }`}
       >
+        {/* commentator filter inside modal header */}
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <div />
+          <div className="bg-card rounded-lg p-2">
+            <label className="text-xs text-gray-500 block mb-1">
+              Commentator
+            </label>
+            <Select
+              value={commentatorFilter}
+              onValueChange={setCommentatorFilter}
+            >
+              <SelectTrigger className="w-full sm:w-[220px]">
+                <SelectValue placeholder="All" />
+              </SelectTrigger>
+              <SelectContent>
+                {commentatorOptions.map((opt) => (
+                  <SelectItem key={opt} value={opt}>
+                    {opt}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
         {/* reuse the table content inside modal (larger view) */}
         <div>
           {tableRows.length === 0 ? (
@@ -622,12 +702,17 @@ export default function MentionsAndIndustryView({ selectedMatch }) {
                 <tbody className="bg-card divide-y divide-gray-200 dark:divide-gray-700">
                   {tableRows.map((row) => (
                     <tr
-                      key={row.brand}
+                      key={`${row.brand}-${row.name ?? ""}`}
                       className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                     >
                       <td className="px-4 py-3 whitespace-nowrap text-sm flex items-center text-gray-900 dark:text-gray-100">
                         <BrandIcon brand={row.brand} />
-                        {row.brand}
+                        <div>
+                          <div>{row.brand}</div>
+                          <div className="text-[11px] text-gray-500">
+                            {row.name}
+                          </div>
+                        </div>
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
                         {metric === "duration" ? row.duration : row.count}

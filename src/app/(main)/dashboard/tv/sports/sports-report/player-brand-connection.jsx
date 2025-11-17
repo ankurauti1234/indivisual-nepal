@@ -12,6 +12,23 @@ import {
 } from "recharts";
 import { useMemo, useState, useEffect } from "react";
 
+// shadcn/ui imports
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import { Badge } from "@/components/ui/badge";
+import { ChevronsUpDown, X } from "lucide-react";
+
 /* ----------------------------- Colors -------------------------------- */
 const DEFAULT_PALETTE = [
   "#6366f1",
@@ -56,7 +73,7 @@ function buildDynamicColorMap({ datasets = [], palette = DEFAULT_PALETTE }) {
   }
 
   const sorted = Array.from(names).sort((a, b) => a.localeCompare(b));
-  const colorMap = Object.create(null);
+  const colorMap = {};
   for (let i = 0; i < sorted.length; i++) {
     const brand = sorted[i];
     if (i < palette.length) colorMap[brand] = palette[i];
@@ -69,6 +86,18 @@ function buildDynamicColorMap({ datasets = [], palette = DEFAULT_PALETTE }) {
 }
 
 /* ------------------------- Helpers -------------------------- */
+const normalizePlayer = (p) =>
+  String(p || "")
+    .replace(/\r|\n/g, "")
+    .trim();
+
+const getPlayers = (rows) => {
+  if (!rows || rows.length === 0) return [];
+  return Array.from(new Set(rows.map((r) => normalizePlayer(r.player))))
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
+};
+
 const getAllBrands = (rows) => {
   if (!rows || rows.length === 0) return [];
   return Array.from(
@@ -81,13 +110,11 @@ const Modal = ({ open, onClose, title, children }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Overlay */}
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden
       />
-      {/* Content */}
       <div className="relative w-[90%] max-w-7xl bg-white dark:bg-gray-900 rounded-xl shadow-xl p-5 z-50">
         <div className="flex justify-between items-center mb-4">
           <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
@@ -112,6 +139,7 @@ export default function PlayerBrandConnection({ selectedMatch }) {
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [playerFilter, setPlayerFilter] = useState([]);
 
   useEffect(() => {
     let mounted = true;
@@ -133,7 +161,11 @@ export default function PlayerBrandConnection({ selectedMatch }) {
           const file = data.files?.find((f) =>
             String(f.name).toLowerCase().includes("player_brand")
           );
-          setApiData(file?.content || []);
+          const normalized = (file?.content || []).map((r) => ({
+            ...r,
+            player: normalizePlayer(r.player),
+          }));
+          setApiData(normalized);
         }
       } catch (err) {
         console.error("Error fetching player brand data:", err);
@@ -143,21 +175,34 @@ export default function PlayerBrandConnection({ selectedMatch }) {
       }
     }
     fetchData();
-    return () => (mounted = false);
+    return () => {
+      mounted = false;
+    };
   }, [selectedMatch]);
 
-  const allBrands = useMemo(() => getAllBrands(apiData), [apiData]);
+  const allPlayers = useMemo(() => getPlayers(apiData), [apiData]);
+
+  const filteredApiData = useMemo(() => {
+    if (!playerFilter || playerFilter.length === 0) return apiData;
+    const setFilter = new Set(playerFilter);
+    return apiData.filter((r) => setFilter.has(String(r.player)));
+  }, [apiData, playerFilter]);
+
+  const allBrands = useMemo(
+    () => getAllBrands(filteredApiData),
+    [filteredApiData]
+  );
 
   const brandColorMap = useMemo(() => {
     return buildDynamicColorMap({
-      datasets: [apiData],
+      datasets: [filteredApiData],
       palette: DEFAULT_PALETTE,
     });
-  }, [apiData]);
+  }, [filteredApiData]);
 
   const chartData = useMemo(() => {
-    if (!apiData || apiData.length === 0) return [];
-    return apiData.map((p) => {
+    if (!filteredApiData || filteredApiData.length === 0) return [];
+    return filteredApiData.map((p) => {
       const row = { player: p.player };
       allBrands.forEach((brand) => {
         const hit = (p.brands || []).find((b) => b.name === brand);
@@ -165,7 +210,7 @@ export default function PlayerBrandConnection({ selectedMatch }) {
       });
       return row;
     });
-  }, [metric, allBrands, apiData]);
+  }, [metric, allBrands, filteredApiData]);
 
   if (loading) {
     return (
@@ -193,46 +238,179 @@ export default function PlayerBrandConnection({ selectedMatch }) {
 
   return (
     <div className="p-4 space-y-4">
-      {/* Metric Selector */}
-      <div className="flex items-center gap-3">
-        <label className="text-sm text-gray-700 dark:text-gray-300">
-          Metric
-        </label>
-        <select
-          className="px-3 py-2 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm"
-          value={metric}
-          onChange={(e) => setMetric(e.target.value)}
-        >
-          <option value="duration">Duration (sec)</option>
-          <option value="count">Count</option>
-        </select>
+      {/* Controls row: Metric + Player filter */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 gap-3">
+        <div className="flex items-center gap-3">
+          <label className="text-sm text-gray-700 dark:text-gray-300">
+            Metric
+          </label>
+          <select
+            className="px-3 py-2 rounded border border-gray-300 dark:border-gray-700 bg-card text-sm"
+            value={metric}
+            onChange={(e) => setMetric(e.target.value)}
+          >
+            <option value="duration">Duration (sec)</option>
+            <option value="count">Count</option>
+          </select>
+        </div>
+
+        {/* Multi-Select Players */}
+        <div className="ml-auto w-full sm:w-[420px]">
+          <div className="bg-card rounded-xl p-3">
+            <label className="text-sm text-gray-700 dark:text-gray-300 block mb-2">
+              Players
+            </label>
+
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  role="combobox"
+                  className="w-full justify-between h-auto py-2 px-3 text-left font-normal"
+                >
+                  <div className="flex flex-wrap gap-1 max-w-full">
+                    {playerFilter.length === 0 ? (
+                      <span className="text-muted-foreground">
+                        {allPlayers.length === 0
+                          ? "No players"
+                          : "Select players..."}
+                      </span>
+                    ) : (
+                      playerFilter.map((player) => (
+                        <Badge
+                          key={player}
+                          variant="secondary"
+                          className="mr-1 mb-1 text-xs"
+                        >
+                          {player}
+                          <button
+                            className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                            onKeyDown={(e) => e.stopPropagation()}
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                            }}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setPlayerFilter(
+                                playerFilter.filter((p) => p !== player)
+                              );
+                            }}
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        </Badge>
+                      ))
+                    )}
+                  </div>
+                  <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50 ml-2" />
+                </Button>
+              </PopoverTrigger>
+
+              <PopoverContent
+                className="w-full p-0 max-w-[420px]"
+                align="start"
+              >
+                <Command>
+                  <CommandInput placeholder="Search players..." />
+                  <CommandEmpty>No player found.</CommandEmpty>
+                  <CommandGroup className="max-h-64 overflow-auto">
+                    <CommandItem
+                      onSelect={() => setPlayerFilter(allPlayers)}
+                      className="cursor-pointer"
+                    >
+                      <span className="font-medium">Select All</span>
+                    </CommandItem>
+                    <CommandItem
+                      onSelect={() => setPlayerFilter([])}
+                      className="cursor-pointer"
+                    >
+                      <span className="font-medium text-destructive">
+                        Clear All
+                      </span>
+                    </CommandItem>
+
+                    <div className="h-px bg-border my-1" />
+
+                    {allPlayers.map((player) => (
+                      <CommandItem
+                        key={player}
+                        onSelect={() => {
+                          setPlayerFilter(
+                            playerFilter.includes(player)
+                              ? playerFilter.filter((p) => p !== player)
+                              : [...playerFilter, player]
+                          );
+                        }}
+                        className="cursor-pointer"
+                      >
+                        <div className="flex items-center">
+                          <div
+                            className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${
+                              playerFilter.includes(player)
+                                ? "bg-primary text-primary-foreground border-primary"
+                                : "border-input"
+                            }`}
+                          >
+                            {playerFilter.includes(player) && (
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="3"
+                                className="h-3 w-3"
+                              >
+                                <path d="M5 13l4 4L19 7" />
+                              </svg>
+                            )}
+                          </div>
+                          {player}
+                        </div>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </Command>
+              </PopoverContent>
+            </Popover>
+
+            <p className="text-xs text-gray-500 mt-1">
+              You can select multiple players to compare. Leave empty to show
+              all.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Chart Card */}
       <div className="bg-card rounded-xl p-5">
-        {/* Header Row */}
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-sm font-medium text-gray-900 dark:text-white">
             Player–Brand Association (
             {metric === "duration" ? "Duration (s)" : "Count"})
           </h3>
-          <button
+          {/* <button
             onClick={() => setOpenModal(true)}
             className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs rounded-md"
           >
-            Open
-          </button>
+            Open Full View
+          </button> */}
         </div>
 
-        {/* Chart */}
-        <div className="h-[440px]">
+        {chartData.length > 15 && (
+          <p className="text-xs text-amber-600 mb-2">
+            Showing {chartData.length} players. Consider filtering for clarity.
+          </p>
+        )}
+
+        <div className="h-[520px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={chartData}
-              margin={{ top: 12, right: 24, left: 8, bottom: 12 }}
+              margin={{ top: 12, right: 24, left: 8, bottom: 24 }}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="player" />
+              <XAxis dataKey="player" fontSize={8} interval={0} />
               <YAxis
                 label={{
                   value: metric === "duration" ? "Duration (s)" : "Count",
@@ -251,7 +429,6 @@ export default function PlayerBrandConnection({ selectedMatch }) {
                   `${name} ${metric === "duration" ? "(s)" : ""}`,
                 ]}
               />
-              <Legend />
               {allBrands.map((brand) => (
                 <Bar
                   key={brand}
@@ -266,11 +443,12 @@ export default function PlayerBrandConnection({ selectedMatch }) {
         </div>
 
         <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-          Use the metric dropdown to switch between Duration and Count.
+          Use the metric dropdown to switch between Duration and Count. Use the
+          Players selector to filter which players appear in the chart.
         </p>
       </div>
 
-      {/* Modal with Large Chart */}
+      {/* Modal */}
       <Modal
         open={openModal}
         onClose={() => setOpenModal(false)}

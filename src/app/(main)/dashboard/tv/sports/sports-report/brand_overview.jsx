@@ -8,12 +8,23 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
-  Cell,
   PieChart,
   Pie,
+  Cell,
+  LabelList,
 } from "recharts";
 import { useMemo, useState, useEffect } from "react";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { X } from "lucide-react";
 
 /* ---------- Colors ---------- */
 const DEFAULT_PALETTE = [
@@ -29,47 +40,35 @@ const DEFAULT_PALETTE = [
   "#94a3b8",
 ];
 
-const COLORS = { bar: "#6366f1" };
-
 /* ---------- Helpers ---------- */
 function formatSeconds(n) {
   if (n == null) return "-";
   return `${n.toLocaleString()}s`;
 }
-function percentToValue(pct, scale = 100) {
-  return Math.max(0.001, (pct || 0) * scale);
-}
-function buildStackedFromCompetitors(data = []) {
-  const brands = new Set();
-  for (const row of data) {
-    Object.keys(row).forEach((k) => {
-      if (k === "category") return;
-      brands.add(k);
-    });
-  }
-  const brandList = Array.from(brands);
-  const out = data.map((row) => {
-    const o = { category: row.category };
-    for (const b of brandList) {
-      o[b] = (row[b] && row[b].duration) || 0;
-    }
-    return o;
-  });
-  return { out, brandList };
-}
 function getValueForMetric(item, metric) {
   if (!item) return 0;
   if (metric === "duration") {
-    if (typeof item.duration === "number") return item.duration;
-    if (typeof item.percentage_duration === "number")
-      return percentToValue(item.percentage_duration, 100);
-    return 0;
-  } else {
-    if (typeof item.count === "number") return item.count;
-    if (typeof item.percentage_count === "number")
-      return percentToValue(item.percentage_count, 100);
-    return 0;
+    return item.duration ?? item.percentage_duration ?? 0;
   }
+  return item.count ?? item.percentage_count ?? 0;
+}
+function buildStackedFromSectors(data = [], selectedSectors = []) {
+  const filtered =
+    selectedSectors.length === 0
+      ? data
+      : data.filter((d) => selectedSectors.includes(d.sector));
+  const brands = new Set();
+  filtered.forEach((row) =>
+    Object.keys(row).forEach((k) => k !== "sector" && brands.add(k))
+  );
+  const brandList = Array.from(brands);
+
+  const out = filtered.map((row) => {
+    const o = { sector: row.sector };
+    brandList.forEach((b) => (o[b] = row[b]?.duration || 0));
+    return o;
+  });
+  return { out, brandList };
 }
 
 /* ---------- Component ---------- */
@@ -78,35 +77,35 @@ export default function BrandOverview({
   componentFolder = "brand-overview",
   apiPath = "/api/matches-files",
 }) {
-  const [metric, setMetric] = useState("duration"); // global metric: 'duration' or 'count'
+  const [metric, setMetric] = useState("duration");
   const [apiFiles, setApiFiles] = useState([]);
   const [fileMap, setFileMap] = useState({});
   const [loading, setLoading] = useState(true);
-  const [openModal, setOpenModal] = useState(null);
 
-  /* Fetch list of files from your API */
+  // Global Sector Filter
+  const [selectedSectors, setSelectedSectors] = useState([]); // [] = all
+
+  /* Fetch & Parse Files */
   useEffect(() => {
     let mounted = true;
     async function fetchFiles() {
       setLoading(true);
-      try {
-        if (!selectedMatch) {
-          if (mounted) {
-            setApiFiles([]);
-            setFileMap({});
-            setLoading(false);
-          }
-          return;
+      if (!selectedMatch) {
+        if (mounted) {
+          setApiFiles([]);
+          setFileMap({});
+          setLoading(false);
         }
-        const params = new URLSearchParams({
-          match: selectedMatch,
-          component: componentFolder,
-        });
-        const res = await fetch(`${apiPath}?${params.toString()}`);
+        return;
+      }
+      try {
+        const res = await fetch(
+          `${apiPath}?match=${selectedMatch}&component=${componentFolder}`
+        );
         const json = await res.json();
         if (mounted) setApiFiles(json.files || []);
       } catch (err) {
-        console.error("Failed to fetch files from API:", err);
+        console.error(err);
         if (mounted) setApiFiles([]);
       } finally {
         if (mounted) setLoading(false);
@@ -116,147 +115,121 @@ export default function BrandOverview({
     return () => (mounted = false);
   }, [selectedMatch, componentFolder, apiPath]);
 
-  /* Build file map (name -> parsed json) */
   useEffect(() => {
     let mounted = true;
     async function buildMap() {
       const map = {};
       await Promise.all(
-        (apiFiles || []).map(async (f) => {
-          if (!f || !f.name) return;
-          const key = String(f.name).toLowerCase();
-          if (f.content) {
-            try {
-              map[key] =
-                typeof f.content === "string"
-                  ? JSON.parse(f.content)
-                  : f.content;
-              return;
-            } catch (err) {
-              console.warn(
-                `Could not JSON.parse file.content for ${f.name}`,
-                err
-              );
-            }
-          }
-          if (f.url) {
-            try {
-              const r = await fetch(f.url);
-              const txt = await r.text();
-              try {
-                map[key] = JSON.parse(txt);
-              } catch {
-                try {
-                  map[key] = await r.json();
-                } catch (err2) {
-                  console.warn(`Failed to parse content at ${f.url}`, err2);
-                }
-              }
-              return;
-            } catch (err) {
-              console.warn(`Failed to fetch file.url for ${f.name}`, err);
-            }
-          }
-          if (f.content_string) {
-            try {
-              map[key] = JSON.parse(f.content_string);
-              return;
-            } catch (err) {
-              console.warn("failed parse content_string", err);
-            }
-          }
+        apiFiles.map(async (f) => {
+          if (!f?.name) return;
+          let content =
+            f.content || (f.url && (await (await fetch(f.url)).json()));
+          if (content) map[f.name.toLowerCase()] = content;
         })
       );
       if (mounted) setFileMap(map);
     }
-    if ((apiFiles || []).length > 0) buildMap();
-    else setFileMap({});
+    if (apiFiles.length) buildMap();
     return () => (mounted = false);
   }, [apiFiles]);
 
-  const getFileByName = (namePart) => {
-    const matchKey = Object.keys(fileMap).find((k) =>
-      k.includes(namePart.toLowerCase())
-    );
-    return matchKey ? fileMap[matchKey] : null;
-  };
+  const getFile = (namePart) =>
+    Object.keys(fileMap).find((k) => k.includes(namePart.toLowerCase()))
+      ? fileMap[
+          Object.keys(fileMap).find((k) => k.includes(namePart.toLowerCase()))
+        ]
+      : null;
 
-  /* Derive datasets */
-  const topCards = useMemo(
-    () =>
-      getFileByName("brand_overview_top_cards") ||
-      getFileByName("top_cards") ||
-      {},
+  /* Raw Data */
+  const topCards = useMemo(() => getFile("top_cards") || {}, [fileMap]);
+  const brandShareRaw = useMemo(() => getFile("brand_share") || [], [fileMap]);
+  const brandScreenTimeRaw = useMemo(
+    () => getFile("brand_screen_time") || [],
     [fileMap]
   );
-  const brandShare = useMemo(
-    () =>
-      getFileByName("brand_overview_brand_share") ||
-      getFileByName("brand_share") ||
-      [],
+  const categoryExposureRaw = useMemo(
+    () => getFile("category_exposure") || [],
     [fileMap]
   );
-  const brandScreenTime = useMemo(
-    () =>
-      getFileByName("brand_overview_brand_screen_time") ||
-      getFileByName("brand_screen_time") ||
-      [],
-    [fileMap]
-  );
-  const categoryExposure = useMemo(
-    () =>
-      getFileByName("brand_overview_category_exposure") ||
-      getFileByName("category_exposure") ||
-      [],
-    [fileMap]
-  );
-  const stackedCompetitors = useMemo(
-    () =>
-      getFileByName("brand_overview_stacked_competitors") ||
-      getFileByName("stacked_competitors") ||
-      [],
+  const stackedCompetitorsRaw = useMemo(
+    () => getFile("stacked_competitors") || [],
     [fileMap]
   );
 
+  /* Available Sectors */
+  const availableSectors = useMemo(() => {
+    if (!Array.isArray(stackedCompetitorsRaw)) return [];
+    return [...new Set(stackedCompetitorsRaw.map((r) => r.sector))].sort();
+  }, [stackedCompetitorsRaw]);
+
+  /* Filtered Data (only for 3 charts) */
+  const filteredBrandShare = useMemo(
+    () =>
+      selectedSectors.length === 0
+        ? brandShareRaw
+        : brandShareRaw.filter((d) => selectedSectors.includes(d.sector)),
+    [brandShareRaw, selectedSectors]
+  );
+
+  const filteredScreenTimeBrands = useMemo(() => {
+    if (selectedSectors.length === 0) return brandScreenTimeRaw;
+    const allowedBrands = new Set();
+    stackedCompetitorsRaw
+      .filter((r) => selectedSectors.includes(r.sector))
+      .forEach((r) =>
+        Object.keys(r).forEach((k) => k !== "sector" && allowedBrands.add(k))
+      );
+    return brandScreenTimeRaw.filter((d) => allowedBrands.has(d.brand));
+  }, [brandScreenTimeRaw, stackedCompetitorsRaw, selectedSectors]);
+
+  const { out: stackedData, brandList: stackedBrands } = useMemo(
+    () => buildStackedFromSectors(stackedCompetitorsRaw, selectedSectors),
+    [stackedCompetitorsRaw, selectedSectors]
+  );
+
+  /* Derived Chart Data */
   const brandShareSorted = useMemo(() => {
-    if (!Array.isArray(brandShare)) return [];
-    const sortKey =
+    const key =
       metric === "duration" ? "percentage_duration" : "percentage_count";
-    return [...brandShare]
-      .sort((a, b) => (b[sortKey] || 0) - (a[sortKey] || 0))
+    return [...filteredBrandShare]
+      .sort((a, b) => (b[key] || 0) - (a[key] || 0))
       .slice(0, 8);
-  }, [brandShare, metric]);
+  }, [filteredBrandShare, metric]);
 
   const topBrands = useMemo(() => {
-    if (!Array.isArray(brandScreenTime)) return [];
-    return [...brandScreenTime]
+    const aggregated = filteredScreenTimeBrands.reduce((acc, cur) => {
+      const existing = acc.find((i) => i.brand === cur.brand);
+      if (existing) {
+        existing.duration = (existing.duration || 0) + (cur.duration || 0);
+        existing.count = (existing.count || 0) + (cur.count || 0);
+      } else acc.push({ ...cur });
+      return acc;
+    }, []);
+    return aggregated
       .sort(
         (a, b) => getValueForMetric(b, metric) - getValueForMetric(a, metric)
       )
       .slice(0, 10)
       .map((d) => ({ ...d, value: getValueForMetric(d, metric) }));
-  }, [brandScreenTime, metric]);
+  }, [filteredScreenTimeBrands, metric]);
 
-  const exposureByCategory = useMemo(() => {
-    if (!Array.isArray(categoryExposure)) return [];
-    return [...categoryExposure]
-      .sort(
-        (a, b) => getValueForMetric(b, metric) - getValueForMetric(a, metric)
-      )
-      .slice(0, 12)
-      .map((d) => ({ ...d, value: getValueForMetric(d, metric) }));
-  }, [categoryExposure, metric]);
-
-  const stacked = useMemo(
+  const exposureByCategory = useMemo(
     () =>
-      buildStackedFromCompetitors(
-        Array.isArray(stackedCompetitors) ? stackedCompetitors : []
-      ),
-    [stackedCompetitors]
+      [...categoryExposureRaw]
+        .sort(
+          (a, b) => getValueForMetric(b, metric) - getValueForMetric(a, metric)
+        )
+        .map((d) => ({ ...d, value: getValueForMetric(d, metric) })),
+    [categoryExposureRaw, metric]
   );
 
-  const topBrandByDuration = topCards?.top_brand_duration || null;
-  const topBrandByCount = topCards?.top_brand_count || null;
+  const topBrandDuration = topCards?.top_brand_duration;
+  const topBrandCount = topCards?.top_brand_count;
+
+  const toggleSector = (s) =>
+    setSelectedSectors((prev) =>
+      prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
+    );
 
   if (loading)
     return (
@@ -266,89 +239,140 @@ export default function BrandOverview({
     );
 
   return (
-    <div className="p-4 space-y-6">
-      {/* Global metric selector */}
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <label className="text-sm text-gray-700 dark:text-gray-300">
-            Metric (global)
+    <div className="p-6 space-y-8">
+      {/* Global Controls */}
+      <div className="flex flex-wrap items-end justify-between gap-6 bg-card/50 -m-6 mb-6 p-6 border-b">
+        <div className="flex items-center gap-4">
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Metric
           </label>
           <select
-            className="px-3 py-2 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm"
             value={metric}
             onChange={(e) => setMetric(e.target.value)}
+            className="px-4 py-2 rounded-lg border bg-background text-sm"
           >
             <option value="duration">Duration (sec)</option>
             <option value="count">Count</option>
           </select>
         </div>
 
-        {/* small top-brand info boxes (unchanged by metric) */}
-        <div className="flex gap-3 ml-auto">
-          <div className="bg-card rounded-md p-3">
-            <div className="text-xs text-gray-500">Top Brand (Duration)</div>
-            <div className="text-sm font-semibold">
-              {topBrandByDuration?.brand ?? "—"}
-            </div>
-            <div className="text-xs text-gray-400">
-              {formatSeconds(topBrandByDuration?.duration)}
-            </div>
+        {/* Global Sector Filter */}
+        <div className="max-w-2xl">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Filter by Sector (applies to Brand Share, Screen Time & Competitor
+            Comparison)
+          </label>
+          <div className="flex items-center gap-3">
+            <Select onValueChange={toggleSector}>
+              <SelectTrigger className="w-80">
+                <SelectValue placeholder="Select sectors..." />
+              </SelectTrigger>
+              <SelectContent>
+                {availableSectors.map((s) => (
+                  <SelectItem key={s} value={s}>
+                    <div className="flex items-center justify-between w-full">
+                      <span>{s}</span>
+                      {selectedSectors.includes(s) && (
+                        <span className="ml-2 text-green-600 text-xs">
+                          Selected
+                        </span>
+                      )}
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => setSelectedSectors([])}
+            >
+              Clear
+            </Button>
           </div>
-          <div className="bg-card rounded-md p-3">
-            <div className="text-xs text-gray-500">Top Brand (Count)</div>
-            <div className="text-sm font-semibold">
-              {topBrandByCount?.brand ?? "—"}
-            </div>
-            <div className="text-xs text-gray-400">
-              Count: {topBrandByCount?.count ?? "—"}
-            </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {selectedSectors.length === 0 ? (
+              <span className="text-sm text-muted-foreground">All sectors</span>
+            ) : (
+              selectedSectors.map((s) => (
+                <Badge key={s} variant="secondary" className="px-3 py-1">
+                  {s}
+                  <button onClick={() => toggleSector(s)} className="ml-2">
+                    <X size={14} />
+                  </button>
+                </Badge>
+              ))
+            )}
           </div>
         </div>
       </div>
 
-      {/* Top row - 3 columns: Top duration, Top count, Brand share (pie) */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        {/* 1 - Top Brand (Duration) */}
-        <div className="bg-card rounded-xl p-4 flex flex-col justify-between">
-          <div>
-            <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-              Top Brand (Duration)
-            </h4>
-            <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-gray-100">
-              {topBrandByDuration?.brand ?? "—"}
-            </p>
-            <p className="text-xs text-gray-500 mt-1">
-              {formatSeconds(topBrandByDuration?.duration)}
-            </p>
+      {/* Top Row */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        {/* Top Brand Duration */}
+        <div className="relative overflow-hidden rounded-2xl bg-card border border-border/60 p-5 shadow-sm hover:shadow-md transition-shadow">
+          <div className="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-400/10" />
+          <div className="relative z-10 flex flex-col h-full justify-between gap-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium uppercase tracking-wide text-gray-400">
+                Top Brand
+              </span>
+              <span className="inline-flex items-center rounded-full bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-400">
+                Duration
+              </span>
+            </div>
+            <div>
+              <div className="text-sm text-gray-400">Brand</div>
+              <div className="mt-1 text-2xl font-semibold">
+                {topBrandDuration?.brand ?? "—"}
+              </div>
+            </div>
+            <div className="mt-2 flex items-center justify-between text-sm text-gray-400">
+              <span>Total Duration</span>
+              <span className="font-medium text-gray-100">
+                {formatSeconds(topBrandDuration?.duration)}
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* 2 - Top Brand (Count) */}
-        <div className="bg-card rounded-xl p-4 flex flex-col justify-between">
-          <div>
-            <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-              Top Brand (Count)
-            </h4>
-            <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-gray-100">
-              {topBrandByCount?.brand ?? "—"}
-            </p>
-            <p className="text-xs text-gray-500 mt-1">
-              Count: {topBrandByCount?.count ?? "—"}
-            </p>
+        {/* Top Brand Count */}
+        <div className="relative overflow-hidden rounded-2xl bg-card border border-border/60 p-5 shadow-sm hover:shadow-md transition-shadow">
+          <div className="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-emerald-500/20 to-lime-400/10" />
+          <div className="relative z-10 flex flex-col h-full justify-between gap-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium uppercase tracking-wide text-gray-400">
+                Top Brand
+              </span>
+              <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-medium text-emerald-400">
+                Count
+              </span>
+            </div>
+            <div>
+              <div className="text-sm text-gray-400">Brand</div>
+              <div className="mt-1 text-2xl font-semibold">
+                {topBrandCount?.brand ?? "—"}
+              </div>
+            </div>
+            <div className="mt-2 flex items-center justify-between text-sm text-gray-400">
+              <span>Total Appearances</span>
+              <span className="font-medium text-gray-100">
+                {topBrandCount?.count ?? "—"}
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* 3 - Brand Share (Pie) - uses global metric */}
-        <div className="bg-card rounded-xl p-4">
-          <div className="flex items-center justify-between">
+        {/* Brand Share Pie */}
+        <div className="rounded-2xl bg-card border border-border/60 p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+          <div className="h-52 mt-4">
             <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-              Brand Share 
+              Brand Share
             </h4>
-          </div>
-
-          <div className="h-52 mt-3">
             {brandShareSorted.length === 0 ? (
-              <p className="text-sm text-gray-500">No data</p>
+              <div className="flex h-full items-center justify-center">
+                <p className="text-sm text-gray-500">No data</p>
+              </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -359,21 +383,22 @@ export default function BrandOverview({
                     }))}
                     dataKey="value"
                     nameKey="name"
-                    innerRadius={40}
-                    outerRadius={80}
+                    innerRadius={50}
+                    outerRadius={90}
+                    paddingAngle={2}
+                    labelLine={false}
                     label={(entry) => entry.name}
                   >
-                    {brandShareSorted.map((_, idx) => (
+                    {brandShareSorted.map((_, i) => (
                       <Cell
-                        key={idx}
-                        fill={DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length]}
+                        key={i}
+                        fill={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
                       />
                     ))}
                   </Pie>
                   <Tooltip
                     formatter={(v) => (metric === "duration" ? `${v}s` : v)}
                   />
-                  {/* <Legend /> */}
                 </PieChart>
               </ResponsiveContainer>
             )}
@@ -381,132 +406,162 @@ export default function BrandOverview({
         </div>
       </div>
 
-      {/* Middle area - 2 charts in 2 columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Brand Screen Time (horizontal bar) */}
-        <div className="bg-card rounded-xl p-4">
-          <div className="flex items-center justify-between">
-            <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-              Brand Screen Time ({metric})
-            </h4>
-            <button
-              onClick={() => setOpenModal("screen_time")}
-              className="px-2 py-1 rounded-md bg-primary text-primary-foreground text-sm"
-            >
-              Open
-            </button>
-          </div>
-          <div className="h-64 mt-3">
-            {topBrands.length === 0 ? (
-              <p className="text-sm text-gray-500">No data</p>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  layout="vertical"
-                  data={topBrands}
-                  margin={{ left: 120 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis type="number" />
-                  <YAxis dataKey="brand" type="category" width={180} />
-                  <Tooltip
-                    formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                  />
-                  <Legend />
-                  <Bar dataKey="value" name={metric}>
-                    {topBrands.map((_, idx) => (
-                      <Cell
-                        key={idx}
-                        fill={DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length]}
-                      />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </div>
-
-        {/* Exposure by Brand Category (vertical bar) */}
-        <div className="bg-card rounded-xl p-4">
-          <div className="flex items-center justify-between">
-            <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-              Exposure by Category ({metric})
-            </h4>
-            <button
-              onClick={() => setOpenModal("cat_exposure")}
-              className="px-2 py-1 rounded-md bg-primary text-primary-foreground text-sm"
-            >
-              Open
-            </button>
-          </div>
-          <div className="h-64 mt-3">
-            {exposureByCategory.length === 0 ? (
-              <p className="text-sm text-gray-500">No data</p>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={exposureByCategory}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis
-                    dataKey="category"
-                    tick={{ fontSize: 11 }}
-                    interval={0}
-                    angle={-30}
-                    textAnchor="end"
-                    height={70}
-                  />
-                  <YAxis />
-                  <Tooltip
-                    formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                  />
-                  <Legend />
-                  <Bar dataKey="value" fill={COLORS.bar} />
-                </BarChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom full-width: Brand Competitor Comparison (stacked full width) */}
+      {/* Brand Screen Time */}
       <div className="bg-card rounded-xl p-4">
-        <div className="flex items-center justify-between">
+        <div className="h-96 mt-3 overflow-visible">
           <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-            Brand Competitor Comparison (Stacked)
+            Brand Screen Time
           </h4>
-          <button
-            onClick={() => setOpenModal("stacked_full")}
-            className="px-2 py-1 rounded-md bg-primary text-primary-foreground text-sm"
-          >
-            Open
-          </button>
-        </div>
-        <div className="h-96 mt-3">
-          {stacked.out.length === 0 ? (
+          {topBrands.length === 0 ? (
             <p className="text-sm text-gray-500">No data</p>
           ) : (
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={stacked.out}>
-                <CartesianGrid strokeDasharray="3 3" />
+              <BarChart
+                layout="vertical"
+                data={topBrands}
+                margin={{ top: 5, right: 30, bottom: 5, left: 160 }}
+              >
+                <XAxis type="number" />
+                <YAxis
+                  dataKey="brand"
+                  type="category"
+                  width={160}
+                  tick={{ fontSize: 11 }}
+                />
+                <Tooltip
+                  formatter={(v) => (metric === "duration" ? `${v}s` : v)}
+                />
+                <Bar dataKey="value">
+                  {topBrands.map((_, i) => (
+                    <Cell
+                      key={i}
+                      fill={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
+                    />
+                  ))}
+                  <LabelList
+                    dataKey="value"
+                    position="right"
+                    formatter={(v) => (metric === "duration" ? `${v}s` : v)}
+                    className="text-xs fill-primary"
+                  />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          )}
+        </div>
+      </div>
+
+      {/* Exposure by Category - UNFILTERED */}
+      <div className="bg-card rounded-xl p-4">
+        <div className="h-96 mt-3 overflow-visible">
+          <h4 className="text-sm font-medium text-gray-900 dark:text-white">
+            Exposure by Brand Category
+          </h4>
+          {exposureByCategory.length === 0 ? (
+            <p className="text-sm text-gray-500">No data</p>
+          ) : (
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={exposureByCategory}>
                 <XAxis
                   dataKey="category"
                   tick={{ fontSize: 11 }}
                   interval={0}
-                  angle={-30}
+                  angle={-35}
                   textAnchor="end"
-                  height={80}
+                  height={70}
                 />
                 <YAxis />
                 <Tooltip
                   formatter={(v) => (metric === "duration" ? `${v}s` : v)}
                 />
-                {/* <Legend /> */}
-                {stacked.brandList.map((b, idx) => (
+                <Bar dataKey="value" fill="#6366f1">
+                  <LabelList
+                    dataKey="value"
+                    position="top"
+                    formatter={(v) => (metric === "duration" ? `${v}s` : v)}
+                    className="fill-primary text-xs"
+                  />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          )}
+        </div>
+      </div>
+
+      {/* Brand Competitor Comparison - FILTERED BY SECTOR */}
+      {/* Brand Competitor Comparison - FILTERED BY SECTOR */}
+      <div className="bg-card rounded-xl p-4">
+        <div className="flex items-center justify-between mb-4">
+          <h4 className="text-sm font-medium text-gray-900 dark:text-white">
+            Brand Competitor Comparison
+          </h4>
+        </div>
+        <div className="h-96 mt-3">
+          {stackedData.length === 0 ? (
+            <p className="text-sm text-gray-500">
+              No data for selected sectors
+            </p>
+          ) : (
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={stackedData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  dataKey="sector"
+                  tick={{ fontSize: 11 }}
+                  interval={0}
+                  angle={-50}
+                  textAnchor="end"
+                  height={80}
+                />
+                <YAxis />
+
+                {/* Custom Tooltip - Hides brands with 0 value */}
+                <Tooltip
+                  content={({ active, payload, label }) => {
+                    if (active && payload && payload.length) {
+                      const filteredPayload = payload
+                        .filter((item) => item.value > 0) // Only show if value > 0
+                        .sort((a, b) => b.value - a.value); // Optional: sort by value
+
+                      if (filteredPayload.length === 0) return null;
+
+                      return (
+                        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3 text-sm">
+                          <p className="font-medium text-gray-900 dark:text-white mb-2">
+                            {label}
+                          </p>
+                          {filteredPayload.map((entry, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center justify-between gap-4"
+                            >
+                              <div className="flex items-center gap-2">
+                                <div
+                                  className="w-3 h-3 rounded-full"
+                                  style={{ backgroundColor: entry.color }}
+                                />
+                                <span>{entry.name}</span>
+                              </div>
+                              <span className="font-medium">
+                                {metric === "duration"
+                                  ? `${entry.value}s`
+                                  : entry.value}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
+
+                {stackedBrands.map((b, i) => (
                   <Bar
                     key={b}
                     dataKey={b}
                     stackId="a"
-                    fill={DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length]}
+                    fill={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
                   />
                 ))}
               </BarChart>
@@ -514,124 +569,6 @@ export default function BrandOverview({
           )}
         </div>
       </div>
-
-      {/* Modal: expanded charts */}
-      {openModal && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center p-6">
-          <div
-            className="absolute inset-0 bg-black/40"
-            onClick={() => setOpenModal(null)}
-          />
-          <div className="relative w-full max-w-6xl bg-card rounded-xl p-6 shadow-2xl">
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {openModal}
-              </h4>
-              <div>
-                <button
-                  onClick={() => setOpenModal(null)}
-                  className="px-2 py-1 rounded-md bg-destructive text-destructive-foreground text-sm"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-
-            <div className="h-[520px]">
-              {openModal === "screen_time" && (
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    layout="vertical"
-                    data={topBrands}
-                    margin={{ left: 140 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" />
-                    <YAxis dataKey="brand" type="category" width={220} />
-                    <Tooltip
-                      formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                    />
-                    <Legend />
-                    <Bar dataKey="value" name={metric}>
-                      {topBrands.map((_, idx) => (
-                        <Cell
-                          key={idx}
-                          fill={DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length]}
-                        />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
-
-              {openModal === "cat_exposure" && (
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={exposureByCategory}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="category" />
-                    <YAxis />
-                    <Tooltip
-                      formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                    />
-                    <Legend />
-                    <Bar dataKey="value" fill={COLORS.bar} />
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
-
-              {openModal === "stacked_full" && (
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={stacked.out}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="category" />
-                    <YAxis />
-                    <Tooltip
-                      formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                    />
-                    <Legend />
-                    {stacked.brandList.map((b, idx) => (
-                      <Bar
-                        key={b}
-                        dataKey={b}
-                        stackId="a"
-                        fill={DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length]}
-                      />
-                    ))}
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
-
-              {openModal === "brand_share" && (
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={brandShareSorted.map((d) => ({
-                        name: d.brand,
-                        value: getValueForMetric(d, metric),
-                      }))}
-                      dataKey="value"
-                      innerRadius={60}
-                      outerRadius={160}
-                      label
-                    >
-                      {brandShareSorted.map((_, idx) => (
-                        <Cell
-                          key={idx}
-                          fill={DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length]}
-                        />
-                      ))}
-                    </Pie>
-                    <Tooltip
-                      formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                    />
-                    <Legend />
-                  </PieChart>
-                </ResponsiveContainer>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -15,7 +15,18 @@ import {
   Cell,
   BarChart,
   Bar,
+  LabelList,
 } from "recharts";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { X } from "lucide-react";
 
 /* =============================================================================
    CONFIG & COLORS
@@ -45,11 +56,7 @@ const DEFAULT_PALETTE = [
   "#10b981",
 ];
 
-const COLORS = {
-  donut: ["#4f46e5", "#059669"],
-  bar: "#6366f1",
-};
-
+const COLORS = { donut: ["#4f46e5", "#059669"], bar: "#6366f1" };
 const HEAT_BUCKET_COLORS = [
   "#eef2ff",
   "#c7d2fe",
@@ -63,17 +70,14 @@ const HEAT_BUCKET_COLORS = [
 ============================================================================= */
 function strHash(s) {
   let h = 2166136261 >>> 0;
-  for (let i = 0; i < s.length; i++) {
+  for (let i = 0; i < s.length; i++)
     h = Math.imul(h ^ s.charCodeAt(i), 16777619) >>> 0;
-  }
   return h;
 }
-
 function hslFromNumber(n, sat = 65, light = 45) {
   const hue = n % 360;
   return `hsl(${hue} ${sat}% ${light}%)`;
 }
-
 function buildDynamicColorMap({ datasets = [], palette = DEFAULT_PALETTE }) {
   const names = new Set();
   for (const ds of datasets) {
@@ -84,22 +88,17 @@ function buildDynamicColorMap({ datasets = [], palette = DEFAULT_PALETTE }) {
       Object.keys(row).forEach((k) => {
         if (k === "category" || k === "over_bucket" || k === "match_id") return;
         const v = row[k];
-        if (v && typeof v === "object" && ("duration" in v || "count" in v)) {
+        if (v && typeof v === "object" && ("duration" in v || "count" in v))
           names.add(k);
-        }
       });
     }
   }
-
   const sorted = Array.from(names).sort((a, b) => a.localeCompare(b));
   const colorMap = Object.create(null);
   for (let i = 0; i < sorted.length; i++) {
     const brand = sorted[i];
-    if (i < palette.length) colorMap[brand] = palette[i];
-    else {
-      const hash = strHash(brand);
-      colorMap[brand] = hslFromNumber(hash);
-    }
+    colorMap[brand] =
+      i < palette.length ? palette[i] : hslFromNumber(strHash(brand));
   }
   return colorMap;
 }
@@ -130,20 +129,15 @@ function buildHeatmapMatrix(rows, metric) {
       matrix: [],
       valueToColor: () => HEAT_BUCKET_COLORS[0],
     };
-
   const brands = Array.from(new Set(rows.map((r) => r.brand)));
   const regions = Array.from(new Set(rows.map((r) => r.region)));
   const key = metric === "duration" ? "duration" : "count";
-
   const matrix = regions.map(() => brands.map(() => 0));
   rows.forEach((r) => {
     const ri = regions.indexOf(r.region);
     const ci = brands.indexOf(r.brand);
-    if (ri !== -1 && ci !== -1) {
-      matrix[ri][ci] += Number(r[key] || 0);
-    }
+    if (ri !== -1 && ci !== -1) matrix[ri][ci] += Number(r[key] || 0);
   });
-
   const allVals = matrix.flat();
   const min = Math.min(...allVals);
   const max = Math.max(...allVals);
@@ -152,7 +146,6 @@ function buildHeatmapMatrix(rows, metric) {
   const thresholds = new Array(steps)
     .fill(0)
     .map((_, i) => min + step * (i + 1));
-
   const valueToColor = (v) => {
     if (steps === 1) return HEAT_BUCKET_COLORS[0];
     if (v <= thresholds[0]) return HEAT_BUCKET_COLORS[0];
@@ -161,7 +154,6 @@ function buildHeatmapMatrix(rows, metric) {
     if (v <= thresholds[3]) return HEAT_BUCKET_COLORS[3];
     return HEAT_BUCKET_COLORS[4];
   };
-
   return { brands, regions, matrix, valueToColor };
 }
 
@@ -169,24 +161,21 @@ function buildHeatmapMatrix(rows, metric) {
    COMPONENTS
 ============================================================================= */
 
-function AdExposureByOverCard({ metric, data, colorMap }) {
-  const [categoryFilter, setCategoryFilter] = useState("All");
-
-  const categoryOptions = useMemo(() => {
-    if (!data || data.length === 0) return ["All"];
-    return ["All", ...Array.from(new Set(data.map((r) => r.category)))];
-  }, [data]);
+function AdExposureByOverCard({ metric, data, colorMap, selectedSectors }) {
+  // Removed category filter here — chart now only respects selectedSectors (global)
+  const filteredData = useMemo(() => {
+    let result = data;
+    if (selectedSectors.length > 0) {
+      result = result.filter((r) => selectedSectors.includes(r.sector));
+    }
+    return result;
+  }, [data, selectedSectors]);
 
   const aggregate = useMemo(() => {
-    if (!data || data.length === 0) return { table: [], brandsToShow: [] };
-
-    const rowsForBrandDecision =
-      categoryFilter === "All"
-        ? data
-        : data.filter((r) => r.category === categoryFilter);
+    if (!filteredData.length) return { table: [], brandsToShow: [] };
 
     const totalsByBrand = new Map();
-    rowsForBrandDecision.forEach((r) => {
+    filteredData.forEach((r) => {
       const v =
         metric === "duration" ? Number(r.duration || 0) : Number(r.count || 0);
       totalsByBrand.set(r.brand, (totalsByBrand.get(r.brand) || 0) + v);
@@ -196,8 +185,8 @@ function AdExposureByOverCard({ metric, data, colorMap }) {
       .sort((a, b) => b[1] - a[1])
       .map(([brand]) => brand);
 
-    const brandsToShow =
-      categoryFilter === "All" ? sortedBrands.slice(0, TOP_N) : sortedBrands;
+    // Always show top N brands
+    const brandsToShow = sortedBrands.slice(0, TOP_N);
 
     const table = OVER_BUCKETS.map((bucket) => {
       const row = { over_bucket: bucket };
@@ -205,7 +194,7 @@ function AdExposureByOverCard({ metric, data, colorMap }) {
       return row;
     });
 
-    data.forEach((r) => {
+    filteredData.forEach((r) => {
       if (!brandsToShow.includes(r.brand)) return;
       const idx = OVER_BUCKETS.indexOf(r.over_bucket);
       if (idx === -1) return;
@@ -215,7 +204,7 @@ function AdExposureByOverCard({ metric, data, colorMap }) {
     });
 
     return { table, brandsToShow };
-  }, [categoryFilter, metric, data]);
+  }, [filteredData, metric]);
 
   const yLabel = metric === "duration" ? "Airtime (s)" : "Ad Count";
 
@@ -227,23 +216,7 @@ function AdExposureByOverCard({ metric, data, colorMap }) {
             Ad Exposure by Over Interval —{" "}
             {metric === "duration" ? "Airtime" : "Count"}
           </h3>
-          <p className="text-xs text-gray-500">
-            Top 5 brands (All) or all brands in selected category.
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <label className="text-xs text-gray-500">Category</label>
-          <select
-            className="text-xs bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded px-2 py-1"
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-          >
-            {categoryOptions.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
+          <p className="text-xs text-gray-500">Top {TOP_N} brands (global).</p>
         </div>
       </div>
 
@@ -286,7 +259,7 @@ function AdExposureByOverCard({ metric, data, colorMap }) {
                 wrapperStyle={{ lineHeight: "20px" }}
               />
               <Tooltip
-                formatter={(value, name) => [value, name]}
+                formatter={(v, name) => [v, name]}
                 labelFormatter={(label) => `Overs ${label}`}
                 contentStyle={{ fontSize: 12 }}
               />
@@ -328,11 +301,12 @@ function AdExposureByOverCard({ metric, data, colorMap }) {
 }
 
 function RegionVisibilityHeatmap({ metric, data }) {
+  // unchanged — no sector filter
   const { brands, regions, matrix, valueToColor } = useMemo(
     () => buildHeatmapMatrix(data, metric),
     [data, metric]
   );
-
+  // ... rest unchanged (same as original)
   const metricLabel = metric === "duration" ? "Airtime (s)" : "Count";
   const CELL_MIN = 44;
   const CELL_GAP = 8;
@@ -355,7 +329,6 @@ function RegionVisibilityHeatmap({ metric, data }) {
         Region Visibility Heatmap —{" "}
         {metric === "duration" ? "Airtime" : "Count"}
       </h3>
-
       <div className="overflow-x-auto" style={{ paddingBottom: 4 }}>
         <div
           className="grid"
@@ -375,7 +348,6 @@ function RegionVisibilityHeatmap({ metric, data }) {
             </div>
           ))}
         </div>
-
         {regions.map((region, ri) => (
           <div
             key={`row-${region}`}
@@ -389,12 +361,10 @@ function RegionVisibilityHeatmap({ metric, data }) {
             <div className="text-[11px] text-gray-400 flex items-center">
               {region}
             </div>
-
             {brands.map((brand, ci) => {
               const v = matrix[ri][ci] ?? 0;
               const bg = valueToColor(v);
               const isZero = v === 0;
-
               return (
                 <div
                   key={`cell-${region}-${brand}`}
@@ -422,7 +392,6 @@ function RegionVisibilityHeatmap({ metric, data }) {
           </div>
         ))}
       </div>
-
       <div className="flex items-center gap-2 mt-4 text-[11px]">
         <span className="text-gray-500">Low</span>
         {HEAT_BUCKET_COLORS.map((c, i) => (
@@ -439,56 +408,72 @@ function RegionVisibilityHeatmap({ metric, data }) {
   );
 }
 
-function ExposureByLocation({ metric, data }) {
-  const yLabel = metric === "duration" ? "Exposure (s)" : "Ad Count";
-  const dataKey = metric;
+function VisibilityByPlacementType({ metric, data, qualityFilter }) {
+  // unchanged — no sector filter
+  const filteredData = useMemo(() => {
+    if (!data || data.length === 0) return [];
+    if (qualityFilter === "All") return data;
+    return data.filter((row) => row.quality === qualityFilter);
+  }, [data, qualityFilter]);
+
+  const chartData = useMemo(() => {
+    const map = new Map();
+    filteredData.forEach((row) => {
+      const key = row.Placement_Type;
+      const duration = Number(row.duration || 0);
+      const count = Number(row.count || 0);
+      if (!map.has(key))
+        map.set(key, { Placement_Type: key, duration: 0, count: 0 });
+      const entry = map.get(key);
+      entry.duration += duration;
+      entry.count += count;
+    });
+    return Array.from(map.values()).sort((a, b) => b[metric] - a[metric]);
+  }, [filteredData, metric]);
+
+  const yLabel = metric === "duration" ? "Airtime (s)" : "Ad Count";
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6">
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-sm font-medium text-gray-900 dark:text-white">
-          Visibility by Placement Type —{" "}
-          {metric === "duration" ? "Airtime" : "Count"}
-        </h3>
-      </div>
-
-      <div className="h-64">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={data}
-            margin={{ top: 10, right: 20, left: 40, bottom: 50 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-            <XAxis
-              dataKey="Placement_Type"
-              angle={-45}
-              textAnchor="end"
-              height={70}
-              tick={{ fontSize: 11 }}
-            />
-            <YAxis
-              label={{
-                value: yLabel,
-                angle: -90,
-                position: "insideLeft",
-                style: { fontSize: 11 },
-              }}
-              allowDecimals={false}
-            />
-            <Tooltip
-              content={<CustomTooltip />}
-              formatter={(val) => [val, yLabel]}
-            />
-            <Bar
-              dataKey={dataKey}
-              fill={COLORS.bar}
-              radius={[6, 6, 0, 0]}
-              name={yLabel}
-            />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+        data={chartData}
+        margin={{ top: 10, right: 20, left: 40, bottom: 50 }}
+      >
+        <XAxis
+          dataKey="Placement_Type"
+          angle={-45}
+          textAnchor="end"
+          height={70}
+          tick={{ fontSize: 11 }}
+        />
+        <YAxis
+          label={{
+            value: yLabel,
+            angle: -90,
+            position: "insideLeft",
+            style: { fontSize: 11 },
+          }}
+          allowDecimals={false}
+        />
+        <Tooltip
+          content={<CustomTooltip />}
+          formatter={(val) => [val, yLabel]}
+        />
+        <Bar
+          dataKey={metric}
+          fill={COLORS.bar}
+          radius={[6, 6, 0, 0]}
+          name={yLabel}
+        >
+          <LabelList
+            dataKey={metric}
+            position="top"
+            formatter={(v) => (metric === "duration" ? `${v}s` : v)}
+            className="fill-primary text-xs"
+          />
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
 
@@ -497,39 +482,37 @@ function ExposureByLocation({ metric, data }) {
 ============================================================================= */
 export default function AdPlacementAndQuality({ selectedMatch }) {
   const [metric, setMetric] = useState("duration");
+  const [qualityFilter, setQualityFilter] = useState("All");
+  const [selectedSectors, setSelectedSectors] = useState([]); // Global sector filter
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const [openPanel, setOpenPanel] = useState(null);
 
+  // Fetch data
   useEffect(() => {
     let mounted = true;
-
     async function fetchData() {
       if (!selectedMatch) {
         setApiData([]);
         setLoading(false);
         return;
       }
-
       try {
         setLoading(true);
         const params = new URLSearchParams({
           match: selectedMatch,
           component: "ad-placement-quality",
         });
-
         const res = await fetch(`/api/matches-files?${params.toString()}`);
         const data = await res.json();
         if (mounted) setApiData(data.files || []);
       } catch (err) {
-        console.error("Error fetching ad placement data:", err);
+        console.error(err);
         if (mounted) setApiData([]);
       } finally {
         if (mounted) setLoading(false);
       }
     }
-
     fetchData();
     return () => (mounted = false);
   }, [selectedMatch]);
@@ -542,43 +525,61 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
   const regionVisibilitySource = getFile("region_brand");
   const adExposureByOverRaw = getFile("over_raw");
 
-  const colorMap = useMemo(() => {
-    return buildDynamicColorMap({
-      datasets: [adLocationData, regionVisibilitySource, adExposureByOverRaw],
-      palette: DEFAULT_PALETTE,
-    });
-  }, [adLocationData, regionVisibilitySource, adExposureByOverRaw]);
+  const availableSectors = useMemo(() => {
+    const set = new Set(adExposureByOverRaw.map((r) => r.sector));
+    return [...set].sort();
+  }, [adExposureByOverRaw]);
 
-  if (loading) {
+  const qualityOptions = useMemo(() => {
+    const qualities = Array.from(new Set(adLocationData.map((r) => r.quality)));
+    return ["All", ...qualities.sort()];
+  }, [adLocationData]);
+
+  const colorMap = useMemo(
+    () =>
+      buildDynamicColorMap({
+        datasets: [adLocationData, regionVisibilitySource, adExposureByOverRaw],
+        palette: DEFAULT_PALETTE,
+      }),
+    [adLocationData, regionVisibilitySource, adExposureByOverRaw]
+  );
+
+  const toggleSector = (sector) => {
+    setSelectedSectors((prev) =>
+      prev.includes(sector)
+        ? prev.filter((s) => s !== sector)
+        : [...prev, sector]
+    );
+  };
+
+  if (loading)
     return (
       <div className="text-center py-20 text-gray-400">
         Loading ad placement data...
       </div>
     );
-  }
-
-  if (!selectedMatch) {
+  if (!selectedMatch)
     return (
       <div className="text-center py-20 text-gray-400">
         Please select a match to view analytics
       </div>
     );
-  }
 
-  const Panel = ({ title, children, id }) => (
+  const Panel = ({ title, children, id, controls }) => (
     <div className="bg-card rounded-xl p-4 h-full flex flex-col">
       <div className="flex items-center justify-between mb-2">
         <h4 className="text-sm font-medium text-gray-900 dark:text-white">
           {title}
         </h4>
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
+          {controls}
           <button
             className="px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 text-sm"
             onClick={() => setOpenPanel(id)}
           >
             Open
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="flex-1">{children}</div>
     </div>
@@ -606,67 +607,125 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
 
   return (
     <div className="space-y-6 p-4">
-      <div className="flex items-center gap-3">
-        <label className="text-sm text-gray-700 dark:text-gray-300">
-          Metric
-        </label>
-        <select
-          className="px-3 py-2 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm"
-          value={metric}
-          onChange={(e) => setMetric(e.target.value)}
-        >
-          <option value="duration">Duration (sec)</option>
-          <option value="count">Count</option>
-        </select>
+      {/* Global Controls */}
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <label className="text-sm text-gray-700 dark:text-gray-300">
+              Metric
+            </label>
+            <select
+              className="px-3 py-2 rounded border border-gray-300 dark:border-gray-700 bg-card text-sm"
+              value={metric}
+              onChange={(e) => setMetric(e.target.value)}
+            >
+              <option value="duration">Duration (sec)</option>
+              <option value="count">Count</option>
+            </select>
+          </div>
+
+          {/* Global Sector Filter (moved to right side) */}
+          <div className="ml-auto">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Filter by Sector (applies only to Ad Exposure by Over Interval)
+            </label>
+            <div className="flex items-center gap-3">
+              <Select onValueChange={toggleSector}>
+                <SelectTrigger className="w-80">
+                  <SelectValue placeholder="Select sectors..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {availableSectors.map((s) => (
+                    <SelectItem key={s} value={s}>
+                      <div className="flex items-center justify-between w-full">
+                        <span>{s}</span>
+                        {selectedSectors.includes(s) && (
+                          <span className="ml-2 text-green-600 text-xs">
+                            Selected
+                          </span>
+                        )}
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <button
+                onClick={() => setSelectedSectors([])}
+                className="px-3 py-1.5 text-sm border rounded hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                Clear
+              </button>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {selectedSectors.length === 0 ? (
+                <span className="text-sm text-muted-foreground">
+                  All sectors
+                </span>
+              ) : (
+                selectedSectors.map((s) => (
+                  <Badge key={s} variant="secondary" className="px-3 py-1">
+                    {s}
+                    <button onClick={() => toggleSector(s)} className="ml-2">
+                      <X size={14} />
+                    </button>
+                  </Badge>
+                ))
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Middle grid: Bar + Heatmap */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="h-80">
-          <Panel title="Visibility by Placement Type" id="placement">
-            <div className="h-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
+      {/* Charts */}
+      <div className="space-y-6">
+        <div className="h-96">
+          <Panel
+            title="Visibility by Placement Type"
+            id="placement"
+            controls={
+              <div className="text-xs text-gray-500">
+                Quality:{" "}
+                <strong>
+                  {qualityFilter === "All" ? "All" : `${qualityFilter}%`}
+                </strong>
+              </div>
+            }
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex justify-end mb-3">
+                <div className="bg-card rounded-xl p-3 w-full sm:w-auto">
+                  <label className="text-sm text-gray-700 dark:text-gray-300 block mb-1">
+                    Quality
+                  </label>
+                  <Select
+                    value={qualityFilter}
+                    onValueChange={setQualityFilter}
+                  >
+                    <SelectTrigger className="w-full sm:w-[180px]">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {qualityOptions.map((opt) => (
+                        <SelectItem key={opt} value={opt}>
+                          {opt === "All" ? "All Quality" : `${opt}%`}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="flex-1">
+                <VisibilityByPlacementType
+                  metric={metric}
                   data={adLocationData}
-                  margin={{ top: 10, right: 20, left: 40, bottom: 50 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis
-                    dataKey="Placement_Type"
-                    angle={-45}
-                    textAnchor="end"
-                    height={70}
-                    tick={{ fontSize: 11 }}
-                  />
-                  <YAxis
-                    label={{
-                      value: metric === "duration" ? "Airtime (s)" : "Ad Count",
-                      angle: -90,
-                      position: "insideLeft",
-                      style: { fontSize: 11 },
-                    }}
-                    allowDecimals={false}
-                  />
-                  <Tooltip
-                    content={<CustomTooltip />}
-                    formatter={(val) => [
-                      val,
-                      metric === "duration" ? "Airtime (s)" : "Ad Count",
-                    ]}
-                  />
-                  <Bar
-                    dataKey={metric}
-                    fill={COLORS.bar}
-                    radius={[6, 6, 0, 0]}
-                    name={metric === "duration" ? "Airtime (s)" : "Ad Count"}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
+                  qualityFilter={qualityFilter}
+                />
+              </div>
             </div>
           </Panel>
         </div>
 
-        <div className="h-80">
+        <div className="h-96">
           <Panel title="Region Visibility Heatmap" id="heatmap">
             <div className="h-full">
               <RegionVisibilityHeatmap
@@ -676,10 +735,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
             </div>
           </Panel>
         </div>
-      </div>
 
-      {/* Bottom: Exposure by interval */}
-      <div>
         <div className="h-96">
           <Panel title="Ad Exposure by Over Interval" id="exposure">
             <div className="h-full">
@@ -687,57 +743,46 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
                 metric={metric}
                 data={adExposureByOverRaw}
                 colorMap={colorMap}
+                selectedSectors={selectedSectors}
               />
             </div>
           </Panel>
         </div>
       </div>
 
-      {/* EXPANDED MODALS */}
-
+      {/* Modals remain unchanged */}
       {openPanel === "placement" && (
         <Modal
           title="Visibility by Placement Type"
           onClose={() => setOpenPanel(null)}
         >
-          <div style={{ height: 520 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
+          <div className="mb-4 flex justify-end">
+            <div className="bg-card rounded-xl p-3 w-full sm:w-auto">
+              <label className="text-sm text-gray-700 dark:text-gray-300 block mb-1">
+                Quality
+              </label>
+              <Select value={qualityFilter} onValueChange={setQualityFilter}>
+                <SelectTrigger className="w-full sm:w-[180px]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {qualityOptions.map((opt) => (
+                    <SelectItem key={opt} value={opt}>
+                      {opt === "All" ? "All Quality" : `${opt}%`}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <div style={{ height: 520 }} className="flex flex-col">
+            <div className="flex-1">
+              <VisibilityByPlacementType
+                metric={metric}
                 data={adLocationData}
-                margin={{ top: 10, right: 20, left: 40, bottom: 80 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis
-                  dataKey="Placement_Type"
-                  angle={-45}
-                  textAnchor="end"
-                  height={80}
-                  tick={{ fontSize: 12 }}
-                />
-                <YAxis
-                  label={{
-                    value: metric === "duration" ? "Airtime (s)" : "Ad Count",
-                    angle: -90,
-                    position: "insideLeft",
-                    style: { fontSize: 12 },
-                  }}
-                  allowDecimals={false}
-                />
-                <Tooltip
-                  content={<CustomTooltip />}
-                  formatter={(val) => [
-                    val,
-                    metric === "duration" ? "Airtime (s)" : "Ad Count",
-                  ]}
-                />
-                <Bar
-                  dataKey={metric}
-                  fill={COLORS.bar}
-                  radius={[6, 6, 0, 0]}
-                  name={metric === "duration" ? "Airtime (s)" : "Ad Count"}
-                />
-              </BarChart>
-            </ResponsiveContainer>
+                qualityFilter={qualityFilter}
+              />
+            </div>
           </div>
         </Modal>
       )}
@@ -764,6 +809,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
               metric={metric}
               data={adExposureByOverRaw}
               colorMap={colorMap}
+              selectedSectors={selectedSectors}
             />
           </div>
         </Modal>
