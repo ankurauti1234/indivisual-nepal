@@ -517,6 +517,12 @@ export default function BrandOverview({
                 {topBrandDuration?.brand ?? "—"}
               </div>
             </div>
+            <div>
+              <div className="text-sm text-gray-400">Duration</div>
+              <div className="mt-1 text-2xl font-semibold">
+                {formatSeconds(topBrandDuration?.duration)}
+              </div>
+            </div>
             <div className="mt-2 flex items-center justify-between text-sm text-gray-400">
               <span>Total Duration</span>
               <span className="font-medium text-gray-100">
@@ -544,6 +550,12 @@ export default function BrandOverview({
                 {topBrandCount?.brand ?? "—"}
               </div>
             </div>
+            <div>
+              <div className="text-sm text-gray-400">Brand</div>
+              <div className="mt-1 text-2xl font-semibold">
+                {topBrandCount?.count ?? "—"}
+              </div>
+            </div>
             <div className="mt-2 flex items-center justify-between text-sm text-gray-400">
               <span>Total Appearances</span>
               <span className="font-medium text-gray-100">
@@ -555,7 +567,7 @@ export default function BrandOverview({
 
         {/* Brand Share Pie */}
         <div className="rounded-2xl bg-card border border-border/60 p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col">
-          <div className="h-52 mt-4">
+          <div className="h-64 mt-4">
             <h4 className="text-sm font-medium text-gray-900 dark:text-white">
               Brand Share
             </h4>
