@@ -408,18 +408,72 @@ function RegionVisibilityHeatmap({ metric, data }) {
   );
 }
 
-function VisibilityByPlacementType({ metric, data, qualityFilter }) {
-  // unchanged — no sector filter
+function VisibilityByPlacementType({ metric, data, qualityFilter, colorMap }) {
+  // This function now supports both:
+  // 1) legacy structure where each row already has 'duration'/'count' for the placement (single bar)
+  // 2) new structure where each row has { Placement_Type, brands: [{brand, duration, count}, ...] } -> stacked bars
   const filteredData = useMemo(() => {
     if (!data || data.length === 0) return [];
     if (qualityFilter === "All") return data;
     return data.filter((row) => row.quality === qualityFilter);
   }, [data, qualityFilter]);
 
-  const chartData = useMemo(() => {
+  // detect if data uses new structure: presence of brands array in any row
+  const usesBrandsArray = useMemo(() => {
+    return filteredData.some((r) => Array.isArray(r.brands));
+  }, [filteredData]);
+
+  const chartDataStacked = useMemo(() => {
+    if (!usesBrandsArray) return { rows: [], brands: [] };
+
+    // compute total per brand to pick top N (keeps chart readable)
+    const totals = new Map();
+    filteredData.forEach((entry) => {
+      (entry.brands || []).forEach((b) => {
+        const name = String(b.brand);
+        const val =
+          metric === "duration"
+            ? Number(b.duration || 0)
+            : Number(b.count || 0);
+        totals.set(name, (totals.get(name) || 0) + val);
+      });
+    });
+
+    const sortedBrands = Array.from(totals.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([name]) => name);
+
+    const topBrands = sortedBrands.slice(0, TOP_N);
+
+    const rows = filteredData.map((entry) => {
+      const placement =
+        entry.Placement_Type ||
+        entry.PlacementType ||
+        entry.Placement ||
+        "Unknown";
+      const row = { Placement_Type: placement };
+      topBrands.forEach((tb) => (row[tb] = 0));
+      (entry.brands || []).forEach((b) => {
+        const name = String(b.brand);
+        if (!topBrands.includes(name)) return;
+        const val =
+          metric === "duration"
+            ? Number(b.duration || 0)
+            : Number(b.count || 0);
+        row[name] = (row[name] || 0) + val;
+      });
+      return row;
+    });
+
+    return { rows, brands: topBrands };
+  }, [filteredData, metric, usesBrandsArray]);
+
+  const chartDataSingle = useMemo(() => {
+    if (usesBrandsArray || !filteredData.length) return [];
     const map = new Map();
     filteredData.forEach((row) => {
-      const key = row.Placement_Type;
+      const key =
+        row.Placement_Type || row.PlacementType || row.Placement || "Unknown";
       const duration = Number(row.duration || 0);
       const count = Number(row.count || 0);
       if (!map.has(key))
@@ -429,14 +483,87 @@ function VisibilityByPlacementType({ metric, data, qualityFilter }) {
       entry.count += count;
     });
     return Array.from(map.values()).sort((a, b) => b[metric] - a[metric]);
-  }, [filteredData, metric]);
+  }, [filteredData, metric, usesBrandsArray]);
 
   const yLabel = metric === "duration" ? "Airtime (s)" : "Ad Count";
 
+  // Render stacked version if new structure detected
+  if (usesBrandsArray) {
+    const { rows, brands } = chartDataStacked;
+    if (!rows.length) {
+      return (
+        <div className="bg-card rounded-xl p-6">
+          <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-4">
+            Visibility by Placement Type
+          </h3>
+          <p className="text-sm text-gray-500">No data available</p>
+        </div>
+      );
+    }
+
+    return (
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={rows}
+          margin={{ top: 10, right: 20, left: 40, bottom: 70 }}
+          barCategoryGap="24%"
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="Placement_Type"
+            angle={-45}
+            textAnchor="end"
+            height={70}
+            tick={{ fontSize: 11 }}
+          />
+          <YAxis
+            label={{
+              value: yLabel,
+              angle: -90,
+              position: "insideLeft",
+              style: { fontSize: 11 },
+            }}
+            allowDecimals={false}
+          />
+          <Tooltip
+            content={<CustomTooltip />}
+            formatter={(val) => [val, yLabel]}
+          />
+          {/* <Legend verticalAlign="top" align="right" height={28} /> */}
+
+          {brands.map((brand, i) => (
+            <Bar
+              key={brand}
+              dataKey={brand}
+              stackId="a"
+              fill={
+                (colorMap && colorMap[brand]) ||
+                DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]
+              }
+              name={brand}
+             
+              barSize={54}
+            >
+              {/* <LabelList
+                dataKey={brand}
+                position="top"
+                formatter={(v) =>
+                  v ? (metric === "duration" ? `${v}s` : v) : ""
+                }
+                className="fill-primary text-xs"
+              /> */}
+            </Bar>
+          ))}
+        </BarChart>
+      </ResponsiveContainer>
+    );
+  }
+
+  // Fallback: original single-bar behavior
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        data={chartData}
+        data={chartDataSingle}
         margin={{ top: 10, right: 20, left: 40, bottom: 50 }}
       >
         <XAxis
@@ -464,6 +591,7 @@ function VisibilityByPlacementType({ metric, data, qualityFilter }) {
           fill={COLORS.bar}
           radius={[6, 6, 0, 0]}
           name={yLabel}
+          barSize={36}
         >
           <LabelList
             dataKey={metric}
@@ -693,7 +821,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
           >
             <div className="flex flex-col h-full">
               <div className="flex justify-end mb-3">
-                <div className="bg-card rounded-xl p-3 w-full sm:w-auto">
+                {/* <div className="bg-card rounded-xl p-3 w-full sm:w-auto">
                   <label className="text-sm text-gray-700 dark:text-gray-300 block mb-1">
                     Quality
                   </label>
@@ -712,13 +840,14 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
                       ))}
                     </SelectContent>
                   </Select>
-                </div>
+                </div> */}
               </div>
               <div className="flex-1">
                 <VisibilityByPlacementType
                   metric={metric}
                   data={adLocationData}
                   qualityFilter={qualityFilter}
+                  colorMap={colorMap}
                 />
               </div>
             </div>
@@ -781,6 +910,7 @@ export default function AdPlacementAndQuality({ selectedMatch }) {
                 metric={metric}
                 data={adLocationData}
                 qualityFilter={qualityFilter}
+                colorMap={colorMap}
               />
             </div>
           </div>

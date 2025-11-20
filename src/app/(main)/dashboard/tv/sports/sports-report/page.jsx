@@ -58,30 +58,134 @@ export default function DashboardPage() {
 
   const [downloading, setDownloading] = useState(false);
 
-  const FILE_PATH = "/files/JBvsSupaRoyals.xlsx"; // direct public file
+  // ===========
+  // DOWNLOAD: replaced to use selectedMatch and public/raw/<selectedMatch> files
+  // ===========
+
+  // helper to save blob as file
+  const saveBlob = async (blob, suggestedName) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = suggestedName || "download";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  // quick head-like check using Range header to avoid downloading whole file where possible
+  const tryHeadLike = async (path) => {
+    try {
+      const res = await fetch(path, {
+        method: "GET",
+        headers: {
+          Range: "bytes=0-0",
+        },
+      });
+      return res.ok || res.status === 206;
+    } catch (err) {
+      // network / CORS => treat as not found
+      return false;
+    }
+  };
 
   const downloadViaFetch = async () => {
-    try {
-      setDownloading(true);
-      const res = await fetch(FILE_PATH);
-      if (!res.ok) throw new Error("Failed downloading file");
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
+    if (!selectedMatch) {
+      alert("Select a match first.");
+      return;
+    }
 
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "JBvsSupaRoyals.xlsx";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      alert("Download failed. Check console.");
-      console.error(error);
+    setDownloading(true);
+
+    try {
+      // common extensions and patterns we try
+      const exts = [".xlsx", ".csv", ".json", ".zip", ".pdf", ".txt"];
+      const patterns = [];
+
+      // 1) <selectedMatch>.<ext>
+      for (const e of exts) {
+        patterns.push(
+          `/raw/${encodeURIComponent(selectedMatch)}/${encodeURIComponent(
+            selectedMatch + e
+          )}`
+        );
+      }
+
+      // 2) raw.<ext>, data.<ext>, file.<ext>
+      for (const e of exts) {
+        patterns.push(`/raw/${encodeURIComponent(selectedMatch)}/raw${e}`);
+        patterns.push(`/raw/${encodeURIComponent(selectedMatch)}/data${e}`);
+        patterns.push(`/raw/${encodeURIComponent(selectedMatch)}/file${e}`);
+      }
+
+      // 3) sanitized no-space variants
+      const sanitized = selectedMatch.replace(/\s+/g, "");
+      for (const e of exts) {
+        patterns.push(
+          `/raw/${encodeURIComponent(selectedMatch)}/${encodeURIComponent(
+            sanitized + e
+          )}`
+        );
+      }
+
+      // 4) if matches entry contains a rawFile/file path, try it first (non-strings)
+      const maybeMatchObj = matches.find(
+        (m) =>
+          m === selectedMatch ||
+          (typeof m !== "string" &&
+            (m.name === selectedMatch || m.matchName === selectedMatch))
+      );
+      if (maybeMatchObj && typeof maybeMatchObj !== "string") {
+        const candidatePath =
+          maybeMatchObj.rawFile || maybeMatchObj.filePath || maybeMatchObj.file;
+        if (candidatePath) {
+          const normalized = candidatePath.startsWith("/")
+            ? candidatePath
+            : `/${candidatePath}`;
+          // try this first
+          patterns.unshift(normalized);
+        }
+      }
+
+      // attempt each pattern
+      let found = false;
+      for (const p of patterns) {
+        // quick check
+        const exists = await tryHeadLike(p);
+        if (!exists) continue;
+
+        // full fetch to get content
+        const full = await fetch(p);
+        if (!full.ok) continue;
+        const blob = await full.blob();
+        const filename = decodeURIComponent(
+          p.split("/").pop() || `${selectedMatch}.bin`
+        );
+        await saveBlob(blob, filename);
+        found = true;
+        break;
+      }
+
+      if (!found) {
+        alert(
+          `No file found in public/raw/${selectedMatch}.\n\n` +
+            "I tried common names like:\n" +
+            `${selectedMatch}.xlsx, raw.xlsx, data.xlsx, etc.\n\n` +
+            'Either place a file with a predictable name in public/raw/<match-folder>/ or add the exact path to your matches data (e.g. add `rawFile: "raw/<match-folder>/myfile.xlsx"`).'
+        );
+      }
+    } catch (err) {
+      console.error("Download failed:", err);
+      alert("Download failed — check console.");
     } finally {
       setDownloading(false);
     }
   };
+
+  // ===========
+  // rest of original code unchanged
+  // ===========
 
   const navRef = useRef(null);
   const sentinelRef = useRef(null);

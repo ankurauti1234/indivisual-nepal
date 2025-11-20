@@ -12,6 +12,7 @@ import {
   Pie,
   Cell,
   LabelList,
+  Legend,
 } from "recharts";
 import { useMemo, useState, useEffect } from "react";
 
@@ -52,22 +53,152 @@ function getValueForMetric(item, metric) {
   }
   return item.count ?? item.percentage_count ?? 0;
 }
-function buildStackedFromSectors(data = [], selectedSectors = []) {
-  const filtered =
-    selectedSectors.length === 0
-      ? data
-      : data.filter((d) => selectedSectors.includes(d.sector));
-  const brands = new Set();
-  filtered.forEach((row) =>
-    Object.keys(row).forEach((k) => k !== "sector" && brands.add(k))
-  );
-  const brandList = Array.from(brands);
 
-  const out = filtered.map((row) => {
-    const o = { sector: row.sector };
-    brandList.forEach((b) => (o[b] = row[b]?.duration || 0));
+/**
+ * Build stacked data by category.
+ */
+function buildStackedByCategory(
+  data = [],
+  metric = "duration",
+  selectedCategories = []
+) {
+  const filtered =
+    selectedCategories.length === 0
+      ? data
+      : data.filter((d) => selectedCategories.includes(d.category));
+
+  const map = new Map();
+  const brands = new Set();
+
+  filtered.forEach((row) => {
+    const cat = row.category ?? "Unknown";
+    const brand = row.brand_name ?? "Unknown";
+    const val = metric === "duration" ? row.duration || 0 : row.count || 0;
+
+    brands.add(brand);
+    if (!map.has(cat)) map.set(cat, new Map());
+    const brandMap = map.get(cat);
+    brandMap.set(brand, (brandMap.get(brand) || 0) + val);
+  });
+
+  const brandList = Array.from(brands);
+  const out = Array.from(map.entries()).map(([category, brandMap]) => {
+    const o = { category };
+    brandList.forEach((b) => {
+      o[b] = brandMap.get(b) || 0;
+    });
     return o;
   });
+
+  out.sort((a, b) => {
+    const sa = brandList.reduce((s, br) => s + (a[br] || 0), 0);
+    const sb = brandList.reduce((s, br) => s + (b[br] || 0), 0);
+    return sb - sa;
+  });
+
+  return { out, brandList };
+}
+
+/**
+ * Build stacked data by sector.
+ */
+function buildStackedFromSectors(
+  data = [],
+  selectedSectors = [],
+  metric = "duration"
+) {
+  if (!Array.isArray(data) || data.length === 0)
+    return { out: [], brandList: [] };
+
+  // normalize sectors (trim, remove nan)
+  const filtered = data
+    .map((r) => {
+      if (!r || !r.sector) return null;
+
+      const sector = String(r.sector).trim();
+      if (!sector || sector.toLowerCase() === "nan") return null;
+
+      // clone row with trimmed keys
+      const cleaned = { sector };
+      Object.keys(r).forEach((key) => {
+        if (key !== "sector") cleaned[String(key).trim()] = r[key];
+      });
+      return cleaned;
+    })
+    .filter(Boolean)
+    .filter((r) =>
+      selectedSectors.length === 0 ? true : selectedSectors.includes(r.sector)
+    );
+
+  // collect all brand names
+  const brandSet = new Set();
+  filtered.forEach((row) => {
+    Object.keys(row).forEach((k) => {
+      if (k !== "sector") brandSet.add(k);
+    });
+  });
+  const brandList = [...brandSet];
+
+  // extract value from nested objects
+  const extract = (cell) => {
+    if (!cell) return 0;
+
+    if (typeof cell === "number") return cell;
+
+    if (typeof cell === "string") {
+      const n = Number(cell.replace(/,/g, ""));
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    if (typeof cell === "object") {
+      if (metric === "duration") {
+        if (cell.duration != null) return cell.duration;
+        if (cell.percentage_duration != null) return cell.percentage_duration;
+      }
+      if (metric === "count") {
+        if (cell.count != null) return cell.count;
+        if (cell.percentage_count != null) return cell.percentage_count;
+      }
+
+      // fallback: sum all numeric nested values
+      const nums = Object.values(cell)
+        .map((v) =>
+          typeof v === "string"
+            ? Number(v.replace(/,/g, ""))
+            : typeof v === "number"
+            ? v
+            : NaN
+        )
+        .filter((n) => Number.isFinite(n));
+
+      return nums.reduce((s, n) => s + n, 0) || 0;
+    }
+
+    return 0;
+  };
+
+  const outRaw = filtered.map((row) => {
+    const obj = { sector: row.sector };
+
+    brandList.forEach((brand) => {
+      obj[brand] = extract(row[brand]);
+    });
+
+    return obj;
+  });
+
+  // remove sectors with all zero values
+  const out = outRaw.filter((row) =>
+    brandList.some((b) => row[b] && row[b] > 0)
+  );
+
+  // sort by total
+  out.sort((a, b) => {
+    const sa = brandList.reduce((s, br) => s + (a[br] || 0), 0);
+    const sb = brandList.reduce((s, br) => s + (b[br] || 0), 0);
+    return sb - sa;
+  });
+
   return { out, brandList };
 }
 
@@ -84,6 +215,9 @@ export default function BrandOverview({
 
   // Global Sector Filter
   const [selectedSectors, setSelectedSectors] = useState([]); // [] = all
+
+  // Category multi-select filter for exposure stacked chart
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   /* Fetch & Parse Files */
   useEffect(() => {
@@ -156,35 +290,65 @@ export default function BrandOverview({
     [fileMap]
   );
 
-  /* Available Sectors */
+  /* Available Sectors (union of stackedCompetitorsRaw + brandScreenTimeRaw) */
   const availableSectors = useMemo(() => {
-    if (!Array.isArray(stackedCompetitorsRaw)) return [];
-    return [...new Set(stackedCompetitorsRaw.map((r) => r.sector))].sort();
-  }, [stackedCompetitorsRaw]);
+    const s1 = Array.isArray(stackedCompetitorsRaw)
+      ? stackedCompetitorsRaw.map((r) =>
+          r && r.sector ? String(r.sector).trim() : null
+        )
+      : [];
+    const s2 = Array.isArray(brandScreenTimeRaw)
+      ? brandScreenTimeRaw.map((r) =>
+          r && r.sector ? String(r.sector).trim() : null
+        )
+      : [];
+
+    const all = [...s1, ...s2]
+      .filter(Boolean)
+      .map((s) => s.trim())
+      .filter((s) => s.toLowerCase() !== "nan");
+    return [...new Set(all)].sort();
+  }, [stackedCompetitorsRaw, brandScreenTimeRaw]);
+
+  /* Available Categories (for category filter) */
+  const availableCategories = useMemo(() => {
+    if (!Array.isArray(categoryExposureRaw)) return [];
+    return [...new Set(categoryExposureRaw.map((r) => r.category))].sort();
+  }, [categoryExposureRaw]);
 
   /* Filtered Data (only for 3 charts) */
   const filteredBrandShare = useMemo(
     () =>
       selectedSectors.length === 0
         ? brandShareRaw
-        : brandShareRaw.filter((d) => selectedSectors.includes(d.sector)),
+        : brandShareRaw.filter((d) =>
+            selectedSectors.includes(String(d.sector).trim())
+          ),
     [brandShareRaw, selectedSectors]
   );
 
+  /**
+   * FIXED: Filter brand screen-time rows directly by their `sector` field.
+   * This avoids fragile name-matching against stackedCompetitors.
+   */
   const filteredScreenTimeBrands = useMemo(() => {
+    if (!Array.isArray(brandScreenTimeRaw)) return [];
     if (selectedSectors.length === 0) return brandScreenTimeRaw;
-    const allowedBrands = new Set();
-    stackedCompetitorsRaw
-      .filter((r) => selectedSectors.includes(r.sector))
-      .forEach((r) =>
-        Object.keys(r).forEach((k) => k !== "sector" && allowedBrands.add(k))
-      );
-    return brandScreenTimeRaw.filter((d) => allowedBrands.has(d.brand));
-  }, [brandScreenTimeRaw, stackedCompetitorsRaw, selectedSectors]);
 
+    const selectedSet = new Set(selectedSectors.map((s) => String(s).trim()));
+    return brandScreenTimeRaw.filter((d) => {
+      if (!d || d.sector == null) return false;
+      const sector = String(d.sector).trim();
+      if (!sector || sector.toLowerCase() === "nan") return false;
+      return selectedSet.has(sector);
+    });
+  }, [brandScreenTimeRaw, selectedSectors]);
+
+  // Pass `metric` into the helper here
   const { out: stackedData, brandList: stackedBrands } = useMemo(
-    () => buildStackedFromSectors(stackedCompetitorsRaw, selectedSectors),
-    [stackedCompetitorsRaw, selectedSectors]
+    () =>
+      buildStackedFromSectors(stackedCompetitorsRaw, selectedSectors, metric),
+    [stackedCompetitorsRaw, selectedSectors, metric]
   );
 
   /* Derived Chart Data */
@@ -213,6 +377,7 @@ export default function BrandOverview({
       .map((d) => ({ ...d, value: getValueForMetric(d, metric) }));
   }, [filteredScreenTimeBrands, metric]);
 
+  // SIMPLE AGGREGATION (previous single-value exposure)
   const exposureByCategory = useMemo(
     () =>
       [...categoryExposureRaw]
@@ -223,12 +388,25 @@ export default function BrandOverview({
     [categoryExposureRaw, metric]
   );
 
+  // NEW: stacked data by category (brands stacked inside each category)
+  const { out: stackedCategoryData, brandList: stackedCategoryBrands } =
+    useMemo(
+      () =>
+        buildStackedByCategory(categoryExposureRaw, metric, selectedCategories),
+      [categoryExposureRaw, metric, selectedCategories]
+    );
+
   const topBrandDuration = topCards?.top_brand_duration;
   const topBrandCount = topCards?.top_brand_count;
 
   const toggleSector = (s) =>
     setSelectedSectors((prev) =>
       prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
+    );
+
+  const toggleCategory = (c) =>
+    setSelectedCategories((prev) =>
+      prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]
     );
 
   if (loading)
@@ -263,7 +441,7 @@ export default function BrandOverview({
             Comparison)
           </label>
           <div className="flex items-center gap-3">
-            <Select onValueChange={toggleSector}>
+            <Select onValueChange={(val) => toggleSector(val)}>
               <SelectTrigger className="w-80">
                 <SelectValue placeholder="Select sectors..." />
               </SelectTrigger>
@@ -451,17 +629,54 @@ export default function BrandOverview({
         </div>
       </div>
 
-      {/* Exposure by Category - UNFILTERED */}
+      {/* Exposure by Category - STACKED BY BRAND WITH CATEGORY MULTI-FILTER */}
       <div className="bg-card rounded-xl p-4">
-        <div className="h-96 mt-3 overflow-visible">
+        <div className="flex items-center justify-between mb-4">
           <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-            Exposure by Brand Category
+            Exposure by Brand Category (Stacked by Brand)
           </h4>
-          {exposureByCategory.length === 0 ? (
-            <p className="text-sm text-gray-500">No data</p>
+
+          {/* Category multi-select (shadcn) */}
+          <div className="flex items-center gap-3">
+            <Select onValueChange={(val) => toggleCategory(val)}>
+              <SelectTrigger className="w-64">
+                <SelectValue placeholder="Filter categories..." />
+              </SelectTrigger>
+              <SelectContent>
+                {availableCategories.map((c) => (
+                  <SelectItem key={c} value={c}>
+                    <div className="flex items-center justify-between w-full">
+                      <span>{c}</span>
+                      {selectedCategories.includes(c) && (
+                        <span className="ml-2 text-green-600 text-xs">
+                          Selected
+                        </span>
+                      )}
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => setSelectedCategories([])}
+            >
+              Clear
+            </Button>
+          </div>
+        </div>
+
+        <div className="h-96 mt-3">
+          {stackedCategoryData.length === 0 ? (
+            <p className="text-sm text-gray-500">
+              No data for selected categories
+            </p>
           ) : (
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={exposureByCategory}>
+              <BarChart data={stackedCategoryData}>
+                <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   dataKey="category"
                   tick={{ fontSize: 11 }}
@@ -471,24 +686,64 @@ export default function BrandOverview({
                   height={70}
                 />
                 <YAxis />
+
+                {/* Custom Tooltip - Hides brands with 0 value */}
                 <Tooltip
-                  formatter={(v) => (metric === "duration" ? `${v}s` : v)}
+                  content={({ active, payload, label }) => {
+                    if (active && payload && payload.length) {
+                      const filteredPayload = payload
+                        .filter((item) => item.value > 0)
+                        .sort((a, b) => b.value - a.value);
+
+                      if (filteredPayload.length === 0) return null;
+
+                      return (
+                        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3 text-sm">
+                          <p className="font-medium text-gray-900 dark:text-white mb-2">
+                            {label}
+                          </p>
+                          {filteredPayload.map((entry, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center justify-between gap-4"
+                            >
+                              <div className="flex items-center gap-2">
+                                <div
+                                  className="w-3 h-3 rounded-full"
+                                  style={{ backgroundColor: entry.color }}
+                                />
+                                <span>{entry.name}</span>
+                              </div>
+                              <span className="font-medium">
+                                {metric === "duration"
+                                  ? `${entry.value}s`
+                                  : entry.value}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
                 />
-                <Bar dataKey="value" fill="#6366f1">
-                  <LabelList
-                    dataKey="value"
-                    position="top"
-                    formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                    className="fill-primary text-xs"
+
+                {/* <Legend wrapperStyle={{ fontSize: 12 }} /> */}
+                {stackedCategoryBrands.map((b, i) => (
+                  <Bar
+                    key={b}
+                    dataKey={b}
+                    stackId="a"
+                    fill={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
+                    isAnimationActive={false}
                   />
-                </Bar>
+                ))}
               </BarChart>
             </ResponsiveContainer>
           )}
         </div>
       </div>
 
-      {/* Brand Competitor Comparison - FILTERED BY SECTOR */}
       {/* Brand Competitor Comparison - FILTERED BY SECTOR */}
       <div className="bg-card rounded-xl p-4">
         <div className="flex items-center justify-between mb-4">
