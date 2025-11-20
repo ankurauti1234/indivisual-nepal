@@ -219,6 +219,9 @@ export default function BrandOverview({
   // Category multi-select filter for exposure stacked chart
   const [selectedCategories, setSelectedCategories] = useState([]);
 
+  // Top Brand Range Filter (Top 10, 10-20, ...)
+  const [topRange, setTopRange] = useState("top_10");
+
   /* Fetch & Parse Files */
   useEffect(() => {
     let mounted = true;
@@ -351,6 +354,34 @@ export default function BrandOverview({
     [stackedCompetitorsRaw, selectedSectors, metric]
   );
 
+  /* Helper: map topRange key to numeric slice indexes */
+  function getRangeIndexes(range) {
+    switch (range) {
+      case "top_10":
+        return [0, 10];
+      case "top_10_20":
+        return [10, 20];
+      case "top_20_30":
+        return [20, 30];
+      case "top_30_40":
+        return [30, 40];
+      case "top_40_50":
+        return [40, 50];
+      case "top_50_60":
+        return [50, 60];
+      case "top_60_70":
+        return [60, 70];
+      case "top_70_80":
+        return [70, 80];
+      case "top_80_90":
+        return [80, 90];
+      case "top_90_100":
+        return [90, 100];
+      default:
+        return [0, 10];
+    }
+  }
+
   /* Derived Chart Data */
   const brandShareSorted = useMemo(() => {
     const key =
@@ -360,6 +391,7 @@ export default function BrandOverview({
       .slice(0, 8);
   }, [filteredBrandShare, metric]);
 
+  /* TOP BRANDS - updated to respect topRange and add rank */
   const topBrands = useMemo(() => {
     const aggregated = filteredScreenTimeBrands.reduce((acc, cur) => {
       const existing = acc.find((i) => i.brand === cur.brand);
@@ -369,13 +401,24 @@ export default function BrandOverview({
       } else acc.push({ ...cur });
       return acc;
     }, []);
-    return aggregated
-      .sort(
-        (a, b) => getValueForMetric(b, metric) - getValueForMetric(a, metric)
-      )
-      .slice(0, 10)
-      .map((d) => ({ ...d, value: getValueForMetric(d, metric) }));
-  }, [filteredScreenTimeBrands, metric]);
+
+    // Sort everything first by metric desc
+    const sorted = aggregated.sort(
+      (a, b) => getValueForMetric(b, metric) - getValueForMetric(a, metric)
+    );
+
+    const [start, end] = getRangeIndexes(topRange);
+
+    // Slice according to selected top range
+    const ranged = sorted.slice(start, end);
+
+    // Add ranking number
+    return ranged.map((d, i) => ({
+      ...d,
+      rank: start + i + 1,
+      value: getValueForMetric(d, metric),
+    }));
+  }, [filteredScreenTimeBrands, metric, topRange]);
 
   // SIMPLE AGGREGATION (previous single-value exposure)
   const exposureByCategory = useMemo(
@@ -610,10 +653,34 @@ export default function BrandOverview({
 
       {/* Brand Screen Time */}
       <div className="bg-card rounded-xl p-4">
-        <div className="h-96 mt-3 overflow-visible">
+        <div className="flex items-center justify-between">
           <h4 className="text-sm font-medium text-gray-900 dark:text-white">
             Brand Screen Time
           </h4>
+
+          {/* TOP RANGE SELECT MOVED INTO THIS CARD */}
+          <div className="flex items-center gap-3">
+            <label className="text-sm text-gray-500">Top Range</label>
+            <select
+              value={topRange}
+              onChange={(e) => setTopRange(e.target.value)}
+              className="px-3 py-2 rounded-lg border bg-background text-sm"
+            >
+              <option value="top_10">Top 1–10</option>
+              <option value="top_10_20">Top 11–20</option>
+              <option value="top_20_30">Top 21–30</option>
+              <option value="top_30_40">Top 31–40</option>
+              <option value="top_40_50">Top 41–50</option>
+              <option value="top_50_60">Top 51–60</option>
+              <option value="top_60_70">Top 61–70</option>
+              <option value="top_70_80">Top 71–80</option>
+              <option value="top_80_90">Top 81–90</option>
+              <option value="top_90_100">Top 91–100</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="h-96 mt-3 overflow-visible">
           {topBrands.length === 0 ? (
             <p className="text-sm text-gray-500">No data</p>
           ) : (
@@ -627,8 +694,13 @@ export default function BrandOverview({
                 <YAxis
                   dataKey="brand"
                   type="category"
-                  width={160}
-                  tick={{ fontSize: 11 }}
+                  width={200}
+                  // show ranking number in front of brand name
+                  tickFormatter={(brand, index) => {
+                    const item = topBrands[index];
+                    return item ? `${item.rank}. ${brand}` : brand;
+                  }}
+                  tick={{ fontSize: 12 }}
                 />
                 <Tooltip
                   formatter={(v) => (metric === "duration" ? `${v}s` : v)}
