@@ -435,53 +435,65 @@ export default function BrandOverview({
         </div>
 
         {/* Global Sector Filter */}
-        <div className="max-w-2xl">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Filter by Sector (applies to Brand Share, Screen Time & Competitor
-            Comparison)
-          </label>
-          <div className="flex items-center gap-3">
-            <Select onValueChange={(val) => toggleSector(val)}>
-              <SelectTrigger className="w-80">
-                <SelectValue placeholder="Select sectors..." />
-              </SelectTrigger>
-              <SelectContent>
-                {availableSectors.map((s) => (
-                  <SelectItem key={s} value={s}>
-                    <div className="flex items-center justify-between w-full">
-                      <span>{s}</span>
-                      {selectedSectors.includes(s) && (
-                        <span className="ml-2 text-green-600 text-xs">
-                          Selected
-                        </span>
-                      )}
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => setSelectedSectors([])}
-            >
-              Clear
-            </Button>
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {selectedSectors.length === 0 ? (
-              <span className="text-sm text-muted-foreground">All sectors</span>
-            ) : (
-              selectedSectors.map((s) => (
-                <Badge key={s} variant="secondary" className="px-3 py-1">
-                  {s}
-                  <button onClick={() => toggleSector(s)} className="ml-2">
-                    <X size={14} />
-                  </button>
-                </Badge>
-              ))
-            )}
-          </div>
+        <div className="flex items-center gap-3">
+          {/* give Select a key based on selectedSectors so it is remounted when cleared */}
+          <Select
+            key={
+              selectedSectors.length === 0
+                ? "all-sectors"
+                : selectedSectors.join(",")
+            }
+            value={
+              selectedSectors.length === 0
+                ? "__ALL__"
+                : selectedSectors[selectedSectors.length - 1]
+            }
+            onValueChange={(val) => toggleSector(val)}
+          >
+            <SelectTrigger className="w-80">
+              <SelectValue>
+                {selectedSectors.length === 0
+                  ? "All Sectors"
+                  : selectedSectors.join(", ")}
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              {availableSectors.map((s) => (
+                <SelectItem key={s} value={s}>
+                  <div className="flex items-center justify-between w-full">
+                    <span>{s}</span>
+                    {selectedSectors.includes(s) && (
+                      <span className="ml-2 text-green-600 text-xs">
+                        Selected
+                      </span>
+                    )}
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setSelectedSectors([])} // keep [] = all sectors
+          >
+            Clear
+          </Button>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {selectedSectors.length === 0 ? (
+            <span className="text-sm text-muted-foreground">All sectors</span>
+          ) : (
+            selectedSectors.map((s) => (
+              <Badge key={s} variant="secondary" className="px-3 py-1">
+                {s}
+                <button onClick={() => toggleSector(s)} className="ml-2">
+                  <X size={14} />
+                </button>
+              </Badge>
+            ))
+          )}
         </div>
       </div>
 
