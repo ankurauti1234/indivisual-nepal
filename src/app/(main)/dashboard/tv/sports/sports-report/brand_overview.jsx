@@ -594,7 +594,7 @@ export default function BrandOverview({
               </div>
             </div>
             <div>
-              <div className="text-sm text-gray-400">Brand</div>
+              <div className="text-sm text-gray-400">Top Count</div>
               <div className="mt-1 text-2xl font-semibold">
                 {topBrandCount?.count ?? "—"}
               </div>
