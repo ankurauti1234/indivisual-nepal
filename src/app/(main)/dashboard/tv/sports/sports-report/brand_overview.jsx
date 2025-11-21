@@ -844,7 +844,7 @@ export default function BrandOverview({
       <div className="bg-card rounded-xl p-4">
         <div className="flex items-center justify-between mb-4">
           <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-            Brand Competitor Comparison
+            Exposure by Brand Sector
           </h4>
         </div>
         <div className="h-96 mt-3">
