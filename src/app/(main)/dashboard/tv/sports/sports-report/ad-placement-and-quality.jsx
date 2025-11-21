@@ -443,7 +443,7 @@ function VisibilityByPlacementType({ metric, data, qualityFilter, colorMap }) {
       .sort((a, b) => b[1] - a[1])
       .map(([name]) => name);
 
-    const topBrands = sortedBrands.slice(0, TOP_N);
+    const topBrands = sortedBrands;
 
     const rows = filteredData.map((entry) => {
       const placement =
@@ -526,9 +526,31 @@ function VisibilityByPlacementType({ metric, data, qualityFilter, colorMap }) {
             allowDecimals={false}
           />
           <Tooltip
-            content={<CustomTooltip />}
-            formatter={(val) => [val, yLabel]}
+            content={(props) => {
+              if (!props.active || !props.payload) return null;
+
+              // Filter items with value > 0
+              const filtered = props.payload.filter((p) => Number(p.value) > 0);
+
+              if (filtered.length === 0) return null;
+
+              return (
+                <div className="bg-white dark:bg-gray-800 p-3 border border-gray-200 dark:border-gray-700 rounded shadow-md">
+                  {props.label && (
+                    <p className="text-xs font-semibold mb-1">{props.label}</p>
+                  )}
+
+                  {filtered.map((p, i) => (
+                    <p key={i} className="text-xs">
+                      <span className="font-semibold">{p.name}:</span> {p.value}
+                      {p.unit || ""}
+                    </p>
+                  ))}
+                </div>
+              );
+            }}
           />
+
           {/* <Legend verticalAlign="top" align="right" height={28} /> */}
 
           {brands.map((brand, i) => (
@@ -541,7 +563,6 @@ function VisibilityByPlacementType({ metric, data, qualityFilter, colorMap }) {
                 DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]
               }
               name={brand}
-             
               barSize={54}
             >
               {/* <LabelList
