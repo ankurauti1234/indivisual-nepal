@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import AudienceMeasurment from "./audience-measurment";
 
 const sections = [
   {
@@ -42,6 +43,11 @@ const sections = [
     title: "Player Brand Connection",
     component: PlayerBrandConnection,
   },
+  {
+    id:"audience-measurment",
+    title:"Audience Measurement",
+    component: AudienceMeasurment
+  }
 ];
 
 export default function DashboardPage() {
