@@ -1,0 +1,611 @@
+Date,Timestamp_From,Timestamp_To,Brand_Name,Exposure_Duration_Seconds,Channel,Ad Type,Category,Product,Sector,Event Type,Placement Type,Frequency/Count
+18-11-2025,15:46:13,15:46:20,Ashok Leyland,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Ashok Leyland,Automobile,,Ground,1
+18-11-2025,15:46:24,15:46:33,Ashok Leyland,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Ashok Leyland,Automobile,,Ground,1
+18-11-2025,15:46:54,15:46:56,Xtreme,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,15:47:04,15:47:11,XEP Nepal,13,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Shoes,XEP,Lifestyle,,Boundary Board,1
+18-11-2025,15:47:38,15:47:40,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,15:47:50,15:48:02,PLO Lubricants,18,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile-lubricants,PLO Lubricants,Automobile,,Jersey,1
+18-11-2025,15:48:12,15:48:25,PLO Lubricants,19,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile-lubricants,PLO Lubricants,Automobile,,Jersey,1
+18-11-2025,15:48:34,15:48:37,XEP Nepal,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Shoes,XEP,Lifestyle,,Boundary Board,1
+18-11-2025,15:48:39,15:48:45,XEP Nepal,12,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Shoes,XEP,Lifestyle,,Boundary Board,1
+18-11-2025,15:48:46,15:48:50,Happydent,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Happydent,FMCG,,Boundary Board,1
+18-11-2025,15:48:51,15:48:54,Presidential Graduate School,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Higher Education,Presidential Graduate School,Education,,Boundary Board,1
+18-11-2025,15:49:08,15:49:08,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:49:18,15:49:18,Siddhartha Bank,13,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,15:49:32,15:49:32,Ncell,12,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,15:49:45,15:49:45,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:49:51,15:49:51,Asianpaints,16,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,15:50:08,15:50:08,Bajaj,7,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,15:50:16,15:50:16,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,15:50:21,15:50:21,Meizan,9,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,15:50:31,15:50:31,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:50:41,15:50:41,Spil,9,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Motor Insurance,Finance/Insurance,,,1
+18-11-2025,15:50:51,15:50:51,Ncell,13,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,15:51:05,15:51:05,Red Bull,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:51:10,15:51:10,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:51:16,15:51:16,ElectriVa,16,Kantipur Max TV,COMMERCIAL_BREAK,EV Infrastructure,EV Charging Network,Automobile,,,1
+18-11-2025,15:51:33,15:51:33,Bajaj,3,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,15:51:37,15:51:37,Asianpaints,14,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,15:51:52,15:51:52,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:51:58,15:51:58,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,15:52:03,15:52:03,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,15:52:08,15:52:08,Siddhartha Bank,4,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,15:52:13,15:52:13,Bajaj,4,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,15:52:18,15:52:18,Nemato Tiles,10,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles,Industrial,,,1
+18-11-2025,15:52:29,15:52:29,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:52:34,15:52:34,Devil's Noodles,9,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Spicy Chicken Noodles,FMCG,,,1
+18-11-2025,15:52:44,15:52:44,Sonam,14,Kantipur Max TV,COMMERCIAL_BREAK,Bags,college and travel Bags,Lifestyle,,,1
+18-11-2025,15:52:59,15:52:59,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:53:04,15:53:04,Xtreme,32,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:53:37,15:53:37,Nepal Life Insurance,6,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:53:44,15:53:44,Bajaj,13,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,15:53:58,15:53:58,United Cement,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Cement,Industrial,,,1
+18-11-2025,15:54:03,15:54:03,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:54:13,15:54:13,Asianpaints,29,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,15:54:43,15:54:43,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:54:48,15:54:48,Wai Wai,29,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,15:55:18,15:55:18,Meizan,8,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,15:55:27,15:55:27,Sunfeast,16,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,15:55:44,15:55:44,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:55:54,15:55:54,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:56:00,15:56:00,Presidential Graduate School,14,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,15:56:15,15:56:15,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,15:56:20,15:56:20,United Cement,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Cement,Industrial,,,1
+18-11-2025,15:56:25,15:56:25,Embark College,15,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Graduational Courses,Education,,,1
+18-11-2025,15:56:41,15:56:41,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:56:51,15:56:51,Sunfeast,9,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,15:57:01,15:57:01,Nepal Life Insurance,6,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:57:08,15:57:08,Yeti Carpet,29,Kantipur Max TV,COMMERCIAL_BREAK,Home Decor,Carpets,Home Furnishing,,,1
+18-11-2025,15:57:38,15:57:38,KIEC,11,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Education centre,Education,,,1
+18-11-2025,15:57:50,15:57:50,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:58:03,15:58:03,Bajaj,11,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,15:58:16,15:58:16,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:58:21,15:58:21,MIT,15,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,College,Education,,,1
+18-11-2025,15:58:37,15:58:37,Nepatop,10,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,15:58:48,15:58:48,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,15:58:58,15:58:58,Somany Tiles and Bathware,24,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,15:59:23,15:59:23,KFC,12,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,15:59:36,15:59:36,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,15:59:41,15:59:41,Meizan,8,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,15:59:50,15:59:50,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:00:00,16:00:00,Siddhartha Bank,15,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,16:00:16,16:00:16,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:00:21,16:00:21,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,16:00:26,16:00:26,Surya Jyoti Life Insurance,16,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,16:00:43,16:00:43,Mangaldeep Dhoop,14,Kantipur Max TV,COMMERCIAL_BREAK,Spiritual Essentials,Dhoop,FMCG,,,1
+18-11-2025,16:00:58,16:00:58,KIEC,13,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Education centre,Education,,,1
+18-11-2025,16:01:12,16:01:12,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:01:22,16:01:22,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:01:28,16:01:28,KFC,11,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,16:01:40,16:01:40,Asianpaints,29,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,16:02:10,16:02:10,Presidential Graduate School,3,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,16:02:14,16:02:14,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,16:02:19,16:02:19,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:02:24,16:02:24,Xtreme,29,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:02:54,16:02:54,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:02:59,16:02:59,Somany Tiles and Bathware,24,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,16:03:24,16:03:24,KFC,11,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,16:03:36,16:03:36,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:03:42,16:03:42,Meizan,8,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,16:03:51,16:03:51,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:04:01,16:04:01,Siddhartha Bank,15,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,16:04:17,16:04:17,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:04:22,16:04:22,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,16:04:27,16:04:27,Surya Jyoti Life Insurance,16,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,16:04:44,16:04:44,Mangaldeep Dhoop,14,Kantipur Max TV,COMMERCIAL_BREAK,Spiritual Essentials,Dhoop,FMCG,,,1
+18-11-2025,16:04:59,16:04:59,KIEC,13,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Education centre,Education,,,1
+18-11-2025,16:05:13,16:05:13,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:05:23,16:05:23,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:05:29,16:05:29,KFC,10,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,16:05:40,16:05:40,Asianpaints,29,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,16:06:10,16:06:10,Presidential Graduate School,4,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,16:06:15,16:06:15,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,16:06:20,16:06:20,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:06:25,16:06:25,Xtreme,29,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:06:55,16:06:55,Siddhartha Bank,14,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,16:07:10,16:07:10,Ncell,11,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,16:07:22,16:07:22,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:07:28,16:07:28,Asianpaints,15,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,16:07:44,16:07:44,Bajaj,8,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,16:07:53,16:07:53,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,16:07:58,16:07:58,Meizan,9,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,16:08:08,16:08:08,Xtreme,10,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:08:19,16:08:19,Spil,8,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Motor Insurance,Finance/Insurance,,,1
+18-11-2025,16:08:28,16:08:28,Ncell,13,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,16:08:42,16:08:42,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:08:48,16:08:48,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:08:53,16:08:53,ElectriVa,15,Kantipur Max TV,COMMERCIAL_BREAK,EV Infrastructure,EV Charging Network,Automobile,,,1
+18-11-2025,16:09:14,16:09:14,Asianpaints,14,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,16:09:29,16:09:29,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:09:36,16:09:36,Himstar,3,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,16:09:40,16:09:40,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,16:09:45,16:09:45,Siddhartha Bank,4,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,16:09:55,16:09:55,Nemato Tiles,10,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles,Industrial,,,1
+18-11-2025,16:10:06,16:10:06,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:10:11,16:10:11,Devil's Noodles,9,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Spicy Chicken Noodles,FMCG,,,1
+18-11-2025,16:10:21,16:10:21,Sonam,14,Kantipur Max TV,COMMERCIAL_BREAK,Bags,college and travel Bags,Lifestyle,,,1
+18-11-2025,16:10:36,16:10:36,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:10:42,16:10:42,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:11:05,16:11:05,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:11:10,16:11:10,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:13:10,16:13:13,Spil,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Spil,Finance/Insurance,,Boundary Rope,1
+18-11-2025,16:13:58,16:14:01,Nemato Tiles,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,16:14:03,16:14:14,PLO Lubricants,12,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile-lubricants,PLO Lubricants,Automobile,,Jersey,1
+18-11-2025,16:14:17,16:14:22,PLO Lubricants,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile-lubricants,PLO Lubricants,Automobile,,Jersey,1
+18-11-2025,16:14:30,16:14:36,Devil's Noodles,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Devil's Noodles,FMCG,,Jersey,1
+18-11-2025,16:14:37,16:14:43,PLO Lubricants,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile-lubricants,PLO Lubricants,Automobile,,Jersey,1
+18-11-2025,16:15:16,16:15:18,Dafa News,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Journalism,Dafa News,Entertainment,,Boundary Rope,1
+18-11-2025,16:15:37,16:15:43,XEP Nepal,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Shoes,XEP,Lifestyle,,Jersey,1
+18-11-2025,16:15:44,16:15:46,PLO Lubricants,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile-lubricants,PLO Lubricants,Automobile,,Jersey,1
+18-11-2025,16:15:57,16:16:02,Xtreme,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:16:23,16:16:25,Devil's Noodles,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Devil's Noodles,FMCG,,Jersey,1
+18-11-2025,16:16:57,16:17:02,Dafa News,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Journalism,Dafa News,Entertainment,,Ground,1
+18-11-2025,16:17:08,16:17:17,XEP Nepal,13,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Shoes,XEP,Lifestyle,,Jersey,1
+18-11-2025,16:17:31,16:17:33,Nemato Tiles,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,16:17:48,16:17:56,XEP Nepal,17,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Shoes,XEP,Lifestyle,,Jersey,1
+18-11-2025,16:19:10,16:19:13,Devil's Noodles,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Devil's Noodles,FMCG,,Jersey,1
+18-11-2025,16:19:31,16:19:37,Devil's Noodles,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Devil's Noodles,FMCG,,Jersey,1
+18-11-2025,16:19:38,16:19:44,Subisu,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Internet Services,ISP Service Provider,Services,,Jersey,1
+18-11-2025,16:19:55,16:20:00,Meizan,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Edible Oil & Cooking Essential,Meizan,FMCG,,TV Overlay,1
+18-11-2025,16:20:45,16:20:45,Xtreme,11,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:20:57,16:20:57,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:21:07,16:21:07,Asianpaints,5,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,16:21:13,16:21:13,Siddhartha Bank,4,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,16:21:18,16:21:18,Red Bull,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:21:38,16:21:42,Sonam Thermals,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Clothing,Thermals & Jackets,Lifestyle,,Jersey,1
+18-11-2025,16:21:53,16:21:56,PLO Lubricants,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile-lubricants,PLO Lubricants,Automobile,,Jersey,1
+18-11-2025,16:22:10,16:22:13,Devil's Noodles,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Devil's Noodles,FMCG,,Jersey,1
+18-11-2025,16:23:13,16:23:17,Surya Jyoti Life Insurance,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,16:23:20,16:23:24,Xtreme,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:23:50,16:23:50,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,16:23:55,16:23:55,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,16:24:00,16:24:00,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:24:05,16:24:05,Siddhartha Bank,8,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,16:24:15,16:24:15,Ncell,5,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,16:25:37,16:25:41,Presidential Graduate School,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Higher Education,Presidential Graduate School,Education,,TV Overlay,1
+18-11-2025,16:26:10,16:26:10,Nepal Life Insurance,6,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:26:17,16:26:17,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,16:26:22,16:26:22,Sanima Reliance Life Insurance,19,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,16:26:42,16:26:42,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:27:06,16:27:08,Xtreme,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:27:10,16:27:12,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:27:16,16:27:18,Xtreme,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:27:57,16:28:03,United Cement,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,United Cement,Industrial,,TV Overlay,1
+18-11-2025,16:28:48,16:28:53,Somany Tiles and Bathware,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Somany Tiles and Bathware,Industrial,,TV Overlay,1
+18-11-2025,16:29:37,16:29:37,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:29:42,16:29:42,Himstar,5,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,16:29:48,16:29:48,Sanima Reliance Life Insurance,18,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,16:30:07,16:30:07,Xtreme,6,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:30:22,16:30:25,Xtreme,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:32:45,16:32:49,Parachute Naturale,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Hair Care,Parachute Naturale,FMCG,,TV Overlay,1
+18-11-2025,16:33:42,16:33:42,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:33:48,16:33:48,United Cement,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Cement,Industrial,,,1
+18-11-2025,16:33:53,16:33:53,MIT,13,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,College,Education,,,1
+18-11-2025,16:34:07,16:34:07,Xtreme,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:34:43,16:34:46,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:34:48,16:34:50,Xtreme,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:36:56,16:37:00,Xtreme,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:37:36,16:37:36,Xtreme,11,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:37:48,16:37:48,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,16:37:53,16:37:53,Sunfeast,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,16:37:58,16:37:58,Presidential Graduate School,2,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,16:38:01,16:38:01,Somany Tiles and Bathware,12,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,16:41:26,16:41:26,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:41:38,16:41:38,Embark College,6,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Graduational Courses,Education,,,1
+18-11-2025,16:41:45,16:41:45,Ncell,11,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,16:41:57,16:41:57,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:46:02,16:46:04,Bajaj,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,16:46:05,16:46:07,Xtreme,13,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:46:08,16:46:10,Spil,12,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Spil,Finance/Insurance,,Boundary Rope,1
+18-11-2025,16:46:42,16:46:47,Wai Wai,18,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Wai Wai,FMCG,,Boundary Rope,1
+18-11-2025,16:46:54,16:46:56,Indrive,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,16:47:03,16:47:06,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:47:14,16:47:14,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:47:24,16:47:24,Asianpaints,5,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,16:47:30,16:47:30,KIEC,12,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Education centre,Education,,,1
+18-11-2025,16:47:43,16:47:43,Nemato Tiles,9,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles,Industrial,,,1
+18-11-2025,16:48:23,16:48:27,Indrive,23,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Boundary Rope,1
+18-11-2025,16:48:32,16:48:34,MIT,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Higher Education,MIT,Education,,TV Overlay,1
+18-11-2025,16:49:13,16:49:16,Nemato Tiles,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,16:49:22,16:49:26,Bajaj,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,16:49:58,16:50:00,Spil,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Spil,Finance/Insurance,,Boundary Rope,1
+18-11-2025,16:50:02,16:50:07,Somany Tiles and Bathware,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Somany Tiles and Bathware,Industrial,,TV Overlay,1
+18-11-2025,16:50:20,16:50:23,Indrive,14,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Boundary Board,1
+18-11-2025,16:50:57,16:50:57,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,16:51:02,16:51:02,Wai Wai,5,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,16:51:08,16:51:08,Pilot,8,Kantipur Max TV,COMMERCIAL_BREAK,Stationery,V Series Pen,FMCG,,,1
+18-11-2025,16:51:17,16:51:17,Somany Tiles and Bathware,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,16:51:22,16:51:22,Xtreme,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:51:44,16:51:46,Indrive,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,16:51:47,16:51:52,Xtreme,13,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,16:52:06,16:52:16,Indrive,12,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Boundary Board,1
+18-11-2025,16:52:17,16:52:22,Dafa News,13,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Journalism,Dafa News,Entertainment,,Stadium Banner,1
+18-11-2025,16:55:44,16:55:47,Nemato Tiles,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,16:56:14,16:56:14,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:56:24,16:56:24,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,16:56:29,16:56:29,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,16:56:34,16:56:34,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,16:56:40,16:56:40,KFC,11,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,17:00:42,17:00:42,Wai Wai,5,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,17:00:48,17:00:48,Sunfeast,9,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,17:00:58,17:00:58,Presidential Graduate School,3,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,17:01:02,17:01:02,Parachute Naturale,15,Kantipur Max TV,COMMERCIAL_BREAK,Hair Care,Anti-Dandruff Shampoo,FMCG,,,1
+18-11-2025,17:01:18,17:01:18,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:01:45,17:01:45,Siddhartha Bank,14,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,17:02:00,17:02:00,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:02:10,17:02:10,Ncell,15,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,17:02:26,17:02:26,Red Bull,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:02:31,17:02:31,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:02:36,17:02:36,Xtreme,11,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:02:48,17:02:48,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,17:02:58,17:02:58,Devil's Noodles,9,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Spicy Chicken Noodles,FMCG,,,1
+18-11-2025,17:03:08,17:03:08,Xtreme,16,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:07:26,17:07:26,Xtreme,10,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:07:37,17:07:37,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,17:07:42,17:07:42,Spil,9,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Motor Insurance,Finance/Insurance,,,1
+18-11-2025,17:07:52,17:07:52,Ncell,13,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,17:09:04,17:09:08,Bajaj,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,17:10:43,17:10:43,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:10:48,17:10:48,Embark College,7,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Graduational Courses,Education,,,1
+18-11-2025,17:10:56,17:10:56,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,17:11:01,17:11:01,Somany Tiles and Bathware,10,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,17:11:12,17:11:12,Xtreme,3,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:15:17,17:15:17,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:15:27,17:15:27,Asianpaints,5,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,17:15:33,17:15:33,United Ajod Insurance Limited,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:15:38,17:15:38,PLO Lubricants,10,Kantipur Max TV,COMMERCIAL_BREAK,Automobile-lubricants,engine oils and greases,Automobile,,,1
+18-11-2025,17:15:49,17:15:49,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:18:40,17:18:40,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,17:18:45,17:18:45,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,17:18:50,17:18:50,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:18:55,17:18:55,Better Appliances,18,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,17:19:14,17:19:14,Siddhartha Bank,3,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,17:19:47,17:19:47,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:19:52,17:19:52,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,17:19:57,17:19:57,Siddhartha Bank,9,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,17:20:07,17:20:07,Ncell,11,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,17:20:19,17:20:19,Xtreme,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:24:13,17:24:13,Xtreme,10,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:24:24,17:24:24,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,17:24:29,17:24:29,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,17:24:34,17:24:34,Sunfeast,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,17:24:39,17:24:39,Presidential Graduate School,3,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,17:24:43,17:24:43,Spil,10,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Motor Insurance,Finance/Insurance,,,1
+18-11-2025,17:26:49,17:26:49,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,17:26:54,17:26:54,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,17:26:59,17:26:59,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:27:10,17:27:10,Presidential Graduate School,3,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,17:27:14,17:27:14,KIEC,4,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Education centre,Education,,,1
+18-11-2025,17:27:20,17:27:20,Meizan,9,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,17:28:39,17:28:39,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:28:47,17:28:47,Hub International Education,9,Kantipur Max TV,COMMERCIAL_BREAK,International Education,International Education,Education,,,1
+18-11-2025,17:28:57,17:28:57,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,17:29:03,17:29:03,Xtreme,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:30:30,17:30:30,Xtreme,10,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:34:25,17:34:25,Xtreme,11,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:34:37,17:34:37,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,17:34:42,17:34:42,Meizan,8,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,17:34:51,17:34:51,MD Group of Nepal,9,Kantipur Max TV,COMMERCIAL_BREAK,Corporate Advertising,Business Conglomerate Services,Services,,,1
+18-11-2025,17:38:34,17:38:34,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:38:40,17:38:40,Himstar,3,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,17:38:44,17:38:44,Embark College,7,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Graduational Courses,Education,,,1
+18-11-2025,17:38:52,17:38:52,Wai Wai,3,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,17:38:56,17:38:56,KFC,12,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,17:39:09,17:39:09,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:41:14,17:41:14,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,17:41:19,17:41:19,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,17:41:24,17:41:24,Xtreme,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:41:30,17:41:30,KFC,11,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,17:41:42,17:41:42,Lemonzaaaaa,8,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Nimbu Pani,FMCG,,,1
+18-11-2025,17:41:51,17:41:51,Siddhartha Bank,3,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,17:44:20,17:44:20,Xtreme,8,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:44:29,17:44:29,Asianpaints,6,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,17:44:36,17:44:36,Somany Tiles and Bathware,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,17:44:41,17:44:41,Red Bull,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:44:46,17:44:46,Apple Securities Nepal,10,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Investment,Stock Brokerage Services,Finance,,,1
+18-11-2025,17:46:24,17:46:28,Bajaj,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,17:48:03,17:48:05,Ncell,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Mobile Network,Ncell,Telecommunication,,Ground,1
+18-11-2025,17:48:08,17:48:10,Ncell,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Mobile Network,Ncell,Telecommunication,,Ground,1
+18-11-2025,17:48:32,17:48:35,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,17:48:39,17:48:42,Bajaj,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,17:48:48,17:48:50,Vivo,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Consumer Durable-Smartphones,Vivo,Consumer Durable,,Boundary Board,1
+18-11-2025,17:49:22,17:49:26,Nepatop,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nepatop,Industrial,,TV Overlay,1
+18-11-2025,17:49:27,17:49:32,Surya Jyoti Life Insurance,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,17:49:33,17:49:38,Xtreme,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,17:50:05,17:50:05,Nepatop,6,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,17:50:12,17:50:12,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,17:50:17,17:50:17,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:50:22,17:50:22,Omoda jaecoo,4,Kantipur Max TV,COMMERCIAL_BREAK,Automobile-EV,Electric Vehicles,Automobile,,,1
+18-11-2025,17:50:27,17:50:29,Ncell,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Mobile Network,Ncell,Telecommunication,,Ground,1
+18-11-2025,17:50:42,17:50:46,Surya Jyoti Life Insurance,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,17:50:48,17:50:52,Xtreme,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,17:52:37,17:52:46,Nepal Clearing House Ltd.-Nepal PAY,35,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Digital Banking,Nepal Clearing House Ltd.-Nepal PAY,Finance/Insurance,,Stadium Banner,1
+18-11-2025,17:53:42,17:53:47,Siddhartha Bank,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Banking service,Siddhartha Bank,Finance,,Stadium Banner,1
+18-11-2025,17:54:51,17:54:54,Indrive,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,17:56:37,17:56:37,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,17:56:42,17:56:42,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,17:56:47,17:56:47,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:56:52,17:56:52,Parachute Naturale,15,Kantipur Max TV,COMMERCIAL_BREAK,Hair Care,Anti-Dandruff Shampoo,FMCG,,,1
+18-11-2025,17:57:08,17:57:08,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:57:18,17:57:18,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:57:28,17:57:28,Siddhartha Capital,29,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Investment,Investment,Finance,,,1
+18-11-2025,17:57:58,17:57:58,Ncell,13,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,17:58:12,17:58:12,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:58:18,17:58:18,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:58:23,17:58:23,Bajaj,8,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,17:58:32,17:58:32,Asianpaints,16,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,17:58:49,17:58:49,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:58:59,17:58:59,Better Appliances,17,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,17:59:17,17:59:17,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:59:23,17:59:23,Nemato Tiles,8,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles,Industrial,,,1
+18-11-2025,17:59:32,17:59:32,Apple Securities Nepal,11,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Investment,Stock Brokerage Services,Finance,,,1
+18-11-2025,17:59:44,17:59:44,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,17:59:54,17:59:54,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,17:59:59,17:59:59,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,18:00:04,18:00:04,Wai Wai,19,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,18:00:24,18:00:24,Meizan,9,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,18:00:34,18:00:34,Sunfeast,10,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,18:00:45,18:00:45,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:00:54,18:00:54,Xtreme,11,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:01:06,18:01:06,Siddhartha Bank,9,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,18:01:16,18:01:16,Ncell,11,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,18:01:28,18:01:28,Red Bull,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:01:33,18:01:33,Devil's Noodles,10,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Spicy Chicken Noodles,FMCG,,,1
+18-11-2025,18:01:44,18:01:44,Pilot,8,Kantipur Max TV,COMMERCIAL_BREAK,Stationery,V Series Pen,FMCG,,,1
+18-11-2025,18:01:53,18:01:53,N'aura,10,Kantipur Max TV,COMMERCIAL_BREAK,Personal Care,Beauty Product,FMCG,,,1
+18-11-2025,18:02:04,18:02:04,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:02:09,18:02:09,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:02:19,18:02:19,Asianpaints,15,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,18:02:35,18:02:35,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,18:02:40,18:02:40,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:02:46,18:02:46,Bajaj,3,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,18:02:50,18:02:50,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:02:56,18:02:56,Presidential Graduate School,11,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,18:03:08,18:03:08,Spil,8,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Motor Insurance,Finance/Insurance,,,1
+18-11-2025,18:03:17,18:03:17,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:03:22,18:03:22,Xtreme,11,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:03:50,18:03:53,Nemato Tiles,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,18:05:30,18:05:33,Siddhartha Bank,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Banking service,Siddhartha Bank,Finance,,Stadium Banner,1
+18-11-2025,18:05:37,18:05:39,Siddhartha Bank,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Banking service,Siddhartha Bank,Finance,,Stadium Banner,1
+18-11-2025,18:05:42,18:05:46,Xtreme,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:06:23,18:06:28,Nepal Life Insurance,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:06:47,18:06:49,Indrive,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:07:39,18:07:43,Pilot,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Stationery,Pilot,FMCG,,Jersey,1
+18-11-2025,18:07:44,18:07:47,Indrive,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:07:52,18:07:58,Nemato Tiles,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,18:08:00,18:08:04,Indrive,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:08:28,18:08:31,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:08:54,18:08:59,Apple Securities Nepal,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Investment,Apple Securities Nepal,Finance,,Jersey,1
+18-11-2025,18:09:16,18:09:16,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:09:26,18:09:26,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:09:33,18:09:33,Bajaj,2,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,18:09:37,18:09:37,Asianpaints,5,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,18:09:43,18:09:43,Siddhartha Bank,4,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,18:09:48,18:09:48,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:10:34,18:10:39,Asianpaints,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Paint,Asianpaints,Industrial,,TV Overlay,1
+18-11-2025,18:10:48,18:10:51,Devil's Noodles,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Devil's Noodles,FMCG,,Jersey,1
+18-11-2025,18:11:20,18:11:25,Bajaj,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,18:11:56,18:12:02,Meizan,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Edible Oil & Cooking Essential,Meizan,FMCG,,TV Overlay,1
+18-11-2025,18:12:45,18:12:49,Surya Jyoti Life Insurance,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,Wicket,1
+18-11-2025,18:12:51,18:12:54,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:13:03,18:13:05,Nemato Tiles,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,18:14:21,18:14:23,Ncell,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Mobile Network,Ncell,Telecommunication,,TV Overlay,1
+18-11-2025,18:14:29,18:14:31,Nepal Life Insurance,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:14:32,18:14:37,Yeti Carpet,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Home Decor,Yeti Carpet,Home Furnishing,,TV Overlay,1
+18-11-2025,18:15:00,18:15:00,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:15:05,18:15:05,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,18:15:10,18:15:10,Sanima Reliance Life Insurance,20,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,18:15:31,18:15:31,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:15:54,18:15:56,Xtreme,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:16:30,18:16:35,Ncell,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Mobile Network,Ncell,Telecommunication,,TV Overlay,1
+18-11-2025,18:16:36,18:16:40,Himstar,12,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Consumer Durable-Home Appliances,Himstar,Consumer Durable,,TV Overlay,1
+18-11-2025,18:16:41,18:16:43,Nepal Life Insurance,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:16:48,18:16:53,Yeti Carpet,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Home Decor,Yeti Carpet,Home Furnishing,,TV Overlay,1
+18-11-2025,18:17:08,18:17:12,Xtreme,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:17:15,18:17:19,Bajaj,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,18:18:05,18:18:10,United Cement,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,United Cement,Industrial,,TV Overlay,1
+18-11-2025,18:18:54,18:18:57,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:19:30,18:19:34,KIEC,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Higher Education,KIEC,Education,,TV Overlay,1
+18-11-2025,18:19:35,18:19:39,Somany Tiles and Bathware,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Somany Tiles and Bathware,Industrial,,TV Overlay,1
+18-11-2025,18:19:43,18:19:48,Embark College,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Higher Education,Embark College,Education,,TV Overlay,1
+18-11-2025,18:19:57,18:20:02,Indrive,16,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:20:15,18:20:15,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:20:25,18:20:25,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,18:20:30,18:20:30,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,18:20:35,18:20:35,Ncell,15,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,18:21:18,18:21:22,Nepal Life Insurance,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:21:23,18:21:28,Yeti Carpet,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Home Decor,Yeti Carpet,Home Furnishing,,TV Overlay,1
+18-11-2025,18:22:02,18:22:06,Nepal Life Insurance,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:22:08,18:22:13,Yeti Carpet,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Home Decor,Yeti Carpet,Home Furnishing,,TV Overlay,1
+18-11-2025,18:22:32,18:22:35,Sunfeast,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Sunfeast,FMCG,,TV Overlay,1
+18-11-2025,18:22:36,18:22:41,Presidential Graduate School,18,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Higher Education,Presidential Graduate School,Education,,TV Overlay,1
+18-11-2025,18:22:44,18:22:46,Indrive,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:23:21,18:23:26,Xtreme,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:24:01,18:24:04,Siddhartha Bank,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Banking service,Siddhartha Bank,Finance,,TV Overlay,1
+18-11-2025,18:24:06,18:24:10,Parachute Naturale,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Hair Care,Parachute Naturale,FMCG,,TV Overlay,1
+18-11-2025,18:24:18,18:24:20,Nemato Tiles,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,18:24:52,18:24:55,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:24:57,18:25:00,Bajaj,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,18:25:07,18:25:07,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:25:13,18:25:13,MIT,20,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,College,Education,,,1
+18-11-2025,18:25:34,18:25:34,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:26:03,18:26:07,Indrive,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:26:13,18:26:17,Ncell,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Mobile Network,Ncell,Telecommunication,,TV Overlay,1
+18-11-2025,18:26:24,18:26:29,Nepal Life Insurance,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:26:30,18:26:35,Yeti Carpet,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Home Decor,Yeti Carpet,Home Furnishing,,TV Overlay,1
+18-11-2025,18:26:47,18:26:54,Dafa News,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Journalism,Dafa News,Entertainment,,Stadium Banner,1
+18-11-2025,18:26:56,18:27:01,Siddhartha Bank,13,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Banking service,Siddhartha Bank,Finance,,TV Overlay,1
+18-11-2025,18:27:55,18:27:59,Asianpaints,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Paint,Asianpaints,Industrial,,TV Overlay,1
+18-11-2025,18:28:01,18:28:06,KFC,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,KFC,FMCG,,TV Overlay,1
+18-11-2025,18:28:32,18:28:36,Xtreme,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:28:38,18:28:43,Bajaj,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,18:29:14,18:29:17,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:29:22,18:29:24,Bajaj,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Automobile,Bajaj,Automobile,,TV Overlay,1
+18-11-2025,18:29:26,18:29:26,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:29:36,18:29:36,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,18:29:41,18:29:41,Sunfeast,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,18:29:46,18:29:46,Presidential Graduate School,3,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,18:29:51,18:29:51,Somany Tiles and Bathware,10,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,18:30:31,18:30:36,Spil,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Spil,Finance/Insurance,,Stadium Banner,1
+18-11-2025,18:30:37,18:30:42,KIEC,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Higher Education,KIEC,Education,,TV Overlay,1
+18-11-2025,18:31:09,18:31:13,Ncell,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Mobile Network,Ncell,Telecommunication,,TV Overlay,1
+18-11-2025,18:31:21,18:31:25,Nepal Life Insurance,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:31:26,18:31:30,Yeti Carpet,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Home Decor,Yeti Carpet,Home Furnishing,,TV Overlay,1
+18-11-2025,18:32:01,18:32:04,Spil,19,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Spil,Finance/Insurance,,Stadium Banner,1
+18-11-2025,18:32:05,18:32:08,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:32:37,18:32:41,Nepal Life Insurance,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:34:36,18:34:41,Nepal Life Insurance,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:35:29,18:35:31,Nepal Clearing House Ltd.-Nepal PAY,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Digital Banking,Nepal Clearing House Ltd.-Nepal PAY,Finance/Insurance,,Boundary Board,1
+18-11-2025,18:36:02,18:36:06,Surya Jyoti Life Insurance,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:38:07,18:38:07,Nepatop,5,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,18:38:13,18:38:13,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,18:38:18,18:38:18,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:38:23,18:38:23,Better Appliances,22,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,18:38:46,18:38:46,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:38:56,18:38:56,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,18:39:01,18:39:01,KIEC,13,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Education centre,Education,,,1
+18-11-2025,18:40:05,18:40:07,Xtreme,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,Wicket,1
+18-11-2025,18:40:50,18:40:50,Nepatop,3,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,18:40:54,18:40:54,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,18:40:59,18:40:59,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:41:04,18:41:04,Bajaj,4,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,18:41:09,18:41:09,Presidential Graduate School,4,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,18:41:14,18:41:14,KIEC,5,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Education centre,Education,,,1
+18-11-2025,18:41:20,18:41:20,Meizan,8,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,18:42:51,18:42:51,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,18:42:56,18:42:56,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,18:43:01,18:43:01,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:43:06,18:43:06,KFC,12,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,18:43:19,18:43:19,Lemonzaaaaa,8,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Nimbu Pani,FMCG,,,1
+18-11-2025,18:43:28,18:43:28,Siddhartha Bank,3,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,18:44:37,18:44:37,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:44:43,18:44:43,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,18:44:48,18:44:48,Pilot,8,Kantipur Max TV,COMMERCIAL_BREAK,Stationery,V Series Pen,FMCG,,,1
+18-11-2025,18:44:57,18:44:57,Somany Tiles and Bathware,5,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,18:45:03,18:45:03,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:45:19,18:45:25,Xtreme,18,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:46:27,18:46:31,Indrive,10,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:46:46,18:46:48,Asianpaints,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Paint,Asianpaints,Industrial,,TV Overlay,1
+18-11-2025,18:47:31,18:47:31,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:47:41,18:47:41,Asianpaints,5,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,18:47:47,18:47:47,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,18:47:52,18:47:52,Red Bull,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:47:57,18:47:57,KFC,11,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,18:48:43,18:48:48,KFC,11,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,KFC,FMCG,,TV Overlay,1
+18-11-2025,18:50:24,18:50:26,Xtreme,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,18:50:39,18:50:42,Indrive,12,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Stadium Banner,1
+18-11-2025,18:50:45,18:50:51,Embark College,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Higher Education,Embark College,Education,,TV Overlay,1
+18-11-2025,18:51:04,18:51:06,Nemato Tiles,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,18:51:11,18:51:11,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,18:51:16,18:51:16,Sunfeast,9,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,18:51:26,18:51:26,Presidential Graduate School,3,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,18:51:30,18:51:30,Parachute Naturale,16,Kantipur Max TV,COMMERCIAL_BREAK,Hair Care,Anti-Dandruff Shampoo,FMCG,,,1
+18-11-2025,18:51:47,18:51:47,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:51:52,18:51:52,Siddhartha Bank,14,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,18:52:07,18:52:07,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:52:17,18:52:17,Ncell,14,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,18:52:32,18:52:32,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:52:38,18:52:38,Nepal Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,18:52:43,18:52:43,Xtreme,10,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:52:54,18:52:54,Asianpaints,6,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,18:53:01,18:53:01,Bajaj,3,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,18:53:05,18:53:05,Nepal Telecom,11,Kantipur Max TV,COMMERCIAL_BREAK,Services-Fibre Provider,Fibre Services Provider,Services,,,1
+18-11-2025,18:53:17,18:53:17,Xtreme,11,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:54:36,18:54:40,Indrive,14,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Boundary Board,1
+18-11-2025,18:54:42,18:54:48,Nepal Life Insurance,13,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,18:56:15,18:56:15,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,18:56:20,18:56:20,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,18:56:25,18:56:25,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:56:30,18:56:30,ElectriVa,15,Kantipur Max TV,COMMERCIAL_BREAK,EV Infrastructure,EV Charging Network,Automobile,,,1
+18-11-2025,18:56:46,18:56:46,Red Bull,3,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:56:50,18:56:53,Indrive,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:57:03,18:57:10,Sunfeast,18,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Food & Beverages,Sunfeast,FMCG,,TV Overlay,1
+18-11-2025,18:57:24,18:57:29,Red Bull,15,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Red Bull,FMCG,,Stadium Banner,1
+18-11-2025,18:57:53,18:57:58,Indrive,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,18:58:02,18:58:02,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:58:25,18:58:25,Xtreme,10,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,18:58:36,18:58:36,Asianpaints,5,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Ultima Protek Shyne,Industrial,,,1
+18-11-2025,18:58:42,18:58:42,Spil,9,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Motor Insurance,Finance/Insurance,,,1
+18-11-2025,18:58:52,18:58:52,Ncell,12,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,18:59:18,18:59:23,Asianpaints,12,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Paint,Asianpaints,Industrial,,TV Overlay,1
+18-11-2025,19:01:33,19:01:35,Himstar,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Consumer Durable-Home Appliances,Himstar,Consumer Durable,,TV Overlay,1
+18-11-2025,19:02:07,19:02:07,Bajaj,2,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,19:02:10,19:02:10,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,19:02:16,19:02:16,Embark College,6,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Graduational Courses,Education,,,1
+18-11-2025,19:02:23,19:02:23,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,19:02:28,19:02:28,Somany Tiles and Bathware,8,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Tiles and Bathware,Industrial,,,1
+18-11-2025,19:02:51,19:02:54,Xtreme,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,19:04:03,19:04:09,Meizan,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Edible Oil & Cooking Essential,Meizan,FMCG,,TV Overlay,1
+18-11-2025,19:05:29,19:05:35,Somany Tiles and Bathware,7,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Somany Tiles and Bathware,Industrial,,TV Overlay,1
+18-11-2025,19:06:29,19:06:29,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:06:39,19:06:39,Asianpaints,5,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,19:06:45,19:06:45,United Cement,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Cement,Industrial,,,1
+18-11-2025,19:06:50,19:06:50,PLO Lubricants,8,Kantipur Max TV,COMMERCIAL_BREAK,Automobile-lubricants,engine oils and greases,Automobile,,,1
+18-11-2025,19:06:59,19:06:59,Red Bull,7,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:07:50,19:07:55,Parachute Naturale,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Hair Care,Parachute Naturale,FMCG,,TV Overlay,1
+18-11-2025,19:08:50,19:08:50,Nepatop,5,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,19:08:56,19:08:56,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,19:09:01,19:09:01,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:09:06,19:09:06,Parachute Naturale,14,Kantipur Max TV,COMMERCIAL_BREAK,Hair Care,Anti-Dandruff Shampoo,FMCG,,,1
+18-11-2025,19:09:21,19:09:21,Red Bull,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:10:54,19:10:58,Nepal Life Insurance,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,19:11:22,19:11:22,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,19:11:28,19:11:28,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,19:11:33,19:11:33,Siddhartha Bank,10,Kantipur Max TV,COMMERCIAL_BREAK,Banking service,General banking,Finance,,,1
+18-11-2025,19:11:44,19:11:44,Ncell,10,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,19:11:55,19:11:55,Xtreme,5,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:12:35,19:12:38,Everest Bank,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Banking service,Everest Bank,Finance,,Jersey,1
+18-11-2025,19:12:57,19:13:00,Surya Jyoti Life Insurance,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,19:13:27,19:13:27,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,19:13:32,19:13:32,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,19:13:37,19:13:37,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:13:42,19:13:42,Ncell,12,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,19:13:55,19:13:55,Red Bull,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:14:11,19:14:13,Xtreme,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,19:14:21,19:14:25,Indrive,8,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,19:15:06,19:15:08,Indrive,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Ride-hailing,Indrive,E-commerce/Tech,,Ground,1
+18-11-2025,19:16:26,19:16:26,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:16:36,19:16:36,Asianpaints,5,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,19:16:42,19:16:42,Wai Wai,3,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,19:16:46,19:16:46,Sunfeast,5,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Dark Fantasy,FMCG,,,1
+18-11-2025,19:16:52,19:16:52,Presidential Graduate School,3,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Educational Courses,Education,,,1
+18-11-2025,19:16:56,19:16:56,Spil,9,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Motor Insurance,Finance/Insurance,,,1
+18-11-2025,19:17:25,19:17:27,Nemato Tiles,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nemato Tiles,Industrial,,Jersey,1
+18-11-2025,19:17:43,19:17:46,Yeti Carpet,4,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Home Decor,Yeti Carpet,Home Furnishing,,TV Overlay,1
+18-11-2025,19:19:26,19:19:28,Xtreme,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,19:19:30,19:19:32,Xtreme,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1
+18-11-2025,19:20:40,19:20:40,Bajaj,2,Kantipur Max TV,COMMERCIAL_BREAK,Automobile,Pulsar,Automobile,,,1
+18-11-2025,19:20:43,19:20:43,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,19:20:49,19:20:49,Spil,2,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Motor Insurance,Finance/Insurance,,,1
+18-11-2025,19:20:52,19:20:52,Hub International Education,9,Kantipur Max TV,COMMERCIAL_BREAK,International Education,International Education,Education,,,1
+18-11-2025,19:21:02,19:21:02,Asianpaints,4,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,19:21:07,19:21:07,Xtreme,6,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:24:22,19:24:24,Nepatop,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nepatop,Industrial,,TV Overlay,1
+18-11-2025,19:24:25,19:24:30,Surya Jyoti Life Insurance,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,19:24:54,19:24:54,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,19:24:59,19:24:59,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,19:25:04,19:25:04,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:25:09,19:25:09,Ncell,2,Kantipur Max TV,COMMERCIAL_BREAK,Mobile Network,Data Pack,Telecommunication,,,1
+18-11-2025,19:25:12,19:25:12,Subisu,9,Kantipur Max TV,COMMERCIAL_BREAK,Internet Services,ISP Service Provider,Services,,,1
+18-11-2025,19:26:14,19:26:14,Xtreme,9,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:26:24,19:26:24,Asianpaints,6,Kantipur Max TV,COMMERCIAL_BREAK,Paint,Wall paint,Industrial,,,1
+18-11-2025,19:26:31,19:26:31,Meizan,10,Kantipur Max TV,COMMERCIAL_BREAK,Edible Oil & Cooking Essential,Cooking Oil,FMCG,,,1
+18-11-2025,19:26:42,19:26:42,MD Group of Nepal,8,Kantipur Max TV,COMMERCIAL_BREAK,Corporate Advertising,Business Conglomerate Services,Services,,,1
+18-11-2025,19:26:51,19:26:51,Sonam Thermals,14,Kantipur Max TV,COMMERCIAL_BREAK,Clothing,Thermals & Jackets,Lifestyle,,,1
+18-11-2025,19:28:43,19:28:45,Nepatop,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Building Materials,Nepatop,Industrial,,TV Overlay,1
+18-11-2025,19:28:49,19:28:51,Surya Jyoti Life Insurance,3,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,19:29:19,19:29:19,Nepatop,4,Kantipur Max TV,COMMERCIAL_BREAK,Building Materials,Water Tank & Pipes,Industrial,,,1
+18-11-2025,19:29:24,19:29:24,Surya Jyoti Life Insurance,4,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Life insurance,Finance/Insurance,,,1
+18-11-2025,19:29:29,19:29:29,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:29:34,19:29:34,MIT,5,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,College,Education,,,1
+18-11-2025,19:31:22,19:31:22,Nepal Life Insurance,5,Kantipur Max TV,COMMERCIAL_BREAK,Finance-Insurance,Insurance Policies,Finance/Insurance,,,1
+18-11-2025,19:31:28,19:31:28,Himstar,4,Kantipur Max TV,COMMERCIAL_BREAK,Consumer Durable-Home Appliances,Home Appliances,Consumer Durable,,,1
+18-11-2025,19:31:33,19:31:33,Embark College,7,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,Graduational Courses,Education,,,1
+18-11-2025,19:31:41,19:31:41,Wai Wai,4,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Quick Instant Noodles,FMCG,,,1
+18-11-2025,19:31:46,19:31:46,KFC,11,Kantipur Max TV,COMMERCIAL_BREAK,Food & Beverages,Crunchy Chicken,FMCG,,,1
+18-11-2025,19:31:58,19:31:58,Xtreme,4,Kantipur Max TV,COMMERCIAL_BREAK,Beverages,Energy Drink,FMCG,,,1
+18-11-2025,19:32:03,19:32:03,MIT,8,Kantipur Max TV,COMMERCIAL_BREAK,Higher Education,College,Education,,,1
+18-11-2025,19:33:24,19:33:29,Nepal Life Insurance,6,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Nepal Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,19:33:30,19:33:35,Yeti Carpet,9,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Home Decor,Yeti Carpet,Home Furnishing,,TV Overlay,1
+18-11-2025,19:35:08,19:35:12,Surya Jyoti Life Insurance,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Finance-Insurance,Surya Jyoti Life Insurance,Finance/Insurance,,TV Overlay,1
+18-11-2025,19:35:14,19:35:18,Xtreme,5,Kantipur Max TV,SPOT_OUTSIDE_BREAK,Beverages,Xtreme,FMCG,,TV Overlay,1

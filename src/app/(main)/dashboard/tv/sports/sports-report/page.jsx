@@ -45,7 +45,7 @@ const sections = [
   },
   {
     id:"audience-measurment",
-    title:"Audience Measurement",
+    title:"OOH",
     component: AudienceMeasurment
   }
 ];

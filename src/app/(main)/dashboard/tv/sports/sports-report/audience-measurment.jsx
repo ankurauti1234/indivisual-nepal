@@ -7,12 +7,12 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  LabelList,
   LineChart,
   Line,
   XAxis,
   YAxis,
   CartesianGrid,
+  LabelList,
   BarChart,
   Bar,
 } from "recharts";
@@ -25,21 +25,97 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const DEFAULT_PALETTE = [
-  "#6366f1", // indigo
-  "#10b981", // emerald
-  "#f59e0b", // amber
-  "#f97316", // orange
-  "#ef4444", // red
-  "#8b5cf6", // violet
-  "#06b6d4", // cyan
-  "#a78bfa", // purple
-  "#f472b6", // pink
-  "#94a3b8", // slate
+  "#6366f1",
+  "#10b981",
+  "#f59e0b",
+  "#f97316",
+  "#ef4444",
+  "#8b5cf6",
+  "#06b6d4",
+  "#a78bfa",
+  "#f472b6",
+  "#94a3b8",
 ];
 
 const AGE_GROUPS = ["13-17", "18-24", "25-34", "35-44", "45-54", "55+"];
+
+// Reusable Multi-Select Venue Filter
+function VenueMultiSelect({
+  venues,
+  selected,
+  onChange,
+  title = "Filter by Venue",
+}) {
+  const toggleVenue = (venueId) => {
+    onChange(
+      selected.includes(venueId)
+        ? selected.filter((v) => v !== venueId)
+        : [...selected, venueId]
+    );
+  };
+
+  const allSelected = selected.length === venues.length;
+  const noneSelected = selected.length === 0;
+
+  return (
+    <Select>
+      <SelectTrigger className="w-[220px]">
+        <SelectValue
+          placeholder={
+            noneSelected
+              ? "All venues"
+              : `${selected.length} venue${
+                  selected.length !== 1 ? "s" : ""
+                } selected`
+          }
+        />
+      </SelectTrigger>
+      <SelectContent>
+        <div className="p-2 border-b">
+          <p className="text-xs font-medium text-muted-foreground">{title}</p>
+        </div>
+        <div className="max-h-64 overflow-y-auto">
+          {venues.map((id) => (
+            <div
+              key={id}
+              className="flex items-center space-x-2 px-3 py-2 hover:bg-accent rounded cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                toggleVenue(id);
+              }}
+            >
+              <Checkbox checked={selected.includes(id)} />
+              <span className="text-sm">Venue {id}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-between px-3 py-2 border-t text-xs">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onChange(venues);
+            }}
+            className="text-primary hover:underline"
+          >
+            Select All
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onChange([]);
+            }}
+            className="text-primary hover:underline"
+          >
+            Clear
+          </button>
+        </div>
+      </SelectContent>
+    </Select>
+  );
+}
 
 export default function AudienceMeasurment({
   selectedMatch,
@@ -49,9 +125,17 @@ export default function AudienceMeasurment({
   const [fileMap, setFileMap] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const [selectedGenderVenue, setSelectedGenderVenue] = useState(null);
-  const [selectedGroupVenue, setSelectedGroupVenue] = useState(null);
-  const [selectedEmotionVenue, setSelectedEmotionVenue] = useState(null);
+  // Multi-select state for each chart
+  const [selectedGenderVenues, setSelectedGenderVenues] = useState([]);
+  const [selectedGroupVenues, setSelectedGroupVenues] = useState([]);
+  const [selectedEmotionVenues, setSelectedEmotionVenues] = useState([]);
+  const [selectedFlowVenues, setSelectedFlowVenues] = useState([]);
+  const [selectedPeakVenues, setSelectedPeakVenues] = useState([]);
+  const [selectedAgeVenues, setSelectedAgeVenues] = useState([]);
+  const [selectedLightingVenues, setSelectedLightingVenues] = useState([]);
+  const [selectedEngagementVenues, setSelectedEngagementVenues] = useState([]);
+  const [selectedEventVenues, setSelectedEventVenues] = useState([]);
+  const [selectedOcclusionVenues, setSelectedOcclusionVenues] = useState([]);
 
   useEffect(() => {
     let mounted = true;
@@ -130,133 +214,287 @@ export default function AudienceMeasurment({
     () => getData("lighiting_condition_comparison.json"),
     [fileMap]
   );
-
-  // Venue lists
-  const genderVenues = useMemo(
-    () =>
-      [...new Set(GenderDistributionByVenue.map((d) => d.venue_id))]
-        .filter(Boolean)
-        .sort((a, b) => a - b),
-    [GenderDistributionByVenue]
+  const EngagementScoreTrend = useMemo(
+    () => getData("engagement_score_trend.json"),
+    [fileMap]
   );
-  const groupVenues = useMemo(
-    () =>
-      [...new Set(GroupDistribution.map((d) => d.venue_id))]
-        .filter(Boolean)
-        .sort((a, b) => a - b),
-    [GroupDistribution]
+  const EventWiseAudienceViewership = useMemo(
+    () => getData("event_audince_viwership.json"),
+    [fileMap]
   );
-  const emotionVenues = useMemo(
-    () =>
-      [...new Set(EmotionDistribution.map((d) => d.venue_id))]
-        .filter(Boolean)
-        .sort((a, b) => a - b),
-    [EmotionDistribution]
+  const OcculsionLevelDistribution = useMemo(
+    () => getData("occulsion_level_distribution.json"),
+    [fileMap]
   );
 
+  // All venue IDs across all datasets
+  const allVenueIds = useMemo(() => {
+    const ids = new Set();
+    [
+      ...GenderDistributionByVenue,
+      ...GroupDistribution,
+      ...EmotionDistribution,
+      ...AudienceFlowAndPeakViewrship,
+      ...PeakAudienceComparison,
+      ...AgeGroupComposition,
+      ...LightingConditionComparison,
+      ...EngagementScoreTrend,
+      ...EventWiseAudienceViewership,
+      ...OcculsionLevelDistribution,
+    ].forEach((item) => {
+      if (item.venue_id) ids.add(item.venue_id);
+    });
+    return Array.from(ids).sort((a, b) => a - b);
+  }, [
+    GenderDistributionByVenue,
+    GroupDistribution,
+    EmotionDistribution,
+    AudienceFlowAndPeakViewrship,
+    PeakAudienceComparison,
+    AgeGroupComposition,
+    LightingConditionComparison,
+    EngagementScoreTrend,
+    EventWiseAudienceViewership,
+    OcculsionLevelDistribution,
+  ]);
+
+  // Auto-select all venues on load
   useEffect(() => {
-    if (genderVenues.length > 0 && !selectedGenderVenue)
-      setSelectedGenderVenue(genderVenues[0]);
-    if (groupVenues.length > 0 && !selectedGroupVenue)
-      setSelectedGroupVenue(groupVenues[0]);
-    if (emotionVenues.length > 0 && !selectedEmotionVenue)
-      setSelectedEmotionVenue(emotionVenues[0]);
-  }, [genderVenues, groupVenues, emotionVenues]);
+    if (allVenueIds.length > 0) {
+      const venues = allVenueIds;
+      setSelectedGenderVenues(venues);
+      setSelectedGroupVenues(venues);
+      setSelectedEmotionVenues(venues);
+      setSelectedFlowVenues(venues);
+      setSelectedPeakVenues(venues);
+      setSelectedAgeVenues(venues);
+      setSelectedLightingVenues(venues);
+      setSelectedEngagementVenues(venues);
+      setSelectedEventVenues(venues);
+      setSelectedOcclusionVenues(venues);
+    }
+  }, [allVenueIds]);
 
-  // Pie Charts Data
+  const filterByVenues = (data, selected) =>
+    selected.length > 0
+      ? data.filter((d) => selected.includes(d.venue_id))
+      : data;
+
+  // Gender Pie (aggregated)
   const genderPieData = useMemo(() => {
-    if (!selectedGenderVenue) return [];
-    const row = GenderDistributionByVenue.find(
-      (d) => d.venue_id === selectedGenderVenue
+    const filtered = filterByVenues(
+      GenderDistributionByVenue,
+      selectedGenderVenues
     );
-    return row
+    const total = { male: 0, female: 0 };
+    filtered.forEach((d) => {
+      total.male += d.male || 0;
+      total.female += d.female || 0;
+    });
+    return total.male + total.female > 0
       ? [
-          { name: "Male", value: row.male || 0 },
-          { name: "Female", value: row.female || 0 },
+          { name: "Male", value: total.male },
+          { name: "Female", value: total.female },
         ]
       : [];
-  }, [GenderDistributionByVenue, selectedGenderVenue]);
+  }, [GenderDistributionByVenue, selectedGenderVenues]);
 
+  // Group Pie
   const groupPieData = useMemo(() => {
-    if (!selectedGroupVenue) return [];
-    const filtered = GroupDistribution.filter(
-      (d) => d.venue_id === selectedGroupVenue
-    );
+    const filtered = filterByVenues(GroupDistribution, selectedGroupVenues);
     const agg = filtered.reduce((acc, cur) => {
       acc[cur.type] = (acc[cur.type] || 0) + (cur.count || 0);
       return acc;
     }, {});
-    return Object.entries(agg).map(([name, value]) => ({ name, value }));
-  }, [GroupDistribution, selectedGroupVenue]);
+    return Object.entries(agg)
+      .map(([name, value]) => ({ name, value }))
+      .sort((a, b) => b.value - a.value);
+  }, [GroupDistribution, selectedGroupVenues]);
 
+  // Emotion Pie
   const emotionPieData = useMemo(() => {
-    if (!selectedEmotionVenue) return [];
-    const filtered = EmotionDistribution.filter(
-      (d) => d.venue_id === selectedEmotionVenue
-    );
+    const filtered = filterByVenues(EmotionDistribution, selectedEmotionVenues);
     const agg = filtered.reduce((acc, cur) => {
       acc[cur.type] = (acc[cur.type] || 0) + (cur.count || 0);
       return acc;
     }, {});
-    return Object.entries(agg).map(([name, value]) => ({ name, value }));
-  }, [EmotionDistribution, selectedEmotionVenue]);
+    return Object.entries(agg)
+      .map(([name, value]) => ({ name, value }))
+      .sort((a, b) => b.value - a.value);
+  }, [EmotionDistribution, selectedEmotionVenues]);
 
-  // Audience Flow (Multi-line)
+  // Audience Flow Over Time
   const audienceFlowMultiLineData = useMemo(() => {
-    const venueIds = [
-      ...new Set(AudienceFlowAndPeakViewrship.map((d) => d.venue_id)),
-    ].sort((a, b) => a - b);
+    const venues =
+      selectedFlowVenues.length > 0 ? selectedFlowVenues : allVenueIds;
     const timeMap = {};
+
     AudienceFlowAndPeakViewrship.forEach((item) => {
+      if (!venues.includes(item.venue_id)) return;
       const time = item.Timestamp;
       if (!timeMap[time]) timeMap[time] = { Timestamp: time };
       timeMap[time][`venue_${item.venue_id}`] = item.total_person_visible || 0;
     });
+
     return Object.values(timeMap).sort((a, b) =>
       a.Timestamp.localeCompare(b.Timestamp)
     );
-  }, [AudienceFlowAndPeakViewrship]);
+  }, [AudienceFlowAndPeakViewrship, selectedFlowVenues, allVenueIds]);
 
-  const flowVenueIds = useMemo(
-    () =>
-      [...new Set(AudienceFlowAndPeakViewrship.map((d) => d.venue_id))].sort(
-        (a, b) => a - b
-      ),
-    [AudienceFlowAndPeakViewrship]
-  );
+  const flowVenueIds =
+    selectedFlowVenues.length > 0 ? selectedFlowVenues : allVenueIds;
 
   // Peak Audience
   const peakAudienceData = useMemo(() => {
-    return PeakAudienceComparison.map((d) => ({
-      venue_id: `Venue ${d.venue_id}`,
-      total_viewing_screen: d.total_viewing_screen || 0,
-    })).sort((a, b) => a.venue_id.localeCompare(b.venue_id));
-  }, [PeakAudienceComparison]);
+    const venues =
+      selectedPeakVenues.length > 0 ? selectedPeakVenues : allVenueIds;
+    return PeakAudienceComparison.filter((d) => venues.includes(d.venue_id))
+      .map((d) => ({
+        venue_id: `Venue ${d.venue_id}`,
+        total_viewing_screen: d.total_viewing_screen || 0,
+      }))
+      .sort((a, b) => a.venue_id.localeCompare(b.venue_id));
+  }, [PeakAudienceComparison, selectedPeakVenues, allVenueIds]);
 
-  // NEW: Age Group Composition - Stacked Bar Chart
+  // Age Group Composition
   const ageGroupChartData = useMemo(() => {
-    const venueMap = {};
-    AgeGroupComposition.forEach((item) => {
-      if (!venueMap[item.venue_id]) {
-        venueMap[item.venue_id] = { venue_id: `Venue ${item.venue_id}` };
-      }
-      const ageKey = Object.keys(item).find((k) => k !== "venue_id");
-      venueMap[item.venue_id][ageKey] = item[ageKey];
-    });
-    return Object.values(venueMap);
-  }, [AgeGroupComposition]);
+    const venues =
+      selectedAgeVenues.length > 0 ? selectedAgeVenues : allVenueIds;
+    const map = {};
 
-  // NEW: Lighting Condition - Clustered Bar Chart
-  const lightingConditionChartData = useMemo(() => {
-    const venueMap = {};
-    LightingConditionComparison.forEach((item) => {
-      if (!venueMap[item.venue_id]) {
-        venueMap[item.venue_id] = { venue_id: `Venue ${item.venue_id}` };
-      }
-      venueMap[item.venue_id][item.condition] = item.total;
+    AgeGroupComposition.forEach((item) => {
+      if (!venues.includes(item.venue_id)) return;
+      const vid = item.venue_id;
+      if (!map[vid]) map[vid] = { venue_id: `Venue ${vid}` };
+      Object.keys(item).forEach((key) => {
+        if (key !== "venue_id") {
+          map[vid][key] = (map[vid][key] || 0) + (item[key] || 0);
+        }
+      });
     });
-    return Object.values(venueMap);
-  }, [LightingConditionComparison]);
+
+    return Object.values(map);
+  }, [AgeGroupComposition, selectedAgeVenues, allVenueIds]);
+
+  // Lighting Condition
+  const lightingConditionChartData = useMemo(() => {
+    const venues =
+      selectedLightingVenues.length > 0 ? selectedLightingVenues : allVenueIds;
+    const map = {};
+
+    LightingConditionComparison.forEach((item) => {
+      if (!venues.includes(item.venue_id)) return;
+      const vid = item.venue_id;
+      if (!map[vid]) map[vid] = { venue_id: `Venue ${vid}` };
+      map[vid][item.condition] =
+        (map[vid][item.condition] || 0) + (item.total || 0);
+    });
+
+    return Object.values(map);
+  }, [LightingConditionComparison, selectedLightingVenues, allVenueIds]);
+
+  // Engagement Score Trend
+  const engagementMultiLineData = useMemo(() => {
+    const venues =
+      selectedEngagementVenues.length > 0
+        ? selectedEngagementVenues
+        : allVenueIds;
+    const times = [
+      ...new Set(EngagementScoreTrend.map((d) => d.Timestamp)),
+    ].sort();
+    const timeMap = {};
+    const sums = {};
+    const counts = {};
+
+    times.forEach((t) => {
+      timeMap[t] = { Timestamp: t };
+      sums[t] = {};
+      counts[t] = {};
+      venues.forEach((v) => {
+        timeMap[t][`venue_${v}`] = 0;
+        sums[t][`venue_${v}`] = 0;
+        counts[t][`venue_${v}`] = 0;
+      });
+    });
+
+    EngagementScoreTrend.forEach((item) => {
+      if (!venues.includes(item.venue_id)) return;
+      const key = `venue_${item.venue_id}`;
+      sums[item.Timestamp][key] += item.score || 0;
+      counts[item.Timestamp][key] += 1;
+    });
+
+    times.forEach((t) => {
+      venues.forEach((v) => {
+        const key = `venue_${v}`;
+        timeMap[t][key] =
+          counts[t][key] > 0 ? sums[t][key] / counts[t][key] : null;
+      });
+    });
+
+    return Object.values(timeMap);
+  }, [EngagementScoreTrend, selectedEngagementVenues, allVenueIds]);
+
+  const engagementVenueIds =
+    selectedEngagementVenues.length > 0
+      ? selectedEngagementVenues
+      : allVenueIds;
+
+  // Event-Wise Audience
+  const eventWiseAudienceData = useMemo(() => {
+    const venues =
+      selectedEventVenues.length > 0 ? selectedEventVenues : allVenueIds;
+    const filtered = EventWiseAudienceViewership.filter((d) =>
+      venues.includes(d.venue_id)
+    );
+    const agg = filtered.reduce((acc, cur) => {
+      const key = cur.tag || "Unknown";
+      acc[key] = (acc[key] || 0) + (cur.total || 0);
+      return acc;
+    }, {});
+
+    return Object.entries(agg)
+      .map(([tag, total]) => ({ tag, total }))
+      .sort((a, b) => b.total - a.total);
+  }, [EventWiseAudienceViewership, selectedEventVenues, allVenueIds]);
+
+  // Occlusion Level Distribution
+  const occlusionLevels = useMemo(() => {
+    return [
+      ...new Set(OcculsionLevelDistribution.map((d) => d.occlusion_level)),
+    ]
+      .filter(Boolean)
+      .sort();
+  }, [OcculsionLevelDistribution]);
+
+  const occlusionChartData = useMemo(() => {
+    const venues =
+      selectedOcclusionVenues.length > 0
+        ? selectedOcclusionVenues
+        : allVenueIds;
+    const map = {};
+
+    OcculsionLevelDistribution.forEach((item) => {
+      if (!venues.includes(item.venue_id)) return;
+      const vid = item.venue_id;
+      if (!map[vid]) map[vid] = { venue_id: `Venue ${vid}` };
+      map[vid][item.occlusion_level] =
+        (map[vid][item.occlusion_level] || 0) + (item.count || 0);
+    });
+
+    Object.values(map).forEach((row) => {
+      occlusionLevels.forEach((level) => {
+        if (!(level in row)) row[level] = 0;
+      });
+    });
+
+    return Object.values(map);
+  }, [
+    OcculsionLevelDistribution,
+    occlusionLevels,
+    selectedOcclusionVenues,
+    allVenueIds,
+  ]);
 
   if (loading) {
     return (
@@ -270,27 +508,14 @@ export default function AudienceMeasurment({
     <div className="space-y-10 p-6">
       {/* 3 Pie Charts */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Gender */}
         <Card className="bg-card">
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle>Gender Distribution</CardTitle>
-            {genderVenues.length > 0 && (
-              <Select
-                value={selectedGenderVenue?.toString()}
-                onValueChange={(v) => setSelectedGenderVenue(Number(v))}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select venue" />
-                </SelectTrigger>
-                <SelectContent>
-                  {genderVenues.map((id) => (
-                    <SelectItem key={id} value={id.toString()}>
-                      Venue {id}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            )}
+            <VenueMultiSelect
+              venues={allVenueIds}
+              selected={selectedGenderVenues}
+              onChange={setSelectedGenderVenues}
+            />
           </CardHeader>
           <CardContent>
             {genderPieData.length > 0 ? (
@@ -319,27 +544,14 @@ export default function AudienceMeasurment({
           </CardContent>
         </Card>
 
-        {/* Group & Emotion - unchanged */}
         <Card className="bg-card">
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle>Group Type Distribution</CardTitle>
-            {groupVenues.length > 0 && (
-              <Select
-                value={selectedGroupVenue?.toString()}
-                onValueChange={(v) => setSelectedGroupVenue(Number(v))}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select venue" />
-                </SelectTrigger>
-                <SelectContent>
-                  {groupVenues.map((id) => (
-                    <SelectItem key={id} value={id.toString()}>
-                      Venue {id}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            )}
+            <VenueMultiSelect
+              venues={allVenueIds}
+              selected={selectedGroupVenues}
+              onChange={setSelectedGroupVenues}
+            />
           </CardHeader>
           <CardContent>
             {groupPieData.length > 0 ? (
@@ -372,25 +584,13 @@ export default function AudienceMeasurment({
         </Card>
 
         <Card className="bg-card">
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle>Emotion Distribution</CardTitle>
-            {emotionVenues.length > 0 && (
-              <Select
-                value={selectedEmotionVenue?.toString()}
-                onValueChange={(v) => setSelectedEmotionVenue(Number(v))}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select venue" />
-                </SelectTrigger>
-                <SelectContent>
-                  {emotionVenues.map((id) => (
-                    <SelectItem key={id} value={id.toString()}>
-                      Venue {id}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            )}
+            <VenueMultiSelect
+              venues={allVenueIds}
+              selected={selectedEmotionVenues}
+              onChange={setSelectedEmotionVenues}
+            />
           </CardHeader>
           <CardContent>
             {emotionPieData.length > 0 ? (
@@ -425,13 +625,18 @@ export default function AudienceMeasurment({
 
       {/* Audience Flow Over Time */}
       <Card className="bg-card">
-        <CardHeader>
-          <CardTitle className="text-xl">
-            Audience Flow Over Time — All Venues
-          </CardTitle>
-          <p className="text-sm text-muted-foreground">
-            Each line represents one venue
-          </p>
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div>
+            <CardTitle className="text-xl">Audience Flow Over Time</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Each line = one venue
+            </p>
+          </div>
+          <VenueMultiSelect
+            venues={allVenueIds}
+            selected={selectedFlowVenues}
+            onChange={setSelectedFlowVenues}
+          />
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={500}>
@@ -463,13 +668,13 @@ export default function AudienceMeasurment({
                 labelStyle={{ color: "#fff" }}
               />
               <Legend verticalAlign="top" height={46} />
-              {flowVenueIds.map((venueId, i) => (
+              {flowVenueIds.map((venueId, index) => (
                 <Line
                   key={venueId}
                   type="monotone"
                   dataKey={`venue_${venueId}`}
                   name={`Venue ${venueId}`}
-                  stroke={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
+                  stroke={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
                   strokeWidth={4}
                   dot={{ r: 4 }}
                   activeDot={{ r: 7 }}
@@ -480,12 +685,17 @@ export default function AudienceMeasurment({
         </CardContent>
       </Card>
 
-      {/* Peak Audience Comparison */}
+      {/* Peak Audience */}
       <Card className="bg-card">
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl">
             Peak Audience Comparison by Venue
           </CardTitle>
+          <VenueMultiSelect
+            venues={allVenueIds}
+            selected={selectedPeakVenues}
+            onChange={setSelectedPeakVenues}
+          />
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={420}>
@@ -518,12 +728,17 @@ export default function AudienceMeasurment({
         </CardContent>
       </Card>
 
-      {/* NEW: Age Group Composition - Stacked Bar Chart */}
+      {/* Age Group Composition */}
       <Card className="bg-card">
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl">
             Age Group Composition by Venue
           </CardTitle>
+          <VenueMultiSelect
+            venues={allVenueIds}
+            selected={selectedAgeVenues}
+            onChange={setSelectedAgeVenues}
+          />
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={450}>
@@ -547,13 +762,13 @@ export default function AudienceMeasurment({
               />
               <Tooltip />
               <Legend verticalAlign="top" />
-              {AGE_GROUPS.map((age, i) => (
+              {AGE_GROUPS.map((age, index) => (
                 <Bar
                   key={age}
                   dataKey={age}
                   name={age}
                   stackId="a"
-                  fill={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
+                  fill={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
                 />
               ))}
             </BarChart>
@@ -561,12 +776,17 @@ export default function AudienceMeasurment({
         </CardContent>
       </Card>
 
-      {/* NEW: Lighting Condition Comparison - Clustered Bar Chart */}
+      {/* Lighting Condition */}
       <Card className="bg-card">
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl">
             Lighting Condition Comparison by Venue
           </CardTitle>
+          <VenueMultiSelect
+            venues={allVenueIds}
+            selected={selectedLightingVenues}
+            onChange={setSelectedLightingVenues}
+          />
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={450}>
@@ -595,6 +815,197 @@ export default function AudienceMeasurment({
               <Bar dataKey="low" name="Low Lighting" fill="#ef4444" />
             </BarChart>
           </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Engagement Score Trend */}
+      <Card className="bg-card">
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div>
+            <CardTitle className="text-xl">Engagement Score Trend</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Average per venue over time
+            </p>
+          </div>
+          <VenueMultiSelect
+            venues={allVenueIds}
+            selected={selectedEngagementVenues}
+            onChange={setSelectedEngagementVenues}
+          />
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={500}>
+            <LineChart
+              data={engagementMultiLineData}
+              margin={{ top: 20, right: 50, left: 40, bottom: 100 }}
+            >
+              <CartesianGrid strokeDasharray="4 4" stroke="#e0e0e0" />
+              <XAxis
+                dataKey="Timestamp"
+                angle={-45}
+                textAnchor="end"
+                height={100}
+                tick={{ fontSize: 12 }}
+              />
+              <YAxis
+                domain={[0, 1]}
+                label={{
+                  value: "Engagement Score",
+                  angle: -90,
+                  position: "insideLeft",
+                }}
+              />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#1f2937",
+                  border: "none",
+                  borderRadius: 8,
+                }}
+                labelStyle={{ color: "#fff" }}
+                formatter={(v) => v?.toFixed(3)}
+              />
+              <Legend verticalAlign="top" height={46} />
+              {engagementVenueIds.map((venueId, index) => (
+                <Line
+                  key={venueId}
+                  type="monotone"
+                  dataKey={`venue_${venueId}`}
+                  name={`Venue ${venueId}`}
+                  stroke={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
+                  strokeWidth={4}
+                  dot={{ r: 4 }}
+                  activeDot={{ r: 7 }}
+                  connectNulls
+                />
+              ))}
+            </LineChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Event-Wise Audience Viewership */}
+      <Card className="bg-card">
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div>
+            <CardTitle className="text-xl">
+              Event-Wise Audience Viewership
+            </CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Total audience per event tag
+            </p>
+          </div>
+          <VenueMultiSelect
+            venues={allVenueIds}
+            selected={selectedEventVenues}
+            onChange={setSelectedEventVenues}
+          />
+        </CardHeader>
+        <CardContent>
+          {eventWiseAudienceData.length > 0 ? (
+            <ResponsiveContainer width="100%" height={500}>
+              <BarChart
+                data={eventWiseAudienceData}
+                margin={{ top: 20, right: 30, left: 60, bottom: 120 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  dataKey="tag"
+                  angle={-45}
+                  textAnchor="end"
+                  height={120}
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis
+                  label={{
+                    value: "Total Audience",
+                    angle: -90,
+                    position: "insideLeft",
+                  }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#1f2937",
+                    border: "none",
+                    borderRadius: 8,
+                  }}
+                  labelStyle={{ color: "#fff" }}
+                />
+                <Bar dataKey="total" fill="#6366f1" radius={[8, 8, 0, 0]}>
+                  <LabelList
+                    position="top"
+                    formatter={(v) => v}
+                    style={{ fontWeight: "bold" }}
+                  />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-center text-muted-foreground pt-20">
+              No data available
+            </p>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Occlusion Level Distribution */}
+      <Card className="bg-card">
+        <CardHeader className="flex flex-row items-center justify-between">
+          <CardTitle className="text-xl">
+            Occlusion Level Distribution by Venue
+          </CardTitle>
+          <VenueMultiSelect
+            venues={allVenueIds}
+            selected={selectedOcclusionVenues}
+            onChange={setSelectedOcclusionVenues}
+          />
+        </CardHeader>
+        <CardContent>
+          {occlusionChartData.length > 0 ? (
+            <ResponsiveContainer width="100%" height={500}>
+              <BarChart
+                data={occlusionChartData}
+                margin={{ top: 20, right: 30, left: 60, bottom: 100 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  dataKey="venue_id"
+                  angle={-45}
+                  textAnchor="end"
+                  height={100}
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis
+                  label={{
+                    value: "Count of People",
+                    angle: -90,
+                    position: "insideLeft",
+                  }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#1f2937",
+                    border: "none",
+                    borderRadius: 8,
+                  }}
+                  labelStyle={{ color: "#fff" }}
+                />
+                <Legend verticalAlign="top" height={36} />
+                {occlusionLevels.map((level, index) => (
+                  <Bar
+                    key={level}
+                    dataKey={level}
+                    name={level.charAt(0).toUpperCase() + level.slice(1)}
+                    stackId="occlusion"
+                    fill={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
+                  />
+                ))}
+              </BarChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-center text-muted-foreground pt-20">
+              No occlusion data available
+            </p>
+          )}
         </CardContent>
       </Card>
     </div>
