@@ -43,11 +43,7 @@ const sections = [
     title: "Player Brand Connection",
     component: PlayerBrandConnection,
   },
-  {
-    id:"audience-measurment",
-    title:"OOH",
-    component: AudienceMeasurment
-  }
+  { id: "audience-measurment", title: "OOH", component: AudienceMeasurment },
 ];
 
 export default function DashboardPage() {
@@ -64,10 +60,6 @@ export default function DashboardPage() {
 
   const [downloading, setDownloading] = useState(false);
 
-  // ===========
-  // DOWNLOAD: replaced to use selectedMatch and public/raw/<selectedMatch> files
-  // ===========
-
   // helper to save blob as file
   const saveBlob = async (blob, suggestedName) => {
     const url = URL.createObjectURL(blob);
@@ -80,119 +72,171 @@ export default function DashboardPage() {
     URL.revokeObjectURL(url);
   };
 
-  // quick head-like check using Range header to avoid downloading whole file where possible
+  // quick head-like check using Range header (fall back to HEAD then give up)
   const tryHeadLike = async (path) => {
     try {
-      const res = await fetch(path, {
+      // Try Range request first (most servers that support it will return 206)
+      const rangeRes = await fetch(path, {
         method: "GET",
-        headers: {
-          Range: "bytes=0-0",
-        },
+        headers: { Range: "bytes=0-0" },
       });
-      return res.ok || res.status === 206;
+      if (rangeRes.ok || rangeRes.status === 206) return true;
+
+      // Some servers allow HEAD
+      const headRes = await fetch(path, { method: "HEAD" });
+      if (headRes.ok) return true;
+
+      return false;
     } catch (err) {
-      // network / CORS => treat as not found
+      // network / CORS => treat as not found (for quick check)
+      console.debug("tryHeadLike error for", path, err);
       return false;
     }
   };
 
-  const downloadViaFetch = async () => {
-    if (!selectedMatch) {
-      alert("Select a match first.");
-      return;
-    }
+ const downloadViaFetch = async () => {
+   if (!selectedMatch) {
+     alert("Select a match first.");
+     return;
+   }
+   setDownloading(true);
 
-    setDownloading(true);
+   try {
+     // minimal set of extensions to try (add more if you want)
+     const exts = [".xlsx", ".xls"];
+     const extsWithCase = exts.concat(exts.map((e) => e.toUpperCase()));
 
-    try {
-      // common extensions and patterns we try
-      const exts = [".xlsx", ".csv", ".json", ".zip", ".pdf", ".txt"];
-      const patterns = [];
+     // helper to produce a few filename variants
+     const base = selectedMatch;
+     const noSpace = base.replace(/\s+/g, "");
+     const altBases = [base, noSpace, `${base}-data`, `${noSpace}-data`];
 
-      // 1) <selectedMatch>.<ext>
-      for (const e of exts) {
-        patterns.push(
-          `/raw/${encodeURIComponent(selectedMatch)}/${encodeURIComponent(
-            selectedMatch + e
-          )}`
-        );
-      }
+     // folders to check
+     const roots = ["/raw", "/raw_ooh"];
 
-      // 2) raw.<ext>, data.<ext>, file.<ext>
-      for (const e of exts) {
-        patterns.push(`/raw/${encodeURIComponent(selectedMatch)}/raw${e}`);
-        patterns.push(`/raw/${encodeURIComponent(selectedMatch)}/data${e}`);
-        patterns.push(`/raw/${encodeURIComponent(selectedMatch)}/file${e}`);
-      }
+     // build candidate paths (small predictable set)
+     const candidates = [];
+     for (const root of roots) {
+       for (const b of altBases) {
+         for (const e of extsWithCase) {
+           candidates.push(`${root}/${b}/${b}${e}`); // folder/name with same base
+           candidates.push(`${root}/${b}/${b.replace(/\s+/g, "")}${e}`); // sanitized filename inside same folder
+         }
+         // also try files directly under folder (raw.xlsx, data.xlsx, file.xlsx)
+         for (const e of extsWithCase) {
+           candidates.push(`${root}/${b}/raw${e}`);
+           candidates.push(`${root}/${b}/data${e}`);
+           candidates.push(`${root}/${b}/file${e}`);
+         }
+       }
+     }
 
-      // 3) sanitized no-space variants
-      const sanitized = selectedMatch.replace(/\s+/g, "");
-      for (const e of exts) {
-        patterns.push(
-          `/raw/${encodeURIComponent(selectedMatch)}/${encodeURIComponent(
-            sanitized + e
-          )}`
-        );
-      }
+     // dedupe candidate list
+     const uniqCandidates = Array.from(new Set(candidates));
+     console.debug("Download candidates:", uniqCandidates);
 
-      // 4) if matches entry contains a rawFile/file path, try it first (non-strings)
-      const maybeMatchObj = matches.find(
-        (m) =>
-          m === selectedMatch ||
-          (typeof m !== "string" &&
-            (m.name === selectedMatch || m.matchName === selectedMatch))
-      );
-      if (maybeMatchObj && typeof maybeMatchObj !== "string") {
-        const candidatePath =
-          maybeMatchObj.rawFile || maybeMatchObj.filePath || maybeMatchObj.file;
-        if (candidatePath) {
-          const normalized = candidatePath.startsWith("/")
-            ? candidatePath
-            : `/${candidatePath}`;
-          // try this first
-          patterns.unshift(normalized);
-        }
-      }
+     const foundFiles = []; // { blob, filename, attemptedPath, actualUrl }
+     const savedUrls = new Set();
+     const savedNameKeys = new Set(); // lowercased filename keys to avoid case-duplicates
 
-      // attempt each pattern
-      let found = false;
-      for (const p of patterns) {
-        // quick check
-        const exists = await tryHeadLike(p);
-        if (!exists) continue;
+     // sequential fetch attempts (keeps console/network clearer)
+     for (const path of uniqCandidates) {
+       try {
+         console.debug("Trying:", path);
+         const res = await fetch(path, { method: "GET" });
+         console.debug("Response for", path, res.status, "-> url:", res.url);
+         if (res.ok) {
+           // dedupe by the actual resolved URL (handle redirects / encoded/unencoded duplicates)
+           const actualUrl = res.url || path;
+           if (savedUrls.has(actualUrl)) {
+             console.debug(
+               "Skipping duplicate resource (same URL):",
+               actualUrl
+             );
+             continue;
+           }
 
-        // full fetch to get content
-        const full = await fetch(p);
-        if (!full.ok) continue;
-        const blob = await full.blob();
-        const filename = decodeURIComponent(
-          p.split("/").pop() || `${selectedMatch}.bin`
-        );
-        await saveBlob(blob, filename);
-        found = true;
-        break;
-      }
+           // derive filename from resolved URL if possible (res.url), else fallback to attempted path
+           const rawFilename = decodeURIComponent(
+             actualUrl.split("/").pop() ||
+               path.split("/").pop() ||
+               `${selectedMatch}.bin`
+           );
 
-      if (!found) {
-        alert(
-          `No file found in public/raw/${selectedMatch}.\n\n` +
-            "I tried common names like:\n" +
-            `${selectedMatch}.xlsx, raw.xlsx, data.xlsx, etc.\n\n` +
-            'Either place a file with a predictable name in public/raw/<match-folder>/ or add the exact path to your matches data (e.g. add `rawFile: "raw/<match-folder>/myfile.xlsx"`).'
-        );
-      }
-    } catch (err) {
-      console.error("Download failed:", err);
-      alert("Download failed — check console.");
-    } finally {
-      setDownloading(false);
-    }
-  };
+           // dedupe by lowercased filename to avoid .xls / .XLS duplicates
+           const nameKey = rawFilename.toLowerCase();
+           if (savedNameKeys.has(nameKey)) {
+             console.debug(
+               "Skipping duplicate by filename (case-insensitive):",
+               rawFilename
+             );
+             savedUrls.add(actualUrl); // still add url so we don't refetch same resource later
+             continue;
+           }
 
-  // ===========
-  // rest of original code unchanged
-  // ===========
+           const blob = await res.blob();
+           foundFiles.push({
+             blob,
+             filename: rawFilename,
+             attemptedPath: path,
+             actualUrl,
+           });
+           savedUrls.add(actualUrl);
+           savedNameKeys.add(nameKey);
 
+           // continue to try other candidates to capture other distinct files (e.g. .xls + .xlsx)
+         }
+       } catch (err) {
+         console.debug("Fetch error for", path, err);
+       }
+     }
+
+     if (foundFiles.length === 0) {
+       alert(
+         `No files found in /raw or /raw_ooh for "${selectedMatch}".\n` +
+           "Open DevTools → Console/Network to inspect the attempted URLs and statuses (they are logged as 'Download candidates' and each 'Response for')."
+       );
+       return;
+     }
+
+     // save each found file (append index if name collides across genuinely different files)
+     const nameCount = {};
+     const makeUniqueName = (name) => {
+       let baseName = name;
+       let ext = "";
+       const m = name.match(/(.*)(\.[^.]*)$/);
+       if (m) {
+         baseName = m[1];
+         ext = m[2];
+       }
+       nameCount[name] = (nameCount[name] || 0) + 1;
+       const count = nameCount[name];
+       return count === 1 ? name : `${baseName} (${count})${ext}`;
+     };
+
+     for (const f of foundFiles) {
+       const finalName = makeUniqueName(f.filename || `${selectedMatch}.bin`);
+       await saveBlob(f.blob, finalName);
+       console.debug(
+         "Saved",
+         f.attemptedPath,
+         "resolved->",
+         f.actualUrl,
+         "as",
+         finalName
+       );
+     }
+   } catch (err) {
+     console.error("DownloadViaFetch error:", err);
+     alert("Download failed — check console.");
+   } finally {
+     setDownloading(false);
+   }
+ };
+
+
+
+  // rest of original code unchanged (fetch matches, stages, UI, etc.)
   const navRef = useRef(null);
   const sentinelRef = useRef(null);
   const [isNavStuck, setIsNavStuck] = useState(false);
@@ -355,7 +399,6 @@ export default function DashboardPage() {
                 disabled={downloading}
                 className="inline-flex items-center gap-2 px-3 py-[10px] rounded-md bg-muted border border-input text-sm font-medium h-[40px] hover:opacity-95"
               >
-                {/* download icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -370,7 +413,6 @@ export default function DashboardPage() {
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
-
                 {downloading ? "Downloading…" : "Export"}
               </button>
             </div>
