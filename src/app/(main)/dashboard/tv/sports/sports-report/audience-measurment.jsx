@@ -15,6 +15,7 @@ import {
   LabelList,
   BarChart,
   Bar,
+  ReferenceArea,
 } from "recharts";
 import { useState, useMemo, useEffect } from "react";
 import {
@@ -40,9 +41,19 @@ const DEFAULT_PALETTE = [
   "#94a3b8",
 ];
 
+// Event to Color mapping using your existing palette
+const EVENT_COLORS = {
+  toss: "#6366f1", // Indigo
+  powerplay: "#10b981", // Emerald Green
+  normal: "#f59e0b", // Amber
+  timeout: "#f97316", // Orange
+  death_over: "#ef4444", // Red
+  innings2_start: "#8b5cf6", // Violet
+  default: "#64748b",
+};
+
 const AGE_GROUPS = ["13-17", "18-24", "25-34", "35-44", "45-54", "55+"];
 
-// Reusable Multi-Select Venue Filter
 function VenueMultiSelect({
   venues,
   selected,
@@ -117,6 +128,77 @@ function VenueMultiSelect({
   );
 }
 
+function BrandMultiSelect({ brands, selected, onChange }) {
+  const toggleBrand = (brand) => {
+    onChange(
+      selected.includes(brand)
+        ? selected.filter((b) => b !== brand)
+        : [...selected, brand]
+    );
+  };
+
+  const allSelected = selected.length === brands.length;
+  const noneSelected = selected.length === 0;
+
+  return (
+    <Select>
+      <SelectTrigger className="w-[220px]">
+        <SelectValue
+          placeholder={
+            noneSelected
+              ? "All brands"
+              : `${selected.length} brand${
+                  selected.length !== 1 ? "s" : ""
+                } selected`
+          }
+        />
+      </SelectTrigger>
+      <SelectContent>
+        <div className="p-2 border-b">
+          <p className="text-xs font-medium text-muted-foreground">
+            Filter by Brand
+          </p>
+        </div>
+        <div className="max-h-64 overflow-y-auto">
+          {brands.map((brand) => (
+            <div
+              key={brand}
+              className="flex items-center space-x-2 px-3 py-2 hover:bg-accent rounded cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                toggleBrand(brand);
+              }}
+            >
+              <Checkbox checked={selected.includes(brand)} />
+              <span className="text-sm">{brand}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-between px-3 py-2 border-t text-xs">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onChange(brands);
+            }}
+            className="text-primary hover:underline"
+          >
+            Select All
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onChange([]);
+            }}
+            className="text-primary hover:underline"
+          >
+            Clear
+          </button>
+        </div>
+      </SelectContent>
+    </Select>
+  );
+}
+
 export default function AudienceMeasurment({
   selectedMatch,
   componentFolder = "audience-measurment",
@@ -125,14 +207,14 @@ export default function AudienceMeasurment({
   const [fileMap, setFileMap] = useState({});
   const [loading, setLoading] = useState(true);
 
-  // Multi-select state for each chart
   const [selectedGenderVenues, setSelectedGenderVenues] = useState([]);
   const [selectedGroupVenues, setSelectedGroupVenues] = useState([]);
   const [selectedEmotionVenues, setSelectedEmotionVenues] = useState([]);
   const [selectedFlowVenues, setSelectedFlowVenues] = useState([]);
   const [selectedPeakVenues, setSelectedPeakVenues] = useState([]);
   const [selectedAgeVenues, setSelectedAgeVenues] = useState([]);
-  const [selectedLightingVenues, setSelectedLightingVenues] = useState([]);
+  const [selectedBrandVenues, setSelectedBrandVenues] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedEngagementVenues, setSelectedEngagementVenues] = useState([]);
   const [selectedEventVenues, setSelectedEventVenues] = useState([]);
   const [selectedOcclusionVenues, setSelectedOcclusionVenues] = useState([]);
@@ -210,7 +292,7 @@ export default function AudienceMeasurment({
     () => getData("age_group_composition.json"),
     [fileMap]
   );
-  const LightingConditionComparison = useMemo(
+  const BrandEngagementData = useMemo(
     () => getData("lighiting_condition_comparison.json"),
     [fileMap]
   );
@@ -227,7 +309,6 @@ export default function AudienceMeasurment({
     [fileMap]
   );
 
-  // All venue IDs across all datasets
   const allVenueIds = useMemo(() => {
     const ids = new Set();
     [
@@ -237,7 +318,7 @@ export default function AudienceMeasurment({
       ...AudienceFlowAndPeakViewrship,
       ...PeakAudienceComparison,
       ...AgeGroupComposition,
-      ...LightingConditionComparison,
+      ...BrandEngagementData,
       ...EngagementScoreTrend,
       ...EventWiseAudienceViewership,
       ...OcculsionLevelDistribution,
@@ -252,13 +333,12 @@ export default function AudienceMeasurment({
     AudienceFlowAndPeakViewrship,
     PeakAudienceComparison,
     AgeGroupComposition,
-    LightingConditionComparison,
+    BrandEngagementData,
     EngagementScoreTrend,
     EventWiseAudienceViewership,
     OcculsionLevelDistribution,
   ]);
 
-  // Auto-select all venues on load
   useEffect(() => {
     if (allVenueIds.length > 0) {
       const venues = allVenueIds;
@@ -268,19 +348,29 @@ export default function AudienceMeasurment({
       setSelectedFlowVenues(venues);
       setSelectedPeakVenues(venues);
       setSelectedAgeVenues(venues);
-      setSelectedLightingVenues(venues);
+      setSelectedBrandVenues(venues);
       setSelectedEngagementVenues(venues);
       setSelectedEventVenues(venues);
       setSelectedOcclusionVenues(venues);
     }
   }, [allVenueIds]);
 
+  const allBrands = useMemo(() => {
+    const brands = [...new Set(BrandEngagementData.map((d) => d.brand))];
+    return brands.sort();
+  }, [BrandEngagementData]);
+
+  useEffect(() => {
+    if (allBrands.length > 0 && selectedBrands.length === 0) {
+      setSelectedBrands(allBrands);
+    }
+  }, [allBrands]);
+
   const filterByVenues = (data, selected) =>
     selected.length > 0
       ? data.filter((d) => selected.includes(d.venue_id))
       : data;
 
-  // Gender Pie (aggregated)
   const genderPieData = useMemo(() => {
     const filtered = filterByVenues(
       GenderDistributionByVenue,
@@ -299,7 +389,6 @@ export default function AudienceMeasurment({
       : [];
   }, [GenderDistributionByVenue, selectedGenderVenues]);
 
-  // Group Pie
   const groupPieData = useMemo(() => {
     const filtered = filterByVenues(GroupDistribution, selectedGroupVenues);
     const agg = filtered.reduce((acc, cur) => {
@@ -311,7 +400,6 @@ export default function AudienceMeasurment({
       .sort((a, b) => b.value - a.value);
   }, [GroupDistribution, selectedGroupVenues]);
 
-  // Emotion Pie
   const emotionPieData = useMemo(() => {
     const filtered = filterByVenues(EmotionDistribution, selectedEmotionVenues);
     const agg = filtered.reduce((acc, cur) => {
@@ -323,7 +411,6 @@ export default function AudienceMeasurment({
       .sort((a, b) => b.value - a.value);
   }, [EmotionDistribution, selectedEmotionVenues]);
 
-  // Audience Flow Over Time
   const audienceFlowMultiLineData = useMemo(() => {
     const venues =
       selectedFlowVenues.length > 0 ? selectedFlowVenues : allVenueIds;
@@ -344,7 +431,6 @@ export default function AudienceMeasurment({
   const flowVenueIds =
     selectedFlowVenues.length > 0 ? selectedFlowVenues : allVenueIds;
 
-  // Peak Audience
   const peakAudienceData = useMemo(() => {
     const venues =
       selectedPeakVenues.length > 0 ? selectedPeakVenues : allVenueIds;
@@ -356,7 +442,6 @@ export default function AudienceMeasurment({
       .sort((a, b) => a.venue_id.localeCompare(b.venue_id));
   }, [PeakAudienceComparison, selectedPeakVenues, allVenueIds]);
 
-  // Age Group Composition
   const ageGroupChartData = useMemo(() => {
     const venues =
       selectedAgeVenues.length > 0 ? selectedAgeVenues : allVenueIds;
@@ -376,25 +461,43 @@ export default function AudienceMeasurment({
     return Object.values(map);
   }, [AgeGroupComposition, selectedAgeVenues, allVenueIds]);
 
-  // Lighting Condition
-  const lightingConditionChartData = useMemo(() => {
+  const brandEngagementChartData = useMemo(() => {
     const venues =
-      selectedLightingVenues.length > 0 ? selectedLightingVenues : allVenueIds;
-    const map = {};
+      selectedBrandVenues.length > 0 ? selectedBrandVenues : allVenueIds;
+    const brands = selectedBrands.length > 0 ? selectedBrands : allBrands;
 
-    LightingConditionComparison.forEach((item) => {
-      if (!venues.includes(item.venue_id)) return;
-      const vid = item.venue_id;
-      if (!map[vid]) map[vid] = { venue_id: `Venue ${vid}` };
-      map[vid][item.condition] =
-        (map[vid][item.condition] || 0) + (item.total || 0);
-    });
+    const filtered = BrandEngagementData.filter(
+      (d) => venues.includes(d.venue_id) && brands.includes(d.brand)
+    );
 
-    return Object.values(map);
-  }, [LightingConditionComparison, selectedLightingVenues, allVenueIds]);
+    const agg = filtered.reduce((acc, cur) => {
+      const brand = cur.brand;
+      if (!acc[brand]) {
+        acc[brand] = { brand, totalScore: 0, count: 0 };
+      }
+      acc[brand].totalScore += cur.engagement_score || 0;
+      acc[brand].count += 1;
+      return acc;
+    }, {});
 
-  // Engagement Score Trend
-  const engagementMultiLineData = useMemo(() => {
+    return Object.values(agg)
+      .map((item) => ({
+        brand: item.brand,
+        engagement_score: item.count > 0 ? item.totalScore / item.count : 0,
+      }))
+      .sort((a, b) => b.engagement_score - a.engagement_score);
+  }, [
+    BrandEngagementData,
+    selectedBrandVenues,
+    selectedBrands,
+    allVenueIds,
+    allBrands,
+  ]);
+
+  // ──────────────────────────────────────────────────────────────
+  // ENGAGEMENT SCORE TREND – BULLETPROOF VERSION (works with gaps)
+  // ──────────────────────────────────────────────────────────────
+  const { engagementMultiLineData, eventMap, uniqueEvents } = useMemo(() => {
     const venues =
       selectedEngagementVenues.length > 0
         ? selectedEngagementVenues
@@ -402,37 +505,38 @@ export default function AudienceMeasurment({
     const times = [
       ...new Set(EngagementScoreTrend.map((d) => d.Timestamp)),
     ].sort();
+
     const timeMap = {};
-    const sums = {};
-    const counts = {};
+    const eventMap = {}; // ← This is now returned
 
     times.forEach((t) => {
       timeMap[t] = { Timestamp: t };
-      sums[t] = {};
-      counts[t] = {};
       venues.forEach((v) => {
-        timeMap[t][`venue_${v}`] = 0;
-        sums[t][`venue_${v}`] = 0;
-        counts[t][`venue_${v}`] = 0;
+        timeMap[t][`venue_${v}`] = null;
       });
     });
 
     EngagementScoreTrend.forEach((item) => {
       if (!venues.includes(item.venue_id)) return;
+      const t = item.Timestamp;
       const key = `venue_${item.venue_id}`;
-      sums[item.Timestamp][key] += item.score || 0;
-      counts[item.Timestamp][key] += 1;
+
+      if (timeMap[t][key] === null) timeMap[t][key] = item.score;
+      else timeMap[t][key] = (timeMap[t][key] + item.score) / 2;
+
+      if (item.event && !eventMap[t]) {
+        eventMap[t] = item.event;
+      }
     });
 
-    times.forEach((t) => {
-      venues.forEach((v) => {
-        const key = `venue_${v}`;
-        timeMap[t][key] =
-          counts[t][key] > 0 ? sums[t][key] / counts[t][key] : null;
-      });
-    });
+    const data = Object.values(timeMap);
+    const uniqueEvents = [...new Set(Object.values(eventMap))].sort();
 
-    return Object.values(timeMap);
+    return {
+      engagementMultiLineData: data,
+      eventMap, // ← Exposed for X-axis coloring
+      uniqueEvents,
+    };
   }, [EngagementScoreTrend, selectedEngagementVenues, allVenueIds]);
 
   const engagementVenueIds =
@@ -440,31 +544,26 @@ export default function AudienceMeasurment({
       ? selectedEngagementVenues
       : allVenueIds;
 
-  // Event-Wise Audience
   const eventWiseAudienceData = useMemo(() => {
     const venues =
       selectedEventVenues.length > 0 ? selectedEventVenues : allVenueIds;
-    const filtered = EventWiseAudienceViewership.filter((d) =>
-      venues.includes(d.venue_id)
-    );
-    const agg = filtered.reduce((acc, cur) => {
-      const key = cur.tag || "Unknown";
-      acc[key] = (acc[key] || 0) + (cur.total || 0);
-      return acc;
-    }, {});
+    const agg = {};
+
+    EventWiseAudienceViewership.forEach((item) => {
+      if (!venues.includes(item.venue_id)) return;
+      const tag = item.tag || "Unknown";
+      agg[tag] = (agg[tag] || 0) + (item.total || 0);
+    });
 
     return Object.entries(agg)
       .map(([tag, total]) => ({ tag, total }))
       .sort((a, b) => b.total - a.total);
   }, [EventWiseAudienceViewership, selectedEventVenues, allVenueIds]);
 
-  // Occlusion Level Distribution
   const occlusionLevels = useMemo(() => {
     return [
       ...new Set(OcculsionLevelDistribution.map((d) => d.occlusion_level)),
-    ]
-      .filter(Boolean)
-      .sort();
+    ].sort();
   }, [OcculsionLevelDistribution]);
 
   const occlusionChartData = useMemo(() => {
@@ -476,25 +575,14 @@ export default function AudienceMeasurment({
 
     OcculsionLevelDistribution.forEach((item) => {
       if (!venues.includes(item.venue_id)) return;
-      const vid = item.venue_id;
-      if (!map[vid]) map[vid] = { venue_id: `Venue ${vid}` };
+      const vid = `Venue ${item.venue_id}`;
+      if (!map[vid]) map[vid] = { venue_id: vid };
       map[vid][item.occlusion_level] =
         (map[vid][item.occlusion_level] || 0) + (item.count || 0);
     });
 
-    Object.values(map).forEach((row) => {
-      occlusionLevels.forEach((level) => {
-        if (!(level in row)) row[level] = 0;
-      });
-    });
-
     return Object.values(map);
-  }, [
-    OcculsionLevelDistribution,
-    occlusionLevels,
-    selectedOcclusionVenues,
-    allVenueIds,
-  ]);
+  }, [OcculsionLevelDistribution, selectedOcclusionVenues, allVenueIds]);
 
   if (loading) {
     return (
@@ -506,7 +594,7 @@ export default function AudienceMeasurment({
 
   return (
     <div className="space-y-10 p-6">
-      {/* 3 Pie Charts */}
+      {/* Gender Distribution */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card className="bg-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -530,46 +618,10 @@ export default function AudienceMeasurment({
                     outerRadius={90}
                     label
                   >
-                    {genderPieData.map((_, i) => (
-                      <Cell key={i} fill={DEFAULT_PALETTE[i % 2]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
-            ) : (
-              <p className="text-center text-muted-foreground pt-8">No data</p>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card className="bg-card">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle>Group Type Distribution</CardTitle>
-            <VenueMultiSelect
-              venues={allVenueIds}
-              selected={selectedGroupVenues}
-              onChange={setSelectedGroupVenues}
-            />
-          </CardHeader>
-          <CardContent>
-            {groupPieData.length > 0 ? (
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={groupPieData}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={90}
-                    label
-                  >
-                    {groupPieData.map((_, i) => (
+                    {genderPieData.map((_, index) => (
                       <Cell
-                        key={i}
-                        fill={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
+                        key={`cell-${index}`}
+                        fill={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
                       />
                     ))}
                   </Pie>
@@ -578,11 +630,93 @@ export default function AudienceMeasurment({
                 </PieChart>
               </ResponsiveContainer>
             ) : (
-              <p className="text-center text-muted-foreground pt-8">No data</p>
+              <p className="text-center text-muted-foreground pt-8">
+                No data available
+              </p>
             )}
           </CardContent>
         </Card>
 
+        {/* Top 5 Brands by Engagement Score */}
+        <Card className="bg-card h-94">
+          <CardHeader className="flex items-start justify-between gap-3 pb-2">
+            <div>
+              <CardTitle className="text-xl font-medium">
+                Top 5 Brands by Engagement Score
+              </CardTitle>
+              <p className="text-xs text-muted-foreground mt-1">
+                Highest scoring brands for the selected venue
+              </p>
+            </div>
+            <Select
+              value={String(selectedGroupVenues[0] ?? 1)}
+              onValueChange={(value) => setSelectedGroupVenues([Number(value)])}
+            >
+              <SelectTrigger className="w-[150px] h-8 text-sm">
+                <SelectValue placeholder="Venue 1" />
+              </SelectTrigger>
+              <SelectContent>
+                {allVenueIds.map((id) => (
+                  <SelectItem key={id} value={String(id)}>
+                    Venue {id}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </CardHeader>
+          <div className="px-4">
+            <div className="border-t border-white/10 my-2" />
+          </div>
+          <CardContent className="px-4 pb-2 h-[calc(100%-80px)] overflow-hidden">
+            {(() => {
+              const venueId = selectedGroupVenues[0] ?? 1;
+              const gd = Array.isArray(GroupDistribution)
+                ? GroupDistribution
+                : [];
+              const venueObj = gd.find((v) => v?.venue_id === venueId) || {};
+              const brands = Array.isArray(venueObj?.brands)
+                ? venueObj.brands
+                : [];
+              const topFive = brands
+                .map((b) => ({
+                  brand: b?.brand ?? "Unknown",
+                  score: typeof b?.score === "number" ? b.score : 0,
+                }))
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 5);
+
+              if (topFive.length === 0) {
+                return (
+                  <p className="text-center text-muted-foreground text-sm">
+                    No data available
+                  </p>
+                );
+              }
+
+              return (
+                <div className="flex flex-col gap-2">
+                  {topFive.map((b, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between py-1"
+                    >
+                      <div className="text-sm font-medium text-white truncate">
+                        {b.brand}
+                      </div>
+                      <div className="text-sm font-semibold text-indigo-400">
+                        {b.score >= 1
+                          ? Math.round(b.score)
+                          : b.score.toFixed(3)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
+          </CardContent>
+        </Card>
+
+        {/* Emotion Distribution */}
         <Card className="bg-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle>Emotion Distribution</CardTitle>
@@ -605,10 +739,10 @@ export default function AudienceMeasurment({
                     outerRadius={90}
                     label
                   >
-                    {emotionPieData.map((_, i) => (
+                    {emotionPieData.map((_, index) => (
                       <Cell
-                        key={i}
-                        fill={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
+                        key={`cell-${index}`}
+                        fill={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
                       />
                     ))}
                   </Pie>
@@ -617,7 +751,9 @@ export default function AudienceMeasurment({
                 </PieChart>
               </ResponsiveContainer>
             ) : (
-              <p className="text-center text-muted-foreground pt-8">No data</p>
+              <p className="text-center text-muted-foreground pt-8">
+                No data available
+              </p>
             )}
           </CardContent>
         </Card>
@@ -685,7 +821,7 @@ export default function AudienceMeasurment({
         </CardContent>
       </Card>
 
-      {/* Peak Audience */}
+      {/* Peak Audience Comparison */}
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl">
@@ -776,55 +912,93 @@ export default function AudienceMeasurment({
         </CardContent>
       </Card>
 
-      {/* Lighting Condition */}
+      {/* Brand-wise Engagement Score */}
       <Card className="bg-card">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-xl">
-            Lighting Condition Comparison by Venue
-          </CardTitle>
-          <VenueMultiSelect
-            venues={allVenueIds}
-            selected={selectedLightingVenues}
-            onChange={setSelectedLightingVenues}
-          />
+        <CardHeader className="flex flex-row items-center justify-between flex-wrap gap-4">
+          <div>
+            <CardTitle className="text-xl">
+              Brand-wise Engagement Score
+            </CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Average engagement score per brand across selected venues
+            </p>
+          </div>
+          <div className="flex gap-3 flex-wrap">
+            <VenueMultiSelect
+              venues={allVenueIds}
+              selected={selectedBrandVenues}
+              onChange={setSelectedBrandVenues}
+            />
+            <BrandMultiSelect
+              brands={allBrands}
+              selected={selectedBrands}
+              onChange={setSelectedBrands}
+            />
+          </div>
         </CardHeader>
         <CardContent>
-          <ResponsiveContainer width="100%" height={450}>
-            <BarChart
-              data={lightingConditionChartData}
-              margin={{ top: 20, right: 30, left: 60, bottom: 80 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis
-                dataKey="venue_id"
-                angle={-45}
-                textAnchor="end"
-                height={80}
-              />
-              <YAxis
-                label={{
-                  value: "Total Count",
-                  angle: -90,
-                  position: "insideLeft",
-                }}
-              />
-              <Tooltip />
-              <Legend verticalAlign="top" />
-              <Bar dataKey="good" name="Good Lighting" fill="#10b981" />
-              <Bar dataKey="mixed" name="Mixed Lighting" fill="#f59e0b" />
-              <Bar dataKey="low" name="Low Lighting" fill="#ef4444" />
-            </BarChart>
-          </ResponsiveContainer>
+          {brandEngagementChartData.length > 0 ? (
+            <ResponsiveContainer width="100%" height={500}>
+              <BarChart
+                data={brandEngagementChartData}
+                margin={{ top: 20, right: 30, left: 60, bottom: 100 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  dataKey="brand"
+                  angle={-45}
+                  textAnchor="end"
+                  height={100}
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis
+                  domain={[0, 1]}
+                  label={{
+                    value: "Engagement Score",
+                    angle: -90,
+                    position: "insideLeft",
+                  }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#1f2937",
+                    border: "none",
+                    borderRadius: 8,
+                  }}
+                  labelStyle={{ color: "#fff" }}
+                  formatter={(v) => v.toFixed(3)}
+                />
+                <Bar
+                  dataKey="engagement_score"
+                  fill="#8b5cf6"
+                  radius={[8, 8, 0, 0]}
+                >
+                  <LabelList
+                    dataKey="engagement_score"
+                    position="top"
+                    formatter={(v) => v.toFixed(3)}
+                    style={{ fontWeight: "bold" }}
+                  />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-center text-muted-foreground pt-20">
+              No data available
+            </p>
+          )}
         </CardContent>
       </Card>
 
-      {/* Engagement Score Trend */}
+      {/* ENGAGEMENT SCORE TREND - UPDATED WITH EVENT COLORS & LEGEND */}
+      {/* ENGAGEMENT SCORE TREND - FINAL BEAUTIFUL VERSION */}
+      {/* ENGAGEMENT SCORE TREND – X-AXIS TIMESTAMPS COLORED BY EVENT */}
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
             <CardTitle className="text-xl">Engagement Score Trend</CardTitle>
             <p className="text-sm text-muted-foreground">
-              Average per venue over time
+              Average engagement per venue over match time
             </p>
           </div>
           <VenueMultiSelect
@@ -833,53 +1007,112 @@ export default function AudienceMeasurment({
             onChange={setSelectedEngagementVenues}
           />
         </CardHeader>
+
         <CardContent>
-          <ResponsiveContainer width="100%" height={500}>
+          <ResponsiveContainer width="100%" height={520}>
             <LineChart
               data={engagementMultiLineData}
-              margin={{ top: 20, right: 50, left: 40, bottom: 100 }}
+              margin={{ top: 20, right: 60, left: 50, bottom: 100 }}
             >
-              <CartesianGrid strokeDasharray="4 4" stroke="#e0e0e0" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+
+              {/* Custom X-Axis with colored ticks based on event */}
               <XAxis
                 dataKey="Timestamp"
                 angle={-45}
                 textAnchor="end"
                 height={100}
-                tick={{ fontSize: 12 }}
+                tickFormatter={(timestamp) => timestamp}
+                tick={(props) => {
+                  const { x, y, payload } = props;
+                  const timestamp = payload.value;
+                  const event = eventMap[timestamp] || "normal";
+                  const color = EVENT_COLORS[event] || EVENT_COLORS.default;
+
+                  return (
+                    <g transform={`translate(${x},${y})`}>
+                      <text
+                        x={0}
+                        y={0}
+                        dy={16}
+                        textAnchor="end"
+                        fill={color}
+                        fontSize={12}
+                        fontWeight="600"
+                      >
+                        {timestamp}
+                      </text>
+                    </g>
+                  );
+                }}
               />
+
               <YAxis
                 domain={[0, 1]}
+                ticks={[0, 0.25, 0.5, 0.75, 1]}
+                tick={{ fill: "#94a3b8" }}
                 label={{
                   value: "Engagement Score",
                   angle: -90,
                   position: "insideLeft",
+                  style: { fill: "#94a3b8" },
                 }}
               />
+
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#1f2937",
-                  border: "none",
+                  backgroundColor: "#1e293b",
+                  border: "1px solid #475569",
                   borderRadius: 8,
                 }}
-                labelStyle={{ color: "#fff" }}
-                formatter={(v) => v?.toFixed(3)}
+                labelStyle={{ color: "#e2e8f0" }}
+                formatter={(v) => (v !== null ? Number(v).toFixed(3) : "—")}
               />
-              <Legend verticalAlign="top" height={46} />
-              {engagementVenueIds.map((venueId, index) => (
+
+              {/* Venue Lines */}
+              {engagementVenueIds.map((venueId, idx) => (
                 <Line
                   key={venueId}
                   type="monotone"
                   dataKey={`venue_${venueId}`}
                   name={`Venue ${venueId}`}
-                  stroke={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
-                  strokeWidth={4}
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 7 }}
-                  connectNulls
+                  stroke={DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length]}
+                  strokeWidth={3}
+                  dot={{
+                    r: 5,
+                    fill: DEFAULT_PALETTE[idx % DEFAULT_PALETTE.length],
+                  }}
+                  activeDot={{ r: 8 }}
+                  connectNulls={false}
+                  isAnimationActive={false}
                 />
               ))}
+
+              <Legend verticalAlign="top" height={50} />
             </LineChart>
           </ResponsiveContainer>
+
+          {/* EVENT LEGEND BELOW CHART */}
+          {uniqueEvents.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-8 mt-10 px-6">
+              {uniqueEvents.map((event) => (
+                <div key={event} className="flex items-center gap-3">
+                  <div
+                    className="w-5 h-5 rounded-full shadow-md border border-white/20"
+                    style={{
+                      backgroundColor:
+                        EVENT_COLORS[event] || EVENT_COLORS.default,
+                    }}
+                  />
+                  <span className="text-sm font-medium text-gray-300">
+                    {event
+                      .replace(/_/g, " ")
+                      .replace(/\b\w/g, (c) => c.toUpperCase())}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
         </CardContent>
       </Card>
 
@@ -942,68 +1175,6 @@ export default function AudienceMeasurment({
           ) : (
             <p className="text-center text-muted-foreground pt-20">
               No data available
-            </p>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* Occlusion Level Distribution */}
-      <Card className="bg-card">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-xl">
-            Occlusion Level Distribution by Venue
-          </CardTitle>
-          <VenueMultiSelect
-            venues={allVenueIds}
-            selected={selectedOcclusionVenues}
-            onChange={setSelectedOcclusionVenues}
-          />
-        </CardHeader>
-        <CardContent>
-          {occlusionChartData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={500}>
-              <BarChart
-                data={occlusionChartData}
-                margin={{ top: 20, right: 30, left: 60, bottom: 100 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="venue_id"
-                  angle={-45}
-                  textAnchor="end"
-                  height={100}
-                  tick={{ fontSize: 12 }}
-                />
-                <YAxis
-                  label={{
-                    value: "Count of People",
-                    angle: -90,
-                    position: "insideLeft",
-                  }}
-                />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#1f2937",
-                    border: "none",
-                    borderRadius: 8,
-                  }}
-                  labelStyle={{ color: "#fff" }}
-                />
-                <Legend verticalAlign="top" height={36} />
-                {occlusionLevels.map((level, index) => (
-                  <Bar
-                    key={level}
-                    dataKey={level}
-                    name={level.charAt(0).toUpperCase() + level.slice(1)}
-                    stackId="occlusion"
-                    fill={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
-                  />
-                ))}
-              </BarChart>
-            </ResponsiveContainer>
-          ) : (
-            <p className="text-center text-muted-foreground pt-20">
-              No occlusion data available
             </p>
           )}
         </CardContent>
