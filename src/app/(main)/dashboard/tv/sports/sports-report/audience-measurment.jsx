@@ -47,7 +47,7 @@ const EVENT_COLORS = {
   "Power Play": "#10b981", // Emerald Green
   "Mid Over": "#f59e0b", // Amber
 
-  "Inning Break": "#f97316", // Orange
+  "Inning Break": "#125670", // Orange
   "Death Over": "#ef4444", // Red
   "Award Ceremony": "#8b5cf6", // Violet
   default: "#64748b",
@@ -1038,7 +1038,7 @@ export default function AudienceMeasurment({
                         dy={16}
                         textAnchor="end"
                         fill={color}
-                        fontSize={12}
+                        fontSize={10}
                         fontWeight="600"
                         angle={-45}
                       >
