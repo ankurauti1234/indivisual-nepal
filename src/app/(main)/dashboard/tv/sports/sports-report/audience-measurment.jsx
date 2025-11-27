@@ -286,7 +286,7 @@ export default function AudienceMeasurment({
     [fileMap]
   );
   const PeakAudienceComparison = useMemo(
-    () => getData("peak_audince_comparison.json "),
+    () => getData("peak_audince_comparison.json"),
     [fileMap]
   );
   const AgeGroupComposition = useMemo(
