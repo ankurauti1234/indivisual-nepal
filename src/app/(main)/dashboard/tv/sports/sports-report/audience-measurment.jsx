@@ -43,12 +43,13 @@ const DEFAULT_PALETTE = [
 
 // Event to Color mapping using your existing palette
 const EVENT_COLORS = {
-  toss: "#6366f1", // Indigo
-  powerplay: "#10b981", // Emerald Green
-  normal: "#f59e0b", // Amber
-  timeout: "#f97316", // Orange
-  death_over: "#ef4444", // Red
-  innings2_start: "#8b5cf6", // Violet
+  Toss: "#6366f1", // Indigo
+  "Power Play": "#10b981", // Emerald Green
+  "Mid Over": "#f59e0b", // Amber
+
+  "Inning Break": "#f97316", // Orange
+  "Death Over": "#ef4444", // Red
+  "Award Ceremony": "#8b5cf6", // Violet
   default: "#64748b",
 };
 
@@ -285,7 +286,7 @@ export default function AudienceMeasurment({
     [fileMap]
   );
   const PeakAudienceComparison = useMemo(
-    () => getData("peak_audince_comparison.json"),
+    () => getData("peak_audince_comparison.json "),
     [fileMap]
   );
   const AgeGroupComposition = useMemo(
@@ -700,7 +701,7 @@ export default function AudienceMeasurment({
                       key={idx}
                       className="flex items-center justify-between py-1"
                     >
-                      <div className="text-sm font-medium text-white truncate">
+                      <div className="text-sm font-medium text-black truncate">
                         {b.brand}
                       </div>
                       <div className="text-sm font-semibold text-indigo-400">
@@ -759,7 +760,7 @@ export default function AudienceMeasurment({
         </Card>
       </div>
 
-      {/* Audience Flow Over Time */}
+      Audience Flow Over Time 
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
@@ -973,12 +974,12 @@ export default function AudienceMeasurment({
                   fill="#8b5cf6"
                   radius={[8, 8, 0, 0]}
                 >
-                  <LabelList
+                  {/* <LabelList
                     dataKey="engagement_score"
                     position="top"
                     formatter={(v) => v.toFixed(3)}
                     style={{ fontWeight: "bold" }}
-                  />
+                  /> */}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
@@ -1039,6 +1040,7 @@ export default function AudienceMeasurment({
                         fill={color}
                         fontSize={12}
                         fontWeight="600"
+                        angle={-45}
                       >
                         {timestamp}
                       </text>
