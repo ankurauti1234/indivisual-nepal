@@ -600,11 +600,23 @@ export default function AudienceMeasurment({
         <Card className="bg-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle>Gender Distribution</CardTitle>
-            <VenueMultiSelect
-              venues={allVenueIds}
-              selected={selectedGenderVenues}
-              onChange={setSelectedGenderVenues}
-            />
+            <Select
+              value={String(selectedGenderVenues[0] ?? 1)}
+              onValueChange={(value) =>
+                setSelectedGenderVenues([Number(value)])
+              }
+            >
+              <SelectTrigger className="w-[150px] h-8 text-sm">
+                <SelectValue placeholder="Venue 1" />
+              </SelectTrigger>
+              <SelectContent>
+                {allVenueIds.map((id) => (
+                  <SelectItem key={id} value={String(id)}>
+                    Venue {id}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </CardHeader>
           <CardContent>
             {genderPieData.length > 0 ? (
@@ -701,7 +713,7 @@ export default function AudienceMeasurment({
                       key={idx}
                       className="flex items-center justify-between py-1"
                     >
-                      <div className="text-sm font-medium text-black truncate">
+                      <div className="text-sm font-medium text-[#55b585] truncate">
                         {b.brand}
                       </div>
                       <div className="text-sm font-semibold text-indigo-400">
@@ -721,11 +733,23 @@ export default function AudienceMeasurment({
         <Card className="bg-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle>Emotion Distribution</CardTitle>
-            <VenueMultiSelect
-              venues={allVenueIds}
-              selected={selectedEmotionVenues}
-              onChange={setSelectedEmotionVenues}
-            />
+            <Select
+              value={String(selectedEmotionVenues[0] ?? 1)}
+              onValueChange={(value) =>
+                setSelectedEmotionVenues([Number(value)])
+              }
+            >
+              <SelectTrigger className="w-[150px] h-8 text-sm">
+                <SelectValue placeholder="Venue 1" />
+              </SelectTrigger>
+              <SelectContent>
+                {allVenueIds.map((id) => (
+                  <SelectItem key={id} value={String(id)}>
+                    Venue {id}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </CardHeader>
           <CardContent>
             {emotionPieData.length > 0 ? (
@@ -759,8 +783,7 @@ export default function AudienceMeasurment({
           </CardContent>
         </Card>
       </div>
-
-      Audience Flow Over Time 
+      Audience Flow Over Time
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
@@ -821,7 +844,6 @@ export default function AudienceMeasurment({
           </ResponsiveContainer>
         </CardContent>
       </Card>
-
       {/* Peak Audience Comparison */}
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between">
@@ -864,7 +886,6 @@ export default function AudienceMeasurment({
           </ResponsiveContainer>
         </CardContent>
       </Card>
-
       {/* Age Group Composition */}
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between">
@@ -912,7 +933,6 @@ export default function AudienceMeasurment({
           </ResponsiveContainer>
         </CardContent>
       </Card>
-
       {/* Brand-wise Engagement Score */}
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between flex-wrap gap-4">
@@ -990,7 +1010,6 @@ export default function AudienceMeasurment({
           )}
         </CardContent>
       </Card>
-
       {/* ENGAGEMENT SCORE TREND - UPDATED WITH EVENT COLORS & LEGEND */}
       {/* ENGAGEMENT SCORE TREND - FINAL BEAUTIFUL VERSION */}
       {/* ENGAGEMENT SCORE TREND – X-AXIS TIMESTAMPS COLORED BY EVENT */}
@@ -1020,7 +1039,7 @@ export default function AudienceMeasurment({
               {/* Custom X-Axis with colored ticks based on event */}
               <XAxis
                 dataKey="Timestamp"
-                angle={-45}
+                angle={90}
                 textAnchor="end"
                 height={100}
                 tickFormatter={(timestamp) => timestamp}
@@ -1040,7 +1059,7 @@ export default function AudienceMeasurment({
                         fill={color}
                         fontSize={10}
                         fontWeight="600"
-                        angle={-45}
+                        angle={30}
                       >
                         {timestamp}
                       </text>
@@ -1117,7 +1136,6 @@ export default function AudienceMeasurment({
           )}
         </CardContent>
       </Card>
-
       {/* Event-Wise Audience Viewership */}
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between">

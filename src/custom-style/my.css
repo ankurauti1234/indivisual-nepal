@@ -1,0 +1,8 @@
+.xyz {
+  white-space: nowrap;      /* keep it on one line */
+  overflow: hidden;         /* anything extra gets tossed */
+  text-overflow: ellipsis;  /* the magical ... */
+  max-width: 50%;
+  color: red;         /* pick whatever width you want */
+}
+

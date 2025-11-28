@@ -26,6 +26,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
+import  "../../../../../../../src/custom-style/my.css";
 
 /* ---------- Colors ---------- */
 const DEFAULT_PALETTE = [
@@ -630,8 +631,8 @@ export default function BrandOverview({
                     nameKey="name"
                     innerRadius={50}
                     outerRadius={90}
-                    paddingAngle={2}
-                    labelLine={false}
+                    fontSize={12}
+                    textOverflow="ellipsis"
                     label={(entry) => entry.name}
                   >
                     {brandShareSorted.map((_, i) => (
