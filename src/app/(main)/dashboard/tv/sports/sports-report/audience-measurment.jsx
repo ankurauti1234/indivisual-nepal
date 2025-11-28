@@ -208,7 +208,7 @@ export default function AudienceMeasurment({
   const [fileMap, setFileMap] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const [selectedGenderVenues, setSelectedGenderVenues] = useState([]);
+  const [selectedGenderVenues, setSelectedGenderVenues] = useState([1]);
   const [selectedGroupVenues, setSelectedGroupVenues] = useState([]);
   const [selectedEmotionVenues, setSelectedEmotionVenues] = useState([]);
   const [selectedFlowVenues, setSelectedFlowVenues] = useState([]);
@@ -340,21 +340,49 @@ export default function AudienceMeasurment({
     OcculsionLevelDistribution,
   ]);
 
-  useEffect(() => {
-    if (allVenueIds.length > 0) {
-      const venues = allVenueIds;
-      setSelectedGenderVenues(venues);
-      setSelectedGroupVenues(venues);
-      setSelectedEmotionVenues(venues);
-      setSelectedFlowVenues(venues);
-      setSelectedPeakVenues(venues);
-      setSelectedAgeVenues(venues);
-      setSelectedBrandVenues(venues);
-      setSelectedEngagementVenues(venues);
-      setSelectedEventVenues(venues);
-      setSelectedOcclusionVenues(venues);
-    }
-  }, [allVenueIds]);
+ useEffect(() => {
+   if (allVenueIds.length > 0) {
+     const venues = allVenueIds;
+
+     // Keep gender focused on the first venue by default
+     setSelectedGenderVenues((prev) => {
+       // if prev already a valid single selection, keep it
+       if (
+         Array.isArray(prev) &&
+         prev.length === 1 &&
+         venues.includes(prev[0])
+       ) {
+         return prev;
+       }
+       // otherwise default to first venue
+       return [venues[0]];
+     });
+
+     setSelectedEmotionVenues((prev) => {
+       // if prev already a valid single selection, keep it
+       if (
+         Array.isArray(prev) &&
+         prev.length === 1 &&
+         venues.includes(prev[0])
+       ) {
+         return prev;
+       }
+       // otherwise default to first venue
+       return [venues[0]];
+     });
+
+     // all the rest default to all venues
+     setSelectedGroupVenues(venues);
+     setSelectedFlowVenues(venues);
+     setSelectedPeakVenues(venues);
+     setSelectedAgeVenues(venues);
+     setSelectedBrandVenues(venues);
+     setSelectedEngagementVenues(venues);
+     setSelectedEventVenues(venues);
+     setSelectedOcclusionVenues(venues);
+   }
+ }, [allVenueIds]);
+
 
   const allBrands = useMemo(() => {
     const brands = [...new Set(BrandEngagementData.map((d) => d.brand))];
@@ -553,13 +581,19 @@ export default function AudienceMeasurment({
     EventWiseAudienceViewership.forEach((item) => {
       if (!venues.includes(item.venue_id)) return;
       const tag = item.tag || "Unknown";
+
+      // sum raw values
       agg[tag] = (agg[tag] || 0) + (item.total || 0);
     });
 
     return Object.entries(agg)
-      .map(([tag, total]) => ({ tag, total }))
+      .map(([tag, total]) => ({
+        tag,
+        total: Number(total.toFixed(2)), // ← Apply final rounding here
+      }))
       .sort((a, b) => b.total - a.total);
   }, [EventWiseAudienceViewership, selectedEventVenues, allVenueIds]);
+
 
   const occlusionLevels = useMemo(() => {
     return [
@@ -783,7 +817,6 @@ export default function AudienceMeasurment({
           </CardContent>
         </Card>
       </div>
-      Audience Flow Over Time
       <Card className="bg-card">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
@@ -1109,7 +1142,7 @@ export default function AudienceMeasurment({
                 />
               ))}
 
-              <Legend verticalAlign="top" height={50} />
+              <Legend verticalAlign="top" height={50}/>
             </LineChart>
           </ResponsiveContainer>
 
@@ -1125,7 +1158,7 @@ export default function AudienceMeasurment({
                         EVENT_COLORS[event] || EVENT_COLORS.default,
                     }}
                   />
-                  <span className="text-sm font-medium text-gray-300">
+                  <span className="text-sm font-medium">
                     {event
                       .replace(/_/g, " ")
                       .replace(/\b\w/g, (c) => c.toUpperCase())}
