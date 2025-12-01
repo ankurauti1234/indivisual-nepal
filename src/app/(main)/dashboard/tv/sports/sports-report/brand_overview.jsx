@@ -393,33 +393,48 @@ export default function BrandOverview({
   }, [filteredBrandShare, metric]);
 
   /* TOP BRANDS - updated to respect topRange and add rank */
+  /* TOP BRANDS - updated to respect topRange and add rank */
   const topBrands = useMemo(() => {
-    const aggregated = filteredScreenTimeBrands.reduce((acc, cur) => {
-      const existing = acc.find((i) => i.brand === cur.brand);
-      if (existing) {
-        existing.duration = (existing.duration || 0) + (cur.duration || 0);
-        existing.count = (existing.count || 0) + (cur.count || 0);
-      } else acc.push({ ...cur });
-      return acc;
-    }, []);
+  // 1. Aggregate
+  const aggregated = filteredScreenTimeBrands.reduce((acc, cur) => {
+    const existing = acc.find((i) => i.brand === cur.brand);
+    if (existing) {
+      existing.duration += cur.duration || 0;
+      existing.count += cur.count || 0;
+    } else {
+      acc.push({
+        brand: cur.brand,
+        duration: cur.duration || 0,
+        count: cur.count || 0,
+      });
+    }
+    return acc;
+  }, []);
 
-    // Sort everything first by metric desc
-    const sorted = aggregated.sort(
-      (a, b) => getValueForMetric(b, metric) - getValueForMetric(a, metric)
-    );
+  // 2. Sort desc
+  const sorted = aggregated.sort(
+    (a, b) => getValueForMetric(b, metric) - getValueForMetric(a, metric)
+  );
 
-    const [start, end] = getRangeIndexes(topRange);
+  // 3. Range (0–10, 10–20...)
+  const [start, end] = getRangeIndexes(topRange);
+  const ranged = sorted.slice(start, end);
 
-    // Slice according to selected top range
-    const ranged = sorted.slice(start, end);
+  // 4. Apply correct rank start
+  const rankStart = start + 1;
 
-    // Add ranking number
-    return ranged.map((d, i) => ({
-      ...d,
-      rank: start + i + 1,
-      value: getValueForMetric(d, metric),
-    }));
-  }, [filteredScreenTimeBrands, metric, topRange]);
+  return ranged.map((d, i) => ({
+    ...d,
+    rank: rankStart + i,       // perfect ranking
+    value: getValueForMetric(d, metric),
+  }));
+}, [filteredScreenTimeBrands, metric, topRange]);
+
+
+  function getStartRank(range) {
+    const [start] = getRangeIndexes(range);
+    return start + 1; // convert 0→1, 10→11, 20→21 etc
+  }
 
   // SIMPLE AGGREGATION (previous single-value exposure)
   const exposureByCategory = useMemo(
@@ -653,21 +668,34 @@ export default function BrandOverview({
       </div>
 
       {/* Brand Screen Time */}
-      <div className="bg-card rounded-xl p-4">
-        <div className="flex items-center justify-between">
-          <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-            Brand Screen Time
-          </h4>
+      <div className="bg-card rounded-2xl shadow-sm border border-border p-6">
+        <div className="mb-6 flex flex-col gap-3">
+          {/* FIRST ROW → LEFT + METRIC */}
+          <div className="flex items-center justify-between">
+            {/* LEFT SIDE */}
+            <div className="flex items-center gap-2">
+              {/* <Eye className="text-primary" size={20} /> */}
+              <h3 className="text-lg font-bold text-foreground">
+                Brand Screen Time
+              </h3>
+            </div>
 
-          {/* TOP RANGE SELECT MOVED INTO THIS CARD */}
-          <div className="flex items-center gap-3">
+            {/* METRIC TEXT */}
+            <div className="text-sm text-muted-foreground">
+              {metric === "duration" ? "Duration in seconds" : "Count"}
+            </div>
+          </div>
+
+          {/* SECOND ROW → TOP RANGE BELOW */}
+          <div className="flex items-center gap-3 justify-end">
             <label className="text-sm text-gray-500">Top Range</label>
+
             <select
               value={topRange}
               onChange={(e) => setTopRange(e.target.value)}
               className="px-3 py-2 rounded-lg border bg-background text-sm"
             >
-              <option value="top_10">Top 1–10</option>
+              <option value="top_0_10">Top 1–10</option>
               <option value="top_10_20">Top 11–20</option>
               <option value="top_20_30">Top 21–30</option>
               <option value="top_30_40">Top 31–40</option>
@@ -681,49 +709,64 @@ export default function BrandOverview({
           </div>
         </div>
 
-        <div className="h-96 mt-3 overflow-visible">
-          {topBrands.length === 0 ? (
-            <p className="text-sm text-gray-500">No data</p>
-          ) : (
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                layout="vertical"
-                data={topBrands}
-                margin={{ top: 5, right: 30, bottom: 5, left: 160 }}
-              >
-                <XAxis type="number" />
-                <YAxis
-                  dataKey="brand"
-                  type="category"
-                  width={200}
-                  // show ranking number in front of brand name
-                  tickFormatter={(brand, index) => {
-                    const item = topBrands[index];
-                    return item ? `${item.rank}. ${brand}` : brand;
-                  }}
-                  tick={{ fontSize: 12 }}
-                />
-                <Tooltip
-                  formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                />
-                <Bar dataKey="value">
-                  {topBrands.map((_, i) => (
-                    <Cell
-                      key={i}
-                      fill={DEFAULT_PALETTE[i % DEFAULT_PALETTE.length]}
-                    />
-                  ))}
-                  <LabelList
-                    dataKey="value"
-                    position="right"
-                    formatter={(v) => (metric === "duration" ? `${v}s` : v)}
-                    className="text-xs fill-primary"
+        {topBrands.length === 0 ? (
+          <div className="flex items-center justify-center h-64">
+            <p className="text-sm text-muted-foreground">No data</p>
+          </div>
+        ) : (
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart
+              data={topBrands}
+              layout="vertical"
+              margin={{ top: 8, right: 50, bottom: 5 }}
+            >
+              {/* <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" /> */}
+
+              <XAxis type="number" stroke="hsl(var(--muted-foreground))" />
+
+              <YAxis
+                dataKey="brand"
+                type="category"
+                width={140}
+                fontSize={12}
+                stroke="hsl(var(--muted-foreground))"
+                tickFormatter={(brand, index) => {
+                  const item = topBrands[index];
+                  return item ? `${item.rank}. ${brand}` : brand;
+                }}
+              />
+
+              <Tooltip
+                formatter={(v) => (metric === "duration" ? `${v}s` : v)}
+                cursor={{ fill: "rgba(99, 102, 241, 0.1)" }}
+                contentStyle={{
+                  backgroundColor: "hsl(var(--card))",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "12px", // ⬅ ADD THIS
+                  padding: "8px 12px",
+                }}
+                labelStyle={{ color: "hsl(var(--foreground))" }}
+                itemStyle={{ color: "hsl(var(--foreground))" }}
+              />
+
+              <Bar dataKey="value" radius={[0, 8, 8, 0]}>
+                {topBrands.map((_, index) => (
+                  <Cell
+                    key={index}
+                    fill={DEFAULT_PALETTE[index % DEFAULT_PALETTE.length]}
                   />
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          )}
-        </div>
+                ))}
+
+                <LabelList
+                  dataKey="value"
+                  position="right"
+                  formatter={(v) => (metric === "duration" ? `${v}s` : v)}
+                  className="text-xs fill-foreground"
+                />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        )}
       </div>
 
       {/* Exposure by Category - STACKED BY BRAND WITH CATEGORY MULTI-FILTER */}
@@ -778,9 +821,10 @@ export default function BrandOverview({
                   dataKey="category"
                   tick={{ fontSize: 11 }}
                   interval={0}
-                  angle={-35}
+                  angle={-15}
                   textAnchor="end"
                   height={70}
+                  fontSize={8}
                 />
                 <YAxis />
 
@@ -861,7 +905,7 @@ export default function BrandOverview({
                   dataKey="sector"
                   tick={{ fontSize: 11 }}
                   interval={0}
-                  angle={-50}
+                  angle={-25}
                   textAnchor="end"
                   height={80}
                 />
